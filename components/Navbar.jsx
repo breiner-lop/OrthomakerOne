@@ -2,7 +2,7 @@ import Link from "next/link";
 import GetStarted from "./Buttons/GetStarted";
 export default function Navbar() {
   return (
-    <nav className="flex justify-between h-32 items-center text-purple-dark bg-blue-light px-24">
+    <nav className="flex justify-between h-20 items-end pb-2 text-purple-dark bg-blue-light px-24">
       <Link href="/">
         <a className="text-purple-dark text-lg">Ortho<strong>Maker</strong></a>
       </Link>

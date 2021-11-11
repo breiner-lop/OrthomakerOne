@@ -15,6 +15,7 @@ export default function index() {
           }}
         >
           {/***  Header ***/}
+          <p className="text-blue-transparent text-3xl">Protesis ajustable para <br />Extremidades caninas</p>
           <div className="flex justify-center">
             <Image
               src="/img/protesis.png"
@@ -24,7 +25,7 @@ export default function index() {
             />
           </div>
           {/***  OrthoMaker ***/}
-          <div className="mb-20">
+          <div className="mb-2">
             <h2 className="text-9xl text-center">OrthoMaker</h2>
             <div className="flex mt-32">
               <div className="w-1/2 pr-32 flex items-center">
@@ -44,7 +45,7 @@ export default function index() {
               <div className="w-1/2">
                 <div
                   className="p-6 rounded-lg flex items-center my-2"
-                  style={{ background: `url("/img/dogOne.png")` }}
+                  style={{ background: `url("/img/dogOne.png")`,backgroundRepeat:"no-repeat",backgroundSize:"cover" }}
                 >
                   <div className="w-1/5">
                     <Image
@@ -62,7 +63,7 @@ export default function index() {
                 </div>
                 <div
                   className="p-6 rounded-lg flex items-center my-2"
-                  style={{ background: `url("/img/dogTwo.png")` }}
+                  style={{ background: `url("/img/dogTwo.png")`,backgroundRepeat:"no-repeat",backgroundSize:"cover"  }}
                 >
                   <div className="w-1/5">
                     <Image src="/img/boxIcon.png" width="75px" height="75px" />
@@ -76,22 +77,22 @@ export default function index() {
                 </div>
                 <div
                   className="p-6 rounded-lg flex items-center my-2"
-                  style={{ background: `url("/img/dogThree.png")` }}
+                  style={{ background: `url("/img/dogThree.png")`,backgroundRepeat:"no-repeat",backgroundSize:"cover"  }}
                 >
                   <div className="w-1/5">
                     <Image src="/img/feetIcon.png" width="75px" height="75px" />
                   </div>
                   <div>
                     <h4 className="font-semibold">Automatic Integration</h4>
-                    <p className="w-4/6">
+                    <p className="w-4/5">
                       Easy installation and plugins for most popular platforms
                     </p>
                   </div>
                 </div>
               </div>
             </div>
-            <ul className="flex mt-24">
-              <li className="rounded-full w-14 h-14 border-2 mx-2 flex items-center justify-center border-red-dark">
+            <ul className="flex mt-32 mb-4">
+              <li className="rounded-full w-14 h-14 border-2 mr-2 flex items-center justify-center border-red-dark">
                 <Image src="/img/feet90.png" width="32px" height="28px" />
               </li>
               <li className="rounded-full w-14 h-14 border-2 mx-2 flex items-center justify-center border-red-dark">
@@ -101,6 +102,7 @@ export default function index() {
                 <Image src="/img/prote.png" width="20px" height="35px" />
               </li>
             </ul>
+            <span>Protesis</span>
           </div>
         </div>
       </div>

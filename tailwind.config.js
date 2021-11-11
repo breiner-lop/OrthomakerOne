@@ -10,6 +10,7 @@ module.exports = {
       'white': '#ffffff',
       'black': '#000000',
       'red-dark':'#D91D26',
+      'blue-transparent':'#14104f6b'
     },
     backgroundColor: theme => ({
       ...theme('colors'),
