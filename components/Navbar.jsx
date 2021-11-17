@@ -4,9 +4,9 @@ export default function Navbar() {
   return (
     <nav className="flex justify-between h-20 items-end pb-2 text-purple-dark bg-blue-light px-24">
       <Link href="/">
-        <a className="text-purple-dark text-lg">Ortho<strong>Maker</strong></a>
+        <a className="text-purple-dark text-2xl">Ortho<strong>Maker</strong></a>
       </Link>
-      <ul className="flex">
+      <ul className="flex text-lg">
         <li className="mx-4">
           <Link href="/">About Us</Link>
         </li>

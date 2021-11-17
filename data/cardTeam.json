@@ -1,0 +1,16 @@
+[
+    {
+        "id":"1",
+        "name":"CEO",
+        "descrption":"es una prótesis para extremidades de caninos que han sufrido alguna amputación.",
+        "profesion":"Ingeniero mecanico",
+        "img":"/img/ceo.png"
+    },
+    {
+        "id":"2",
+        "name":"Product manager",
+        "descrption":"es una prótesis para extremidades de caninos que han sufrido alguna amputación.",
+        "profesion":"Diseñador industrial",
+        "img":"/img/diseñador.png"
+    }
+]
