@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import GetStarted from "../components/Buttons/GetStarted";
@@ -9,9 +9,6 @@ import Specs from "../components/ViewsOrthoOne/Specs";
 import Pricing from "../components/ViewsOrthoOne/Pricing";
 import FrequentQuestions from "../components/ViewsOrthoOne/FrequentQuestions";
 import MoreProductData from "../data/moreproductsimages.json";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import CardCasos from "../components/Cards/CardCasos";
 import CardCasosData from "../data/casosExitos.json";
 import CardTeam from "../components/Cards/CardTeam";
@@ -19,19 +16,25 @@ import TeamData from "../data/cardTeam.json";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import {useCasosCtx} from "../contexts/casosExito/navInicio.context"
-export default function index() {
+export default function Index() {
   const [activeOrtho, setActiveOrtho] = useState(1);
   /*** manejador de navegacion de orthomaker one */
   const handleActiveOrtho = (id) => {
     setActiveOrtho(id);
   };
     /**** context casos nav */
-    const {state,setState}=useCasosCtx();
+    const {state,caso,setState,setCaso}=useCasosCtx();
   /**** manejador de navegacion casos de exito */
   const [activeCase, setActiveCase] = useState(false);
-  const handleCasos = () => {
+  const [slicer, setSlicer] = useState(0);
+  const [slicert, setSlicert] = useState(1);
+  const handleCasos = (nCaso) => {
     setState(true);
+    setCaso(nCaso)
   };
+  useEffect(()=>{
+    caso==1?(setSlicer(0),setSlicert(1)):caso==2?(setSlicer(1),setSlicert(2)) :( setSlicer(2), setSlicert(3));
+  },[caso])
   /*** responsive selider */
   const responsive = {
     desktop: {
@@ -264,7 +267,7 @@ export default function index() {
             }}
           >
             <li className="my-4">
-              <button onClick={handleCasos}>
+              <button onClick={()=>handleCasos(1)}>
                 <span className="flex items-center w-64 justify-between">
                   PININA
                   <Image src="/img/rowlonger.png" width="60px" height="50px" />
@@ -272,7 +275,7 @@ export default function index() {
               </button>
             </li>
             <li className="my-4">
-              <button onClick={handleCasos}>
+              <button onClick={()=>handleCasos(2)}>
                 <span className="flex items-center w-64 justify-between">
                   LUNA
                   <Image src="/img/rowlonger.png" width="60px" height="50px" />
@@ -280,7 +283,7 @@ export default function index() {
               </button>
             </li>
             <li className="my-4">
-              <button onClick={handleCasos}>
+              <button onClick={()=>handleCasos(3)}>
                 <span className="flex items-center w-64 justify-between">
                   SIMON
                   <Image src="/img/rowlonger.png" width="60px" height="50px" />
@@ -288,15 +291,17 @@ export default function index() {
               </button>
             </li>
           </ul>
-          <div className={!state ? "w-2/5 mt-14 " : "w-full mt-14"}>
-          <Carousel responsive={responsive} arrows={state?true:false}>
-              {CardCasosData.map((casos) => (
+          <div className={!state ? "w-2/5 mt-14 transition duration-300 " : "w-full mt-14 transition duration-300"}>
+          <Carousel responsive={responsive} arrows={false} draggable={state?true:false}>
+              {CardCasosData.slice(slicer,slicert).map((casos) => (
                 <CardCasos
                   key={casos.id}
                   img={casos.img}
                   name={casos.name}
                   textOne={casos.textOne}
                   textTwo={casos.textTwo}
+                  Uu={caso+1}
+                  imgsig={casos.imgsig}
                 />
               ))}
             </Carousel>
