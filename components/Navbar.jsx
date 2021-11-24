@@ -2,8 +2,9 @@ import Link from "next/link";
 import GetStarted from "./Buttons/GetStarted";
 export default function Navbar() {
   return (
-    <nav className="flex justify-between h-20 items-end pb-2 text-purple-dark bg-blue-light px-24">
-      <Link href="/">
+    <nav className=" text-purple-dark bg-blue-light ">
+    <div className="mx-auto flex justify-between h-20 items-end pb-2 px-24" style={{maxWidth:"1500px"}}>
+    <Link href="/">
         <a className="text-purple-dark text-2xl">Ortho<strong>Maker</strong></a>
       </Link>
       <ul className="flex text-lg">
@@ -21,6 +22,7 @@ export default function Navbar() {
         </li>
       </ul>
       <GetStarted />
+    </div>
     </nav>
   );
 }
