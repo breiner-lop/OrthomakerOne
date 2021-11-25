@@ -1,4 +1,3 @@
-import Image from "next/image";
 import {useCasosCtx} from "../../contexts/casosExito/navInicio.context"
 
 export default function CardCasos({ key, img, name, textOne, textTwo,Uu,imgsig }) {
@@ -8,7 +7,7 @@ export default function CardCasos({ key, img, name, textOne, textTwo,Uu,imgsig }
       <div>
         <div className="flex " style={{ width:`${state==false?"1200px":"1400px"}` }}>
           <div className="w-1/2">
-            <Image src={img} width="100%" height="100%" layout="responsive" />
+            <img src={img} width="100%" height="100%" layout="responsive" />
           </div>
           <div className="w-2/5 ml-10">
             <h4 className="text-5xl mb-12 uppercase">{name}</h4>

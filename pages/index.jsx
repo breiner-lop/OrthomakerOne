@@ -81,7 +81,7 @@ export default function Index() {
                 Extremidades caninas
               </p>
               <div className="flex justify-center">
-                <Image
+                <img
                   src="/img/protesis.png"
                   width="774px"
                   height="565px"
@@ -116,7 +116,7 @@ export default function Index() {
                       }}
                     >
                       <div className="w-1/5">
-                        <Image
+                        <img
                           src="/img/configIcon.png"
                           width="75px"
                           height="75px"
@@ -139,7 +139,7 @@ export default function Index() {
                       }}
                     >
                       <div className="w-1/5">
-                        <Image
+                        <img
                           src="/img/boxIcon.png"
                           width="75px"
                           height="75px"
@@ -162,7 +162,7 @@ export default function Index() {
                       }}
                     >
                       <div className="w-1/5">
-                        <Image
+                        <img
                           src="/img/feetIcon.png"
                           width="75px"
                           height="75px"
@@ -180,17 +180,17 @@ export default function Index() {
                 </div>
                 <ul className="flex mt-32 mb-4">
                   <li className="rounded-full w-14 h-14 border-2 mr-2 flex items-center justify-center border-red-dark">
-                    <Image src="/img/feet90.png" width="32px" height="28px" />
+                    <img src="/img/feet90.png" width="32px" height="28px" />
                   </li>
                   <li className="rounded-full w-14 h-14 border-2 mx-2 flex items-center justify-center border-red-dark">
-                    <Image
+                    <img
                       src="/img/feetrecto.png"
                       width="12px"
                       height="38px"
                     />
                   </li>
                   <li className="rounded-full w-14 h-14 border-2 mx-2 flex items-center justify-center border-red-dark">
-                    <Image src="/img/prote.png" width="20px" height="35px" />
+                    <img src="/img/prote.png" width="20px" height="35px" />
                   </li>
                 </ul>
                 <span>Protesis</span>
@@ -305,7 +305,7 @@ export default function Index() {
               <Link href="/">
                 <span className="underline flex items-center cursor-pointer">
                   <span className="mr-3">ver mas</span>
-                  <Image src="/img/row.png" width="18px" height="17px" />
+                  <img src="/img/row.png" width="18px" height="17px" />
                 </span>
               </Link>
             </div>
@@ -340,7 +340,7 @@ export default function Index() {
                   <button onClick={() => handleCasos(1)}>
                     <span className="flex items-center w-64 justify-between">
                       PININA
-                      <Image
+                      <img
                         src="/img/rowlonger.png"
                         width="60px"
                         height="50px"
@@ -352,7 +352,7 @@ export default function Index() {
                   <button onClick={() => handleCasos(2)}>
                     <span className="flex items-center w-64 justify-between">
                       LUNA
-                      <Image
+                      <img
                         src="/img/rowlonger.png"
                         width="60px"
                         height="50px"
@@ -364,7 +364,7 @@ export default function Index() {
                   <button onClick={() => handleCasos(3)}>
                     <span className="flex items-center w-64 justify-between">
                       SIMON
-                      <Image
+                      <img
                         src="/img/rowlonger.png"
                         width="60px"
                         height="50px"
@@ -441,13 +441,13 @@ export default function Index() {
                 />
                 <span className="w-1/5 flex justify-end items-center pr-4">
                   <span>
-                    <Image src="/img/mail.png" width="20px" height="18px" />
+                    <img src="/img/mail.png" width="20px" height="18px" />
                   </span>
                 </span>
               </div>
             </div>
             <div className="w-2/5 flex items-end">
-              <Image src="/img/dog-contact.png" width="300px" height="300px" />
+              <img src="/img/dog-contact.png" width="300px" height="300px" />
             </div>
           </div>
         </div>

@@ -24,7 +24,7 @@ export default function getstarted() {
         </div>
         <div className="flex">
           <button className="rounded-full border flex items-center justify-center w-12 h-12 mr-4">
-            <Image src="/img/save.png" width="22px" height="22px" />
+            <img src="/img/save.png" width="22px" height="22px" />
           </button>
           <ButtonCancel />
         </div>

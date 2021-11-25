@@ -18,7 +18,7 @@ export default function Propietario() {
           <button onClick={()=>setNavForm(1)}>
             <span className="flex items-center">
               <span>
-                <Image
+                <img
                   src="/img/completedchulo.png"
                   width="30px"
                   height="30px"
@@ -68,7 +68,7 @@ export default function Propietario() {
                 <div onClick={()=>handleFile("frente")} className="h-32 w-32 border-2 rounded border-purple border-dashed mt-6 mr-4 cursor-pointer">
                   <input type="file" className="hidden" id="frente" />
                   <div className="h-20 flex justify-center items-center">
-                    <Image src="/img/addimg.png" width="42px" height="36px" />
+                    <img src="/img/addimg.png" width="42px" height="36px" />
                   </div>
                   <div className="h-11 bg-blue-light px-4">
                     <span className="font-bold text-xs">Frente</span>
@@ -77,7 +77,7 @@ export default function Propietario() {
                 <div  onClick={()=>handleFile("derecho")} className="h-32 w-32 border-2 rounded border-purple border-dashed mt-6 mr-4 cursor-pointer">
                 <input type="file" className="hidden" id="derecho" />
                   <div className="h-20 flex justify-center items-center">
-                    <Image src="/img/addimg.png" width="42px" height="36px" />
+                    <img src="/img/addimg.png" width="42px" height="36px" />
                   </div>
                   <div className="h-11 bg-blue-light px-4">
                     <span className="font-bold text-xs">Perfil derecho</span>
@@ -86,7 +86,7 @@ export default function Propietario() {
                 <div  onClick={()=>handleFile("izquierdo")} className="h-32 w-32 border-2 rounded border-purple border-dashed mt-6 mr-4 cursor-pointer">
                 <input type="file" className="hidden" id="izquierdo" />
                   <div className="h-20 flex justify-center items-center">
-                    <Image src="/img/addimg.png" width="42px" height="36px" />
+                    <img src="/img/addimg.png" width="42px" height="36px" />
                   </div>
                   <div className="h-11 bg-blue-light px-4">
                     <span className="font-bold text-xs">Perfil izquierdo</span>
@@ -95,7 +95,7 @@ export default function Propietario() {
                 <div  onClick={()=>handleFile("trasero")} className="h-32 w-32 border-2 rounded border-purple border-dashed mt-6 mr-4 cursor-pointer">
                 <input type="file" className="hidden" id="trasero" />
                   <div className="h-20 flex justify-center items-center">
-                    <Image src="/img/addimg.png" width="42px" height="36px" />
+                    <img src="/img/addimg.png" width="42px" height="36px" />
                   </div>
                   <div className="h-11 bg-blue-light px-4">
                     <span className="font-bold text-xs">Perfil trasero</span>

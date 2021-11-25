@@ -1,4 +1,3 @@
-import Image from "next/image"
 
 export default function Process() {
     const processCard=[
@@ -29,7 +28,7 @@ export default function Process() {
                 processCard.map((pC)=>(
                 <div key={pC.number} className="flex row-span-1 items-center">
                     <div className="w-44">
-                    <Image src={pC.img} width="185px" height="99px" />
+                    <img src={pC.img} width="185px" height="99px" />
                     </div>
                     <div className="border-b-2 w-full ml-2 border-blue-light flex h-full items-center" >
                     <span className="px-6 text-5xl font-bold"> {pC.number} </span>

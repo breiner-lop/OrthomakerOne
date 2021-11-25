@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 
 export default function Technology() {
     const cardDescription=[
@@ -36,7 +35,7 @@ export default function Technology() {
     {
         cardDescription.map((cD)=>(
             <div key={cD.id} className="border border-gray-200 rounded-lg col-span-1 p-6 shadow h-44">
-            <Image src="/img/configrosa.png" width="64px" height="64px" />
+            <img src="/img/configrosa.png" width="64px" height="64px" />
             <p> {cD.description} </p>
           </div>
         ))
