@@ -1,10 +1,9 @@
-import { useState } from "react";
 import PropietarioView from "../components/ViewsGetStarted/Propietario";
 import MascotaView from "../components/ViewsGetStarted/Mascota";
 import Link from "next/link";
-import Image from "next/image";
 import ButtonCancel from "../components/Buttons/ButtonCancel";
 import {useCasosCtx} from "../contexts/casosExito/navInicio.context"
+import Veterinario from "../components/ViewsGetStarted/Veterinario";
 export default function getstarted() {
     const {navForm}=useCasosCtx()
 
@@ -30,7 +29,7 @@ export default function getstarted() {
         </div>
       </div>
      {
-         navForm==1? <PropietarioView />:navForm==2?<MascotaView/>:null
+         navForm==1? <PropietarioView />:navForm==2?<MascotaView/>:navForm==3?<Veterinario/>:null
      }
     </div>
   );

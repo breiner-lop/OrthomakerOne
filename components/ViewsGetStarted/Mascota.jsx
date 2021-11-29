@@ -1,6 +1,6 @@
 import ButtonNextForm from "../Buttons/ButtonNextForm";
-import Image from "next/image";
 import {useCasosCtx} from "../../contexts/casosExito/navInicio.context"
+import FormCompleted from "../Buttons/FormCompleted";
 
 export default function Propietario() {
   /*** LLAMADA DEL CONTEXT MANEJADOR DE VISTAS FORM */
@@ -11,24 +11,9 @@ export default function Propietario() {
     document.getElementById(`${ide}`).click()
   }
   return (
-    <div>
-      <div></div>
       <div className="bg-blue-light py-20 flex justify-center text-purple-dark">
         <div>
-          <button onClick={()=>setNavForm(1)}>
-            <span className="flex items-center">
-              <span>
-                <img
-                  src="/img/completedchulo.png"
-                  width="30px"
-                  height="30px"
-                />
-              </span>
-              <span className="flex flex-col text-left ml-4 mr-20">
-                <span className="text-sm text-blue-transparent">Completado</span> <span className="font-bold">Perfil propietario</span>
-              </span>
-            </span>
-          </button>
+         <FormCompleted  onClick={()=>setNavForm(1)} perfil="Perfil propietario" />
         </div>
         <div style={{ width: "800px" }}>
           <div className="bg-white p-12 mb-1 flex justify-between">
@@ -40,7 +25,7 @@ export default function Propietario() {
               </span>
             </div>
             <div>
-              <ButtonNextForm />
+              <ButtonNextForm  onClick={()=>setNavForm(3)}/>
             </div>
           </div>
           <div className=" flex bg-white p-12 mb-1">
@@ -177,6 +162,5 @@ export default function Propietario() {
           </div>
         </div>
       </div>
-    </div>
   );
 }
