@@ -9,9 +9,11 @@ export const CasosProvider = ({ children }) => {
   const [state, setState] = useState(false);
   const [caso, setCaso] = useState(1);
   const [navForm, setNavForm] = useState(1);
+  const [orden, setOrden] = useState("");
+
   return (
     //@ts-ignore
-    <casosContext.Provider value={{ state,setState,setCaso,caso,navForm,setNavForm}}>
+    <casosContext.Provider value={{ state,setState,setCaso,caso,navForm,setNavForm,setOrden,orden}}>
       {children}
     </casosContext.Provider>
   );
