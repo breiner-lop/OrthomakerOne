@@ -5,7 +5,7 @@ module.exports = {
     borderRadius: {
       'none': '0',
      'sm': '0.125rem',
-     DEFAULT: '0.25rem',
+     "DEFAULT": '0.25rem',
      'md': '0.375rem',
      'lg': '0.5rem',
      'full': '9999px',
@@ -15,21 +15,19 @@ module.exports = {
      '3xl':'1.5rem',
      "136":"136px",
     },
-    transitionProperty: {
-      'width': 'width',
-      'spacing': 'margin, padding',
-     },
-    textColor: {
+
+    textColor: (theme) => ({
+      ...theme("colors"),
       "purple-dark": "#14104F",
       "blue-dark": "#e3342f",
       "blue-medium": "#5C64F4",
       "blue-light": "#5C64F4",
-      white: "#ffffff",
-      black: "#000000",
+      "white": "#ffffff",
+      "black": "#000000",
       "red-dark": "#D91D26",
       "blue-transparent": "#14104f6b",
       "white-transparent": "#ffffff85",
-    },
+    }),
     backgroundColor: (theme) => ({
       ...theme("colors"),
       "purple-dark": "#14104F",
@@ -49,7 +47,7 @@ module.exports = {
     gradientColorStops: (theme) => ({
       ...theme("colors"),
       "blue-light": "#F0F2FF",
-      white: "#ffffff",
+      "white": "#ffffff",
     }),
   },
   variants: {
