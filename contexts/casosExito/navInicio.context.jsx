@@ -6,14 +6,14 @@ export const useCasosCtx = () => useContext(casosContext);
 
 export const CasosProvider = ({ children }) => {
   
-  const [state, setState] = useState(false);
-  const [caso, setCaso] = useState(1);
   const [navForm, setNavForm] = useState(1);
-  const [orden, setOrden] = useState("");
+  const [activeNumber, setActiveNumber] = useState(1);
+  const [state, setState] = useState(1);
+  
 
   return (
     //@ts-ignore
-    <casosContext.Provider value={{ state,setState,setCaso,caso,navForm,setNavForm,setOrden,orden}}>
+    <casosContext.Provider value={{ activeNumber,setActiveNumber,navForm,setNavForm,state,setState}}>
       {children}
     </casosContext.Provider>
   );

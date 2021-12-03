@@ -24,7 +24,7 @@ export default function Veterinario() {
             </div>
             {/*** button siguientes formulario */}
             <div>
-              <ButtonNextForm />
+              <ButtonNextForm  onClick={()=>setNavForm(4)}/>
             </div>
           </div>
            {/***formulario sect 1 */}

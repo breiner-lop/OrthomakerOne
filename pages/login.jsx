@@ -1,8 +1,37 @@
 import React from "react";
 import Link from "next/link";
-import ButtonBlue from "../components/Buttons/ButtonBlue";
+import axios from "axios";
+import { useRouter } from "next/router";
 
 export default function Login() {
+  //llamada al router para redireccionar una ves logeado
+  const history=useRouter()
+  //use states (variables )
+  const [dataLogin,setDatos]=React.useState({
+    mail:"",
+    password:""
+  })
+  //hadle inputs
+  const handleInputChange = (e) => {
+    setDatos({
+        ...dataLogin,
+        [e.target.name] : e.target.value
+    })
+}
+//manejador del boton inicar sesion
+const iniciarSesion=(e)=>{
+  e.preventDefault() //llamada a api
+  axios.post('https://api.orthomakerone.com/login', {
+    mail: dataLogin.mail,
+    password:dataLogin.password
+  })
+  .then(function (response) { // en caso de ser exitosa
+    response&&history.push("/admin")
+  })
+  .catch(function (error) { // en caso de ser incorrectos los datos
+    setDatos({mail:"",password:""})
+  });
+}
   return (
     <div className="flex">
       <div
@@ -23,12 +52,13 @@ export default function Login() {
           <h4 className="2xl:text-4xl text-2xl 2xl:mt-1 mt-0 mb-6 2xl:mb-10">
             Bienvenido a Arma tu feria
           </h4>
-          <div className="rounded border border-gray-400 px-6 h-16 text-sm  my-2">
+         <form onSubmit={(e)=>iniciarSesion(e)}>
+         <div className="rounded border border-gray-400 px-6 h-16 text-sm  my-2">
             <label htmlFor="nombre" className="text-purple-transparent text-xs">
               Nombre de usuario
             </label>
             <br />
-            <input type="text" className="w-full h-8 focus:outline-none" />
+            <input name="mail" type="email" className="w-full h-8 focus:outline-none" value={dataLogin.mail} onChange={(e)=>handleInputChange(e)} required />
           </div>
           <div className="rounded border border-gray-400 px-6 h-16 text-sm my-2">
             <label
@@ -38,7 +68,7 @@ export default function Login() {
               Contraseña
             </label>
             <br />
-            <input type="password" className="w-full h-8 focus:outline-none" />
+            <input name="password" type="password" className="w-full h-8 focus:outline-none" value={dataLogin.password} onChange={(e)=>handleInputChange(e)} required/>
           </div>
           <div className="flex justify-between my-6">
             <div>
@@ -54,9 +84,8 @@ export default function Login() {
             </Link>
           </div>
           <hr />
-         <div>
-         </div>
-          <ButtonBlue text="Ingresar" />
+          <button type="submit">Ingresar</button>
+         </form>
         </div>
         <div className="mt-4 text-xs text-center font-medium">
           <span>

@@ -3,9 +3,8 @@ import ButtonPanelAdmin from "../../components/Buttons/ButtonPanelAdmin";
 import { useCasosCtx } from "../../contexts/casosExito/navInicio.context";
 
 export default function Panel() {
-  const [activeNumber, setActiveNumber] = React.useState(1);
   /**** traer datos del context */
-  const {setOrden } = useCasosCtx();
+  const {activeNumber,setActiveNumber } = useCasosCtx();
 
   return (
     <div className="bg-purple-dark h-screen w-72 2xl:w-96 text-white flex flex-col justify-between">
@@ -38,6 +37,7 @@ export default function Panel() {
           <ul>
             <li>
               <ButtonPanelAdmin
+              href="/admin"
                 text="Home"
                 img="/img/home.png"
                 active={activeNumber == 1 ? true : false}
@@ -46,12 +46,12 @@ export default function Panel() {
             </li>
             <li>
               <ButtonPanelAdmin
+              href="/admin/ordenes"
                 text="Ordenes"
                 img="/img/ordenes.png"
                 active={activeNumber == 2 ? true : false}
                 onClick={() => {
                   setActiveNumber(2);
-                  setOrden("")
                 }}
                 isCount={true}
               />
