@@ -10,7 +10,7 @@ import AlturaAmputacion from "../components/ViewsGetStarted/AlturaAmputacion";
 import PerimetroMuñon from "../components/ViewsGetStarted/PerimetroMuñon";
 import LargoMuñon from "../components/ViewsGetStarted/LargoMuñon";
 import Protesis from "../components/ViewsGetStarted/Protesis";
-export default function getstarted() {
+export default function Getstarted() {
     const {navForm}=useCasosCtx()
 
   return (

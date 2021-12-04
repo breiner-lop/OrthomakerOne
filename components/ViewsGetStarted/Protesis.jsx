@@ -9,7 +9,7 @@ export default function Protesis() {
         <div className="py-4">
           <h4>ENCAJE PROTÉSICO </h4>
           <div className="flex justify-between">
-            <span>Longitud</span>{" "}
+            <span>Longitud</span>
             <div className="bg-white w-28 flex px-3 rounded border border-gray-200">
               <input type="number" className="w-16 focus:outline-none" />
               <span>CM</span>
@@ -19,7 +19,7 @@ export default function Protesis() {
         <div className="py-4">
           <h4>ENCAJE PROTÉSICO </h4>
           <div className="flex justify-between">
-            <span>Longitud</span>{" "}
+            <span>Longitud</span>
             <div className="bg-white w-28 flex px-3 rounded border border-gray-200">
               <input type="number" className="w-16 focus:outline-none" />
               <span>CM</span>
