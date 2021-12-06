@@ -3,18 +3,10 @@ import * as orbit from './extensions/OrbitControls'
 import { GLTFLoader } from './extensions/GLTFLoader'
 import * as STL from './extensions/STLExporter'
 
-var textboxpierna;
-var textboxEnclaje;
-var button;
+var textboxencaje;
+var textboxpilar;
 var screensize = { x: 640, y: 480 };
-
-function changeprop(object) {
-
-
-
-
-}
-
+var colorMaterial;
 
 function loadSingleObject(object) {
     var metadata = { generator: "Object3D.toJSON", type: "Object", version: 4.5 };
@@ -58,7 +50,7 @@ function preparescene(json) {
 
     window.camera = new THREE.PerspectiveCamera(50, screensize.x / screensize.y, 0.1, 10)
     // camera.position.y = 2;
-    camera.position.z = 6;
+    camera.position.z = 4;
 
     //-----------------------------------------------------
 
@@ -67,7 +59,9 @@ function preparescene(json) {
         obj.scene.position.y = -1.5;
         obj.scene.name = "pieces";
 
-        changeprop(obj.scene);
+        colorMaterial =  obj.scene.getObjectByName("encajemodel")
+        window.mat = colorMaterial;
+        
         scene.add(obj.scene);
         setinput(obj.scene);
     })
@@ -86,7 +80,7 @@ function preparescene(json) {
     // ------------------------------------------------
     camera = window.camera;
 
-    const orb = new orbit.OrbitControls(camera, window.render.domElement);
+    const orb = window.orbit = new orbit.OrbitControls(camera, window.render.domElement);
     orb.enableZoom = false;
     orb.enablePan = false;
     orb.autoRotate = true;
@@ -112,16 +106,16 @@ function setinput(object) {
 
     // ---------------------------------------------
     // input fields 
-    textboxpierna.setAttribute("value", (piecedowntop.position.y / 10).toFixed(2));
-    textboxpierna.addEventListener("change", function (val) {
+    textboxencaje.setAttribute("value", (piecedowntop.position.y / 10).toFixed(2));
+    textboxencaje.addEventListener("change", function (val) {
         var medida = val.target.value;
         if (medida <= 23 && medida >= 2) {
             piecedowntop.position.y = (medida * 10);
         }
     });
 
-    textboxEnclaje.setAttribute("value", (piecetoptop.position.y / 10).toFixed(2));
-    textboxEnclaje.addEventListener("change", function (val) {
+    textboxpilar.setAttribute("value", (piecetoptop.position.y / 10).toFixed(2));
+    textboxpilar.addEventListener("change", function (val) {
         var medida = val.target.value;
         if (medida <= 24 && medida >= 10) {
             piecetoptop.position.y = (medida * 10);
@@ -132,16 +126,20 @@ function setinput(object) {
 
 export default async function threejsLoader() {
 
-    textboxpierna = document.getElementById("txt1");
-    textboxEnclaje = document.getElementById("txt2");
-    button = document.getElementById("btn1");
+    textboxencaje = document.getElementById("txt1");
+    textboxpilar = document.getElementById("txt2");
+    var domMain = document.getElementById("threejsroot");
 
-    screensize.x = 800;
-    screensize.y= 600;
+    // screensize.x = domMain.clientWidth;
+    // screensize.y= domMain.clientHeight;
 
     const render = window.render = new THREE.WebGLRenderer({ logarithmicDepthBuffer: true, antialias: true });
     render.setSize(screensize.x, screensize.y);
-    document.getElementById("threejsroot").append(render.domElement);
+    domMain.append(render.domElement);
 
     preparescene();
+}
+
+export function changeColor(color){
+colorMaterial.material.color.set(color);
 }

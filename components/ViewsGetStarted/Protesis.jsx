@@ -1,6 +1,7 @@
 import React from "react";
-import threejsLoader from "../../pages/threejs/apploader";
+import threejsLoader, { changeColor } from "../../pages/threejs/apploader";
 import { useCasosCtx } from '../../contexts/casosExito/navInicio.context'
+
 
 
 export default function Protesis() {
@@ -11,6 +12,9 @@ export default function Protesis() {
 
    /***MANEJADORM DE LOS COLORES */
   const handleInputColor = (color) => {
+
+    changeColor(color)
+
     setDatos({
       ...datosProtesis,
       color: color,
@@ -57,22 +61,22 @@ export default function Protesis() {
             <span>Pigmento</span>
             <div className="flex">
               <div
-                onClick={() => handleInputColor("#red")}
+                onClick={() => handleInputColor(0xA80500)}
                 className="w-8 h-8 rounded-full bg-red-600 mx-1 cursor-pointer"
               >
               </div>
               <div
-                onClick={() => handleInputColor("#blue")}
+                onClick={() => handleInputColor(0x034CA8)}
                 className="w-8 h-8 rounded-full bg-blue-600 mx-1 cursor-pointer"
               >
               </div>
               <div
-                onClick={() => handleInputColor("#yellow")}
+                onClick={() => handleInputColor(0xA88204)}
                 className="w-8 h-8 rounded-full bg-yellow-600 mx-1 cursor-pointer"
               >
               </div>
               <div
-                onClick={() => handleInputColor("#green")}
+                onClick={() => handleInputColor(0x047D00)}
                 className="w-8 h-8 rounded-full bg-green-600 mx-1 cursor-pointer"
               >
               </div>
