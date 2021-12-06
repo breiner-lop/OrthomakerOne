@@ -3,7 +3,7 @@ import ButtonNextForm from "../Buttons/ButtonNextForm";
 import {useCasosCtx} from "../../contexts/casosExito/navInicio.context"
 import FormCompleted from '../Buttons/FormCompleted';
 
-export default function ExtremidadAmputada() {
+export default function LargoMuñon() {
       /*** LLAMADA DEL CONTEXT MANEJADOR DE VISTAS FORM */
   const {setNavForm}=useCasosCtx()
     return (
@@ -17,7 +17,7 @@ export default function ExtremidadAmputada() {
          <FormCompleted onClick={()=>setNavForm(4)} perfil="Tamaño del canino" />
          <FormCompleted onClick={()=>setNavForm(5)} perfil="Extremidad amputada" />
          <FormCompleted onClick={()=>setNavForm(6)} perfil="Altura de amputacion" />
-         <FormCompleted onClick={()=>setNavForm(7)} perfil="Perímetro del muñon" />
+         <FormCompleted onClick={()=>setNavForm(7)} perfil="Perimetro del muñon" />
          </div>
         </div>
         <div style={{ width: "800px" }}>
@@ -39,7 +39,10 @@ export default function ExtremidadAmputada() {
           <div className="mb-6 w-1/2">
               <label htmlFor="nombres">Medida</label>
               <br />
-              <input className="bg-blue-light mr-4 w-80 h-12 focus:outline-none px-4 filter border border-blue-100" type="text" />
+              <div className="bg-blue-light text-purple-dark mr-4 w-80 h-12 border border-blue-100 flex items-center justify-center">
+              <input className="focus:outline-none bg-transparent px-4 h-10 w-64" type="number" />
+              <span>CM</span>
+              </div>
             </div>
             <div className="w-1/2 text-blue-transparent">
                 <p>Esta medida sirve para conocer el largo del encaje que estara en contacto con la amputacion y debe tomarse como se muestra en la siguiente imagen</p>

@@ -3,7 +3,7 @@ import ButtonNextForm from "../Buttons/ButtonNextForm";
 import {useCasosCtx} from "../../contexts/casosExito/navInicio.context"
 import FormCompleted from '../Buttons/FormCompleted';
 
-export default function ExtremidadAmputada() {
+export default function AlturaAmputacion() {
       /*** LLAMADA DEL CONTEXT MANEJADOR DE VISTAS FORM */
   const {setNavForm}=useCasosCtx()
     return (
@@ -18,10 +18,10 @@ export default function ExtremidadAmputada() {
          <FormCompleted onClick={()=>setNavForm(5)} perfil="Extremidad amputada" />
          </div>
         </div>
-        <div style={{ width: "800px" }}>
-          <div className="px-12 mb-1 flex justify-between">
-            <div className="mb-10">
-              <span className="text-3xl">Altura de amputacion</span>
+        <div className="shadow-lg" style={{ width: "800px" }}>
+          <div className="px-12 mb-1 flex justify-between items-center">
+            <div className="my-10">
+              <span className="text-3xl">Altura amputacion</span>
             </div>
             {/*** button siguientes formulario */}
             <div>
@@ -29,33 +29,35 @@ export default function ExtremidadAmputada() {
             </div>
           </div>
            {/***Imagen dog */}
-          <div className=" flex bg-white p-12 mb-1 justify-center border-b-2 border-t-2 border-gray-100">
-            <img src="/img/peripuñon.png" alt="perimetro del muñon" />
-
+          <div className=" flex bg-white p-12 mb-1 justify-center border-b-2 border-t-2 border-gray-200">
+           <div className="border-2 rounded-lg border-dashed border-purple mx-1 w-60">
+           <img src="/img/ampdelantera.png" alt="dogsize" className="pb-4 py-8" />
+           <p className="px-4 text-xs font-bold mb-2 text-center">Si la amputacion es delantera debe ser a la altura del radio-cubito</p>
+           </div>
+           <div className="border-2 rounded-lg border-dashed border-purple mx-1 w-60">
+           <img src="/img/amptrasera.png" alt="dogsize" className="pb-4 py-8" />
+           <p className="px-4 text-xs font-bold mb-2 text-center">Si la amputacion es trasera debe ser a la altura de la tibia-perone.</p>
+           </div>
           </div>
+           {/***input tamaño  */}
+           <div className="py-6 border-b-2 border-gray-200 ">
+             <p className="w-4/5 text-blue-transparent px-12">A continuación veras la altura de amputación para el uso de esta protesis, selecciona el caso apropiado para tu mascota</p>
+            <div className="flex justify-center">
+            <img src="/img/ampaltura.png" alt="altura de amputacion" />
+            </div>
+           </div>
           {/***input tamaño  */}
-          <div className=" bg-white mb-1">
-            <div className=" text-blue-transparent">
-                <div className="flex pt-4">
-                <div className="mb-6 w-1/2">
+          <div className=" bg-white p-12 mb-1 flex">
+          <div className="mb-6 w-1/2">
               <label htmlFor="nombres">Medida</label>
               <br />
-              <input placeholder="Perimetro inferior" className="bg-blue-light mr-4 w-80 h-12 focus:outline-none px-4 filter border border-blue-100" type="text" />
+              <div className="bg-blue-light text-purple-dark mr-4 w-80 h-12 border border-blue-100 flex items-center justify-center">
+              <input className="focus:outline-none bg-transparent px-4 h-10 w-64" type="number" />
+              <span>CM</span>
+              </div>
             </div>
             <div className="w-1/2 text-blue-transparent">
-                <p>En este punto se deben tomar dos medidas. Para tomar esta medida el canino debe de estar de pie, con ayuda de la cinta metrica  se medirá el perimetro del muñon en las partes mas extremas del mismo como se muestra en la siguiente imagen</p>
-            </div>
-                </div>
-                <div className="flex border-t-2 border-gray-100 pt-4 mt-6">
-                <div className="mb-6 w-1/2">
-              <label htmlFor="nombres">Medida</label>
-              <br />
-              <input placeholder="Perimetro superior" className="bg-blue-light mr-4 w-80 h-12 focus:outline-none px-4 filter border border-blue-100" type="text" />
-            </div>
-            <div className="w-1/2 text-blue-transparent">
-                <p>En este punto se deben tomar dos medidas. Para tomar esta medida el canino debe de estar de pie, con ayuda de la cinta metrica  se medirá el perimetro del muñon en las partes mas extremas del mismo como se muestra en la siguiente imagen</p>
-            </div>
-                </div>
+                <p>¿Como tomar la medida? Debes colocar de pie al canino, tomar como referencia la otra extremidad existente y haciendo uso de una cinta metrica medir desde el piso hasta la amputacion como lo muestra la siguiente imagenn</p>
             </div>
           </div>
         </div>

@@ -7,7 +7,7 @@ export default function ExtremidadAmputada() {
   /*** LLAMADA DEL CONTEXT MANEJADOR DE VISTAS FORM */
   const { setNavForm } = useCasosCtx();
   return (
-    <div className="bg-white py-20 flex justify-center text-purple-dark">
+    <div className="py-20 flex justify-center text-purple-dark">
       {/***  formularios completador nav*/}
       <div className="flex flex-col">
         <FormCompleted
@@ -26,9 +26,9 @@ export default function ExtremidadAmputada() {
           />
         </div>
       </div>
-      <div style={{ width: "800px" }}>
-        <div className="px-12 mb-1 flex justify-between">
-          <div className="mb-10">
+      <div className="shadow-lg" style={{ width: "800px" }}>
+        <div className="px-12 mb-1 flex justify-between items-center">
+          <div className="my-10">
             <span className="text-3xl">Extremidad amputada</span>
           </div>
           {/*** button siguientes formulario */}
@@ -37,7 +37,7 @@ export default function ExtremidadAmputada() {
           </div>
         </div>
         {/***Imagen dog */}
-        <div className=" flex bg-white p-12 mb-1 justify-center border-b-2 border-t-2 border-gray-100">
+        <div className=" flex p-12 justify-center border-b-2 border-t-2 border-gray-200">
           <div className="border border-dashed border-purple h-36 w-32 flex flex-col justify-center items-center rounded-lg mx-1">
             <img
               src="/img/piernadelderecha.png"
@@ -80,7 +80,7 @@ export default function ExtremidadAmputada() {
           </div>
         </div>
         {/***texto */}
-        <div className=" bg-white pt-8 mb-1 text-center">
+        <div className=" bg-white py-8 mb-1 text-center">
           <p className="text-blue-transparent">
             Selecciona de entre las opciones cual fue la extremidad amputada en
             tu mascota
