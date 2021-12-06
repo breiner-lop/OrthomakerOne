@@ -1,4 +1,3 @@
-
 import * as THREE from './three.module'
 import * as orbit from './extensions/OrbitControls'
 import { GLTFLoader } from './extensions/GLTFLoader'
@@ -59,13 +58,13 @@ function preparescene(json) {
 
     window.camera = new THREE.PerspectiveCamera(50, screensize.x / screensize.y, 0.1, 10)
     // camera.position.y = 2;
-    camera.position.z = 3;
+    camera.position.z = 6;
 
     //-----------------------------------------------------
 
     new GLTFLoader().load("/model/piece.glb", function (obj) {
         obj.scene.scale.set(0.01, 0.01, 0.01);
-        obj.scene.position.y = -1.2;
+        obj.scene.position.y = -1.5;
         obj.scene.name = "pieces";
 
         changeprop(obj.scene);

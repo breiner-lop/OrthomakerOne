@@ -1,13 +1,14 @@
 import React from "react";
 import threejsLoader from "../../pages/threejs/apploader";
+import { useCasosCtx } from '../../contexts/casosExito/navInicio.context'
+
 
 export default function Protesis() {
- 
-  const [datosProtesis, setDatos] = React.useState({
-    color: "",
-    pilar: 10,
-    encaje:10,
-  });
+ const state=0;
+
+  const {datosProtesis,setDatos}=useCasosCtx()
+  setDatos(datosProtesis)
+
    /***MANEJADORM DE LOS COLORES */
   const handleInputColor = (color) => {
     setDatos({
@@ -25,7 +26,7 @@ export default function Protesis() {
   }
   React.useEffect(()=>{
     threejsLoader()
-  })
+  },[state])
   return (
     <div className="bg-blu-light flex text-purple-dark overflow-y-hidden">
       {/*** panel de datos protesis */}
@@ -35,7 +36,7 @@ export default function Protesis() {
           <div className="flex justify-between my-6">
             <span>Longitud</span>
             <div className="bg-white w-28 flex px-3 rounded border border-gray-200">
-              <input type="number" id="txt1" name="encaje" onChange={(e)=>handleInputChange(e)} className="w-16 focus:outline-none" />
+              <input type="number" id="txt1" name="encaje" onInput={(e)=>handleInputChange(e)} className="w-16 focus:outline-none" />
               <span>CM</span>
             </div>
           </div>
@@ -80,7 +81,7 @@ export default function Protesis() {
         </div>
       </div>
       {/*** diseño de la protesis */}
-      <div id="threejsroot" className="w-3/5"></div>
+      <div id="threejsroot" className="w-3/5 bg-white flex justify-center"></div>
     </div>
   );
 }
