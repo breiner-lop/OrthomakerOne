@@ -11,12 +11,12 @@ export default function Propietario() {
     document.getElementById(`${ide}`).click()
   }
   return (
-      <div className="bg-blue-light py-20 flex justify-center text-purple-dark">
+      <div className="py-20 flex justify-center text-purple-dark">
         <div>
          <FormCompleted  onClick={()=>setNavForm(1)} perfil="Perfil propietario" />
         </div>
-        <div style={{ width: "800px" }}>
-          <div className="bg-white p-12 mb-1 flex justify-between">
+        <div className="shadow-lg" style={{ width: "800px" }}>
+          <div className="p-12 border-b-2 border-gray-200 flex justify-between">
             <div>
               <span className="text-3xl">Cuentanos de tu mascota</span>
               <br />
@@ -28,7 +28,7 @@ export default function Propietario() {
               <ButtonNextForm  onClick={()=>setNavForm(3)}/>
             </div>
           </div>
-          <div className=" flex bg-white p-12 mb-1">
+          <div className="flex border-b-2 border-gray-200 p-12">
             <div className="">
               <label htmlFor="nombres">Nombre mascota</label>
               <br />
@@ -46,7 +46,7 @@ export default function Propietario() {
             </div>
           </div>
 
-          <div className="bg-white p-12 mb-1">
+          <div className="p-12 border-b-2 border-gray-200">
             <div className="">
               <span>Fotografia diferentes perfiles</span>
               <div className="flex">
@@ -89,7 +89,7 @@ export default function Propietario() {
               </div>
             </div>
           </div>
-          <div className=" bg-white p-12 mb-1">
+          <div className="p-12 border-b-2 border-gray-200">
             <div className="">
               <ul className="flex">
                 <li>

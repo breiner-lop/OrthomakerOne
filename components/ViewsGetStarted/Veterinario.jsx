@@ -2,19 +2,18 @@ import React from 'react'
 import ButtonNextForm from "../Buttons/ButtonNextForm";
 import {useCasosCtx} from "../../contexts/casosExito/navInicio.context"
 import FormCompleted from '../Buttons/FormCompleted';
-
 export default function Veterinario() {
       /*** LLAMADA DEL CONTEXT MANEJADOR DE VISTAS FORM */
   const {setNavForm}=useCasosCtx()
     return (
-        <div className="bg-blue-light py-20 flex justify-center text-purple-dark">
+        <div className="py-20 flex justify-center text-purple-dark">
             {/***  formularios completador nav*/}
         <div className="flex flex-col">
           <FormCompleted onClick={()=>setNavForm(1)} perfil="Perfil propietario" />
           <FormCompleted onClick={()=>setNavForm(2)} perfil="Perfil mascota" />
         </div>
-        <div style={{ width: "800px" }}>
-          <div className="bg-white p-12 mb-1 flex justify-between">
+        <div className="shadow-lg" style={{ width: "800px" }}>
+          <div className="border-b-2 border-gray-200 p-12 flex justify-between">
             <div>
               <span className="text-3xl">Tienes un veterinario de confianza ?</span>
               <br />
@@ -23,12 +22,13 @@ export default function Veterinario() {
               </span>
             </div>
             {/*** button siguientes formulario */}
-            <div>
+            <div className="flex items-center">
+              <button className="mr-6 underline text-2xl text-blue-transparent" onClick={()=>setNavForm(4)}> Omitir </button>
               <ButtonNextForm  onClick={()=>setNavForm(4)}/>
             </div>
           </div>
            {/***formulario sect 1 */}
-          <div className=" flex bg-white p-12 mb-1">
+          <div className="flex border-b-2 border-gray-200 p-12">
             <div>
               <label htmlFor="nombres">Nombre veterianario</label>
               <br />
@@ -41,7 +41,7 @@ export default function Veterinario() {
             </div>
           </div>
           {/***formulario sect  */}
-          <div className=" bg-white p-12 mb-1">
+          <div className="p-12 border-b-2 border-gray-200">
           <div className="mb-6">
               <label htmlFor="nombres">Nombre veterianario</label>
               <br />

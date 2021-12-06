@@ -7,16 +7,16 @@ export default function Veterinario() {
       /*** LLAMADA DEL CONTEXT MANEJADOR DE VISTAS FORM */
   const {setNavForm}=useCasosCtx()
     return (
-        <div className="bg-white py-20 flex justify-center text-purple-dark">
+        <div className="py-20 flex justify-center text-purple-dark">
             {/***  formularios completador nav*/}
         <div className="flex flex-col">
           <FormCompleted onClick={()=>setNavForm(1)} perfil="Perfil propietario" />
           <FormCompleted onClick={()=>setNavForm(2)} perfil="Perfil mascota" />
           <FormCompleted onClick={()=>setNavForm(3)} perfil="Perfil veterinario" />
         </div>
-        <div style={{ width: "800px" }}>
-          <div className="px-12 mb-1 flex justify-between">
-            <div className="mb-10">
+        <div className="shadow-lg" style={{ width: "800px" }}>
+          <div className="px-12 mb-1 flex justify-between items-center">
+            <div className="my-10">
               <span className="text-3xl">Tamaño del canino</span>
             </div>
             {/*** button siguientes formulario */}
@@ -25,7 +25,7 @@ export default function Veterinario() {
             </div>
           </div>
            {/***Imagen dog */}
-          <div className="flex bg-white p-12 mb-1 justify-center border-b-2 border-t-2 border-gray-100">
+          <div className="flex  p-12 justify-center border-b-2 border-t-2 border-gray-200">
             <img src="/img/dogsize.png" alt="dogsize" />
           </div>
           {/***input tamaño  */}
