@@ -1,16 +1,17 @@
 import React from "react";
-import threejsLoader, { changeColor } from "../../pages/threejs/apploader";
+
 import { useCasosCtx } from '../../contexts/casosExito/navInicio.context'
+import threejsLoader, { changeColor } from "../../threejs/apploader";
 
 
 
 export default function Protesis() {
- const state=0;
+  const state = 0;
 
-  const {datosProtesis,setDatos}=useCasosCtx()
+  const { datosProtesis, setDatos } = useCasosCtx()
   setDatos(datosProtesis)
 
-   /***MANEJADORM DE LOS COLORES */
+  /***MANEJADORM DE LOS COLORES */
   const handleInputColor = (color) => {
 
     changeColor(color)
@@ -20,27 +21,27 @@ export default function Protesis() {
       color: color,
     });
   };
-     /***MANEJADORM DE LOS inputs de valor */
-     const handleInputChange = (e) => {
-      setDatos({
-          ...datosProtesis,
-          [e.target.name] : e.target.value
-      })
-      console.log(datosProtesis)
+  /***MANEJADORM DE LOS inputs de valor */
+  const handleInputChange = (e) => {
+    setDatos({
+      ...datosProtesis,
+      [e.target.name]: e.target.value
+    })
+    console.log(datosProtesis)
   }
-  React.useEffect(()=>{
+  React.useEffect(() => {
     threejsLoader()
-  },[state])
+  }, [state])
   return (
     <div className="bg-blu-light flex text-purple-dark overflow-y-hidden">
       {/*** panel de datos protesis */}
-      <div className="w-2/5  py-6" style={{minHeight:"570px"}}>
+      <div className="w-2/5  py-6" style={{ minHeight: "570px" }}>
         <div className="py-4 px-28 border-b-2 border-gray-200">
           <h4 className="text-xl font-bold ">ENCAJE PROTÉSICO </h4>
           <div className="flex justify-between my-6">
             <span>Longitud</span>
             <div className="bg-white w-28 flex px-3 rounded border border-gray-200">
-              <input type="number" id="txt1" name="encaje" onInput={(e)=>handleInputChange(e)} className="w-16 focus:outline-none" />
+              <input type="number" id="txt1" name="encaje" onInput={(e) => handleInputChange(e)} className="w-16 focus:outline-none" />
               <span>CM</span>
             </div>
           </div>
@@ -50,7 +51,7 @@ export default function Protesis() {
           <div className="flex justify-between my-6">
             <span>Longitud</span>
             <div className="bg-white w-28 flex px-3 rounded border border-gray-200">
-              <input type="number" id="txt2" name="pilar" onChange={(e)=>handleInputChange(e)} className="w-16 focus:outline-none" />
+              <input type="number" id="txt2" name="pilar" onChange={(e) => handleInputChange(e)} className="w-16 focus:outline-none" />
               <span>CM</span>
             </div>
           </div>
