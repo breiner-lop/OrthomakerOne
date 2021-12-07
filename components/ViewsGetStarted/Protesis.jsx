@@ -3,8 +3,6 @@ import React from "react";
 import { useCasosCtx } from '../../contexts/casosExito/navInicio.context'
 import threejsLoader, { changeColor } from "../../threejs/apploader";
 
-
-
 export default function Protesis() {
   const state = 0;
 

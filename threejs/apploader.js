@@ -7,6 +7,8 @@ var textboxencaje;
 var textboxpilar;
 var screensize = { x: 640, y: 480 };
 var colorMaterial;
+var loading;
+
 
 function loadSingleObject(object) {
     var metadata = { generator: "Object3D.toJSON", type: "Object", version: 4.5 };
@@ -64,6 +66,7 @@ function preparescene(json) {
         
         scene.add(obj.scene);
         setinput(obj.scene);
+         loading.style.display='none';
     })
 
     // button.onclick = function () {
@@ -126,12 +129,25 @@ function setinput(object) {
 
 export default async function threejsLoader() {
 
+   
+
     textboxencaje = document.getElementById("txt1");
     textboxpilar = document.getElementById("txt2");
     var domMain = document.getElementById("threejsroot");
+    screensize.x = domMain.clientWidth;
+    screensize.y= domMain.clientHeight;
 
-    // screensize.x = domMain.clientWidth;
-    // screensize.y= domMain.clientHeight;
+    // Loading Screen 
+    loading= window.loading = document.createElement("div");
+   loading.innerHTML="<p>Cargando...</p>";
+    loading.style.backgroundColor = 'rgb(0,0,0,0.5)';
+    loading.style.width=screensize.x+"px";
+    loading.style.height=screensize.y+"px";
+    loading.style.position='fixed';
+    loading.style.textAlign='center';
+    loading.style.color='white';
+    domMain.appendChild(loading);
+    domMain.style.boxShadow = "-1px -1px 8px 0px";
 
     const render = window.render = new THREE.WebGLRenderer({ logarithmicDepthBuffer: true, antialias: true });
     render.setSize(screensize.x, screensize.y);
