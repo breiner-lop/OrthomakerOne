@@ -60,22 +60,22 @@ export default function Protesis() {
             <span>Pigmento</span>
             <div className="flex">
               <div
-                onClick={() => handleInputColor(0xA80500)}
+                onClick={() => handleInputColor(0x740500)}
                 className="w-8 h-8 rounded-full bg-red-600 mx-1 cursor-pointer"
               >
               </div>
               <div
-                onClick={() => handleInputColor(0x034CA8)}
+                onClick={() => handleInputColor(0x2c517f)}
                 className="w-8 h-8 rounded-full bg-blue-600 mx-1 cursor-pointer"
               >
               </div>
               <div
-                onClick={() => handleInputColor(0xA88204)}
+                onClick={() => handleInputColor(0x775d06)}
                 className="w-8 h-8 rounded-full bg-yellow-600 mx-1 cursor-pointer"
               >
               </div>
               <div
-                onClick={() => handleInputColor(0x047D00)}
+                onClick={() => handleInputColor(0x196716)}
                 className="w-8 h-8 rounded-full bg-green-600 mx-1 cursor-pointer"
               >
               </div>
