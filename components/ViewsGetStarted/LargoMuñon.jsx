@@ -1,54 +1,120 @@
-import React from 'react'
+import React from "react";
 import ButtonNextForm from "../Buttons/ButtonNextForm";
-import {useCasosCtx} from "../../contexts/casosExito/navInicio.context"
-import FormCompleted from '../Buttons/FormCompleted';
+import { useCasosCtx } from "../../contexts/casosExito/navInicio.context";
+import FormCompleted from "../Buttons/FormCompleted";
+import axios from "axios";
 
 export default function LargoMuñon() {
-      /*** LLAMADA DEL CONTEXT MANEJADOR DE VISTAS FORM */
-  const {setNavForm}=useCasosCtx()
-    return (
-        <div className="bg-white py-20 flex justify-center text-purple-dark">
-            {/***  formularios completador nav*/}
-        <div className="flex flex-col">
-          <FormCompleted onClick={()=>setNavForm(1)} perfil="Perfil propietario" />
-          <FormCompleted onClick={()=>setNavForm(2)} perfil="Perfil mascota" />
-          <FormCompleted onClick={()=>setNavForm(3)} perfil="Perfil veterinario" />
-         <div className="border-t-2 border-gray-100 pt-6 flex flex-col">
-         <FormCompleted onClick={()=>setNavForm(4)} perfil="Tamaño del canino" />
-         <FormCompleted onClick={()=>setNavForm(5)} perfil="Extremidad amputada" />
-         <FormCompleted onClick={()=>setNavForm(6)} perfil="Altura de amputacion" />
-         <FormCompleted onClick={()=>setNavForm(7)} perfil="Perimetro del muñon" />
-         </div>
+  /*** LLAMADA DEL CONTEXT MANEJADOR DE VISTAS FORM */
+  const { setNavForm } = useCasosCtx();
+  // estados
+  const [largo, setLargo] = React.useState("");
+  //localStorage user and token called
+  const user = JSON.parse(localStorage.getItem("user"));
+  const token = localStorage.getItem("token");
+  //handle input
+  const handleLargo = (e) => {
+    setLargo(e.target.value);
+    console.log(largo);
+  };
+  //method PUT prothesis
+  const putProthesis = async (e) => {
+    e.preventDefault();
+    await axios
+      .put(
+        `https://api.orthomakerone.com/editProthesis/${user.id}`,
+        {
+          amputation_height: largo, // FALTA POR DEFINIAR LAS VARIBALES ACA (bdd TABLE)
+        },
+        {
+          headers: {
+            "auth-token": token, //the token is a variable which holds the token
+          },
+        }
+      )
+      .then((response) => {
+        // en caso de ser exitosa
+        console.log(response);
+        setNavForm(9);
+      })
+      .catch((error) => {
+        // en caso de ser incorrectos los datos
+        console.log(error);
+        setNavForm(9);
+      });
+  };
+  return (
+    <div className="bg-white py-20 flex justify-center text-purple-dark">
+      {/***  formularios completador nav*/}
+      <div className="flex flex-col">
+        <FormCompleted
+          onClick={() => setNavForm(1)}
+          perfil="Perfil propietario"
+        />
+        <FormCompleted onClick={() => setNavForm(2)} perfil="Perfil mascota" />
+        <FormCompleted
+          onClick={() => setNavForm(3)}
+          perfil="Perfil veterinario"
+        />
+        <div className="border-t-2 border-gray-100 pt-6 flex flex-col">
+          <FormCompleted
+            onClick={() => setNavForm(4)}
+            perfil="Tamaño del canino"
+          />
+          <FormCompleted
+            onClick={() => setNavForm(5)}
+            perfil="Extremidad amputada"
+          />
+          <FormCompleted
+            onClick={() => setNavForm(6)}
+            perfil="Altura de amputacion"
+          />
+          <FormCompleted
+            onClick={() => setNavForm(7)}
+            perfil="Perimetro del muñon"
+          />
         </div>
-        <div style={{ width: "800px" }}>
+      </div>
+      <div style={{ width: "800px" }}>
+        <form onSubmit={(e) => putProthesis(e)}>
           <div className="px-12 mb-1 flex justify-between">
             <div className="mb-10">
               <span className="text-3xl">Largo del muñon</span>
             </div>
             {/*** button siguientes formulario */}
             <div>
-              <ButtonNextForm  onClick={()=>setNavForm(9)}/>
+              <ButtonNextForm />
             </div>
           </div>
-           {/***Imagen dog */}
+          {/***Imagen dog */}
           <div className=" flex bg-white p-12 mb-1 justify-center border-b-2 border-t-2 border-gray-100">
             <img src="/img/largomuñon.png" alt="dogsize" />
           </div>
           {/***input tamaño  */}
           <div className=" bg-white p-12 mb-1 flex">
-          <div className="mb-6 w-1/2">
+            <div className="mb-6 w-1/2">
               <label htmlFor="nombres">Medida</label>
               <br />
               <div className="bg-blue-light text-purple-dark mr-4 w-80 h-12 border border-blue-100 flex items-center justify-center">
-              <input className="focus:outline-none bg-transparent px-4 h-10 w-64" type="number" />
-              <span>CM</span>
+                <input
+                  onChange={(e) => handleLargo(e)}
+                  name="largo"
+                  className="focus:outline-none bg-transparent px-4 h-10 w-64"
+                  type="number" required
+                />
+                <span>CM</span>
               </div>
             </div>
             <div className="w-1/2 text-blue-transparent">
-                <p>Esta medida sirve para conocer el largo del encaje que estara en contacto con la amputacion y debe tomarse como se muestra en la siguiente imagen</p>
+              <p>
+                Esta medida sirve para conocer el largo del encaje que estara en
+                contacto con la amputacion y debe tomarse como se muestra en la
+                siguiente imagen
+              </p>
             </div>
           </div>
-        </div>
+        </form>
       </div>
-    )
+    </div>
+  );
 }

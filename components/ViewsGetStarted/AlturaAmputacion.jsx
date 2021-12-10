@@ -2,10 +2,46 @@ import React from 'react'
 import ButtonNextForm from "../Buttons/ButtonNextForm";
 import {useCasosCtx} from "../../contexts/casosExito/navInicio.context"
 import FormCompleted from '../Buttons/FormCompleted';
+import axios from "axios";
 
 export default function AlturaAmputacion() {
+  // estados
+  const [altura,setAltura]=React.useState("")
+        //localStorage user and token called
+        const user = JSON.parse(localStorage.getItem("user"));
+        const token = localStorage.getItem("token");
       /*** LLAMADA DEL CONTEXT MANEJADOR DE VISTAS FORM */
   const {setNavForm}=useCasosCtx()
+  //handle input
+  const handleAltura=(e)=>{
+    setAltura(e.target.value)
+    console.log(altura)
+  } 
+  //method PUT prothesis
+  const putProthesis= async(e) => {
+    e.preventDefault()
+   await axios.put(
+        `https://api.orthomakerone.com/editProthesis/${user.id}`,
+        {
+          amputation_height:altura,
+        },
+        {
+          headers: {
+            "auth-token": token, //the token is a variable which holds the token
+          },
+        }
+      )
+      .then((response)=> {
+        // en caso de ser exitosa
+        console.log(response);
+        setNavForm(7);
+      })
+      .catch((error)=> {
+        // en caso de ser incorrectos los datos
+        console.log(error);
+        setNavForm(7);
+      });
+   }
     return (
         <div className="bg-white py-20 flex justify-center text-purple-dark">
             {/***  formularios completador nav*/}
@@ -19,13 +55,14 @@ export default function AlturaAmputacion() {
          </div>
         </div>
         <div className="shadow-lg" style={{ width: "800px" }}>
-          <div className="px-12 mb-1 flex justify-between items-center">
+<form onSubmit={(e)=>postProthesis(e)}>
+<div className="px-12 mb-1 flex justify-between items-center">
             <div className="my-10">
               <span className="text-3xl">Altura amputacion</span>
             </div>
             {/*** button siguientes formulario */}
             <div>
-              <ButtonNextForm  onClick={()=>setNavForm(7)}/>
+              <ButtonNextForm/>
             </div>
           </div>
            {/***Imagen dog */}
@@ -52,7 +89,7 @@ export default function AlturaAmputacion() {
               <label htmlFor="nombres">Medida</label>
               <br />
               <div className="bg-blue-light text-purple-dark mr-4 w-80 h-12 border border-blue-100 flex items-center justify-center">
-              <input className="focus:outline-none bg-transparent px-4 h-10 w-64" type="number" />
+              <input onChange={(e)=>handleAltura(e)} className="focus:outline-none bg-transparent px-4 h-10 w-64" type="number" required />
               <span>CM</span>
               </div>
             </div>
@@ -60,6 +97,7 @@ export default function AlturaAmputacion() {
                 <p>¿Como tomar la medida? Debes colocar de pie al canino, tomar como referencia la otra extremidad existente y haciendo uso de una cinta metrica medir desde el piso hasta la amputacion como lo muestra la siguiente imagenn</p>
             </div>
           </div>
+</form>
         </div>
       </div>
     )

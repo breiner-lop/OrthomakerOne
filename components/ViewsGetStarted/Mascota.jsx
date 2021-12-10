@@ -9,7 +9,9 @@ export default function Propietario() {
   const user = JSON.parse(localStorage.getItem("user"));
   const token = localStorage.getItem("token");
   // use states
-  const [dataPet, setDataPet] = React.useState({});
+  const [dataPet, setDataPet] = React.useState({
+    files: "noo",
+  });
   /*** LLAMADA DEL CONTEXT MANEJADOR DE VISTAS FORM */
   const { setNavForm } = useCasosCtx();
   /*** MANEJADOR DEL EVENTO SUBIR IMAGEN */
@@ -21,15 +23,21 @@ export default function Propietario() {
     var preview = document.getElementById(`${e.target.name}`);
     // The button where the user chooses the local image to display
     var file = document.getElementById(`${e.target.id}`).files[0];
+    const filet = e.target.files[0];
+
     // FileReader instance
     var reader = new FileReader();
+    const imgForm = new FormData();
+
     // When the image is loaded we will set it as source of
     // our img tag
     reader.onloadend = function () {
+      imgForm.append("pet", filet);
       setDataPet({
         ...dataPet,
-        [e.target.name]: e.target.value,
+        files: imgForm,
       });
+
       preview.style.backgroundImage = `url("${reader.result}")`;
     };
     if (file) {
@@ -38,9 +46,11 @@ export default function Propietario() {
     } else {
       preview.src = "";
     }
+    console.log(dataPet);
   };
   /// method POST pet
-  const postPet = () => {
+  const postPet = (e) => {
+    e.preventDefault();
     axios
       .post(
         `https://api.orthomakerone.com/addpet/${user.id}`,
@@ -49,10 +59,7 @@ export default function Propietario() {
           name: dataPet.name,
           weight: dataPet.weight,
           age: dataPet.age,
-          Image1:dataPet.image1,
-          Image2:dataPet.image2,
-          Image3:dataPet.image3,
-          Image4:dataPet.image4
+          files: dataPet.files,
         },
         {
           headers: {
@@ -63,10 +70,12 @@ export default function Propietario() {
       .then(function (response) {
         // en caso de ser exitosa
         console.log(response);
+        setNavForm(6);
       })
       .catch(function (error) {
         // en caso de ser incorrectos los datos
         console.log(error);
+        setNavForm(5);
       });
   };
   // form inputs pet change
@@ -75,6 +84,7 @@ export default function Propietario() {
       ...dataPet,
       [e.target.name]: e.target.value,
     });
+    console.log(dataPet);
   };
   return (
     <div className="py-20 flex justify-center text-purple-dark">
@@ -86,9 +96,8 @@ export default function Propietario() {
       </div>
       <div className="shadow-lg" style={{ width: "800px" }}>
         <form
-          onSubmit={() => {
-            setNavForm(6);
-            postPet();
+          onSubmit={(e) => {
+            postPet(e);
           }}
         >
           <div className="p-12 border-b-2 border-gray-200 flex justify-between">
@@ -150,61 +159,94 @@ export default function Propietario() {
               <span>Fotografia diferentes perfiles</span>
               <div className="flex">
                 {/*** perfil frente */}
-                <div style={{backgroundSize:"cover"}}
+                <div
+                  style={{ backgroundSize: "cover" }}
                   onClick={() => handleFile("frente")}
-                  className="h-32 w-32 border-2 rounded border-purple border-dashed mt-6 mr-4 cursor-pointer" id="image1"
+                  className="h-32 w-32 border-2 rounded border-purple border-dashed mt-6 mr-4 cursor-pointer"
+                  id="image1"
                 >
-                  <input onChange={(e) => handleImg(e)} type="file" className="hidden" id="frente" required name="image1"/>
-                  {
-                    !dataPet.image1?<><div className="h-20 flex justify-center items-center">
-                    <img src="/img/addimg.png" width="42px" height="36px" />
-                  </div>
-                  <div className="h-11 bg-blue-light px-4">
-                    <span className="font-bold text-xs">Frente</span>
-                  </div></>:null
-                  }
+                  <input
+                    onChange={(e) => {
+                      handleImg(e);
+                    }}
+                    type="file"
+                    className="hidden"
+                    id="frente"
+                    required
+                    name="image1"
+                  />
+                  {!dataPet.image1 ? (
+                    <>
+                      <div className="h-20 flex justify-center items-center">
+                        <img src="/img/addimg.png" width="42px" height="36px" />
+                      </div>
+                      <div className="h-11 bg-blue-light px-4">
+                        <span className="font-bold text-xs">Frente</span>
+                      </div>
+                    </>
+                  ) : null}
                 </div>
                 {/*** perfil derecho */}
-                <div style={{backgroundSize:"cover"}}
+                <div
+                  style={{ backgroundSize: "cover" }}
                   onClick={() => handleFile("derecho")}
-                  className="h-32 w-32 border-2 rounded border-purple border-dashed mt-6 mr-4 cursor-pointer" id="image2"
+                  className="h-32 w-32 border-2 rounded border-purple border-dashed mt-6 mr-4 cursor-pointer"
+                  id="image2"
                 >
-                  <input  onChange={(e) => handleImg(e)} type="file" className="hidden" id="derecho" required name="image2"/>
-                  {
-                    !dataPet.image2?<><div className="h-20 flex justify-center items-center">
-                    <img src="/img/addimg.png" width="42px" height="36px" />
-                  </div>
-                  <div className="h-11 bg-blue-light px-4">
-                    <span className="font-bold text-xs">Perfil derecho</span>
-                  </div></>:null
-                  }
+                  <input
+                    onChange={(e) => handleImg(e)}
+                    type="file"
+                    className="hidden"
+                    id="derecho"
+                    required
+                    name="image2"
+                  />
+                  {!dataPet.image2 ? (
+                    <>
+                      <div className="h-20 flex justify-center items-center">
+                        <img src="/img/addimg.png" width="42px" height="36px" />
+                      </div>
+                      <div className="h-11 bg-blue-light px-4">
+                        <span className="font-bold text-xs">
+                          Perfil derecho
+                        </span>
+                      </div>
+                    </>
+                  ) : null}
                 </div>
                 {/*** perfil izquierdo */}
-                <div style={{backgroundSize:"cover"}}
+                <div
+                  style={{ backgroundSize: "cover" }}
                   onClick={() => handleFile("izquierdo")}
                   className="h-32 w-32 border-2 rounded border-purple border-dashed mt-6 mr-4 cursor-pointer"
                   id="image3"
                 >
                   <input
-                   onChange={(e) => handleImg(e)}
+                    onChange={(e) => handleImg(e)}
                     type="file"
                     className="hidden"
                     id="izquierdo"
                     required
                     name="image3"
                   />
-                  {
-                   !dataPet.image3? <> <div className="h-20 flex justify-center items-center">
-                   <img src="/img/addimg.png" width="42px" height="36px" />
-                 </div>
-                 <div className="h-11 bg-blue-light px-4">
-                   <span className="font-bold text-xs">Perfil izquierdo</span>
-                 </div>
-                  </>:null
-                  }
+                  {!dataPet.image3 ? (
+                    <>
+                      {" "}
+                      <div className="h-20 flex justify-center items-center">
+                        <img src="/img/addimg.png" width="42px" height="36px" />
+                      </div>
+                      <div className="h-11 bg-blue-light px-4">
+                        <span className="font-bold text-xs">
+                          Perfil izquierdo
+                        </span>
+                      </div>
+                    </>
+                  ) : null}
                 </div>
                 {/*** perfil trasero */}
-                <div style={{backgroundSize:"cover"}} id="image4"
+                <div
+                  style={{ backgroundSize: "cover" }}
+                  id="image4"
                   onClick={() => handleFile("trasero")}
                   className="h-32 w-32 border-2 rounded border-purple border-dashed mt-6 mr-4 cursor-pointer"
                   id="image4"
@@ -217,21 +259,24 @@ export default function Propietario() {
                     required
                     name="image4"
                   />
-                 {
-                   !dataPet.image4? <><div className="h-20 flex justify-center items-center">
-                   <img
-                     src="/img/addimg.png"
-                     width="42px"
-                     height="36px"
-                     id="traseroimg"
-                   />
-                 </div>
-                 
-                  <div className="h-11 bg-blue-light px-4">
-                    <span className="font-bold text-xs">Perfil trasero</span>
-                  </div>
-                  </>:null
-                  }
+                  {!dataPet.image4 ? (
+                    <>
+                      <div className="h-20 flex justify-center items-center">
+                        <img
+                          src="/img/addimg.png"
+                          width="42px"
+                          height="36px"
+                          id="traseroimg"
+                        />
+                      </div>
+
+                      <div className="h-11 bg-blue-light px-4">
+                        <span className="font-bold text-xs">
+                          Perfil trasero
+                        </span>
+                      </div>
+                    </>
+                  ) : null}
                 </div>
               </div>
             </div>
