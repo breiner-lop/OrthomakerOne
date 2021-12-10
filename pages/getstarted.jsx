@@ -1,3 +1,5 @@
+
+import React from 'react'
 import PropietarioView from "../components/ViewsGetStarted/Propietario";
 import MascotaView from "../components/ViewsGetStarted/Mascota";
 import Link from "next/link";
@@ -10,9 +12,16 @@ import AlturaAmputacion from "../components/ViewsGetStarted/AlturaAmputacion";
 import PerimetroMuñon from "../components/ViewsGetStarted/PerimetroMuñon";
 import LargoMuñon from "../components/ViewsGetStarted/LargoMuñon";
 import Protesis from "../components/ViewsGetStarted/Protesis";
+import { useRouter } from "next/router";
+
 export default function Getstarted() {
     const {navForm}=useCasosCtx()
-
+// privatizador de vistas
+    const Router = useRouter();
+    React.useEffect(() => {
+      const token = localStorage.getItem("token");
+      !token ? Router.push("/login") :null
+    },[]);
   return (
     <div>
       <div className="flex justify-between text-purple-dark h-20 items-center px-24">
@@ -28,9 +37,6 @@ export default function Getstarted() {
           </span>
         </div>
         <div className="flex">
-          <button className="rounded-full border flex items-center justify-center w-12 h-12 mr-4">
-            <img src="/img/save.png" width="22px" height="22px" />
-          </button>
           <ButtonRed text="Cancelar"/>
         </div>
       </div>

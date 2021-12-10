@@ -3,8 +3,14 @@ import ButtonBorderBlue from "../../../components/Buttons/ButtonBorderBlue";
 import ButtonRed from "../../../components/Buttons/ButtonRed";
 import ProductoOrden from "../../../components/Cards/ProductoOrden";
 import Layout from "../../../components/LayoutAdmin";
+import { useRouter } from "next/router";
 
 export default function Orden() {
+  const Router = useRouter();
+  React.useEffect(() => {
+    const token = localStorage.getItem("token");
+    token ? null: Router.push("/login");
+  },[]);
   return (
     <Layout>
       <div className="bg-blu-light h-screen w-full p-8 overflow-y-auto">
