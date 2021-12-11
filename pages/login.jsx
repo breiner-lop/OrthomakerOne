@@ -26,6 +26,14 @@ const iniciarSesion=(e)=>{
     password:dataLogin.password
   })
   .then(function (response) { // en caso de ser exitosa
+    const token =response.data.key;
+    localStorage.setItem("token",token);
+    const usuario=JSON.stringify(response.data.usuario)
+    localStorage.setItem("user",usuario);
+    setTimeout(()=>{
+      localStorage.removeItem("token")
+      history.push("/login")
+    },900000)
     response&&history.push("/admin")
   })
   .catch(function (error) { // en caso de ser incorrectos los datos

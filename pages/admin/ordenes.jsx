@@ -3,8 +3,15 @@ import ButtonFiltrar from '../../components/Buttons/ButtonFiltrar'
 import Orden from '../../components/Cards/Orden'
 import Buscar from '../../components/Inputs/Buscar'
 import LayoutAdmin from '../../components/LayoutAdmin'
+import { useRouter } from "next/router";
+
 
 export default function Ordenes() {
+  const Router = useRouter();
+  React.useEffect(() => {
+    const token = localStorage.getItem("token");
+    token ? Router.push("/admin/ordenes") : Router.push("/login");
+  },[]);
     return (
         <LayoutAdmin>
            <div className="bg-blu-light h-screen w-full p-8 overflow-y-auto">
