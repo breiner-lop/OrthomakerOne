@@ -55,7 +55,7 @@ export default function AlturaAmputacion() {
          </div>
         </div>
         <div className="shadow-lg" style={{ width: "800px" }}>
-<form onSubmit={(e)=>postProthesis(e)}>
+<form onSubmit={(e)=>putProthesis(e)}>
 <div className="px-12 mb-1 flex justify-between items-center">
             <div className="my-10">
               <span className="text-3xl">Altura amputacion</span>

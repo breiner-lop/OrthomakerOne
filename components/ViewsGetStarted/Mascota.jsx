@@ -249,7 +249,6 @@ export default function Propietario() {
                   id="image4"
                   onClick={() => handleFile("trasero")}
                   className="h-32 w-32 border-2 rounded border-purple border-dashed mt-6 mr-4 cursor-pointer"
-                  id="image4"
                 >
                   <input
                     type="file"
