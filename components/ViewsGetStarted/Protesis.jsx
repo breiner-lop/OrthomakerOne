@@ -1,9 +1,6 @@
 import React from "react";
 import threejsLoader, { changeColor } from "../../pages/threejs/apploader";
 import { useCasosCtx } from '../../contexts/casosExito/navInicio.context'
-
-
-
 export default function Protesis() {
  const state=0;
 
@@ -12,21 +9,16 @@ export default function Protesis() {
 
    /***MANEJADORM DE LOS COLORES */
   const handleInputColor = (color) => {
-
     changeColor(color)
-
     setDatos({
       ...datosProtesis,
       color: color,
     });
+    localStorage.setItem('color',color)
   };
      /***MANEJADORM DE LOS inputs de valor */
      const handleInputChange = (e) => {
-      setDatos({
-          ...datosProtesis,
-          [e.target.name] : e.target.value
-      })
-      console.log(datosProtesis)
+      localStorage.setItem(`${e.target.name}`,e.target.value)
   }
   React.useEffect(()=>{
     threejsLoader()

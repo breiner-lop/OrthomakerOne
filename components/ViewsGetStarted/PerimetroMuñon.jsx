@@ -9,9 +9,6 @@ export default function PerimetroMuñon() {
   const { setNavForm } = useCasosCtx();
   // estados
   const [perimetro, setPerimetro] = React.useState({});
-  //localStorage user and token called
-  const user = JSON.parse(localStorage.getItem("user"));
-  const token = localStorage.getItem("token");
   //handle input
   const handleInputChange = (e) => {
     setPerimetro({
@@ -20,32 +17,13 @@ export default function PerimetroMuñon() {
     });
     console.log(perimetro);
   };
-  //method PUT prothesis
-  const putProthesis = async (e) => {
-    e.preventDefault();
-    await axios
-      .put(
-        `https://api.orthomakerone.com/editProthesis/${user.id}`,
-        {
-          perimetro: perimetro, // FALTA POR DEFINIAR LAS VARIABLES DE LA TABLA ACA
-        },
-        {
-          headers: {
-            "auth-token": token, //the token is a variable which holds the token
-          },
-        }
-      )
-      .then((response) => {
-        // en caso de ser exitosa
-        console.log(response);
-        setNavForm(8);
-      })
-      .catch((error) => {
-        // en caso de ser incorrectos los datos
-        console.log(error);
-        setNavForm(8);
-      });
-  };
+  //  manejador del submit form
+  const handleSubmit=(e)=>{
+    e.preventDefault()
+    localStorage.setItem('upper_perimeter',perimetro.perimetrosuperior)
+    localStorage.setItem('lower_perimeter',perimetro.perimetroinferior)
+    setNavForm(8)
+  }
   return (
     <div className="py-20 flex justify-center text-purple-dark">
       {/***  formularios completador nav*/}
@@ -75,7 +53,7 @@ export default function PerimetroMuñon() {
         </div>
       </div>
       <div className="shadow-lg" style={{ width: "800px" }}>
-        <form onSubmit={(e) => putProthesis(e)}>
+        <form onSubmit={(e) => handleSubmit(e)}>
           <div className="px-12 mb-1 flex justify-between items-center">
             <div className="my-10">
               <span className="text-3xl">Perimetro del muñon</span>

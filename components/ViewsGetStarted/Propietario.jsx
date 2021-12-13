@@ -3,12 +3,15 @@ import { useCasosCtx } from "../../contexts/casosExito/navInicio.context";
 import axios from "axios";
 import React from "react";
 
-export default function Propietario() {
+export default function Propietario({token,user}) {
   const [data, setData] = React.useState({});
+
   const { setNavForm } = useCasosCtx();
-  const user = JSON.parse(localStorage.getItem("user"));
-  const token = localStorage.getItem("token");
-  console.log(token)
+  console.log(user)
+  /// use effect
+  React.useEffect(()=>{
+  console.log(user,token)
+  })
 /// metodo put  de usuario
   const putUser = () => {
     axios.put(

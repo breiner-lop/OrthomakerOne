@@ -4,13 +4,13 @@ import { useCasosCtx } from "../../contexts/casosExito/navInicio.context";
 import FormCompleted from "../Buttons/FormCompleted";
 import axios from "axios";
 
-export default function Veterinario() {
-  //localStorage user and token called
-  const user = JSON.parse(localStorage.getItem("user"));
-  const token = localStorage.getItem("token");
+export default function Veterinario({token,user}) {
   // use states
   const [dataVet, setDataVet] = React.useState({});
   /*** LLAMADA DEL CONTEXT MANEJADOR DE VISTAS FORM */
+  React.useEffect(()=>{
+    console.log(user,token)
+  })
   const { setNavForm } = useCasosCtx();
   /// method POST pet
   const postVet = async (e) => {
@@ -41,7 +41,7 @@ export default function Veterinario() {
       .catch((error) => {
         // en caso de ser incorrectos los datos
         console.log(error);
-        setNavForm(4);
+        setNavForm(3);
       });
   };
   // form inputs pet change

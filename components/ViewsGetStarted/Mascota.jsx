@@ -4,13 +4,11 @@ import FormCompleted from "../Buttons/FormCompleted";
 import React from "react";
 import axios from "axios";
 
-export default function Propietario() {
-  //localStorage user and token called
-  const user = JSON.parse(localStorage.getItem("user"));
-  const token = localStorage.getItem("token");
+export default function Pet({token,user}) {
+console.log(token,user)
   // use states
   const [dataPet, setDataPet] = React.useState({
-    files: "noo",
+    weight:"1-5"
   });
   /*** LLAMADA DEL CONTEXT MANEJADOR DE VISTAS FORM */
   const { setNavForm } = useCasosCtx();
@@ -27,17 +25,13 @@ export default function Propietario() {
 
     // FileReader instance
     var reader = new FileReader();
-    const imgForm = new FormData();
-
     // When the image is loaded we will set it as source of
     // our img tag
     reader.onloadend = function () {
-      imgForm.append("pet", filet);
       setDataPet({
         ...dataPet,
-        files: imgForm,
+        [e.target.name]:file
       });
-
       preview.style.backgroundImage = `url("${reader.result}")`;
     };
     if (file) {
@@ -51,31 +45,33 @@ export default function Propietario() {
   /// method POST pet
   const postPet = (e) => {
     e.preventDefault();
-    axios
-      .post(
-        `https://api.orthomakerone.com/addpet/${user.id}`,
-        {
-          race: dataPet.race,
-          name: dataPet.name,
-          weight: dataPet.weight,
-          age: dataPet.age,
-          files: dataPet.files,
-        },
+        //formData
+        const Data= new FormData()
+        Data.append('name',dataPet.name)
+        Data.append('race',dataPet.race)
+        Data.append('weight',dataPet.weight)
+        Data.append('age',dataPet.age)
+        Data.append('images1',dataPet.image1)
+        Data.append('images2',dataPet.image2)
+        Data.append('images3',dataPet.image3)
+        Data.append('images4',dataPet.image4)
+    axios.post(`https://api.orthomakerone.com/addpet/${user.id}`,Data,
         {
           headers: {
             "auth-token": token, //the token is a variable which holds the token
+            'Content-Type': 'multipart/form-data'
           },
         }
       )
       .then(function (response) {
         // en caso de ser exitosa
         console.log(response);
-        setNavForm(6);
+        setNavForm(3);
       })
       .catch(function (error) {
         // en caso de ser incorrectos los datos
         console.log(error);
-        setNavForm(5);
+        setNavForm(2);
       });
   };
   // form inputs pet change
@@ -249,7 +245,6 @@ export default function Propietario() {
                   id="image4"
                   onClick={() => handleFile("trasero")}
                   className="h-32 w-32 border-2 rounded border-purple border-dashed mt-6 mr-4 cursor-pointer"
-                  id="image4"
                 >
                   <input
                     type="file"
@@ -282,8 +277,9 @@ export default function Propietario() {
             </div>
           </div>
           <div className="p-12 border-b-2 border-gray-200">
-            <div className="">
-              <ul className="flex text-white">
+          <h6 className="mb-6">Peso</h6>
+            <div className="flex">
+              <ul className="flex text-white mr-2">
                 <li>
                   <input
                     name="weight"
@@ -384,7 +380,7 @@ export default function Propietario() {
                     24-30
                   </label>
                 </li>
-              </ul>
+              </ul> <span>KG</span>
             </div>
           </div>
         </form>

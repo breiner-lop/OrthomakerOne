@@ -80,7 +80,7 @@ export default function Orden() {
                 <h4 className="mb-6 text-xl font-medium">Resumen de pago</h4>
                 <div className="flex justify-between">
                   <span> Subtotal (2 items)</span>
-                  <span>$1'350.000</span>
+                  <span>$1.350.000</span>
                 </div>
                 <div className="flex justify-between my-2">
                   <span> Envio</span>
@@ -93,7 +93,7 @@ export default function Orden() {
               </div>
               <div className="flex justify-between bg-blue-50 rounded-b-lg p-6 mt-2">
                 <span> Total a pagar usuario</span>
-                <span>$1'520.000</span>
+                <span>$1.520.000</span>
               </div>
             </div>
           </div>
