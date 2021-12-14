@@ -27,12 +27,14 @@ module.exports = {
       "red-dark": "#D91D26",
       "blue-transparent": "#14104f6b",
       "white-transparent": "#ffffff85",
+      'blue-semigray':"#545871"
     }),
     backgroundColor: (theme) => ({
       ...theme("colors"),
       "purple-dark": "#14104F",
       "red-dark": "#D91D26",
       "blue-light": "#F0F2FF",
+      "blue-mini-light":"#F0F1F7",
       "blue-extralight": "#F6F5FB",
       "red-light": "#EDCCD7",
       'purple-light':'#292D4E',

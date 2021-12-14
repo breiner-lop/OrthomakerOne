@@ -2,47 +2,23 @@ import React from "react";
 import ButtonNextForm from "../Buttons/ButtonNextForm";
 import { useCasosCtx } from "../../contexts/casosExito/navInicio.context";
 import FormCompleted from "../Buttons/FormCompleted";
-import axios from "axios";
 
 export default function LargoMuñon() {
   /*** LLAMADA DEL CONTEXT MANEJADOR DE VISTAS FORM */
   const { setNavForm } = useCasosCtx();
   // estados
   const [largo, setLargo] = React.useState("");
-  //localStorage user and token called
-  const user = JSON.parse(localStorage.getItem("user"));
-  const token = localStorage.getItem("token");
   //handle input
   const handleLargo = (e) => {
     setLargo(e.target.value);
     console.log(largo);
   };
-  //method PUT prothesis
-  const putProthesis = async (e) => {
-    e.preventDefault();
-    await axios
-      .put(
-        `https://api.orthomakerone.com/editProthesis/${user.id}`,
-        {
-          amputation_height: largo, // FALTA POR DEFINIAR LAS VARIBALES ACA (bdd TABLE)
-        },
-        {
-          headers: {
-            "auth-token": token, //the token is a variable which holds the token
-          },
-        }
-      )
-      .then((response) => {
-        // en caso de ser exitosa
-        console.log(response);
-        setNavForm(9);
-      })
-      .catch((error) => {
-        // en caso de ser incorrectos los datos
-        console.log(error);
-        setNavForm(9);
-      });
-  };
+  //  manejador del submit form
+  const handleSubmit=(e)=>{
+    e.preventDefault()
+    localStorage.setItem('stump_length',largo)
+    setNavForm(9)
+  }
   return (
     <div className="bg-white py-20 flex justify-center text-purple-dark">
       {/***  formularios completador nav*/}
@@ -76,7 +52,7 @@ export default function LargoMuñon() {
         </div>
       </div>
       <div style={{ width: "800px" }}>
-        <form onSubmit={(e) => putProthesis(e)}>
+        <form onSubmit={(e) => handleSubmit(e)}>
           <div className="px-12 mb-1 flex justify-between">
             <div className="mb-10">
               <span className="text-3xl">Largo del muñon</span>

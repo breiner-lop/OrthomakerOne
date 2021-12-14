@@ -2,12 +2,8 @@ import React from "react";
 import ButtonNextForm from "../Buttons/ButtonNextForm";
 import { useCasosCtx } from "../../contexts/casosExito/navInicio.context";
 import FormCompleted from "../Buttons/FormCompleted";
-import axios from "axios";
 
 export default function ExtremidadAmputada() {
-  //localStorage user and token called
-  const user = JSON.parse(localStorage.getItem("user"));
-  const token = localStorage.getItem("token");
   /// estados
   const [extremidad, setExtremidad] = React.useState("");
   /*** LLAMADA DEL CONTEXT MANEJADOR DE VISTAS FORM */
@@ -17,32 +13,12 @@ export default function ExtremidadAmputada() {
     setExtremidad(extremidad);
     console.log(extremidad);
   };
-  //method PUT prothesis
-  const postProthesis = async (e) => {
-    e.preventDefault();
-    await axios
-      .put(
-        `https://api.orthomakerone.com/editProthesis/${user.id}`,
-        {
-          ext_emputee: extremidad,
-        },
-        {
-          headers: {
-            "auth-token": token, //the token is a variable which holds the token
-          },
-        }
-      )
-      .then((response) => {
-        // en caso de ser exitosa
-        console.log(response);
-        setNavForm(6);
-      })
-      .catch((error) => {
-        // en caso de ser incorrectos los datos
-        console.log(error);
-        setNavForm(6);
-      });
-  };
+    // manejador del submit form
+    const handleSubmit=(e)=>{
+      e.preventDefault()
+      localStorage.setItem('ext_emputee',extremidad)
+      setNavForm(6)
+    }
 
   return (
     <div className="py-20 flex justify-center text-purple-dark">
@@ -65,7 +41,7 @@ export default function ExtremidadAmputada() {
         </div>
       </div>
       <div className="shadow-lg" style={{ width: "800px" }}>
-        <form onSubmit={(e) => postProthesis(e)}>
+        <form onSubmit={(e) => handleSubmit(e)}>
           <div className="px-12 mb-1 flex justify-between items-center">
             <div className="my-10">
               <span className="text-3xl">Extremidad amputada</span>

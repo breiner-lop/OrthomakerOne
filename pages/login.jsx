@@ -30,11 +30,12 @@ const iniciarSesion=(e)=>{
     localStorage.setItem("token",token);
     const usuario=JSON.stringify(response.data.usuario)
     localStorage.setItem("user",usuario);
+{/***
     setTimeout(()=>{
       localStorage.removeItem("token")
       history.push("/login")
-    },900000)
-    response&&history.push("/")
+    },900000) */}
+    response&&history.push("/admin")
   })
   .catch(function (error) { // en caso de ser incorrectos los datos
     setDatos({mail:"",password:""})
