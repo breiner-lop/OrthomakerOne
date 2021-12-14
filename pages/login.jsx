@@ -57,9 +57,8 @@ const iniciarSesion=(e)=>{
          <img src="/img/logo.png" width="150px" height="140px" />
          </div>
           <br />
-          <span className="text-purple-transparent">Expositor</span>
           <h4 className="2xl:text-4xl text-2xl 2xl:mt-1 mt-0 mb-6 2xl:mb-10">
-            Bienvenido a Arma tu feria
+            Iniciar sesion.
           </h4>
          <form onSubmit={(e)=>iniciarSesion(e)}>
          <div className="rounded border border-gray-400 px-6 h-16 text-sm  my-2">
