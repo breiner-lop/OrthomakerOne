@@ -2,6 +2,7 @@ import React from "react";
 import ButtonNextForm from "../Buttons/ButtonNextForm";
 import { useCasosCtx } from "../../contexts/casosExito/navInicio.context";
 import FormCompleted from "../Buttons/FormCompleted";
+import { uploadLocalStorage } from "./uploadLocalStorage";
 
 export default function ExtremidadAmputada() {
   /// estados
@@ -16,7 +17,17 @@ export default function ExtremidadAmputada() {
     // manejador del submit form
     const handleSubmit=(e)=>{
       e.preventDefault()
-      localStorage.setItem('ext_emputee',extremidad)
+      // llamada de datos al localStore
+      const datosLocal = JSON.parse(localStorage.getItem('dataProthesis'))
+      // objeto data prothesis localStorage
+      var dataProthesis={
+        prothesisData:
+        {
+          pet_size:parseFloat(datosLocal.prothesisData.pet_size),
+          ext_emputee:extremidad
+        }
+      }
+      uploadLocalStorage(dataProthesis)
       setNavForm(6)
     }
 

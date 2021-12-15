@@ -2,12 +2,13 @@ import React from "react";
 import ButtonNextForm from "../Buttons/ButtonNextForm";
 import { useCasosCtx } from "../../contexts/casosExito/navInicio.context";
 import FormCompleted from "../Buttons/FormCompleted";
+import { uploadLocalStorage } from "./uploadLocalStorage";
 
 export default function LargoMuñon() {
   /*** LLAMADA DEL CONTEXT MANEJADOR DE VISTAS FORM */
   const { setNavForm } = useCasosCtx();
   // estados
-  const [largo, setLargo] = React.useState("");
+  const [largo, setLargo] = React.useState(undefined);
   //handle input
   const handleLargo = (e) => {
     setLargo(e.target.value);
@@ -16,7 +17,22 @@ export default function LargoMuñon() {
   //  manejador del submit form
   const handleSubmit=(e)=>{
     e.preventDefault()
-    localStorage.setItem('stump_length',largo)
+          // llamada de datos al localStorage
+          const datosLocal = JSON.parse(localStorage.getItem('dataProthesis'))
+          // objeto data prothesis localStorage
+          var dataProthesis={
+            prothesisData:
+            {
+              pet_size:parseFloat(datosLocal.prothesisData.pet_size),
+              ext_emputee:datosLocal.prothesisData.ext_emputee,
+              medidaAB:parseFloat(datosLocal.prothesisData.medidaAB),
+              medidaBC:parseFloat(datosLocal.prothesisData.medidaBC),
+              stump_perimeter_inf:parseFloat(datosLocal.prothesisData.stump_perimeter_inf),
+              stump_perimeter_sup:parseFloat(datosLocal.prothesisData.stump_perimeter_sup),
+              stump_length:parseFloat(largo)
+            }
+          }
+          uploadLocalStorage(dataProthesis)
     setNavForm(9)
   }
   return (

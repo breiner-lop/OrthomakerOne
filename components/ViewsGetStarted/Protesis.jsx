@@ -1,24 +1,27 @@
 import React from "react";
-import threejsLoader, { changeColor } from "../../pages/threejs/apploader";
+import threejsLoader, { changeColor } from "../../threejs/apploader";
 import { useCasosCtx } from '../../contexts/casosExito/navInicio.context'
 export default function Protesis() {
   const state = 0;
 
-  const { datosProtesis, setDatos } = useCasosCtx()
-  setDatos(datosProtesis)
+  const { datosProtesis, setDatos, } = useCasosCtx()
+  //setDatos(datosProtesis)
 
   /***MANEJADORM DE LOS COLORES */
-  const handleInputColor = (color) => {
+  const handleInputColor = (color,colorText) => {
     changeColor(color)
     setDatos({
       ...datosProtesis,
-      color: color,
+      color: colorText,
     });
-    localStorage.setItem('color',color)
+    //localStorage.setItem('color',colorText)
   };
      /***MANEJADORM DE LOS inputs de valor */
      const handleInputChange = (e) => {
-      localStorage.setItem(`${e.target.name}`,e.target.value)
+     setDatos({
+       ...datosProtesis,
+       [e.target.name]:parseFloat(e.target.value)
+     })
   }
   React.useEffect(() => {
     threejsLoader()
@@ -32,17 +35,17 @@ export default function Protesis() {
           <div className="flex justify-between my-6">
             <span>Longitud</span>
             <div className="bg-white w-28 flex px-3 rounded border border-gray-200">
-              <input type="number" id="txt1" name="encaje" onInput={(e) => handleInputChange(e)} className="w-16 focus:outline-none" />
+              <input type="number" id="txt1" name="lace" onInput={(e) => handleInputChange(e)} className="w-16 focus:outline-none" />
               <span>CM</span>
             </div>
           </div>
         </div>
         <div className="py-4 px-28 border-b-2 border-gray-200">
-          <h4 className="text-xl font-bold">PILAS PROTÉSICO </h4>
+          <h4 className="text-xl font-bold">PILAR PROTÉSICO </h4>
           <div className="flex justify-between my-6">
             <span>Longitud</span>
             <div className="bg-white w-28 flex px-3 rounded border border-gray-200">
-              <input type="number" id="txt2" name="pilar" onChange={(e) => handleInputChange(e)} className="w-16 focus:outline-none" />
+              <input type="number" id="txt2" name="pillar" onChange={(e) => handleInputChange(e)} className="w-16 focus:outline-none" />
               <span>CM</span>
             </div>
           </div>
@@ -53,22 +56,22 @@ export default function Protesis() {
             <span>Pigmento</span>
             <div className="flex">
               <div
-                onClick={() => handleInputColor(0x740500)}
+                onClick={() => handleInputColor(0x740500,"rojo")}
                 className="w-8 h-8 rounded-full bg-red-600 mx-1 cursor-pointer"
               >
               </div>
               <div
-                onClick={() => handleInputColor(0x2c517f)}
+                onClick={() => handleInputColor(0x2c517f,"azul")}
                 className="w-8 h-8 rounded-full bg-blue-600 mx-1 cursor-pointer"
               >
               </div>
               <div
-                onClick={() => handleInputColor(0x775d06)}
+                onClick={() => handleInputColor(0x775d06,"amarillo")}
                 className="w-8 h-8 rounded-full bg-yellow-600 mx-1 cursor-pointer"
               >
               </div>
               <div
-                onClick={() => handleInputColor(0x196716)}
+                onClick={() => handleInputColor(0x196716,"verde")}
                 className="w-8 h-8 rounded-full bg-green-600 mx-1 cursor-pointer"
               >
               </div>

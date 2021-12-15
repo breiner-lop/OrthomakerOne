@@ -1,9 +1,7 @@
 import { createContext, useState, useContext } from "react";
 
 const casosContext = createContext("");
-
 export const useCasosCtx = () => useContext(casosContext);
-
 export const CasosProvider = ({ children }) => {
   
   const [navForm, setNavForm] = useState(9);
@@ -11,9 +9,9 @@ export const CasosProvider = ({ children }) => {
   const [state, setState] = useState(false);
   //inputs protesis
   const [datosProtesis, setDatos] = useState({
-    color:"",
-    encaje:"",
-    pilar:""
+    color:"rojo",
+    lace:3.92,
+    pillar:10.50
 });
   
 
