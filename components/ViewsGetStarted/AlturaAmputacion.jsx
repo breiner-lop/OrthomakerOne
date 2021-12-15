@@ -2,6 +2,7 @@ import React from "react";
 import ButtonNextForm from "../Buttons/ButtonNextForm";
 import { useCasosCtx } from "../../contexts/casosExito/navInicio.context";
 import FormCompleted from "../Buttons/FormCompleted";
+import { uploadLocalStorage } from "./uploadLocalStorage";
 
 export default function AlturaAmputacion() {
   // estados
@@ -19,8 +20,19 @@ export default function AlturaAmputacion() {
   //  manejador del submit form
   const handleSubmit=(e)=>{
     e.preventDefault()
-    localStorage.setItem('medidaAB',dataAltura.medidaAB)
-    localStorage.setItem('medidaBC',dataAltura.medidaBC)
+      // llamada de datos al localStorage
+      const datosLocal = JSON.parse(localStorage.getItem('dataProthesis'))
+      // objeto data prothesis localStorage
+      var dataProthesis={
+        prothesisData:
+        {
+          pet_size:parseFloat(datosLocal.prothesisData.pet_size),
+          ext_emputee:datosLocal.prothesisData.ext_emputee,
+          medidaAB:parseFloat(dataAltura.medidaAB),
+          medidaBC:parseFloat(dataAltura.medidaBC),
+        }
+      }
+      uploadLocalStorage(dataProthesis)
     setNavForm(7)
   }
   return (

@@ -2,12 +2,13 @@ import React from "react";
 import ButtonNextForm from "../Buttons/ButtonNextForm";
 import { useCasosCtx } from "../../contexts/casosExito/navInicio.context";
 import FormCompleted from "../Buttons/FormCompleted";
+import { uploadLocalStorage } from "./uploadLocalStorage";
 
 export default function Veterinario() {
   /*** LLAMADA DEL CONTEXT MANEJADOR DE VISTAS FORM */
   const { setNavForm } = useCasosCtx();
   // use states
-  const [size, setSize] = React.useState("");
+  const [size, setSize] = React.useState(undefined);
   // form inputs pet change
   const handleInputChange = (e) => {
     setSize(e.target.value);
@@ -16,7 +17,10 @@ export default function Veterinario() {
   //  manejador del submit form
   const handleSubmit=(e)=>{
     e.preventDefault()
-    localStorage.setItem('pet_size',size)
+    var dataProthesis={
+      prothesisData:{pet_size:parseFloat(size)}
+    }
+    uploadLocalStorage(dataProthesis)    
     setNavForm(5)
   }
 

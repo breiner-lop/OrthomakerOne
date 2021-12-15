@@ -15,12 +15,15 @@ import LargoMuñon from "../components/ViewsGetStarted/LargoMuñon";
 import Protesis from "../components/ViewsGetStarted/Protesis";
 import { useRouter } from "next/router";
 import ButtonCancelBlueLight from '../components/Buttons/ButtonCancelBlueLight';
+import {getObjects} from '../threejs/apploader'
+import axios from "axios"
 
 export default function Getstarted() {
-    const {navForm,setNavForm}=useCasosCtx()
+    const {navForm,setNavForm,datosProtesis}=useCasosCtx()
     // states
     const [token, setToken] = React.useState("");
     const [user, setUser] = React.useState("");
+    const [dataProthesis, setDataProthesis] = React.useState({});
 // privatizador de vistas
     const Router = useRouter();
     
@@ -30,26 +33,54 @@ export default function Getstarted() {
       setToken(token);
       setUser(JSON.parse(localStorage.getItem("user")));
         //localStorage user and token called
-      const user = JSON.parse(localStorage.getItem("user"));
-      const dataProduction={
-        pet_size:localStorage.getItem("pet_size"),
-        ext_emputee:localStorage.getItem("ext_emputee"),
-        medidaAB:localStorage.getItem("medidaAB"),
-        medidaBC:localStorage.getItem("medidaBC"),
-        upper_perimeter:localStorage.getItem("upper_perimeter"),
-        lower_perimeter:localStorage.getItem("lower_perimeter"),
-        stump_length:localStorage.getItem("stump_length"),
-        encaje:localStorage.getItem("encaje"),
-        pilar:localStorage.getItem("pilar"),
-        color:localStorage.getItem("color")
-      }
+      const dataProduction=JSON.parse(localStorage.getItem("dataProthesis"))
+      setDataProthesis(dataProduction)
     },[]);
     ///  LOCAL STORAGE DATA
 
     //HANDLER BOTON SEND TO PRODUCTION(ENVIAR A PRODUCCION)
       const sendToProduction=()=>{
-
+              // traer datos del threejs
+      const obThree=getObjects();
+        // creacion del formulario de datos y set del mismo
+      let formData=new FormData();
+        formData.append('pet_size',parseFloat(dataProthesis.prothesisData.pet_size))
+        formData.append('ext_emputee',dataProthesis.prothesisData.ext_emputee)
+        formData.append('amputation_height_AB',parseFloat(dataProthesis.prothesisData.medidaAB))
+        formData.append('amputation_height_BC',parseFloat(dataProthesis.prothesisData.medidaBC))
+        formData.append('stump_perimeter_sup',parseFloat(dataProthesis.prothesisData.stump_perimeter_sup))
+        formData.append('stump_perimeter_inf',parseFloat(dataProthesis.prothesisData.stump_perimeter_inf))
+        formData.append('stump_length',parseFloat(dataProthesis.prothesisData.stump_length))
+        formData.append('lace',parseFloat(datosProtesis.lace))
+        formData.append('pillar',parseFloat(datosProtesis.pillar))
+        formData.append('color',datosProtesis.color)
+        formData.append('encajeobj',obThree.encaje,"encaje.stl")
+        formData.append('pilarobj',obThree.hueso,"pilar.stl")
+        formData.append('carcazaobj',obThree.carcaza,"carcaza.stl")
+    
+    axios.post(`http://8322-152-200-146-58.ngrok.io/createProthesis/${user.id}`,formData,
+    {
+      headers: {
+        "auth-token": token, //the token is a variable which holds the token
+        'Content-Type': 'multipart/form-data'
+      },
+    }
+    )
+  .then(function (response) { // en caso de ser exitosa
+      console.log(response)
+{/***
+    setTimeout(()=>{
+      localStorage.removeItem("token")
+      history.push("/login")
+    },900000) */}
+  })
+  .catch(function (error) { // en caso de ser incorrectos los datos
+    console.log(error)
+  });
       }
+     
+
+
   return (
     <div>
       <div className="flex justify-between text-purple-dark h-20 items-center px-24">
@@ -69,7 +100,7 @@ export default function Getstarted() {
         </div>
         <div className="flex">
          {
-           navForm==9?<ButtonRed text="Enviar a producci&oacute;n" onClick={()=>sendToProduction} />:<ButtonCancel text="Cancelar"/>
+           navForm==9?<ButtonRed text="Enviar a producci&oacute;n" onClick={()=>{sendToProduction()}} />:<ButtonCancel text="Cancelar"/>
          }
           {
            navForm==9&& <ButtonCancelBlueLight/>

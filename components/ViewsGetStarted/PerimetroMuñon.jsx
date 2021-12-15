@@ -2,7 +2,7 @@ import React from "react";
 import ButtonNextForm from "../Buttons/ButtonNextForm";
 import { useCasosCtx } from "../../contexts/casosExito/navInicio.context";
 import FormCompleted from "../Buttons/FormCompleted";
-import axios from "axios";
+import { uploadLocalStorage } from "./uploadLocalStorage";
 
 export default function PerimetroMuñon() {
   /*** LLAMADA DEL CONTEXT MANEJADOR DE VISTAS FORM */
@@ -20,8 +20,21 @@ export default function PerimetroMuñon() {
   //  manejador del submit form
   const handleSubmit=(e)=>{
     e.preventDefault()
-    localStorage.setItem('upper_perimeter',perimetro.perimetrosuperior)
-    localStorage.setItem('lower_perimeter',perimetro.perimetroinferior)
+      // llamada de datos al localStorage
+      const datosLocal = JSON.parse(localStorage.getItem('dataProthesis'))
+      // objeto data prothesis localStorage
+      var dataProthesis={
+        prothesisData:
+        {
+          pet_size:parseFloat(datosLocal.prothesisData.pet_size),
+          ext_emputee:datosLocal.prothesisData.ext_emputee,
+          medidaAB:parseFloat(datosLocal.prothesisData.medidaAB),
+          medidaBC:parseFloat(datosLocal.prothesisData.medidaBC),
+          stump_perimeter_inf:parseFloat(perimetro.perimetroinferior),
+          stump_perimeter_sup:parseFloat(perimetro.perimetrosuperior),
+        }
+      }
+      uploadLocalStorage(dataProthesis)
     setNavForm(8)
   }
   return (
