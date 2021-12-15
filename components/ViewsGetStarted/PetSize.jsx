@@ -65,8 +65,7 @@ export default function Veterinario() {
                 }}
                 name="pet-size"
                 className="bg-blue-light mr-4 w-80 h-12 focus:outline-none px-4 filter "
-                type="number"
-                required
+                type="number" step="0.1"
               />
                 <span>CM</span>
               </div>

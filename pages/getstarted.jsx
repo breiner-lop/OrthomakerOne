@@ -23,6 +23,7 @@ export default function Getstarted() {
     // states
     const [token, setToken] = React.useState("");
     const [user, setUser] = React.useState("");
+    const [petsId, setPetsId] = React.useState("");
     const [dataProthesis, setDataProthesis] = React.useState({});
 // privatizador de vistas
     const Router = useRouter();
@@ -34,6 +35,8 @@ export default function Getstarted() {
       setUser(JSON.parse(localStorage.getItem("user")));
         //localStorage user and token called
       const dataProduction=JSON.parse(localStorage.getItem("dataProthesis"))
+      const pets_id=localStorage.getItem("pets_id")
+      setPetsId(pets_id)
       setDataProthesis(dataProduction)
     },[]);
     ///  LOCAL STORAGE DATA
@@ -54,11 +57,12 @@ export default function Getstarted() {
         formData.append('lace',parseFloat(datosProtesis.lace))
         formData.append('pillar',parseFloat(datosProtesis.pillar))
         formData.append('color',datosProtesis.color)
+        formData.append('pets_id',petsId)
         formData.append('encajeobj',obThree.encaje,"encaje.stl")
         formData.append('pilarobj',obThree.hueso,"pilar.stl")
         formData.append('carcazaobj',obThree.carcaza,"carcaza.stl")
     
-    axios.post(`http://8322-152-200-146-58.ngrok.io/createProthesis/${user.id}`,formData,
+    axios.post(`${process.env.SERVER}/createProthesis/${user.id}`,formData,
     {
       headers: {
         "auth-token": token, //the token is a variable which holds the token

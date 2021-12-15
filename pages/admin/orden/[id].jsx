@@ -1,7 +1,6 @@
 import React from "react";
 import ButtonBorderBlue from "../../../components/Buttons/ButtonBorderBlue";
 import ButtonRed from "../../../components/Buttons/ButtonRed";
-import ProductoOrden from "../../../components/Cards/ProductoOrden";
 import Layout from "../../../components/LayoutAdmin";
 import { useRouter } from "next/router";
 
@@ -9,8 +8,8 @@ export default function Orden() {
   const Router = useRouter();
   React.useEffect(() => {
     const token = localStorage.getItem("token");
-    token ? null: Router.push("/login");
-  },[]);
+    token ? null : Router.push("/login");
+  }, []);
   return (
     <Layout>
       <div className="bg-blu-light h-screen w-full p-8 overflow-y-auto">
@@ -48,17 +47,24 @@ export default function Orden() {
         <div className="flex mt-10">
           <div className="w-4/6">
             {/**  productos */}
-            <div className="bg-white rounded-lg pt-6 pb-10  mr-6 filter drop-shadow">
+            <div className="bg-white rounded-lg pt-6 pb-10  mr-6 filter drop-shadow flex">
               <h6 className="px-6 mb-6 text-xl font-medium">Productos (1) </h6>
-              <ProductoOrden
-                img="/img/pdto.png"
-                nombre="Protesis nombre"
-                color="White"
-                tamaño="Normal"
-                valorAntiguo="$300.000"
-                cantidad={1}
-                total="300.000"
-              />
+              <img src="/img/pdto.png" alt="pdto" width="125px" />
+              <div>
+                <h4 className="mb-2">Breiner Lopez</h4>
+                <div className="flex flex-col text-blue-transparent">
+                  <span className="flex">
+                    <h6 className="w-24">Telefono</h6> <span className="text-purple-dark">999999</span>
+                  </span>
+                  <span className="flex">
+                  <h6 className="w-24">Email</h6> <span className="text-purple-dark">a@a.com</span>
+                  </span>
+                  <span className="flex">
+                  <h6 className="w-24">Ciudad</h6> <span className="text-purple-dark">Maicao</span>
+                  </span>
+                </div>
+              </div>
+              
             </div>
             {/**  envio y transporte */}
             <div className="bg-white rounded-lg mt-6 p-6 text-xs mr-6 filter drop-shadow">
@@ -94,71 +100,6 @@ export default function Orden() {
               <div className="flex justify-between bg-blue-50 rounded-b-lg p-6 mt-2">
                 <span> Total a pagar usuario</span>
                 <span>$1.520.000</span>
-              </div>
-            </div>
-          </div>
-          {/**  Tu Cliente */}
-          <div className="w-2/6">
-            <div className="bg-white p-4 rounded-lg filter drop-shadow">
-              <h6 className="text-xl font-medium">Tu cliente</h6>
-              <p className="text-xs text-gray-400">
-                Aqui tienes los datos basicos e informacion de tu cliente
-              </p>
-              <div className="flex justify-between items-center py-6 border-b border-gray-200">
-                <div className="flex items-center   ">
-                  <span>
-                    <img
-                      src="/img/avatar.png"
-                      alt="avatar"
-                      className="rounded-full mr-4"
-                    />
-                  </span>
-                  <h4 className="font-medium"> Breiner Lopez</h4>
-                </div>
-                <span>
-                  <img src="/img/Message.png" alt="mail" />
-                </span>
-              </div>
-
-              {/** informacion contacto */}
-              <div className=" py-6 border-b border-gray-200">
-                <h6 className="mb-6">Informacion de contacto</h6>
-                <div className="flex items-center mb-4">
-                  <span>
-                    <img src="/img/Call.png" alt="telefono" className="mr-4" />
-                  </span>
-                  <h6 className="text-xs">+387 065 489 552</h6>
-                </div>
-                <div className="flex items-center mb-4">
-                  <span>
-                    <img
-                      src="/img/Message.png"
-                      alt="mensaje"
-                      width="10px"
-                      height="9px"
-                      className="mr-4"
-                    />
-                  </span>
-                  <h6 className="text-xs">juand.buitragog@gmail.com</h6>
-                </div>
-                <div className="flex items-center mb-4">
-                  <span>
-                    <img
-                      src="/img/Location.png"
-                      alt="location"
-                      className="mr-4"
-                    />
-                  </span>
-                  <h6 className="text-xs">Bogota, Colombia</h6>
-                </div>
-              </div>
-              {/** informacion envio */}
-              <div className=" py-6">
-                <h6 className="mb-6">Informacion de envio</h6>
-                <h6 className="text-xs mb-1">Conjunto marsella</h6>
-                <h6 className="text-xs mb-1">Calle 82 # 95B-22</h6>
-                <h6 className="text-xs mb-1">12101</h6>
-                <h6 className="text-xs mb-1">Bogota, Colombia</h6>
               </div>
             </div>
           </div>

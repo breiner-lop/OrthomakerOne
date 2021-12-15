@@ -8,9 +8,6 @@ export default function Veterinario({token,user}) {
   // use states
   const [dataVet, setDataVet] = React.useState({});
   /*** LLAMADA DEL CONTEXT MANEJADOR DE VISTAS FORM */
-  React.useEffect(()=>{
-    console.log(user,token)
-  })
   const { setNavForm } = useCasosCtx();
   /// method POST pet
   const postVet = async (e) => {
@@ -18,7 +15,7 @@ export default function Veterinario({token,user}) {
 
     await axios
       .post(
-        `https://api.orthomakerone.com/addVet/${user.id}`,
+        `${process.env.SERVER}/addVet/${user.id}`,
         {
           zip: dataVet.zip,
           name: dataVet.name,

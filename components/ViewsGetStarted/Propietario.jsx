@@ -15,7 +15,7 @@ export default function Propietario({token,user}) {
 /// metodo put  de usuario
   const putUser = () => {
     axios.put(
-      `https://api.orthomakerone.com/editUser/${user.id}`,
+      `${process.env.SERVER}/editUser/${user.id}`,
       {
         name:user.name,
         lastname:user.lastname,

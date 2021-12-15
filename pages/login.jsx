@@ -21,7 +21,7 @@ export default function Login() {
 //manejador del boton inicar sesion
 const iniciarSesion=(e)=>{
   e.preventDefault() //llamada a api
-  axios.post('https://api.orthomakerone.com/login', {
+  axios.post(`${process.env.SERVER}/login`, {
     mail: dataLogin.mail,
     password:dataLogin.password
   })
