@@ -12,8 +12,9 @@ export default function Orden() {
   }, []);
   return (
     <Layout>
-      <div className="bg-blu-light h-screen w-full p-8 overflow-y-auto">
-        {/**  logo */}
+      <div className="bg-blu-light h-screen w-full p-8 overflow-y-auto justify-center flex">
+        <div className="w-full" style={{maxWidth:"1500px"}}>
+          {/**  logo */}
         <div className="text-2xl text-purple-dark mb-4">
           Ortho<strong>Maker</strong>
         </div>
@@ -45,40 +46,66 @@ export default function Orden() {
           </div>
         </div>
         <div className="flex mt-10">
-          <div className="w-4/6">
+          <div className="w-full">
             {/**  productos */}
-            <div className="bg-white rounded-lg pt-6 pb-10  mr-6 filter drop-shadow flex">
-              <h6 className="px-6 mb-6 text-xl font-medium">Productos (1) </h6>
+            <div className="bg-white rounded-lg pt-6 pb-10  mr-6 filter drop-shadow flex items-center">
               <img src="/img/pdto.png" alt="pdto" width="125px" />
-              <div>
+<div className="text-xs">
                 <h4 className="mb-2">Breiner Lopez</h4>
                 <div className="flex flex-col text-blue-transparent">
                   <span className="flex">
-                    <h6 className="w-24">Telefono</h6> <span className="text-purple-dark">999999</span>
+                    <h6 className="w-16">Telefono</h6> <span className="text-purple-dark">999999</span>
                   </span>
                   <span className="flex">
-                  <h6 className="w-24">Email</h6> <span className="text-purple-dark">a@a.com</span>
+                  <h6 className="w-16">Email</h6> <span className="text-purple-dark">a@a.com</span>
                   </span>
                   <span className="flex">
-                  <h6 className="w-24">Ciudad</h6> <span className="text-purple-dark">Maicao</span>
+                  <h6 className="w-16">Ciudad</h6> <span className="text-purple-dark">Maicao</span>
                   </span>
                 </div>
               </div>
-              
+                <div className="flex flex-col text-blue-transparent text-xs ml-14">
+                  <span className="flex">
+                    <h6 className="w-16">Telefono (Opcional)</h6> <span className="text-purple-dark">9655699</span>
+                  </span>
+                  <span className="flex">
+                  <h6 className="w-16">Direcci&oacute;n</h6> <span className="text-purple-dark">cr3 djhhsi Maicao</span>
+                  </span>
+                </div>
+                <div className="flex flex-col text-blue-transparent ml-14 text-xs">
+                  <span className="flex">
+                    <h6 className="w-10">Zip</h6> <span className="text-purple-dark">2020</span>
+                  </span>
+                </div>
+      
             </div>
-            {/**  envio y transporte */}
-            <div className="bg-white rounded-lg mt-6 p-6 text-xs mr-6 filter drop-shadow">
-              <h4 className="mb-6 text-xl font-medium">Envio / Transporte</h4>
-              <div className="flex justify-between items-center">
-                <div className="flex items-center">
-                  <img src="/img/fedex.png" alt="fedex" className="mr-4" />
-                  <span>
-                    <h6>Fedex </h6>
-                    <h6 className="text-gray-400">Envio inmediato</h6>
+            {/**  Informacion de la mascota */}
+            <div className="bg-white mt-6 p-6 text-xs mr-6 filter drop-shadow">
+             <h6>informaci&oacute;n de la mascota</h6>
+             <div className="flex mt-6">
+             <div className="flex flex-col text-blue-transparent text-xs ml-14">
+                  <span className="flex">
+                    <h6 className="w-28">Nombre mascota</h6> <span className="text-purple-dark">Scot</span>
+                  </span>
+                  <span className="flex">
+                  <h6 className="w-28">Tamaño</h6> <span className="text-purple-dark">30 cm</span>
                   </span>
                 </div>
-                <span>$10.000</span>
-              </div>
+                <div className="flex flex-col text-blue-transparent text-xs ml-14">
+                  <span className="flex">
+                    <h6 className="w-10">Edad</h6> <span className="text-purple-dark">12 meses</span>
+                  </span>
+                  <span className="flex">
+                  <h6 className="w-10">Peso</h6> <span className="text-purple-dark">20 Kg</span>
+                  </span>
+                </div>
+                <div className="flex flex-col text-blue-transparent text-xs ml-14">
+                  <span className="flex">
+                  <h6 className="w-10">Zip</h6> <span className="text-purple-dark">2020</span>
+                  </span>
+                </div>
+             </div>
+             <span>Fotos de perfiles </span>
             </div>
             {/**  resumen pago */}
             <div className="bg-white rounded-lg mt-6 mr-6 text-xs filter drop-shadow-lg">
@@ -103,6 +130,7 @@ export default function Orden() {
               </div>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </Layout>
