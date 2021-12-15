@@ -4,7 +4,7 @@ const casosContext = createContext("");
 export const useCasosCtx = () => useContext(casosContext);
 export const CasosProvider = ({ children }) => {
   
-  const [navForm, setNavForm] = useState(9);
+  const [navForm, setNavForm] = useState(1);
   const [activeNumber, setActiveNumber] = useState(1);
   const [state, setState] = useState(false);
   //inputs protesis

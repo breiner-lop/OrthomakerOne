@@ -121,6 +121,7 @@ export default function AlturaAmputacion() {
                   type="number"
                   name="medidaBC"
                   required
+                  step="0.1"
                 />
                 <span>CM</span>
               </div>
@@ -135,6 +136,7 @@ export default function AlturaAmputacion() {
                   type="number"
                   name="medidaAB"
                   required
+                  step="0.1"
                 />
                 <span>CM</span>
               </div>

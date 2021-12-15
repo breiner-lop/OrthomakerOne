@@ -94,6 +94,7 @@ export default function PerimetroMuñon() {
                       placeholder="Perimetro inferior"
                       className="focus:outline-none bg-transparent px-4 h-10 w-64 placeholder-gray-300"
                       type="number"
+                      step="0.1"
                       required
                     />
                     <span>CM</span>
@@ -119,6 +120,7 @@ export default function PerimetroMuñon() {
                       placeholder="Perimetro superior"
                       className="focus:outline-none bg-transparent px-4 h-10 w-64 placeholder-gray-300"
                       type="number"
+                      step="0.1"
                       required
                     />
                     <span>CM</span>

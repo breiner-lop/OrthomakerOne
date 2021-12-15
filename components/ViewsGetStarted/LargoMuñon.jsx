@@ -93,6 +93,7 @@ export default function LargoMuñon() {
                   name="largo"
                   className="focus:outline-none bg-transparent px-4 h-10 w-64"
                   type="number" required
+                  step="0.1"
                 />
                 <span>CM</span>
               </div>

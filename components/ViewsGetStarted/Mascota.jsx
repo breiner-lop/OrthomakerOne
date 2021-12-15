@@ -5,7 +5,6 @@ import React from "react";
 import axios from "axios";
 
 export default function Pet({token,user}) {
-console.log(token,user)
   // use states
   const [dataPet, setDataPet] = React.useState({
     weight:"1-5"
@@ -20,8 +19,8 @@ console.log(token,user)
     // Where you will display your image
     var preview = document.getElementById(`${e.target.name}`);
     // The button where the user chooses the local image to display
-    var file = document.getElementById(`${e.target.id}`).files[0];
-    const filet = e.target.files[0];
+    //var file = document.getElementById(`${e.target.id}`).files[0];
+    const file = e.target.files[0];
 
     // FileReader instance
     var reader = new FileReader();
@@ -55,7 +54,7 @@ console.log(token,user)
         Data.append('images2',dataPet.image2)
         Data.append('images3',dataPet.image3)
         Data.append('images4',dataPet.image4)
-    axios.post(`https://api.orthomakerone.com/addpet/${user.id}`,Data,
+    axios.post(`http://49b6-152-200-146-58.ngrok.io/addpet/${user.id}`,Data,
         {
           headers: {
             "auth-token": token, //the token is a variable which holds the token
@@ -65,7 +64,7 @@ console.log(token,user)
       )
       .then(function (response) {
         // en caso de ser exitosa
-        console.log(response);
+        localStorage.setItem("pets_id",response.data.pets_id)
         setNavForm(3);
       })
       .catch(function (error) {
@@ -80,7 +79,6 @@ console.log(token,user)
       ...dataPet,
       [e.target.name]: e.target.value,
     });
-    console.log(dataPet);
   };
   return (
     <div className="py-20 flex justify-center text-purple-dark">
