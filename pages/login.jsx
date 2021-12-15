@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import ButtonBlue from "../components/Buttons/ButtonBlue";
 import axios from "axios";
 import { useRouter } from "next/router";
 
@@ -11,6 +12,7 @@ export default function Login() {
     mail:"",
     password:""
   })
+  const [error,setError]=React.useState(false)
   //hadle inputs
   const handleInputChange = (e) => {
     setDatos({
@@ -30,15 +32,14 @@ const iniciarSesion=(e)=>{
     localStorage.setItem("token",token);
     const usuario=JSON.stringify(response.data.usuario)
     localStorage.setItem("user",usuario);
-{/***
-    setTimeout(()=>{
-      localStorage.removeItem("token")
-      history.push("/login")
-    },900000) */}
     response&&history.push("/admin")
   })
   .catch(function (error) { // en caso de ser incorrectos los datos
-    setDatos({mail:"",password:""})
+    setError(true)
+    setDatos({
+      ...dataLogin,
+      password:""
+    })
   });
 }
   return (
@@ -78,6 +79,9 @@ const iniciarSesion=(e)=>{
             <br />
             <input name="password" type="password" className="w-full h-8 focus:outline-none" value={dataLogin.password} onChange={(e)=>handleInputChange(e)} required/>
           </div>
+          {error? <div className="rounded  border border-red-100 shadow-sm text-red-600 p-2">
+            <span className="mr-2 font-semibold">X</span><span>Usuario o contraseña incorrectos</span>
+          </div>:null }
           <div className="flex justify-between my-6">
             <div>
               <input type="checkbox" id="check" />
@@ -92,7 +96,7 @@ const iniciarSesion=(e)=>{
             </Link>
           </div>
           <hr />
-          <button type="submit">Ingresar</button>
+          <ButtonBlue type="submit" text="Ingresar" />
          </form>
         </div>
         <div className="mt-4 text-xs text-center font-medium">
