@@ -32,21 +32,23 @@ export default function PrimerPaso() {
     <div className="flex">
     <div className="w-7/12 bg-purple-dark h-screen" style={{backgroundImage:"url(/img/bgreg.png)",backgroundSize:"cover",backgroundRepeat:"no-repeat"}}></div>
     <div className="w-5/12 h-screen overflow-y-scroll flex justify-center">
-    <div className="flex h-full w-full">
-      <div>
+    <div className="flex h-full w-full p-3">
+      <div className="w-full">
         <div className="flex justify-center">
         <img src="/img/logo.png" alt="logo" width="150px" />
         </div>
         <h4 className="2xl:text-4xl text-3xl mt-1 mb-10">
           Informacion de registro
         </h4>
-        <form onSubmit={(e)=>{signupSubmit(e)}}>
+        <form onSubmit={(e)=>{signupSubmit(e)}} >
+       <div className="w-full grid grid-cols-2 gap-2">
         <SingUpInput name="name" type="text" label="Nombre" onChange={(e)=>hanleInputsSignup(e)} />
         <SingUpInput name="lastname" type="text" label="Apellido" onChange={(e)=>hanleInputsSignup(e)} />
         <SingUpInput name="mail" type="mail" label="Mail" onChange={(e)=>hanleInputsSignup(e)} />
         <SingUpInput name="password" type="password" label="Contraseña" onChange={(e)=>hanleInputsSignup(e)} />
         <SingUpInput name="direction" type="text" label="Direccion" onChange={(e)=>hanleInputsSignup(e)} />
         <SingUpInput name="city" type="text" label="Ciudad de residencia" onChange={(e)=>hanleInputsSignup(e)} />
+       </div>
         <ButtonBlue type="submit" text="Registrarse"/>
         </form>
       </div>
