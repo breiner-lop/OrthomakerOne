@@ -1,6 +1,14 @@
-import Link from "next/link"
+import { useRouter } from "next/router";
+
 export default function GetStarted() {
+  // privatizador de vistas
+  const Router = useRouter();
+    const handleGetStarted=()=>{
+        const token = localStorage.getItem("token");
+        const user = JSON.parse(localStorage.getItem("user"));
+        token&&user.id?Router.push("/getstarted"): Router.push("/login") 
+    }
     return (
-        <Link href="/getstarted"><span className="font-semibold text-white w-48 h-11 rounded-3xl bg-red-dark hover:text-red-dark hover:bg-red-light transition duration-300 flex justify-center items-center cursor-pointer">Get started</span></Link>
+        <button onClick={()=>handleGetStarted()}><span className="font-semibold text-white w-40 h-10 filter drop-shadow-md rounded-3xl bg-red-dark hover:text-red-dark hover:bg-red-light transition duration-300 flex justify-center items-center cursor-pointer">Empezar</span></button>
     )
 }

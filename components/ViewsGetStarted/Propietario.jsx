@@ -7,11 +7,7 @@ export default function Propietario({token,user}) {
   const [data, setData] = React.useState({});
 
   const { setNavForm } = useCasosCtx();
-  console.log(user)
-  /// use effect
-  React.useEffect(()=>{
-  console.log(user,token)
-  })
+
 /// metodo put  de usuario
   const putUser = () => {
     axios.put(
@@ -119,6 +115,7 @@ export default function Propietario({token,user}) {
                   required
                   className="bg-blue-light mr-4 w-80 h-12 focus:outline-none px-4"
                   type="email"
+                  disabled
                 />
               </div>
               <div className="col-span-1 mt-6">

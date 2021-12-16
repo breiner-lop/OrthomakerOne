@@ -32,7 +32,7 @@ const iniciarSesion=(e)=>{
     localStorage.setItem("token",token);
     const usuario=JSON.stringify(response.data.usuario)
     localStorage.setItem("user",usuario);
-    response&&history.push("/admin")
+    response&&history.push("/")
   })
   .catch(function (error) { // en caso de ser incorrectos los datos
     setError(true)
@@ -99,12 +99,12 @@ const iniciarSesion=(e)=>{
           <ButtonBlue type="submit" text="Ingresar" />
          </form>
         </div>
-        <div className="mt-4 text-xs text-center font-medium">
+        <div className="mt-4 text-sm text-center font-medium">
           <span>
-            Aun no tienes cuenta,
+          ¿No tienes una cuenta?
             <Link href="/registrarse">
-              <span className="underline font-black cursor-pointer">
-                creala ahora
+              <span className="underline hover:text-blue-500 text-blue-700 cursor-pointer ml-2">
+                Registrate
               </span>
             </Link>
           </span>
