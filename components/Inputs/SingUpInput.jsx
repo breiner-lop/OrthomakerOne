@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function SingUp({label,type,onChange,name}) {
     return (
-        <div className="rounded border border-gray-400 px-6 h-16 text-sm col-span-1 my-2">
+        <div className="rounded border border-gray-400 px-6 h-16 text-sm w-full">
           <label htmlFor={label} className="text-purple-transparent text-xs">
             {label}
           </label>

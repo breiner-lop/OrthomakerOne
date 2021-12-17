@@ -1,15 +1,21 @@
 import React from "react";
 import Layout from "../../components/LayoutAdmin";
-import { useRouter } from "next/router";
+import ViewNoAuth from "../../components/ViewNoAuth";
 export default function Home() {
-    const Router = useRouter();
+  //states
+  const [loading, setLoading] = React.useState(true);
+//local storage
+    const [token,setToken]=React.useState("")
+    // acciones al cargar la pagina
     React.useEffect(() => {
       const token = localStorage.getItem("token");
-      token ? Router.push("/admin") : Router.push("/login");
+      setToken(token)
+      setLoading(false)
     },[]);
   return (
-    <>
-      <Layout>home view</Layout>
-    </>
+<>
+{
+  loading?null:!token?<ViewNoAuth/>:<Layout>home view</Layout>
+}</>
   );
 }
