@@ -4,13 +4,13 @@ import SingUpInput from "../components/Inputs/SingUpInput";
 import axios from 'axios'
 import { useRouter } from "next/router";
 import Link from "next/link"
+import RegistroExitoso from "../components/RegistroExitoso";
 
 export default function PrimerPaso() {
-  //llamada del router
-  const history=useRouter()
 
-  // states
   const [dataSignup,setDataSignup]=React.useState({})
+  // states
+  const [registrado,setRegistrado]=React.useState(false)
   // handler inputs signup
   const hanleInputsSignup=(e)=>{
     setDataSignup({
@@ -23,7 +23,9 @@ export default function PrimerPaso() {
     e.preventDefault()
     axios.post(`${process.env.SERVER}/signup`,dataSignup)
     .then(function (response) { // en caso de ser exitosa
-      history.push("/login")
+      //history.push("/login")
+      setRegistrado(true)
+
     })
     .catch(function (error) { // en caso de ser incorrectos los datos
       console.log(error)
@@ -31,6 +33,7 @@ export default function PrimerPaso() {
   }
   return (
     <div className="flex">
+     {registrado&& <RegistroExitoso/>}
     <div className="w-7/12 bg-purple-dark h-screen" style={{backgroundImage:"url(/img/bgreg.png)",backgroundSize:"cover",backgroundRepeat:"no-repeat"}}></div>
     <div className="w-5/12 h-screen overflow-y-scroll flex justify-center items-center">
     <div className="flex w-full px-6 py-4">

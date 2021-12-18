@@ -10,11 +10,10 @@ export default function OrdenCard({id}) {
         <img src="/img/Buy.png" width="20px" height="20px" />
         <span className="ml-2">#0947398</span>
       </div>
-      <div className="bg-blu-light text-blue-600 w-20 h-7 rounded-lg text-center -ml-6">
+      <div className="bg-blu-light text-blue-600 w-20 h-7 rounded-lg text-center ">
         <span>Nueva</span>
       </div>
-      <span className="-ml-14">950.000</span>
-      <span className="">2</span>
+      <span className="ml-10">950.000</span>
       <div className="flex">
         <img
           src="/img/avatar.png"

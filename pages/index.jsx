@@ -66,14 +66,20 @@ export default function Index() {
       <Navbar />
       <div className="text-purple-dark">
         <div className="bg-gradient-to-b from-blue-light to-white ">
-          <div className="mx-auto" style={{ maxWidth: "1500px" }}>
-            <div
-              className="px-24 bg-opacity-0"
-              style={{
-                background: `url("/img/inter.png")`,
+          <div  style={{
+                background: `url("/img/Interseccion.png")`,
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "center",
+                width: "100%",
+              }}>
+            <div
+              className="px-24 bg-opacity-0 mx-auto"
+              style={{
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center",
+                maxWidth: "1500px"
               }}
+            
             >
               {/***  Header ***/}
               <p className="text-blue-transparent text-3xl">
@@ -83,8 +89,7 @@ export default function Index() {
               <div className="flex justify-center">
                 <img
                   src="/img/protesis.png"
-                  width="774px"
-                  height="565px"
+
                   alt="protesisimage"
                 />
               </div>
@@ -98,11 +103,7 @@ export default function Index() {
                         Como lo <br /> hacemos
                       </h2>
                       <p>
-                        We know how stressful it is to leave your pets at home
-                        alone. We’re a team of experienced animal caregivers,
-                        well connected to local veterinarians. Trust to us to
-                        love them like our own, and to keep them safe and happy
-                        till you’re home.
+                      En ORTHOMAKER ofrecemos segundas oportunidades, diseñamos y fabricamos diferentes tipos de dispositivos ortopédicos para tu mascota adaptándonos a las necesidades de cada uno de los casos. Aplicando nuevas tecnologías de producción en beneficio de los animales. Trabajamos para mejorar tu vida y la de tu amigo peludo, utilizamos materiales de alta calidad, respetuosos con el medio ambiente y a la vez cómodos para tu mascota. 
                       </p>
                     </div>
                   </div>
@@ -122,11 +123,10 @@ export default function Index() {
                           height="75px"
                         />
                       </div>
-                      <div>
-                        <h4 className="font-semibold">Automatic Integration</h4>
+                      <div className="ml-3">
+                        <h4 className="font-semibold">Materiales De Alta Calidad</h4>
                         <p className="w-4/6">
-                          Easy installation and plugins for most popular
-                          platforms
+                        Utilizamos materiales de alta calidad y amigables con el medio ambiente proveniente de fuentes renovables.
                         </p>
                       </div>
                     </div>
@@ -145,11 +145,10 @@ export default function Index() {
                           height="75px"
                         />
                       </div>
-                      <div>
-                        <h4 className="font-semibold">Automatic Integration</h4>
-                        <p className="w-4/6">
-                          Easy installation and plugins for most popular
-                          platforms
+                      <div className="ml-3">
+                        <h4 className="font-semibold">Diseños Personalizados</h4>
+                        <p className="w-4/6 ">
+                        Trabajamos para crear diseños personalizados que se adapten a las necesidades de cada canino y la de sus dueños 
                         </p>
                       </div>
                     </div>
@@ -168,11 +167,10 @@ export default function Index() {
                           height="75px"
                         />
                       </div>
-                      <div>
-                        <h4 className="font-semibold">Automatic Integration</h4>
+                      <div className="ml-3">
+                        <h4 className="font-semibold">Procesos De Producción</h4>
                         <p className="w-4/5">
-                          Easy installation and plugins for most popular
-                          platforms
+                        las nuevas tecnologías como la impresión 3D permiten disminuir los costos y tiempos de los procesos de fabricación de elementos ortopédicos
                         </p>
                       </div>
                     </div>
@@ -392,7 +390,6 @@ export default function Index() {
                       name={casos.name}
                       textOne={casos.textOne}
                       textTwo={casos.textTwo}
-                      Uu={caso + 1}
                       imgsig={casos.imgsig}
                     />
                   ))}
@@ -402,15 +399,16 @@ export default function Index() {
           </div>
           {/***  TEAM ***/}
           <div className="mb-14">
-            <h4 className="text-2xl font-light mb-14">Team</h4>
-            <div className="flex">
+            <h4 className="text-2xl font-light mb-14">Equipo de trabajo</h4>
+            <div className="grid grid-cols-2 gap-2">
               {TeamData.map((tData) => (
                 <CardTeam
                   key={tData.id}
                   name={tData.name}
-                  description={tData.descrption}
                   profesion={tData.profesion}
+                  puesto={tData.puesto}
                   img={tData.img}
+                  accion={tData.accion}
                 />
               ))}
             </div>

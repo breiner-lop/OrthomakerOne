@@ -1,16 +1,18 @@
 [
     {
-        "id":"1",
-        "name":"CEO",
-        "descrption":"es una prótesis para extremidades de caninos que han sufrido alguna amputación.",
+        "id":1,
+        "puesto":"CEO",
+        "name":"LEYDHER IBARRA RIPOLL",
         "profesion":"Ingeniero mecanico",
-        "img":"/img/ceo.png"
+        "img":"/img/ceo.png",
+        "accion":"Cofundador de OrthoMaker"
     },
     {
-        "id":"2",
-        "name":"Product manager",
-        "descrption":"es una prótesis para extremidades de caninos que han sufrido alguna amputación.",
+        "id":2,
+        "puesto":"Product manager",
+        "name":"Rafael Nieto Bustos",
         "profesion":"Diseñador industrial",
-        "img":"/img/diseñador.png"
+        "img":"/img/diseñador.png",
+        "accion":"Cofundador de OrthoMaker"
     }
 ]

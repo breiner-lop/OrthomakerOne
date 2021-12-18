@@ -3,8 +3,14 @@ import ButtonPanelAdmin from "../../components/Buttons/ButtonPanelAdmin";
 import { useCasosCtx } from "../../contexts/casosExito/navInicio.context";
 
 export default function Panel() {
+  // states
+  const [user,setUser]=React.useState({})
   /**** traer datos del context */
   const {activeNumber,setActiveNumber } = useCasosCtx();
+  //data localStorage
+  React.useEffect(()=>{
+    setUser(JSON.parse(localStorage.getItem('user')))
+  },[])
 
   return (
     <div className="bg-purple-dark h-screen w-72 2xl:w-96 text-white flex flex-col justify-between">
@@ -19,7 +25,7 @@ export default function Panel() {
                 className="rounded-lg"
               />
               <div className="ml-6 text-left">
-                <span className="text-xl">Juan Buitrago</span> <br />
+                <span className="text-xl">{user.name} {user.lastname}</span> <br />
                 <span className="text-xs text-white-transparent">admin</span>
               </div>
             </div>
@@ -37,23 +43,24 @@ export default function Panel() {
           <ul>
             <li>
               <ButtonPanelAdmin
-              href="/admin"
-                text="Home"
-                img="/img/home.png"
+              href="/admin/ordenes"
+                text="Ordenes"
+                img="/img/Ordenes.png"
                 active={activeNumber == 1 ? true : false}
                 onClick={() => setActiveNumber(1)}
+                isCount={true}
               />
             </li>
             <li>
               <ButtonPanelAdmin
-              href="/admin/ordenes"
-                text="Ordenes"
+              href="/admin/mi-cuenta"
+                text="Configuracion"
                 img="/img/ordenes.png"
                 active={activeNumber == 2 ? true : false}
                 onClick={() => {
                   setActiveNumber(2);
                 }}
-                isCount={true}
+               
               />
             </li>
           </ul>

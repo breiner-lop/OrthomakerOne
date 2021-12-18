@@ -4,6 +4,7 @@ import Orden from "../../components/Cards/Orden";
 import Buscar from "../../components/Inputs/Buscar";
 import LayoutAdmin from "../../components/LayoutAdmin";
 import ViewNoAuth from "../../components/ViewNoAuth";
+import axios from 'axios'
 
 export default function Ordenes() {
   // states
@@ -13,7 +14,23 @@ export default function Ordenes() {
     const token = localStorage.getItem("token");
     setToken(token)
     setLoading(false)
+    //llamada a la api
+    axios.get(`${process.env.SERVER}/orders`,{
+      headers:{
+        "auth-token": token,
+      }
+    })
+    .then(function (response) { // en caso de ser exitosa
+      console.log(response)
+    })
+    .catch(function (error) { // en caso de ser incorrectos los datos
+    });
   }, []);
+  //manejador del boton inicar sesion
+const iniciarSesion=(e)=>{
+  e.preventDefault() //llamada a api
+
+}
   return (
     <>
       {loading ? null : !token ? (
@@ -37,7 +54,6 @@ export default function Ordenes() {
                     <h6>Numero de orden</h6>
                     <h6>Estado</h6>
                     <h6>Valor total</h6>
-                    <h6>Cant. productos</h6>
                     <h6 className="w-32">Usuario</h6>
                   </div>
                   <div>

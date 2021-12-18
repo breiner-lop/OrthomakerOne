@@ -41,7 +41,8 @@ export default function Propietario({token,user}) {
       ...data,
       [e.target.name]: e.target.value,
     });
-    console.log(data);
+    const data=JSON.stringify({...user,[e.target.name]:e.target.value})
+    localStorage.setItem("user",data)
   };
   return (
     <div>
@@ -103,6 +104,7 @@ export default function Propietario({token,user}) {
                   required
                   className="bg-blue-light mr-4 w-80 h-12 focus:outline-none px-4"
                   type="number"
+                  value={user.phone}
                 />
               </div>
               <div className="col-span-1">
@@ -122,10 +124,10 @@ export default function Propietario({token,user}) {
                 <label htmlFor="Telefono">Telefono alternativo</label>
                 <br />
                 <input
-                  name="phonetwo"
+                  name="phone2"
                   onChange={(e) => handleInputChange(e)}
                   className="bg-blue-light mr-4 w-80 h-12 focus:outline-none px-4"
-                  type="number"
+                  type="number" value={user.phone2}
                 />
               </div>
             </div>
@@ -163,6 +165,7 @@ export default function Propietario({token,user}) {
                   required
                   className="bg-blue-light mr-4 w-52 h-12 focus:outline-none px-4"
                   type="text"
+                  value={user.state}
                 />
               </div>
               <div className="col-span-1">
@@ -174,6 +177,7 @@ export default function Propietario({token,user}) {
                   required
                   className="bg-blue-light mr-4 w-52 h-12 focus:outline-none px-4"
                   type="text"
+                  value={user.zip}
                 />
               </div>
             </div>

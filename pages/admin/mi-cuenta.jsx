@@ -1,7 +1,7 @@
 import React from "react";
 import Layout from "../../components/LayoutAdmin";
 import ViewNoAuth from "../../components/ViewNoAuth";
-export default function Home() {
+export default function InformacionPersonal() {
   //states
   const [loading, setLoading] = React.useState(true);
 //local storage

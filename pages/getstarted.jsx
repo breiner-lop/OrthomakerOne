@@ -36,7 +36,7 @@ export default function Getstarted() {
     setPetsId(pets_id);
     setDataProthesis(dataProduction);
     setLoading(false)
-  }, []);
+  },[navForm]);
   ///  LOCAL STORAGE DATA
 
   //HANDLER BOTON SEND TO PRODUCTION(ENVIAR A PRODUCCION)
@@ -45,10 +45,7 @@ export default function Getstarted() {
     const obThree = getObjects();
     // creacion del formulario de datos y set del mismo
     let formData = new FormData();
-    formData.append(
-      "pet_size",
-      parseFloat(dataProthesis.prothesisData.pet_size)
-    );
+    formData.append("pet_size",parseFloat(dataProthesis.prothesisData.pet_size));
     formData.append("ext_emputee", dataProthesis.prothesisData.ext_emputee);
     formData.append("amputation_height_AB",parseFloat(dataProthesis.prothesisData.medidaAB));
     formData.append("amputation_height_BC",parseFloat(dataProthesis.prothesisData.medidaBC));
