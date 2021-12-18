@@ -54,7 +54,7 @@ export default function Pet({token,user}) {
         Data.append('images2',dataPet.image2)
         Data.append('images3',dataPet.image3)
         Data.append('images4',dataPet.image4)
-    axios.post(`http://49b6-152-200-146-58.ngrok.io/addpet/${user.id}`,Data,
+    axios.post(`${process.env.SERVER}/addpet/${user.id}`,Data,
         {
           headers: {
             "auth-token": token, //the token is a variable which holds the token

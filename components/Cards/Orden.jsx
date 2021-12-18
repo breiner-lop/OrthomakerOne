@@ -1,20 +1,37 @@
 import React from "react";
 import Link from "next/link"
+import axios from 'axios'
 
-export default function OrdenCard({id}) {
-  // llamada al context para traer el id y para validar la vista
+export default function OrdenCard({id,status,total,userId}) {
+  //  states
+  const [userName,setUserName]=React.useState("")
+  React.useEffect(()=>{
+    const token=localStorage.getItem("token");//get token
+     //llamada a la api user
+     axios.get(`${process.env.SERVER}/user/${userId}`,{
+      headers:{
+        "auth-token": token,
+      }
+    })
+    .then(function (response) { // en caso de ser exitosa
+      console.log(response.data)
+      setUserName(response.data.name)
+      //serOrders(response.data)
+    })
+    .catch(function (error) { // en caso de ser incorrectos los datos
+    });
+  },[])
   return (
    <Link href={`/admin/orden/${id}`}>
     <div  className="bg-white rounded-lg h-20 px-6 flex items-center justify-between my-2 cursor-pointer border border-transparent hover:border-gray-200 filter drop-shadow-lg">
       <div className="flex">
         <img src="/img/Buy.png" width="20px" height="20px" />
-        <span className="ml-2">#0947398</span>
+        <span className="ml-2">{id}</span>
       </div>
-      <div className="bg-blu-light text-blue-600 w-20 h-7 rounded-lg text-center -ml-6">
-        <span>Nueva</span>
+      <div className="bg-blu-light text-blue-600 w-20 h-7 rounded-lg text-center ">
+        <span>{status}</span>
       </div>
-      <span className="-ml-14">950.000</span>
-      <span className="">2</span>
+      <span className="ml-10">{total}</span>
       <div className="flex">
         <img
           src="/img/avatar.png"
@@ -23,7 +40,7 @@ export default function OrdenCard({id}) {
           className="rounded-full"
         />
         <div className="ml-4 flex items-center">
-          <h6>Breiner Lopez</h6>
+          <h6>{userName}</h6>
         </div>
       </div>
     </div>

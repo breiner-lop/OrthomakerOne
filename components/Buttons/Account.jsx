@@ -9,8 +9,9 @@ export default function Account() {
     const logout=()=>{
         localStorage.removeItem("token")
         localStorage.removeItem("user")
-        setPopup({...popup,auth:!popup.auth})
+        setPopup({auth:!popup.auth,state:false})
     }
+    
     return (
         <div>
             <button onClick={()=>setPopup({...popup,state:!popup.state})} className='ml-4 filter drop-shadow-xl hover:bg-gray-50 hover:shadow-md transition duration-300 rounded-full'>
@@ -19,7 +20,7 @@ export default function Account() {
            {
             popup.state&& 
             <div className='absolute bg-white rounded-lg -ml-20 py-2 flex flex-col filter drop-shadow transition duration-1000'> 
-                <Link href="/admin"><span className='px-4 py-1 hover:bg-gray-50 cursor-pointer'>Administrar</span></Link>
+               <button onClick={()=>setPopup({...popup,state:false})}> <Link href="/admin/ordenes"><span className='px-4 py-1 hover:bg-gray-50 cursor-pointer'>Administrar</span></Link></button>
                 <button onClick={()=>logout()} className='py-1 hover:bg-gray-50 px-4'>Cerrar sesi&oacute;n</button>
             </div>
            }

@@ -15,7 +15,6 @@ export default function PerimetroMuñon() {
       ...perimetro,
       [e.target.name]: e.target.value,
     });
-    console.log(perimetro);
   };
   //  manejador del submit form
   const handleSubmit=(e)=>{
