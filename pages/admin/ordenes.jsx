@@ -9,28 +9,36 @@ import axios from 'axios'
 export default function Ordenes() {
   // states
   const [loading, setLoading] = React.useState(true);
+  const [orders, serOrders] = React.useState([]);
   const [token, setToken] = React.useState(false);
+  const [userLocal, setUserLocal] = React.useState(false);
   React.useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token=localStorage.getItem("token");//get token
     setToken(token)
+    //const user=localStorage.getItem("user");//get user
+    //setUserLocal(user)
     setLoading(false)
-    //llamada a la api
+    //llamada a la api ordenes
     axios.get(`${process.env.SERVER}/orders`,{
       headers:{
         "auth-token": token,
       }
     })
     .then(function (response) { // en caso de ser exitosa
-      console.log(response)
+      console.log(response.data)
+      serOrders(response.data)
+             
     })
     .catch(function (error) { // en caso de ser incorrectos los datos
     });
-  }, []);
+
+  },[]);
+
   //manejador del boton inicar sesion
 const iniciarSesion=(e)=>{
   e.preventDefault() //llamada a api
-
 }
+
   return (
     <>
       {loading ? null : !token ? (
@@ -57,8 +65,13 @@ const iniciarSesion=(e)=>{
                     <h6 className="w-32">Usuario</h6>
                   </div>
                   <div>
-                    <Orden id="9034020230" />
-                    <Orden id="4005045055" />
+                   {
+                     orders.map((order)=>{
+                       return(
+                        <Orden id={order.id} status={order.status} total={order.valor_total} userId={order.users_id} />
+                       )
+                     })
+                   }
                   </div>
                 </div>
               </div>

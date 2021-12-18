@@ -5,8 +5,9 @@ import React from "react";
 
 export default function Propietario({token,user}) {
   const [data, setData] = React.useState({});
+  const [dataUser, setDataUser] = React.useState({});
 
-  const { setNavForm } = useCasosCtx();
+  const { navForm,setNavForm } = useCasosCtx();
 
 /// metodo put  de usuario
   const putUser = () => {
@@ -41,9 +42,27 @@ export default function Propietario({token,user}) {
       ...data,
       [e.target.name]: e.target.value,
     });
-    const data=JSON.stringify({...user,[e.target.name]:e.target.value})
-    localStorage.setItem("user",data)
+   
+   
+   // const data=JSON.stringify({...user,[e.target.name]:e.target.value})
+    //localStorage.setItem("user",data)
   };
+  /**React.useEffect(()=>{
+    axios.get(
+      `${process.env.SERVER}/user/${user.id}`,
+      {
+        headers: {
+          'auth-token': token //the token is a variable which holds the token
+        },
+      }
+    ).then(function (response) { // en caso de ser exitosa
+      console.log(response)
+      setDataUser(response.data)
+    })
+    .catch(function (error) { // en caso de ser incorrectos los datos
+      console.log(error)
+    });
+  },[navForm])**/
   return (
     <div>
       <div className=" py-20 flex justify-center text-purple-dark">
@@ -76,7 +95,7 @@ export default function Propietario({token,user}) {
                   name="name"
                   onChange={(e) => handleInputChange(e)}
                   required
-                  value={user.name}
+                  value={dataUser.name}
                   className="bg-blue-light mr-4 w-80 h-12 focus:outline-none px-4"
                   type="text"
                 />
@@ -88,7 +107,7 @@ export default function Propietario({token,user}) {
                   name="lastname"
                   onChange={(e) => handleInputChange(e)}
                   required
-                  value={user.lastname}
+                  value={dataUser.lastname}
                   className="bg-blue-light mr-4 w-80 h-12 focus:outline-none px-4"
                   type="text"
                 />
@@ -104,7 +123,7 @@ export default function Propietario({token,user}) {
                   required
                   className="bg-blue-light mr-4 w-80 h-12 focus:outline-none px-4"
                   type="number"
-                  value={user.phone}
+                  value={dataUser.phone}
                 />
               </div>
               <div className="col-span-1">
@@ -127,7 +146,7 @@ export default function Propietario({token,user}) {
                   name="phone2"
                   onChange={(e) => handleInputChange(e)}
                   className="bg-blue-light mr-4 w-80 h-12 focus:outline-none px-4"
-                  type="number" value={user.phone2}
+                  type="number" value={dataUser.phone2}
                 />
               </div>
             </div>
@@ -138,7 +157,7 @@ export default function Propietario({token,user}) {
                 <input
                   name="addres"
                   onChange={(e) => handleInputChange(e)}
-                  value={user.direction}
+                  value={dataUser.direction}
                   required
                   className="bg-blue-light mr-4 w-full h-12 focus:outline-none px-4"
                   type="text"
@@ -150,7 +169,7 @@ export default function Propietario({token,user}) {
                 <input
                   name="city"
                   onChange={(e) => handleInputChange(e)}
-                  value={user.city}
+                  value={dataUser.city}
                   required
                   className="bg-blue-light mr-4 w-52 h-12 focus:outline-none px-4"
                   type="text"
@@ -165,7 +184,7 @@ export default function Propietario({token,user}) {
                   required
                   className="bg-blue-light mr-4 w-52 h-12 focus:outline-none px-4"
                   type="text"
-                  value={user.state}
+                  value={dataUser.state}
                 />
               </div>
               <div className="col-span-1">
@@ -177,7 +196,7 @@ export default function Propietario({token,user}) {
                   required
                   className="bg-blue-light mr-4 w-52 h-12 focus:outline-none px-4"
                   type="text"
-                  value={user.zip}
+                  value={dataUser.zip}
                 />
               </div>
             </div>
