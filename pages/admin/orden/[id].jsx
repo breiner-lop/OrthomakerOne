@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import ButtonBorderBlue from "../../../components/Buttons/ButtonBorderBlue";
 import ButtonRed from "../../../components/Buttons/ButtonRed";
 import CampoDetalleOrden from "../../../components/CampoDetalleOrden";
@@ -13,18 +13,19 @@ export default function Orden() {
   const router = useRouter()
   const { id } = router.query
   // states
-  const [loading,setLoading] = React.useState(true);
-  const [userData,setUserData]=React.useState("")
-  const [dataOrder,setDataOrder]=React.useState("")
-  const [dataPet,setDataPet]=React.useState({})
-  const [dataProthesis,setDataProthesis]=React.useState("")
-  const [token,setToken]=React.useState("")
+  const [loading,setLoading] = useState(true);
+  const [userData,setUserData]=useState("")
+  const [dataOrder,setDataOrder]=useState("")
+  const [dataPet,setDataPet]=useState("")
+  const [dataProthesis,setDataProthesis]=useState("")
+  const [tokenn,setToken]=useState("")
+  const [petImgs,setImgs]=useState("")
   React.useEffect(() => {
-    const token = localStorage.getItem("token");
+     let token = localStorage.getItem("token");
     setToken(token)
     setLoading(false)
     /// get datas from BDD
-    // get prothesisData from BDD                     
+    /******  GET ORDER DATA from BDD *******/                    
     axios.get(`${process.env.SERVER}/order/${id}`,{
       headers:{
          "auth-token": token,
@@ -33,69 +34,86 @@ export default function Orden() {
          .then(function (response) { // en caso de ser exitosa la consulta de prothesis
           setDataOrder(response.data[0])
           setLoading(false)
-          console.log(response.data[0])
+          console.log(response.data[0],tokenn)
           getProthesis(response.data[0].prothesis_id);
           getUser(response.data[0].users_id)
         })
         .catch(function (error) { // en caso de ser incorrectos los datos de consulta de prothesis
        });
        return () => {
-        setDataOrder(""); // This worked for me
+        setDataOrder("");
       };
   },[]);
 
-  ////GET USER
+  /*********GET USER******/
   const getUser=(id)=>{
     // get userdata from BDD                     
     axios.get(`${process.env.SERVER}/user/${id}`,{
       headers:{
-        "auth-token": token,
+        "auth-token":localStorage.getItem("token"),
       }
-  })
- .then(function (response) { // en caso de ser exitosa la culta de usuario
+    })
+    .then(function (response) { // en caso de ser exitosa la consulta de usuario
       setUserData(response.data)
       console.log(response.data)
-  })
-  .catch(function (error) { // en caso de ser incorrectos los datos de conuslta der usuario
-   });
+    })
+    .catch(function (error) { // en caso de ser incorrectos los datos de conuslta der usuario
+    });
   
-  }
-    ////GET Prothesis
+    }
+    /*******GET Prothesis**********/
     const getProthesis=(id)=>{
       // get userdata from BDD                     
       axios.get(`${process.env.SERVER}/prothesis/${id}`,{
         headers:{
-          "auth-token": token,
+          "auth-token":localStorage.getItem("token"),
         }
-    })
-   .then(function (response) { // en caso de ser exitosa la culta de usuario
+      })
+      .then(function (response) { // en caso de ser exitosa la consulta de prthothesis
         setDataProthesis(response.data[0])
         console.log(response.data[0])
        response.data[0].pets_id?getPets(response.data[0].pets_id):null
-    })
-    .catch(function (error) { // en caso de ser incorrectos los datos de conuslta der usuario
-     });
-      ////GET Prothesis
+      })
+      .catch(function (error) { // en caso de ser incorrectos los datos de conuslta der usuario
+      });
+      /************GET PETS************/
     const getPets=(id)=>{
       // get userdata from BDD                     
       axios.get(`${process.env.SERVER}/pets/${id}`,{
         headers:{
-          "auth-token": token,
+          "auth-token":localStorage.getItem("token"),
         }
     })
-   .then(function (response) { // en caso de ser exitosa la culta de usuario
-        setDataPet(response.data[0])
-        console.log(response.data[0])
+   .then(function (response) { // en caso de ser exitosa la consulta de mascota
+        setDataPet(response.data)
+        getPetImgs(response.data.id)
+        console.log(response.data)
     })
-    .catch(function (error) { // en caso de ser incorrectos los datos de conuslta der usuario
+    .catch(function (error) { // en caso de ser incorrectos los datos de conuslta de mascota
+     });
+    }
+    }
+    /************  GET PET IMGS **************/
+    const getPetImgs=(id)=>{
+      axios.get(`${process.env.SERVER}/petsimg/${id}`,{
+        headers:{
+          "auth-token":localStorage.getItem("token"),
+        }
+    })
+   .then(function (response) { // en caso de ser exitosa la consulta de de imagenes de mascota
+    setImgs(JSON.parse(response.data[0].path))
+        console.log(JSON.parse(response.data[0].path))
+    })
+    .catch(function (error) { // en caso de ser incorrectos la consulta de imagenes de mascotas
+      console.log(error)
      });
    }
     
-    }
+    
   return (
    <>
    {loading?<div className="h-screen"><Loading/></div>:
-     token? <Layout>
+     tokenn? <Layout>
      <div className="bg-blu-light h-screen w-full p-8 overflow-y-auto justify-center flex">
        <div className="w-full" style={{maxWidth:"1500px"}}>
          {/**  logo */}
@@ -134,7 +152,10 @@ export default function Orden() {
            {/**  Header */}
            <div className="bg-white pt-6 pb-6 rounded-t-lg filter drop-shadow flex justify-between px-6">
               <span>Detalle de la orden ({`#${id}`}) </span>
-              <span>Valor: $950.000</span>
+             <div>
+             {dataOrder?<><span className="mr-2"> {`Valor: $${dataOrder.valor_total}`} </span>/
+              <span className="ml-2"> {`Transacción: ${dataOrder.id_transaction}`} </span></>:<Loading/> }
+             </div>
            </div>
            {/**  productos */}
            <div className="bg-white pt-6 pb-10 filter drop-shadow flex items-center">
@@ -153,11 +174,11 @@ export default function Orden() {
                 </div>
               </div>
                 <div className="flex flex-col text-xs ml-14">
-                <CampoDetalleOrden title="Telefono (Opcional)" valor={userData.phone2} widthTitle='w-28' />
-                <CampoDetalleOrden title="Ditrecci&oacute;n" valor={userData.direction} widthTitle='w-28' />
+                <CampoDetalleOrden title="Telefono (Opcional)" valor={userData.phone2} widthTitle='w-28'/>
+                <CampoDetalleOrden title="Ditrecci&oacute;n" valor={userData.direction} widthTitle='w-28'/>
                 </div>
                 <div className="flex flex-col ml-14 text-xs">
-                <CampoDetalleOrden title="Zip" valor={userData.zip} widthTitle='w-10' />
+                <CampoDetalleOrden title="Zip" valor={userData.zip} widthTitle='w-10'/>
                 </div>
                 </>:<Loading/>
               }
@@ -171,24 +192,24 @@ export default function Orden() {
             <h6 className="text-base">Informaci&oacute;n de la mascota</h6>
              <div className="flex mt-6">
              <div className="flex flex-col text-xs mr-20">
-             <CampoDetalleOrden title="Nombre mascota" valor="Scot" widthTitle="w-28"/>
+             <CampoDetalleOrden title="Nombre mascota" valor={dataPet.name} widthTitle="w-28"/>
              <CampoDetalleOrden title="Tamaño" valor={dataProthesis.pet_size} widthTitle="w-28"/>
              </div>
              <div className="flex flex-col text-xs mr-20">
-               <CampoDetalleOrden title="Edad" valor="12 meses" widthTitle="w-12"/>
-               <CampoDetalleOrden title="Peso" valor="20 Kg" widthTitle="w-12"/>
+               <CampoDetalleOrden title="Edad" valor={dataPet.age} widthTitle="w-12"/>
+               <CampoDetalleOrden title="Peso" valor={dataPet.weight} widthTitle="w-12"/>
              </div>
              <div className="flex flex-col text-xs mr-20">
-               <CampoDetalleOrden title="Raza" valor="Chanda" widthTitle="w-12"/>
+               <CampoDetalleOrden title="Raza" valor={dataPet.race} widthTitle="w-12"/>
              </div>
            </div>
            <div>
            <h6 className="my-6 text-base">Fotos de perfiles </h6>
            <div className="flex">
-             <CardPetPhotos img="/img/dog_01.png" title="Frente"/>
-             <CardPetPhotos img="/img/dog_01.png" title="Perfil derecho"/>
-             <CardPetPhotos img="/img/dog_01.png" title="Perfil izquierdo"/>
-             <CardPetPhotos img="/img/dog_01.png" title="Perfil trasero"/>
+             <CardPetPhotos img={`/${petImgs.image1}`} title="Frente"/>
+             <CardPetPhotos img={petImgs.image2} title="Perfil derecho"/>
+             <CardPetPhotos img={petImgs.image3} title="Perfil izquierdo"/>
+             <CardPetPhotos img={petImgs.image4} title="Perfil trasero"/>
            </div>
            </div>
             </>:<Loading/>
