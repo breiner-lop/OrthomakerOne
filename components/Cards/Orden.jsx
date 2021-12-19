@@ -24,6 +24,10 @@ export default function OrdenCard({id,status,total,userId}) {
     })
     .catch(function (error) { // en caso de ser incorrectos los datos
     });
+
+      return () => {
+        setUser({}); // This worked for me
+      };
   },[])
   return (
    <div>

@@ -15,14 +15,14 @@ export default function Orden() {
   // states
   const [loading,setLoading] = React.useState(true);
   const [userData,setUserData]=React.useState("")
-  const [dataOrder,setDataOrder]=React.useState({})
+  const [dataOrder,setDataOrder]=React.useState("")
   const [dataPet,setDataPet]=React.useState({})
   const [dataProthesis,setDataProthesis]=React.useState("")
   const [token,setToken]=React.useState("")
   React.useEffect(() => {
     const token = localStorage.getItem("token");
     setToken(token)
-    setLoading({page:false})
+    setLoading(false)
     /// get datas from BDD
     // get prothesisData from BDD                     
     axios.get(`${process.env.SERVER}/order/${id}`,{
@@ -39,8 +39,11 @@ export default function Orden() {
         })
         .catch(function (error) { // en caso de ser incorrectos los datos de consulta de prothesis
        });
+       return () => {
+        setDataOrder(""); // This worked for me
+      };
+  },[]);
 
-  },[id]);
   ////GET USER
   const getUser=(id)=>{
     // get userdata from BDD                     
@@ -68,14 +71,14 @@ export default function Orden() {
    .then(function (response) { // en caso de ser exitosa la culta de usuario
         setDataProthesis(response.data[0])
         console.log(response.data[0])
-        getPets(response.data[0].pets_id)
+       response.data[0].pets_id?getPets(response.data[0].pets_id):null
     })
     .catch(function (error) { // en caso de ser incorrectos los datos de conuslta der usuario
      });
       ////GET Prothesis
     const getPets=(id)=>{
       // get userdata from BDD                     
-      axios.get(`${process.env.SERVER}/pet/${id}`,{
+      axios.get(`${process.env.SERVER}/pets/${id}`,{
         headers:{
           "auth-token": token,
         }
