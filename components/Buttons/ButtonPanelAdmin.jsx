@@ -1,14 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-export default function ButtonPanelAdmin({
-  text,
-  active,
-  img,
-  href,
-  isCount,
-  onClick,
-}) {
+export default function ButtonPanelAdmin({text, active,img,href,isCount,onClick,count}) {
   return (
     <Link href={href}>
       <div
@@ -24,7 +17,7 @@ export default function ButtonPanelAdmin({
           <span className="ml-4">{text}</span>
         </span>
         {isCount && (
-          <span className="bg-red-400 rounded px-2 py-1 text-xs">0</span>
+          <span className="bg-red-400 rounded px-2 py-1 text-xs">{count}</span>
         )}
       </div>
     </Link>

@@ -6,7 +6,7 @@ export default function Panel() {
   // states
   const [user,setUser]=React.useState({})
   /**** traer datos del context */
-  const {activeNumber,setActiveNumber } = useCasosCtx();
+  const {activeNumber,setActiveNumber,countOrders } = useCasosCtx();
   //data localStorage
   React.useEffect(()=>{
     setUser(JSON.parse(localStorage.getItem('user')))
@@ -49,6 +49,7 @@ export default function Panel() {
                 active={activeNumber == 1 ? true : false}
                 onClick={() => setActiveNumber(1)}
                 isCount={true}
+                count={countOrders}
               />
             </li>
             <li>

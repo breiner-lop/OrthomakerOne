@@ -1,7 +1,7 @@
 
-export default function CardTeam({name,key,puesto,profesion,img,accion }) {
+export default function CardTeam({name,puesto,profesion,img,accion }) {
   return (
-    <div key={key} className="p-10 bg-blue-extralight col-span-1 rounded-xl" >
+    <div className="p-10 bg-blue-extralight col-span-1 rounded-xl" >
       <div className="flex justify-between mb-14">
         <span className="text-2xl font-bold"> {puesto} </span>
       </div>

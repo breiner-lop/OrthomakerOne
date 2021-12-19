@@ -16,6 +16,7 @@ import ButtonCancelBlueLight from "../components/Buttons/ButtonCancelBlueLight";
 import { getObjects } from "../threejs/apploader";
 import axios from "axios";
 import ViewNoAuth from "../components/ViewNoAuth";
+import PopupExito from "../components/PopupExito";
 
 export default function Getstarted() {
   const { navForm, setNavForm, datosProtesis } = useCasosCtx();
@@ -25,6 +26,7 @@ export default function Getstarted() {
   const [petsId, setPetsId] = React.useState("");
   const [dataProthesis, setDataProthesis] = React.useState({});
   const [loading, setLoading] = React.useState(true);
+  const [enviado, setEnviado] = React.useState(1);
   // privatizador de vistas
   React.useEffect(() => {
     const token = localStorage.getItem("token");
@@ -41,6 +43,7 @@ export default function Getstarted() {
 
   //HANDLER BOTON SEND TO PRODUCTION(ENVIAR A PRODUCCION)
   const sendToProduction = () => {
+    setEnviado(2)
     // traer datos del threejs
     const obThree = getObjects();
     // creacion del formulario de datos y set del mismo
@@ -70,6 +73,7 @@ export default function Getstarted() {
       .then(function (response) {
         // en caso de ser exitosa
         console.log(response);
+        setEnviado(3)
       })
       .catch(function (error) {
         // en caso de ser incorrectos los datos
@@ -79,6 +83,10 @@ export default function Getstarted() {
 
   return loading? null :!token?<ViewNoAuth />: (
     <div>
+      {
+        enviado==3&&<PopupExito text="Enviado a produccion" to="/"/>
+       
+      }
       <div className="flex justify-between text-purple-dark h-20 items-center px-24">
         <div className="flex items-center">
           {navForm == 9 && (
@@ -102,7 +110,7 @@ export default function Getstarted() {
         <div className="flex">
           {navForm == 9 ? (
             <ButtonRed
-              text="Enviar a producci&oacute;n"
+              text={enviado==1?"Enviar a producción":"Enviando..."}
               onClick={() => {
                 sendToProduction();
               }}

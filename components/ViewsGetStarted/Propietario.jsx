@@ -17,7 +17,7 @@ export default function Propietario({token,user}) {
         name:user.name,
         lastname:user.lastname,
         phone:data.phone,
-        phone2:data.two,
+        phone2:data.phone2,
         direction:user.direction,
         city:user.city,
         state:data.state,

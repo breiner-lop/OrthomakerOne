@@ -4,7 +4,7 @@ const casosContext = createContext("");
 export const useCasosCtx = () => useContext(casosContext);
 export const CasosProvider = ({ children }) => {
   
-  const [navForm, setNavForm] = useState(1);
+  const [navForm, setNavForm] = useState(9);
   const [activeNumber, setActiveNumber] = useState(1);
   const [state, setState] = useState(false);
   // POPUP ACCOUNT
@@ -12,6 +12,10 @@ export const CasosProvider = ({ children }) => {
     state:false,
     auth:false
   });
+  // count orders total
+  const [countOrders,setCountOrders] = useState(0);
+  // handler filter orders by orderId or username
+  const [filterValue,setFilterValue] = useState("");
   //inputs protesis
   const [datosProtesis,setDatos] = useState({
     color:"rojo",
@@ -22,7 +26,7 @@ export const CasosProvider = ({ children }) => {
 
   return (
     //@ts-ignore
-    <casosContext.Provider value={{activeNumber,setActiveNumber,navForm,setNavForm,state,setState,datosProtesis,setDatos,setPopup,popup}}>
+    <casosContext.Provider value={{activeNumber,setActiveNumber,navForm,setNavForm,state,setState,datosProtesis,setDatos,setPopup,popup,setCountOrders,countOrders,setFilterValue,filterValue}}>
       {children}
     </casosContext.Provider>
   );
