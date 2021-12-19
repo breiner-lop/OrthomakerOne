@@ -47,22 +47,7 @@ export default function Propietario({token,user}) {
    // const data=JSON.stringify({...user,[e.target.name]:e.target.value})
     //localStorage.setItem("user",data)
   };
-  /**React.useEffect(()=>{
-    axios.get(
-      `${process.env.SERVER}/user/${user.id}`,
-      {
-        headers: {
-          'auth-token': token //the token is a variable which holds the token
-        },
-      }
-    ).then(function (response) { // en caso de ser exitosa
-      console.log(response)
-      setDataUser(response.data)
-    })
-    .catch(function (error) { // en caso de ser incorrectos los datos
-      console.log(error)
-    });
-  },[navForm])**/
+
   return (
     <div>
       <div className=" py-20 flex justify-center text-purple-dark">
