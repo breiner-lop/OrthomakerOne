@@ -20,6 +20,15 @@ export default function Orden() {
   const [dataProthesis,setDataProthesis]=useState("")
   const [tokenn,setToken]=useState("")
   const [petImgs,setImgs]=useState("")
+  //download prothesis files
+    function downloadURI(uri, name) 
+{
+    var link = document.createElement("a");
+    link.download = name;
+    link.href =`https://${uri}`;
+    link.click();
+  }
+  // use Effect
   React.useEffect(() => {
      let token = localStorage.getItem("token");
     setToken(token)
@@ -206,10 +215,10 @@ export default function Orden() {
            <div>
            <h6 className="my-6 text-base">Fotos de perfiles </h6>
            <div className="flex">
-             <CardPetPhotos img={`/${petImgs.image1}`} title="Frente"/>
-             <CardPetPhotos img={petImgs.image2} title="Perfil derecho"/>
-             <CardPetPhotos img={petImgs.image3} title="Perfil izquierdo"/>
-             <CardPetPhotos img={petImgs.image4} title="Perfil trasero"/>
+             <CardPetPhotos href={`https://${petImgs.image1}`} img={`https://${petImgs.image1}`} title="Frente"/>
+             <CardPetPhotos href={`https://${petImgs.image2}`} img={`https://${petImgs.image2}`} title="Perfil derecho"/>
+             <CardPetPhotos href={`https://${petImgs.image3}`} img={`https://${petImgs.image3}`} title="Perfil izquierdo"/>
+             <CardPetPhotos href={`https://${petImgs.image4}`} img={`https://${petImgs.image4}`} title="Perfil trasero"/>
            </div>
            </div>
             </>:<Loading/>
@@ -246,9 +255,11 @@ export default function Orden() {
            </div>
            <div>
              <h4 className="my-4">Descargar modelos 3D</h4>
-             <Download3D onClick={()=>window.open(dataProthesis.case_path)} img="/img/3d1.png"/>
-             <Download3D  onClick={()=>window.open(dataProthesis.pillar_path)} img="/img/3d2.png"/>
-             <Download3D  onClick={()=>window.open(dataProthesis.lace_path)} img="/img/3d3.png"/>
+             <div className="flex">
+             <Download3D href={`https://${dataProthesis.case_path}`} name="Case.stl" img="/img/3d1.png"/>
+             <Download3D href={`https://${dataProthesis.pillar_path}`} name="Pillar.stl" img="/img/3d2.png"/>
+             <Download3D href={`https://${dataProthesis.lace_path}`} name="Lace.stl" img="/img/3d3.png"/>
+             </div>
            </div>
                </>:<Loading/>
              }

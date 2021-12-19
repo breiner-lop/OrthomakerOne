@@ -1,8 +1,9 @@
 import React from 'react'
 
-export default function CardPetPhotos({img,title}) {
+export default function CardPetPhotos({img,title,href,name}) {
     return (
-        <button className='border rounded-lg border-dashed border-purple w-40 mx-1 filter drop-shadow-md'>
+       <div className='border rounded-lg border-dashed border-purple w-40 mx-1 filter drop-shadow-md'>
+             <a href={href}>
             <div className='h-36'>
                 <img src={img} alt="imagen perfil" className='w-full h-full object-cover rounded-t-lg' />
             </div>
@@ -12,6 +13,7 @@ export default function CardPetPhotos({img,title}) {
                     <img src="/img/download.png" alt="descagar icon" className='mx-auto'/>
                 </span>
             </div>
-        </button>
+        </a>
+       </div>
     )
 }
