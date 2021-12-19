@@ -25,14 +25,14 @@ function convertToBlob(obj) {
     return new Blob([obj], { type: 'text/plain' });
 }
 
-function downloadpiece(data, name) {
+ export function downloadpiece(data, name) {
 
     var a = document.createElement('a');
     document.body.appendChild(a);
     var blob = new Blob([data], { type: 'text/plain' });
     var url = window.URL.createObjectURL(blob);
     a.href = url;
-    a.download = name + ".stl";
+    a.download = name;
     a.click();
     window.URL.revokeObjectURL(url);
     document.body.removeChild(a);
