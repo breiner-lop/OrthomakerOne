@@ -1,9 +1,9 @@
 import {useCasosCtx} from "../../contexts/casosExito/navInicio.context"
 
-export default function CardCasos({ key, img, name, textOne, textTwo,Uu,imgsig }) {
+export default function CardCasos({ img, name, textOne, textTwo,Uu,imgsig }) {
   const {setState,state,setCaso}=useCasosCtx();
   return (
-    <div key={key} >
+    <div>
       <div>
         <div className="flex " style={{ width:`${state==false?"1200px":"1400px"}` }}>
           <div className="w-1/2">

@@ -2,9 +2,8 @@ import React from "react";
 import ButtonBlue from "../components/Buttons/ButtonBlue";
 import SingUpInput from "../components/Inputs/SingUpInput";
 import axios from 'axios'
-import { useRouter } from "next/router";
 import Link from "next/link"
-import RegistroExitoso from "../components/RegistroExitoso";
+import PopupExito from "../components/PopupExito";
 
 export default function PrimerPaso() {
 
@@ -33,7 +32,7 @@ export default function PrimerPaso() {
   }
   return (
     <div className="flex">
-     {registrado&& <RegistroExitoso/>}
+     {registrado&& <PopupExito text="Registro exitoso" to="/login"/>}
     <div className="w-7/12 bg-purple-dark h-screen" style={{backgroundImage:"url(/img/bgreg.png)",backgroundSize:"cover",backgroundRepeat:"no-repeat"}}></div>
     <div className="w-5/12 h-screen overflow-y-scroll flex justify-center items-center">
     <div className="flex w-full px-6 py-4">

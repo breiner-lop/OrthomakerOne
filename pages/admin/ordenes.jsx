@@ -1,43 +1,41 @@
 import React from "react";
-import ButtonFiltrar from "../../components/Buttons/ButtonFiltrar";
 import Orden from "../../components/Cards/Orden";
 import Buscar from "../../components/Inputs/Buscar";
 import LayoutAdmin from "../../components/LayoutAdmin";
 import ViewNoAuth from "../../components/ViewNoAuth";
-import axios from 'axios'
+import { useCasosCtx } from "../../contexts/casosExito/navInicio.context";
+import axios from "axios";
+import Loading from "../../components/Loading";
 
 export default function Ordenes() {
+  // data context
+  const { setCountOrders, filterValue } = useCasosCtx();
   // states
   const [loading, setLoading] = React.useState(true);
   const [orders, serOrders] = React.useState([]);
   const [token, setToken] = React.useState(false);
-  const [userLocal, setUserLocal] = React.useState(false);
   React.useEffect(() => {
-    const token=localStorage.getItem("token");//get token
-    setToken(token)
-    //const user=localStorage.getItem("user");//get user
-    //setUserLocal(user)
-    setLoading(false)
+    const token = localStorage.getItem("token"); //get token
+    setToken(token);
+    setLoading(false);
     //llamada a la api ordenes
-    axios.get(`${process.env.SERVER}/orders`,{
-      headers:{
-        "auth-token": token,
-      }
-    })
-    .then(function (response) { // en caso de ser exitosa
-      console.log(response.data)
-      serOrders(response.data)
-             
-    })
-    .catch(function (error) { // en caso de ser incorrectos los datos
-    });
+    axios
+      .get(`${process.env.SERVER}/orders`, {
+        headers: {
+          "auth-token": token,
+        },
+      })
+      .then(function (response) {
+        // en caso de ser exitosa
+        console.log(response.data);
+        serOrders(response.data);
+        setCountOrders(response.data.length);
+      })
+      .catch(function (error) {
+        // en caso de ser incorrectos los datos
+      });
+  },[token]);
 
-  },[]);
-
-  //manejador del boton inicar sesion
-const iniciarSesion=(e)=>{
-  e.preventDefault() //llamada a api
-}
 
   return (
     <>
@@ -55,7 +53,6 @@ const iniciarSesion=(e)=>{
               <div className="w-9/12">
                 <div className="flex">
                   <Buscar />
-                  <ButtonFiltrar />
                 </div>
                 <div>
                   <div className="flex justify-between text-gray-400 my-8 px-6">
@@ -64,15 +61,25 @@ const iniciarSesion=(e)=>{
                     <h6>Valor total</h6>
                     <h6 className="w-32">Usuario</h6>
                   </div>
-                  <div>
-                   {
-                     orders.map((order)=>{
-                       return(
-                        <Orden id={order.id} status={order.status} total={order.valor_total} userId={order.users_id} />
+                 {
+                   orders?
+                   <div>
+                   {orders.map((order) => {
+                     return (
+                       order.id.includes(filterValue)&&(
+                         <Orden
+                           key={order.id}
+                           id={order.id}
+                           status={order.status}
+                           total={order.valor_total}
+                           userId={order.users_id}
+                         />
                        )
-                     })
-                   }
-                  </div>
+                     );
+                   })}
+                 </div>:
+                 <Loading/>
+                 }
                 </div>
               </div>
 
