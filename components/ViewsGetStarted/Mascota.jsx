@@ -14,6 +14,7 @@ export default function Pet({token,user}) {
   /*** MANEJADOR DEL EVENTO SUBIR IMAGEN */
   const handleFile = (ide) => {
     document.getElementById(`${ide}`).click();
+    
   };
   const handleImg = (e) => {
     // Where you will display your image
@@ -31,6 +32,7 @@ export default function Pet({token,user}) {
         ...dataPet,
         [e.target.name]:file
       });
+      console.log(dataPet)
       preview.style.backgroundImage = `url("${reader.result}")`;
     };
     if (file) {
@@ -50,10 +52,10 @@ export default function Pet({token,user}) {
         Data.append('race',dataPet.race)
         Data.append('weight',dataPet.weight)
         Data.append('age',dataPet.age)
-        Data.append('images1',dataPet.image1)
-        Data.append('images2',dataPet.image2)
-        Data.append('images3',dataPet.image3)
-        Data.append('images4',dataPet.image4)
+        Data.append('images1',dataPet.image1,`Frente-${dataPet.image1.name.split(" ").join("")}`)
+        Data.append('images2',dataPet.image2,`PerfilDerecho-${dataPet.image2.name.split(" ").join("")}`)
+        Data.append('images3',dataPet.image3,`PerfilIzquierdo-${dataPet.image3.name.split(" ").join("")}`)
+        Data.append('images4',dataPet.image4,`PerfilTrasero-${dataPet.image4.name.split(" ").join("")}`)
     axios.post(`${process.env.SERVER}/addpet/${user.id}`,Data,
         {
           headers: {

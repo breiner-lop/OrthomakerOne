@@ -3,6 +3,7 @@ import ButtonNextForm from "../Buttons/ButtonNextForm";
 import { useCasosCtx } from "../../contexts/casosExito/navInicio.context";
 import FormCompleted from "../Buttons/FormCompleted";
 import { uploadLocalStorage } from "./uploadLocalStorage";
+import Extremidad from "../Cards/ExtremidadAmputada";
 
 export default function ExtremidadAmputada() {
   /// estados
@@ -64,58 +65,10 @@ export default function ExtremidadAmputada() {
           </div>
           {/***Imagen dog */}
           <div className=" flex p-12 justify-center border-b-2 border-t-2 border-gray-200">
-            <div
-              onClick={(e) => handleExtremidad("Delantera derecha")}
-              className="cursor-pointer hover:border-blue-900 hover:shadow-md transition duration-300 border border-dashed border-purple h-36 w-32 flex flex-col justify-center items-center rounded-lg mx-1"
-            >
-              <img
-                src="/img/piernadelderecha.png"
-                alt="dogsize"
-                className="pb-3 mt-4"
-              />
-              <span className="text-xs font-bold text-purple-dark">
-                Delantera derecha
-              </span>
-            </div>
-            <div
-              onClick={(e) => handleExtremidad("Delantera izquierda")}
-              className="cursor-pointer hover:border-blue-900 hover:shadow-md transition duration-300 border border-dashed border-purple h-36 w-32 flex flex-col justify-center items-center rounded-lg mx-1"
-            >
-              <img
-                src="/img/piernadelizquierda.png"
-                alt="dogsize"
-                className="pb-3 mt-4"
-              />
-              <span className="text-xs font-bold text-purple-dark">
-                Delantera Izquierda
-              </span>
-            </div>
-            <div
-              onClick={(e) => handleExtremidad("Trasera derecha")}
-              className="cursor-pointer hover:border-blue-900 hover:shadow-md transition duration-300 border border-dashed border-purple h-36 w-32 flex flex-col justify-center items-center rounded-lg mx-1"
-            >
-              <img
-                src="/img/piernatraderecha.png"
-                alt="dogsize"
-                className="pb-3 mt-4"
-              />
-              <span className="text-xs font-bold text-purple-dark">
-                Trasera derecha
-              </span>
-            </div>
-            <div
-              onClick={(e) => handleExtremidad("Trasera izquierda")}
-              className="cursor-pointer hover:border-blue-900 hover:shadow-md transition duration-300 border border-dashed border-purple h-36 w-32 flex flex-col justify-center items-center rounded-lg mx-1"
-            >
-              <img
-                src="/img/piernatraizquierda.png"
-                alt="dogsize"
-                className="pb-3 mt-4"
-              />
-              <span className="text-xs font-bold text-purple-dark">
-                Trasera izquierda
-              </span>
-            </div>
+              <Extremidad onClick={() => handleExtremidad("Delantera derecha")} text="Delantera derecha" img="/img/piernadelderecha.png" extremidad={extremidad=="Delantera derecha"?true:false}/>
+              <Extremidad onClick={() => handleExtremidad("Delantera izquierda")} text="Delantera izquierda" img="/img/piernadelizquierda.png" extremidad={extremidad=="Delantera izquierda"?true:false}/>
+              <Extremidad onClick={() => handleExtremidad("Trasera derecha")} text="Trasera derecha" img="/img/piernatraderecha.png" extremidad={extremidad=="Trasera derecha"?true:false}/>
+              <Extremidad onClick={() => handleExtremidad("Trasera izquierda")} text="Trasera izquierda" img="/img/piernatraizquierda.png" extremidad={extremidad=="Trasera izquierda"?true:false}/>
           </div>
           {/***texto */}
           <div className=" bg-white py-8 mb-1 text-center">
