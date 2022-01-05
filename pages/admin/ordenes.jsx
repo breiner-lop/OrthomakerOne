@@ -9,18 +9,20 @@ import Loading from "../../components/Loading";
 
 export default function Ordenes() {
   // data context
-  const { setCountOrders, filterValue } = useCasosCtx();
+  const { setCountOrders, filterValue,rolUser } = useCasosCtx();
   // states
   const [loading, setLoading] = React.useState(true);
   const [orders, serOrders] = React.useState([]);
   const [token, setToken] = React.useState(false);
   React.useEffect(() => {
     const token = localStorage.getItem("token"); //get token
+    const user=JSON.parse(localStorage.getItem("user"))
     setToken(token);
     setLoading(false);
     //llamada a la api ordenes
-    axios
-      .get(`${process.env.SERVER}/orders`, {
+    if(user&&rolUser!==3){
+      axios
+      .get(`${process.env.SERVER}/${rolUser==0?"orders":rolUser==1&&"ordersUser/"+user.id}`,{
         headers: {
           "auth-token": token,
         },
@@ -34,7 +36,8 @@ export default function Ordenes() {
       .catch(function (error) {
         // en caso de ser incorrectos los datos
       });
-  },[token]);
+    }
+  },[rolUser]);
 
 
   return (
@@ -62,7 +65,7 @@ export default function Ordenes() {
                     <h6 className="w-32">Usuario</h6>
                   </div>
                  {
-                   orders?
+                   orders.length>0?
                    <div>
                    {orders.map((order) => {
                      return (
@@ -77,8 +80,7 @@ export default function Ordenes() {
                        )
                      );
                    })}
-                 </div>:
-                 <Loading/>
+                 </div>:<Loading/>
                  }
                 </div>
               </div>

@@ -6,10 +6,12 @@ export default function Panel() {
   // states
   const [user,setUser]=React.useState({})
   /**** traer datos del context */
-  const {activeNumber,setActiveNumber,countOrders } = useCasosCtx();
+  const {activeNumber,setActiveNumber,countOrders,setRolUser,rolUser } = useCasosCtx();
   //data localStorage
   React.useEffect(()=>{
-    setUser(JSON.parse(localStorage.getItem('user')))
+    const userdata=JSON.parse(localStorage.getItem('user'))
+    setUser(userdata)
+    setRolUser(userdata.rol_id)
   },[])
 
   return (
@@ -26,7 +28,7 @@ export default function Panel() {
               />
               <div className="ml-6 text-left">
                 <span className="text-xl">{user.name} {user.lastname}</span> <br />
-                <span className="text-xs text-white-transparent">admin</span>
+                <span className="text-xs text-white-transparent">{rolUser==0?"Admin":"cliente"}</span>
               </div>
             </div>
             <button>
@@ -55,8 +57,8 @@ export default function Panel() {
             <li>
               <ButtonPanelAdmin
               href="/admin/mi-cuenta"
-                text="Configuracion"
-                img="/img/ordenes.png"
+                text="Mis datos"
+                img="/img/user.png"
                 active={activeNumber == 2 ? true : false}
                 onClick={() => {
                   setActiveNumber(2);
