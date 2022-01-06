@@ -7,8 +7,7 @@ export default function Account() {
    const {setPopup,popup}=useCasosCtx()
     ///popup's handler
     const logout=()=>{
-        localStorage.removeItem("token")
-        localStorage.removeItem("user")
+        localStorage.clear()
         setPopup({auth:!popup.auth,state:false})
     }
     

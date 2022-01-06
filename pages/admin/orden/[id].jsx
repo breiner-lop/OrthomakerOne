@@ -20,14 +20,7 @@ export default function Orden() {
   const [dataProthesis,setDataProthesis]=useState("")
   const [tokenn,setToken]=useState("")
   const [petImgs,setImgs]=useState("")
-  //download prothesis files
-    function downloadURI(uri, name) 
-{
-    var link = document.createElement("a");
-    link.download = name;
-    link.href =`https://${uri}`;
-    link.click();
-  }
+
   // use Effect
   React.useEffect(() => {
      let token = localStorage.getItem("token");
@@ -43,7 +36,7 @@ export default function Orden() {
          .then(function (response) { // en caso de ser exitosa la consulta de prothesis
           setDataOrder(response.data[0])
           setLoading(false)
-          console.log(response.data[0],tokenn)
+          console.log(response.data[0],id)
           getProthesis(response.data[0].prothesis_id);
           getUser(response.data[0].users_id)
         })
@@ -52,7 +45,7 @@ export default function Orden() {
        return () => {
         setDataOrder("");
       };
-  },[]);
+  },[id]);
 
   /*********GET USER******/
   const getUser=(id)=>{

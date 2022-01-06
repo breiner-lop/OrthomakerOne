@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-import Link from "next/link";
-import Image from "next/image";
 import GetStarted from "../components/Buttons/GetStarted";
 import ButtonOrthoOne from "../components/Buttons/ButtonOrthoOne";
 import Technology from "../components/ViewsOrthoOne/Technology";
@@ -8,7 +6,6 @@ import Process from "../components/ViewsOrthoOne/Process";
 import Specs from "../components/ViewsOrthoOne/Specs";
 import Pricing from "../components/ViewsOrthoOne/Pricing";
 import FrequentQuestions from "../components/ViewsOrthoOne/FrequentQuestions";
-import MoreProductData from "../data/moreproductsimages.json";
 import CardCasos from "../components/Cards/CardCasos";
 import CardCasosData from "../data/casosExitos.json";
 import CardTeam from "../components/Cards/CardTeam";
@@ -291,7 +288,7 @@ export default function Index() {
               </div>
             </div>
           </div>
-          {/***  More Products ***/}
+          {/***  More Products 
           <div className="flex -mx-24 pb-20">
             <div className="w-1/2 bg-blue-light flex justify-center flex-col px-24 my-8">
               <h2 className="text-2xl mb-4">Productos</h2>
@@ -319,7 +316,8 @@ export default function Index() {
                 />
               ))}
             </div>
-          </div>
+          </div>***/}
+          
           {/***  Casos de exito ***/}
           <div className="mb-32">
             <h4 className="text-2xl font-light">Casos de exito</h4>
@@ -371,13 +369,7 @@ export default function Index() {
                   </button>
                 </li>
               </ul>
-              <div
-                className={
-                  !state
-                    ? "w-2/5 mt-14 transition duration-300 "
-                    : "w-full mt-14 transition duration-300"
-                }
-              >
+              <div className={!state? "w-2/5 mt-14 transition duration-300": "w-full mt-14 transition duration-300"}>
                 <Carousel
                   responsive={responsive}
                   arrows={false}
@@ -397,6 +389,12 @@ export default function Index() {
               </div>
             </div>
           </div>
+           {/***  NOSOTROS ***/}
+           <div className="bg-gradient-to-r from-blue-light to-white -mx-24 px-24 py-32 mb-14">
+             <h4 className="font-bold text-5xl mb-10">¿QUIÉNES SOMOS?</h4>
+             <p className="text-2xl font-light">Somos una empresa colombiana fundada por ingenieros con experiencia en el diseño y desarrollo de soluciones en 3d y fieles    creyentes en que los animales merecen segundas oportunidades.
+              en OrthoMaker estamos comprometidos con el bienestar de los animales, contamos con un equipo de ingenieros y de la mano de especialistas en veterinaria, buscamos brindar soluciones ortopédicas confiables y seguras que estén a su alcance. haciendo uso de la mejor tecnología, la creatividad y nuestro conocimiento para satisfacer las necesidades de cada uno de nuestros pacientes.</p>
+           </div>
           {/***  TEAM ***/}
           <div className="mb-14">
             <h4 className="text-2xl font-light mb-14">Equipo de trabajo</h4>
@@ -431,7 +429,12 @@ export default function Index() {
                 Fabricadas para durar con materiales respetuosos con el medio
                 ambiente y a la vez cómodos para tu mascota.
               </p>
-              <div className="w-96 h-12 rounded-xl bg-blue-light flex">
+              <textarea
+                  className=" text-purple-dark focus-visible:border-pink-100 shadow-xl p-4 mb-2 rounded-xl h-32 w-full bg-blue-light focus:outline-none"
+                  placeholder="Escribe tu mensaje aquí"
+                />
+              <div className="flex justify-between">
+              <div className="w-96 h-12 rounded-xl bg-blue-light flex shadow-xl">
                 <input
                   className=" text-purple-dark focus-visible:border-pink-100 px-4 rounded-xl w-4/5 h-full bg-blue-light focus:outline-none"
                   type="mail"
@@ -442,6 +445,8 @@ export default function Index() {
                     <img src="/img/mail.png" width="20px" height="18px" />
                   </span>
                 </span>
+              </div>
+              <button type="submit" className="w-36 bg-purple-dark rounded-xl ml-2 hover:bg-opacity-90 shadow-lg hover:shadow transition duration-300">Enviar</button>
               </div>
             </div>
             <div className="w-2/5 flex items-end">

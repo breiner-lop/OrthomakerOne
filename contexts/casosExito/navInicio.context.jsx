@@ -7,6 +7,10 @@ export const CasosProvider = ({ children }) => {
   const [navForm, setNavForm] = useState(1);
   const [activeNumber, setActiveNumber] = useState(1);
   const [state, setState] = useState(false);
+  //rol users
+  const [rolUser, setRolUser] = useState(3);
+  //  handler cases
+  const [caso, setCaso] = useState(1);
   // POPUP ACCOUNT
   const [popup,setPopup] = useState({
     state:false,
@@ -26,7 +30,7 @@ export const CasosProvider = ({ children }) => {
 
   return (
     //@ts-ignore
-    <casosContext.Provider value={{activeNumber,setActiveNumber,navForm,setNavForm,state,setState,datosProtesis,setDatos,setPopup,popup,setCountOrders,countOrders,setFilterValue,filterValue}}>
+    <casosContext.Provider value={{rolUser,setRolUser,activeNumber,caso,setCaso,setActiveNumber,navForm,setNavForm,state,setState,datosProtesis,setDatos,setPopup,popup,setCountOrders,countOrders,setFilterValue,filterValue}}>
       {children}
     </casosContext.Provider>
   );
