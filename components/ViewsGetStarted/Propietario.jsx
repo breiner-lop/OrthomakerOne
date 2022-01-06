@@ -9,7 +9,8 @@ export default function Propietario({token,user}) {
 
   const { navForm,setNavForm } = useCasosCtx();
 
-/// metodo put  de usuario
+  dataUser = user;
+  /// metodo put  de usuario
   const putUser = () => {
     axios.put(
       `${process.env.SERVER}/editUser/${user.id}`,

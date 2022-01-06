@@ -6,9 +6,11 @@ export default function Protesis() {
 
   const { datosProtesis, setDatos, } = useCasosCtx()
   //setDatos(datosProtesis)
+  const [medidaAB, setMedidaAB] = React.useState()
+  const [medidaBC, setMedidaBC] = React.useState()
 
   /***MANEJADORM DE LOS COLORES */
-  const handleInputColor = (color,colorText) => {
+  const handleInputColor = (color, colorText) => {
     changeColor(color)
     setDatos({
       ...datosProtesis,
@@ -16,15 +18,20 @@ export default function Protesis() {
     });
     //localStorage.setItem('color',colorText)
   };
-     /***MANEJADORM DE LOS inputs de valor */
-     const handleInputChange = (e) => {
-     setDatos({
-       ...datosProtesis,
-       [e.target.name]:parseFloat(e.target.value)
-     })
+  /***MANEJADORM DE LOS inputs de valor */
+  const handleInputChange = (e) => {
+    setDatos({
+      ...datosProtesis,
+      [e.target.name]: parseFloat(e.target.value)
+    })
   }
   React.useEffect(() => {
-    threejsLoader()
+    const dataProthesis = JSON.parse(localStorage.getItem("dataProthesis"));
+    setMedidaAB(dataProthesis.prothesisData.medidaAB);
+    setMedidaBC(dataProthesis.prothesisData.medidaBC);
+    // console.log(dataProthesis);
+
+    threejsLoader(dataProthesis.prothesisData.medidaAB,dataProthesis.prothesisData.medidaBC);
   }, [state])
   return (
     <div className="bg-blu-light flex text-purple-dark overflow-y-hidden">
@@ -35,7 +42,7 @@ export default function Protesis() {
           <div className="flex justify-between my-6">
             <span>Longitud</span>
             <div className="bg-white w-28 flex px-3 rounded border border-gray-200">
-              <input type="number" id="txt1" name="lace" min="1" max="10" step="0.1" onInput={(e) => handleInputChange(e)} className="w-16 focus:outline-none" />
+              <input type="number" id="txt1" name="lace" min="1" max="10" step="0.1" value={parseInt(medidaAB) / 10} className="w-16 focus:outline-none" />
               <span>CM</span>
             </div>
           </div>
@@ -45,7 +52,7 @@ export default function Protesis() {
           <div className="flex justify-between my-6">
             <span>Longitud</span>
             <div className="bg-white w-28 flex px-3 rounded border border-gray-200">
-              <input type="number" id="txt2" name="pillar" step="0.1" min="1" max="20" onChange={(e) => handleInputChange(e)} className="w-16 focus:outline-none" />
+              <input type="number" id="txt2" name="pillar" step="0.1" min="1" max="20" value={parseInt(medidaBC) / 10} className="w-16 focus:outline-none" />
               <span>CM</span>
             </div>
           </div>
@@ -56,22 +63,22 @@ export default function Protesis() {
             <span>Pigmento</span>
             <div className="flex">
               <div
-                onClick={() => handleInputColor(0x740500,"rojo")}
+                onClick={() => handleInputColor(0x740500, "rojo")}
                 className="w-8 h-8 rounded-full bg-red-600 mx-1 cursor-pointer"
               >
               </div>
               <div
-                onClick={() => handleInputColor(0x2c517f,"azul")}
+                onClick={() => handleInputColor(0x2c517f, "azul")}
                 className="w-8 h-8 rounded-full bg-blue-600 mx-1 cursor-pointer"
               >
               </div>
               <div
-                onClick={() => handleInputColor(0x775d06,"amarillo")}
+                onClick={() => handleInputColor(0x775d06, "amarillo")}
                 className="w-8 h-8 rounded-full bg-yellow-600 mx-1 cursor-pointer"
               >
               </div>
               <div
-                onClick={() => handleInputColor(0x196716,"verde")}
+                onClick={() => handleInputColor(0x196716, "verde")}
                 className="w-8 h-8 rounded-full bg-green-600 mx-1 cursor-pointer"
               >
               </div>

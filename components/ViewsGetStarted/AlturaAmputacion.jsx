@@ -6,33 +6,33 @@ import { uploadLocalStorage } from "./uploadLocalStorage";
 
 export default function AlturaAmputacion() {
   // estados
-  const [dataAltura, setAltura] = React.useState({})
+  const [ dataAltura, setAltura] = React.useState({})
   /*** LLAMADA DEL CONTEXT MANEJADOR DE VISTAS FORM */
   const { setNavForm } = useCasosCtx();
+
+  const [medidaAB, setMedidaAB]= React.useState(8.6)
+  const [medidaBC, setMedidaBC]= React.useState(3.9)
+
   //handle input
-  const handleAltura = (e) => {
-    setAltura({
-      ...dataAltura,
-      [e.target.name]:e.target.value
-    });
-    console.log(dataAltura);
-  };
+  
   //  manejador del submit form
-  const handleSubmit=(e)=>{
+  const handleSubmit = (e) => {
     e.preventDefault()
-      // llamada de datos al localStorage
-      const datosLocal = JSON.parse(localStorage.getItem('dataProthesis'))
-      // objeto data prothesis localStorage
-      var dataProthesis={
-        prothesisData:
-        {
-          pet_size:parseFloat(datosLocal.prothesisData.pet_size),
-          ext_emputee:datosLocal.prothesisData.ext_emputee,
-          medidaAB:parseFloat(dataAltura.medidaAB),
-          medidaBC:parseFloat(dataAltura.medidaBC),
-        }
+    // llamada de datos al localStorage
+    const datosLocal = JSON.parse(localStorage.getItem('dataProthesis'))
+    medidaAB = (medidaAB * 10 ) ;
+    medidaBC = (medidaBC * 10 ) ;
+    // objeto data prothesis localStorage
+    var dataProthesis = {
+      prothesisData:
+      {
+        pet_size: parseFloat(datosLocal.prothesisData.pet_size),
+        ext_emputee: datosLocal.prothesisData.ext_emputee,
+        medidaAB: parseFloat(medidaAB),
+        medidaBC: parseFloat(medidaBC),
       }
-      uploadLocalStorage(dataProthesis)
+    }
+    uploadLocalStorage(dataProthesis)
     setNavForm(7)
   }
   return (
@@ -40,12 +40,12 @@ export default function AlturaAmputacion() {
       {/***  formularios completador nav*/}
       <div className="flex flex-col">
         <FormCompleted
-          onClick={()=>setNavForm(1)}
+          onClick={() => setNavForm(1)}
           perfil="Perfil propietario"
         />
-        <FormCompleted onClick={() =>setNavForm(2)} perfil="Perfil mascota" />
+        <FormCompleted onClick={() => setNavForm(2)} perfil="Perfil mascota" />
         <FormCompleted
-          onClick={()=>setNavForm(3)}
+          onClick={() => setNavForm(3)}
           perfil="Perfil veterinario"
         />
         <div className="border-t-2 border-gray-100 pt-6 flex flex-col">
@@ -107,40 +107,42 @@ export default function AlturaAmputacion() {
           </div>
           {/***input tamaño  */}
           <div className=" bg-white p-12 mb-1">
-          <p className="text-blue-transparent">
-              ¿Como tomar la medida? Debe colocar de pie al canino, tomar como referencia la otra extremidad existente y haciendo uso de una cinta métrica medir las partes de la extremidad como se muestra en la imagen. La medida se toma del Punto A al Punto B y del Punto B de la articulación hasta el piso o Punto C. 
-              </p>
+            <p className="text-blue-transparent">
+              ¿Como tomar la medida? Debe colocar de pie al canino, tomar como referencia la otra extremidad existente y haciendo uso de una cinta métrica medir las partes de la extremidad como se muestra en la imagen. La medida se toma del Punto A al Punto B y del Punto B de la articulación hasta el piso o Punto C.
+            </p>
             <div className="flex mt-4">
-            <div className="mb-6 w-1/2">
-              <label htmlFor="nombres">Medida A {"->"} B</label>
-              <br />
-              <div className="bg-blue-light text-purple-dark mr-4 w-80 h-12 border border-blue-100 flex items-center justify-center">
-                <input
-                  onChange={(e) => handleAltura(e)}
-                  className="focus:outline-none bg-transparent px-4 h-10 w-64"
-                  type="number"
-                  name="medidaBC"
-                  required
-                  step="0.1"
-                />
-                <span>CM</span>
+              <div className="mb-6 w-1/2">
+                <label htmlFor="nombres">Medida A {"->"} B</label>
+                <br />
+                <div className="bg-blue-light text-purple-dark mr-4 w-80 h-12 border border-blue-100 flex items-center justify-center">
+                  <input
+                    onChange={(e) =>setMedidaAB(e.target.value) }
+                    className="focus:outline-none bg-transparent px-4 h-10 w-64"
+                    type="number"
+                    name="medidaBC"
+                    required
+                    step="0.1"
+                    value={medidaAB}
+                  />
+                  <span>CM</span>
+                </div>
               </div>
-            </div>
-            <div className="w-1/2">
-            <label htmlFor="nombres">Medida B {"->"} C</label>
-              <br />
-              <div className="bg-blue-light text-purple-dark mr-4 w-80 h-12 border border-blue-100 flex items-center justify-center">
-                <input
-                  onChange={(e) => handleAltura(e)}
-                  className="focus:outline-none bg-transparent px-4 h-10 w-64"
-                  type="number"
-                  name="medidaAB"
-                  required
-                  step="0.1"
-                />
-                <span>CM</span>
+              <div className="w-1/2">
+                <label htmlFor="nombres">Medida B {"->"} C</label>
+                <br />
+                <div className="bg-blue-light text-purple-dark mr-4 w-80 h-12 border border-blue-100 flex items-center justify-center">
+                  <input
+                    onChange={(e) => setMedidaBC(e.target.value)}
+                    className="focus:outline-none bg-transparent px-4 h-10 w-64"
+                    type="number"
+                    name="medidaAB"
+                    required
+                    step="0.1"
+                    value={medidaBC}
+                  />
+                  <span>CM</span>
+                </div>
               </div>
-            </div>
             </div>
           </div>
         </form>
