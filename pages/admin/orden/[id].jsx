@@ -1,6 +1,5 @@
 import React,{useState} from "react";
 import ButtonBorderBlue from "../../../components/Buttons/ButtonBorderBlue";
-import ButtonRed from "../../../components/Buttons/ButtonRed";
 import CampoDetalleOrden from "../../../components/CampoDetalleOrden";
 import CardPetPhotos from "../../../components/Cards/CardPetPhotos";
 import Download3D from "../../../components/Cards/Download3D";

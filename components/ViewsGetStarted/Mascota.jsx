@@ -32,6 +32,7 @@ export default function Pet({token,user}) {
         ...dataPet,
         [e.target.name]:file
       });
+      localStorage.setItem(`pet-img-${e.target.name}`,[reader.result],)
       console.log(dataPet)
       preview.style.backgroundImage = `url("${reader.result}")`;
     };
