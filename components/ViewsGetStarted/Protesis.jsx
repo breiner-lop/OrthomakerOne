@@ -42,7 +42,7 @@ export default function Protesis() {
           <div className="flex justify-between my-6">
             <span>Longitud</span>
             <div className="bg-white w-28 flex px-3 rounded border border-gray-200">
-              <input type="number" id="txt1" name="lace" min="1" max="10" step="0.1" value={parseInt(medidaAB) / 10} className="w-16 focus:outline-none" />
+              <input type="number" disabled id="txt1" name="lace" min="1" max="10" step="0.1" value={parseInt(medidaAB) / 10} className="w-16 focus:outline-none" />
               <span>CM</span>
             </div>
           </div>
@@ -52,7 +52,7 @@ export default function Protesis() {
           <div className="flex justify-between my-6">
             <span>Longitud</span>
             <div className="bg-white w-28 flex px-3 rounded border border-gray-200">
-              <input type="number" id="txt2" name="pillar" step="0.1" min="1" max="20" value={parseInt(medidaBC) / 10} className="w-16 focus:outline-none" />
+              <input type="number" disabled id="txt2" name="pillar" step="0.1" min="1" max="20" value={parseInt(medidaBC) / 10} className="w-16 focus:outline-none" />
               <span>CM</span>
             </div>
           </div>

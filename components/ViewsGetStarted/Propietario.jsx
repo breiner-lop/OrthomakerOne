@@ -4,12 +4,10 @@ import axios from "axios";
 import React from "react";
 
 export default function Propietario({token,user}) {
-  const [data, setData] = React.useState({});
-  const [dataUser, setDataUser] = React.useState({});
+  const [data, setData] = React.useState(user);
 
   const { navForm,setNavForm } = useCasosCtx();
 
-  dataUser = user;
   /// metodo put  de usuario
   const putUser = () => {
     axios.put(
@@ -81,7 +79,7 @@ export default function Propietario({token,user}) {
                   name="name"
                   onChange={(e) => handleInputChange(e)}
                   required
-                  value={dataUser.name}
+                  value={data.name}
                   className="bg-blue-light mr-4 w-80 h-12 focus:outline-none px-4"
                   type="text"
                 />
@@ -93,7 +91,7 @@ export default function Propietario({token,user}) {
                   name="lastname"
                   onChange={(e) => handleInputChange(e)}
                   required
-                  value={dataUser.lastname}
+                  value={data.lastname}
                   className="bg-blue-light mr-4 w-80 h-12 focus:outline-none px-4"
                   type="text"
                 />
@@ -109,7 +107,7 @@ export default function Propietario({token,user}) {
                   required
                   className="bg-blue-light mr-4 w-80 h-12 focus:outline-none px-4"
                   type="number"
-                  value={dataUser.phone}
+                  value={data.phone}
                 />
               </div>
               <div className="col-span-1">
@@ -132,7 +130,7 @@ export default function Propietario({token,user}) {
                   name="phone2"
                   onChange={(e) => handleInputChange(e)}
                   className="bg-blue-light mr-4 w-80 h-12 focus:outline-none px-4"
-                  type="number" value={dataUser.phone2}
+                  type="number" value={data.phone2}
                 />
               </div>
             </div>
@@ -141,9 +139,9 @@ export default function Propietario({token,user}) {
                 <label htmlFor="Direccion">Direccion residencia </label>
                 <br />
                 <input
-                  name="addres"
+                  name="direction"
                   onChange={(e) => handleInputChange(e)}
-                  value={dataUser.direction}
+                  value={data.direction}
                   required
                   className="bg-blue-light mr-4 w-full h-12 focus:outline-none px-4"
                   type="text"
@@ -155,7 +153,7 @@ export default function Propietario({token,user}) {
                 <input
                   name="city"
                   onChange={(e) => handleInputChange(e)}
-                  value={dataUser.city}
+                  value={data.city}
                   required
                   className="bg-blue-light mr-4 w-52 h-12 focus:outline-none px-4"
                   type="text"
@@ -170,7 +168,7 @@ export default function Propietario({token,user}) {
                   required
                   className="bg-blue-light mr-4 w-52 h-12 focus:outline-none px-4"
                   type="text"
-                  value={dataUser.state}
+                  value={data.state}
                 />
               </div>
               <div className="col-span-1">
@@ -182,7 +180,7 @@ export default function Propietario({token,user}) {
                   required
                   className="bg-blue-light mr-4 w-52 h-12 focus:outline-none px-4"
                   type="text"
-                  value={dataUser.zip}
+                  value={data.zip}
                 />
               </div>
             </div>

@@ -1,16 +1,15 @@
 import React from "react";
 import CampoDetalleOrden from "../CampoDetalleOrden";
-import Orden from "../Cards/Orden";
 
-export default function DatosCliente({rolUser}) {
+export default function DatosCliente() {
   return (
     <div className="p-6 w-full" style={{maxWidth:"1000px"}}>
       <span className="text-blue-transparent">Usuario</span>
       <h4 className="mt-6 text-4xl">Mis datos</h4>
       <div className=" border bg-white shadow-md border-gray-300 w-full h-48 rounded-2xl items-center p-6 mt-6">
-        <button className="bg-blue-400 shadow-lg hover:bg-blue-300 transition duration-200 text-white rounded-xl float-right w-28 h-10">
+       {/*  <button className="bg-blue-400 shadow-lg hover:bg-blue-300 transition duration-200 text-white rounded-xl float-right w-28 h-10">
           Editar
-        </button>
+        </button> */}
         <div className="flex">
           <div>
             <img
@@ -34,21 +33,6 @@ export default function DatosCliente({rolUser}) {
           </div>
         </div>
       </div>
-     {rolUser==0&& <div>
-        <h4 className="text-4xl mt-10">Total ordenes</h4>
-        <div className="flex justify-between text-gray-400 my-8 px-6">
-          <h6>Numero de orden</h6>
-          <h6>Estado</h6>
-          <h6>Valor total</h6>
-          <h6 className="w-32">Usuario</h6>
-        </div>
-        <Orden
-          id="4655665"
-          status="Pagada"
-          total="500.000"
-          userId="3nsda4545"
-        />
-      </div>}
     </div>
   );
 }

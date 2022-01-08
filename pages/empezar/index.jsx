@@ -1,22 +1,19 @@
 import React from "react";
-import PropietarioView from "../components/ViewsGetStarted/Propietario";
-import MascotaView from "../components/ViewsGetStarted/Mascota";
+import PropietarioView from "../../components/ViewsGetStarted/Propietario";
+import MascotaView from "../../components/ViewsGetStarted/Mascota";
 import Link from "next/link";
-import { useCasosCtx } from "../contexts/casosExito/navInicio.context";
-import Veterinario from "../components/ViewsGetStarted/Veterinario";
-import PetSize from "../components/ViewsGetStarted/PetSize";
-import ButtonCancel from "../components/Buttons/ButtonCancel";
-import ButtonRed from "../components/Buttons/ButtonRed";
-import ExtremidadAmputada from "../components/ViewsGetStarted/ExtremidadAmputada";
-import AlturaAmputacion from "../components/ViewsGetStarted/AlturaAmputacion";
-import PerimetroMuñon from "../components/ViewsGetStarted/PerimetroMuñon";
-import LargoMuñon from "../components/ViewsGetStarted/LargoMuñon";
-import Protesis from "../components/ViewsGetStarted/Protesis";
-import ButtonCancelBlueLight from "../components/Buttons/ButtonCancelBlueLight";
-import { getObjects } from "../threejs/apploader";
+import { useCasosCtx } from "../../contexts/casosExito/navInicio.context";
+import Veterinario from "../../components/ViewsGetStarted/Veterinario";
+import PetSize from "../../components/ViewsGetStarted/PetSize";
+import ButtonCancel from "../../components/Buttons/ButtonCancel";
+import ExtremidadAmputada from "../../components/ViewsGetStarted/ExtremidadAmputada";
+import AlturaAmputacion from "../../components/ViewsGetStarted/AlturaAmputacion";
+import PerimetroMuñon from "../../components/ViewsGetStarted/PerimetroMuñon";
+import Protesis from "../../components/ViewsGetStarted/Protesis";
+import ButtonCancelBlueLight from "../../components/Buttons/ButtonCancelBlueLight";
+import { getObjects } from "../../threejs/apploader";
 import axios from "axios";
-import ViewNoAuth from "../components/ViewNoAuth";
-import PopupExito from "../components/PopupExito";
+import ViewNoAuth from "../../components/ViewNoAuth";
 
 export default function Getstarted() {
   const { navForm, setNavForm, datosProtesis } = useCasosCtx();
@@ -26,7 +23,6 @@ export default function Getstarted() {
   const [petsId, setPetsId] = React.useState("");
   const [dataProthesis, setDataProthesis] = React.useState({});
   const [loading, setLoading] = React.useState(true);
-  const [enviado, setEnviado] = React.useState(1);
   // privatizador de vistas
   React.useEffect(() => {
     const token = localStorage.getItem("token");
@@ -43,8 +39,7 @@ export default function Getstarted() {
 
   //HANDLER BOTON SEND TO PRODUCTION(ENVIAR A PRODUCCION)
   const sendToProduction = () => {
-    setEnviado(2)
-    // traer datos del threejs
+   /*  // traer datos del threejs
     const obThree = getObjects();
     // creacion del formulario de datos y set del mismo
     let formData = new FormData();
@@ -73,26 +68,21 @@ export default function Getstarted() {
       .then(function (response) {
         // en caso de ser exitosa
         console.log(response);
-        setEnviado(3)
       })
       .catch(function (error) {
         // en caso de ser incorrectos los datos
         console.log(error);
-      });
+      }); */
   };
 
   return loading? null :!token?<ViewNoAuth />: (
     <div>
-      {
-        enviado==3&&<PopupExito text="Enviado a produccion" to="/"/>
-       
-      }
       <div className="flex justify-between text-purple-dark h-20 items-center px-24">
         <div className="flex items-center">
-          {navForm == 9 && (
+          {navForm == 8 && (
             <button
               className="p-3 mr-4 border border-red-600 rounded-full filter shadow-md transition duration-200 hover:shadow-none"
-              onClick={() => setNavForm(8)}
+              onClick={() => setNavForm(7)}
             >
               <img src="/img/rowback.png" alt="rowback" />
             </button>
@@ -108,17 +98,12 @@ export default function Getstarted() {
           </span>
         </div>
         <div className="flex">
-          {navForm == 9 ? (
-            <ButtonRed
-              text={enviado==1?"Enviar a producción":"Enviando..."}
-              onClick={() => {
-                sendToProduction();
-              }}
-            />
+          {navForm == 8 ? (
+              <Link href="/empezar/verificar-orden"><a className="text-white rounded-lg flex items-center justify-center font-semibold  w-44 h-11 bg-red-500 hover:bg-red-600 transition duration-200 filter drop-shadow">Verificar orden</a></Link>
           ) : (
             <ButtonCancel text="Cancelar" />
           )}
-          {navForm == 9 && <ButtonCancelBlueLight />}
+          {navForm == 8 && <ButtonCancelBlueLight />}
         </div>
       </div>
       {navForm == 1 ? (
@@ -135,10 +120,8 @@ export default function Getstarted() {
         <AlturaAmputacion />
       ) : navForm == 7 ? (
         <PerimetroMuñon />
-      ) : navForm == 8 ? (
-        <LargoMuñon />
-      ) : (
-        navForm == 9 && <Protesis />
+      ) :(
+        navForm == 8 && <Protesis />
       )}
     </div>
   );

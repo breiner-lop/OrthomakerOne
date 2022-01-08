@@ -9,7 +9,9 @@ import ViewNoAuth from "../../../components/ViewNoAuth"
 import { useRouter } from "next/router";
 import axios from 'axios'
 import Loading from "../../../components/Loading";
+import { useCasosCtx } from "../../../contexts/casosExito/navInicio.context";
 export default function Orden() {
+  const {rolUser}=useCasosCtx()
   const router = useRouter()
   const { id } = router.query
   // states
@@ -35,7 +37,6 @@ export default function Orden() {
         })
          .then(function (response) { // en caso de ser exitosa la consulta de prothesis
           setDataOrder(response.data[0])
-          setLoading(false)
           console.log(response.data[0],id)
           getProthesis(response.data[0].prothesis_id);
           getUser(response.data[0].users_id)
@@ -145,8 +146,8 @@ export default function Orden() {
            </div>
          </div>
          <div>
-           <ButtonBorderBlue text="Tracking" />
-           <ButtonRed text="Cancelar orden" />
+           {dataOrder&&!dataOrder.id_transaction&&<ButtonBorderBlue text="Pagar ahora" />}
+           {/* <ButtonRed text="Cancelar orden" /> */}
          </div>
        </div>
        <div className="flex mt-10" style={{maxWidth:"1000px"}}>
@@ -246,14 +247,15 @@ export default function Orden() {
             <span className="text-blue-transparent">COLOR</span> <span className="ml-6"> {dataProthesis.color} </span>
              {/**<div className="ml-4 w-6 h-6 bg-red-700 rounded-full"></div> */}
            </div>
-           <div>
+            {rolUser==0&& 
+            <div>
              <h4 className="my-4">Descargar modelos 3D</h4>
              <div className="flex">
              <Download3D href={`https://${dataProthesis.case_path}`} name="Case.stl" img="/img/3d1.png"/>
              <Download3D href={`https://${dataProthesis.pillar_path}`} name="Pillar.stl" img="/img/3d2.png"/>
              <Download3D href={`https://${dataProthesis.lace_path}`} name="Lace.stl" img="/img/3d3.png"/>
              </div>
-           </div>
+           </div>}
                </>:<Loading/>
              }
            </div>
