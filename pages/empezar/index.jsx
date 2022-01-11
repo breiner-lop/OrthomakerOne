@@ -101,7 +101,6 @@ export default function Getstarted() {
     // en caso de ser exitosa
     setLoadingOrder(false)
     router.push("/empezar/verificar-orden")
-    localStorage.setItem("totalPagar",response.data.total)
     localStorage.setItem("idTransaccion",response.data.id_transacion)
     console.log(response);
   })
