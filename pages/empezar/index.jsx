@@ -14,6 +14,7 @@ import ButtonCancelBlueLight from "../../components/Buttons/ButtonCancelBlueLigh
 import { getObjects } from "../../threejs/apploader";
 import axios from "axios";
 import ViewNoAuth from "../../components/ViewNoAuth";
+import { useRouter } from "next/router";
 
 export default function Getstarted() {
   const { navForm, setNavForm, datosProtesis } = useCasosCtx();
@@ -23,6 +24,8 @@ export default function Getstarted() {
   const [petsId, setPetsId] = React.useState("");
   const [dataProthesis, setDataProthesis] = React.useState({});
   const [loading, setLoading] = React.useState(true);
+  // router
+  const router =useRouter()
   // privatizador de vistas
   React.useEffect(() => {
     const token = localStorage.getItem("token");
@@ -39,7 +42,7 @@ export default function Getstarted() {
 
   //HANDLER BOTON SEND TO PRODUCTION(ENVIAR A PRODUCCION)
   const sendToProduction = () => {
-   /*  // traer datos del threejs
+     // traer datos del threejs
     const obThree = getObjects();
     // creacion del formulario de datos y set del mismo
     let formData = new FormData();
@@ -49,9 +52,9 @@ export default function Getstarted() {
     formData.append("amputation_height_BC",parseFloat(dataProthesis.prothesisData.medidaBC));
     formData.append("stump_perimeter_sup",parseFloat(dataProthesis.prothesisData.stump_perimeter_sup));
     formData.append("stump_perimeter_inf",parseFloat(dataProthesis.prothesisData.stump_perimeter_inf));
-    formData.append("stump_length",parseFloat(dataProthesis.prothesisData.stump_length));
-    formData.append("lace", parseFloat(datosProtesis.lace));
-    formData.append("pillar", parseFloat(datosProtesis.pillar));
+    formData.append("stump_length",0);
+    formData.append("lace", 0);
+    formData.append("pillar",0);
     formData.append("color", datosProtesis.color);
     formData.append("pets_id", petsId);
     formData.append("encajeobj", obThree.encaje, "encaje.stl");
@@ -67,12 +70,13 @@ export default function Getstarted() {
       })
       .then(function (response) {
         // en caso de ser exitosa
+        router.push("/empezar/verificar-orden")
         console.log(response);
       })
       .catch(function (error) {
         // en caso de ser incorrectos los datos
         console.log(error);
-      }); */
+      }); 
   };
 
   return loading? null :!token?<ViewNoAuth />: (
@@ -99,7 +103,7 @@ export default function Getstarted() {
         </div>
         <div className="flex">
           {navForm == 8 ? (
-              <Link href="/empezar/verificar-orden"><a className="text-white rounded-lg flex items-center justify-center font-semibold  w-44 h-11 bg-red-500 hover:bg-red-600 transition duration-200 filter drop-shadow">Verificar orden</a></Link>
+              <button onClick={()=>sendToProduction()} className="text-white rounded-lg flex items-center justify-center font-semibold  w-44 h-11 bg-red-500 hover:bg-red-600 transition duration-200 filter drop-shadow">Verificar orden</button>
           ) : (
             <ButtonCancel text="Cancelar" />
           )}

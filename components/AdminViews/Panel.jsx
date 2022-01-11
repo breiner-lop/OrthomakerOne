@@ -77,8 +77,8 @@ export default function Panel() {
       </div>
       <div>
       </div>
-      <div className="text-purple-dark ">
-          <button onClick={()=>logout()} className="flex bg-white bg-opacity-75 rounded-lg font-semibold h-10 items-center px-4 w-48 justify-center ml-2 hover:bg-opacity-50 transition duration-200">Cerrar sesion <img src="/img/logout.png" alt="logout imagen" className="ml-4" /></button>
+      <div className="text-purple-dark flex justify-center">
+          <button onClick={()=>logout()} className="flex bg-white bg-opacity-75 rounded-lg font-semibold h-10 items-center px-4 w-48 justify-center  hover:bg-opacity-50 transition duration-200">Cerrar sesion <img src="/img/logout.png" alt="logout imagen" className="ml-4" /></button>
         </div>
     </div>
   );
