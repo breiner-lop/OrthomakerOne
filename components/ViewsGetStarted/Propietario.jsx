@@ -9,7 +9,8 @@ export default function Propietario({token,user}) {
   const { navForm,setNavForm } = useCasosCtx();
 
   /// metodo put  de usuario
-  const putUser = () => {
+  const putUser = (e) => {
+    e.preventDefault()
     axios.put(
       `${process.env.SERVER}/editUser/${user.id}`,
       {
@@ -28,6 +29,8 @@ export default function Propietario({token,user}) {
         },
       }
     ).then(function (response) { // en caso de ser exitosa
+      localStorage.setItem("user",JSON.stringify(data))
+      setNavForm(2)
       console.log(response)
     })
     .catch(function (error) { // en caso de ser incorrectos los datos
@@ -52,10 +55,7 @@ export default function Propietario({token,user}) {
       <div className=" py-20 flex justify-center text-purple-dark">
         <div className="shadow-lg" style={{ width: "800px" }}>
           <form
-            onSubmit={() => {
-              setNavForm(2);
-              putUser();
-            }}
+            onSubmit={(e)=>putUser(e)}
           >
             <div className="p-12 flex justify-between border-b-2 border-gray-200">
               <div>

@@ -24,6 +24,7 @@ export default function Getstarted() {
   const [petsId, setPetsId] = React.useState("");
   const [dataProthesis, setDataProthesis] = React.useState({});
   const [loading, setLoading] = React.useState(true);
+  const [loadingOrder, setLoadingOrder] = React.useState(false);
   // router
   const router =useRouter()
   // privatizador de vistas
@@ -42,6 +43,7 @@ export default function Getstarted() {
 
   //HANDLER BOTON SEND TO PRODUCTION(ENVIAR A PRODUCCION)
   const sendToProduction = () => {
+    setLoadingOrder(true)
      // traer datos del threejs
     const obThree = getObjects();
     // creacion del formulario de datos y set del mismo
@@ -70,7 +72,7 @@ export default function Getstarted() {
       })
       .then(function (response) {
         // en caso de ser exitosa
-        router.push("/empezar/verificar-orden")
+        createOrder(response.data.idProthesis)
         console.log(response);
       })
       .catch(function (error) {
@@ -78,7 +80,37 @@ export default function Getstarted() {
         console.log(error);
       }); 
   };
+  /// create order
+ const createOrder=(idProthesis)=>{
+  axios
+  .post(`${process.env.SERVER}/orders/${user.id}`, {
+    pilar:dataProthesis.prothesisData.medidaBC,
+    prothesis_id:idProthesis,
+    phone:user.phone,
+    direction:user.direction,
+    city:user.city,
+    state:user.state,
+    cod_postal:user.zip
 
+  }, {
+    headers: {
+      "auth-token": token, //the token is a variable which holds the token
+    },
+  })
+  .then(function (response) {
+    // en caso de ser exitosa
+    setLoadingOrder(false)
+    router.push("/empezar/verificar-orden")
+    localStorage.setItem("totalPagar",response.data.total)
+    localStorage.setItem("idTransaccion",response.data.id_transacion)
+    console.log(response);
+  })
+  .catch(function (error) {
+    // en caso de ser incorrectos los datos
+    console.log(error);
+  }); 
+
+ }
   return loading? null :!token?<ViewNoAuth />: (
     <div>
       <div className="flex justify-between text-purple-dark h-20 items-center px-24">
@@ -103,7 +135,7 @@ export default function Getstarted() {
         </div>
         <div className="flex">
           {navForm == 8 ? (
-              <button onClick={()=>sendToProduction()} className="text-white rounded-lg flex items-center justify-center font-semibold  w-44 h-11 bg-red-500 hover:bg-red-600 transition duration-200 filter drop-shadow">Verificar orden</button>
+              <button onClick={()=>sendToProduction()} className="text-white rounded-lg flex items-center justify-center font-semibold  w-44 h-11 bg-red-500 hover:bg-red-600 transition duration-200 filter drop-shadow">{loadingOrder?"Cargando...":"Verificar orden"}</button>
           ) : (
             <ButtonCancel text="Cancelar" />
           )}
