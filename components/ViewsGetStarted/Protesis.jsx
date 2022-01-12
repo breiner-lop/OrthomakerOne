@@ -60,50 +60,90 @@ export default function Protesis() {
           <h4 className="text-xl font-bold">COLOR </h4>
           <div className="flex justify-between my-6">
             <span>Pigmento</span>
-            <div className="flex">
+            <div className="flex ml-6">
               <div
-                onClick={() => handleInputColor(0x740500, "rojo")}
+                onClick={() => handleInputColor(0x740500, "Rojo")}
                 className="w-8 h-8 rounded-full bg-red-600 mx-1 cursor-pointer"
               >
               </div>
               <div
-                onClick={() => handleInputColor(0x2c517f, "azul")}
+                onClick={() => handleInputColor(0x2c517f, "Azul")}
                 className="w-8 h-8 rounded-full bg-blue-600 mx-1 cursor-pointer"
               >
               </div>
               <div
-                onClick={() => handleInputColor(0x775d06, "amarillo")}
-                className="w-8 h-8 rounded-full bg-yellow-600 mx-1 cursor-pointer"
+                onClick={() => handleInputColor(0x775d06, "Amarillo")}
+                className="w-8 h-8 rounded-full bg-yellow-400 mx-1 cursor-pointer"
               >
               </div>
               <div
-                onClick={() => handleInputColor(0x196716, "verde")}
+                onClick={() => handleInputColor(0x196716, "Verde")}
                 className="w-8 h-8 rounded-full bg-green-600 mx-1 cursor-pointer"
+              >
+              </div>
+              <div
+                onClick={() => handleInputColor(0xff6309, "Naranja")}
+                className="w-8 h-8 rounded-full mx-1 cursor-pointer bg-orange"
+              >
+              </div>
+              <div
+                onClick={() => handleInputColor(0xffffff, "Blanco")}
+                className="w-8 h-8 rounded-full bg-white mx-1  cursor-pointer"
+              >
+              </div>
+              <div
+                onClick={() => handleInputColor(0x6d6d6d, "Gris")}
+                className="w-8 h-8 rounded-full bg-gray-400 mx-1 cursor-pointer"
+              >
+              </div>
+              <div
+                onClick={() => handleInputColor(0x010101, "Negro")}
+                className="w-8 h-8 rounded-full bg-black mx-1 cursor-pointer"
               >
               </div>
             </div>
           </div>
           <div className="flex justify-between my-6">
             <span>Estructura</span>
-            <div className="flex">
+            <div className="flex ml-6">
               <div
-                onClick={() => handleInputColorTwo(0x740500, "rojo")}
+                onClick={() => handleInputColor(0x740500, "Rojo")}
                 className="w-8 h-8 rounded-full bg-red-600 mx-1 cursor-pointer"
               >
               </div>
               <div
-                onClick={() => handleInputColorTwo(0x2c517f, "azul")}
+                onClick={() => handleInputColor(0x2c517f, "Azul")}
                 className="w-8 h-8 rounded-full bg-blue-600 mx-1 cursor-pointer"
               >
               </div>
               <div
-                onClick={() => handleInputColorTwo(0x775d06, "amarillo")}
-                className="w-8 h-8 rounded-full bg-yellow-600 mx-1 cursor-pointer"
+                onClick={() => handleInputColor(0x775d06, "Amarillo")}
+                className="w-8 h-8 rounded-full bg-yellow-400 mx-1 cursor-pointer"
               >
               </div>
               <div
-                onClick={() => handleInputColorTwo(0x196716, "verde")}
+                onClick={() => handleInputColor(0x196716, "Verde")}
                 className="w-8 h-8 rounded-full bg-green-600 mx-1 cursor-pointer"
+              >
+              </div>
+              <div
+                onClick={() => handleInputColor(0xff6309, "Naranja")}
+                className="w-8 h-8 rounded-full mx-1 cursor-pointer bg-orange"
+              >
+              </div>
+              <div
+                onClick={() => handleInputColor(0xffffff, "Blanco")}
+                className="w-8 h-8 rounded-full bg-white mx-1  cursor-pointer"
+              >
+              </div>
+              <div
+                onClick={() => handleInputColor(0x6d6d6d, "Gris")}
+                className="w-8 h-8 rounded-full bg-gray-400 mx-1 cursor-pointer"
+              >
+              </div>
+              <div
+                onClick={() => handleInputColor(0x010101, "Negro")}
+                className="w-8 h-8 rounded-full bg-black mx-1 cursor-pointer"
               >
               </div>
             </div>

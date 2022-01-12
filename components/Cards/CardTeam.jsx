@@ -11,7 +11,7 @@ export default function CardTeam({name,puesto,profesion,img,accion }) {
       <p className="text-xl font-light mb-2 "> {profesion} </p>
       <h4 className="font-bold text-lg"> {accion} </h4>
       </div>
-      <span className="w-2/5 flex justify-end"><img src={img} width="170px" height="100px" className="rounded-136" /></span>
+      <span className="w-2/5 flex justify-end"><img src={img} /></span>
       </div>
     </div>
   );

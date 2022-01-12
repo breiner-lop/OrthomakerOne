@@ -4,7 +4,7 @@ const casosContext = createContext("");
 export const useCasosCtx = () => useContext(casosContext);
 export const CasosProvider = ({ children }) => {
   
-  const [navForm, setNavForm] = useState(7);
+  const [navForm, setNavForm] = useState(1);
   const [activeNumber, setActiveNumber] = useState(1);
   const [state, setState] = useState(false);
   //rol users
@@ -22,9 +22,7 @@ export const CasosProvider = ({ children }) => {
   const [filterValue,setFilterValue] = useState("");
   //inputs protesis
   const [datosProtesis,setDatos] = useState({
-    color:"rojo",
-    lace:3.92,
-    pillar:10.50
+    color:"rojo"
 });
   
 

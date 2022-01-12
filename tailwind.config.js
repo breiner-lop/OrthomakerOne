@@ -39,6 +39,7 @@ module.exports = {
       "red-light": "#EDCCD7",
       'purple-light':'#292D4E',
       'blu-light':'#F3F7F8',
+      'orange':"#ff6309"
     }),
     borderColor: (theme) => ({
       ...theme("colors"),

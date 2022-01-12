@@ -3,6 +3,7 @@ import Link from "next/link";
 import ButtonBlue from "../components/Buttons/ButtonBlue";
 import axios from "axios";
 import { useRouter } from "next/router";
+import LoadingSping from "../components/LoadingSping";
 
 export default function Login() {
   //llamada al router para redireccionar una ves logeado
@@ -13,6 +14,7 @@ export default function Login() {
     password:""
   })
   const [error,setError]=React.useState(false)
+  const [enviando,setEnviando]=React.useState(false)
   //hadle inputs
   const handleInputChange = (e) => {
     setDatos({
@@ -22,6 +24,7 @@ export default function Login() {
 }
 //manejador del boton inicar sesion
 const iniciarSesion=(e)=>{
+  setEnviando(true)
   e.preventDefault() //llamada a api
   axios.post(`${process.env.SERVER}/login`, {
     mail: dataLogin.mail,
@@ -44,6 +47,7 @@ const iniciarSesion=(e)=>{
 }
   return (
     <div className="flex">
+      {enviando&&<LoadingSping/>}
       <div
         className="w-7/12 bg-purple-dark h-screen"
         /* style={{
