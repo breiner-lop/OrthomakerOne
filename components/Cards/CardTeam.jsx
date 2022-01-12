@@ -2,7 +2,7 @@
 export default function CardTeam({name,puesto,profesion,img,accion }) {
   return (
     <div className="p-10 bg-blue-extralight col-span-1 rounded-xl" >
-      <div className="flex justify-between mb-14">
+      <div className="flex justify-between">
         <span className="text-2xl font-bold"> {puesto} </span>
       </div>
       <div className="flex items-center">

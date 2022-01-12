@@ -4,8 +4,7 @@
         "id":"1",
         "img":"/img/pinina.png",
         "name":"pinina",
-        "textOne":"Pawtastic Is Awesome! They Are Passionate About Pets And Employ Trustworthy, Dependable Staff. We Love Them!”",
-        "textTwo":"ES UNA PRÓTESIS PARA EXTREMIDADES DE CANINOS QUE HAN SUFRIDO ALGUNA  AMPUTACIÓN. SU DISEÑO ESTÁ BASADO EN LA ANATOMÍA NATURAL CANINA Y ES FABRICADA UTILIZANDO TECNOLOGÍA DE IMPRESIÓN 3D,",
+        "textTwo":"es una perrita mestiza que fue rescatada de la calle, al parecer un carro la había atropellado y le habría ocasionado una herPinina ida grave en su extremidad posterior derecha, además de eso se encontraba en estado de gestación por lo que el rescate fue un poco más complicado según nos cuenta su dueña actual, debido a la gravedad de la herida en su pata se vio necesario realizar una amputación parcial de la extremidad.Luego de varios meses de recuperación se comenzó con el diseño y fabricación de una prótesis que permitiera a Pinina recuperar la calidad de vida, la movilidad, la comodidad y las funciones perdidas.Así como a Pinina en ORTHOMAKER buscamos brindar soluciones ortopédicas para caninos que hayan sufrido problemas de movilidad, utilizando las nuevas tecnologías como la impresión 3D, el conocimiento y mucha creatividad.",
         "imgsig":"/img/dog_02.png"
     },
     {
@@ -13,7 +12,6 @@
         "id":"2",
         "img":"/img/dog_02.png",
         "name":"Luna",
-        "textOne":"Pawtastic Is Awesome! They Are Passionate About Pets And Employ Trustworthy, Dependable Staff. We Love Them!”",
         "textTwo":"ES UNA PRÓTESIS PARA EXTREMIDADES DE CANINOS QUE HAN SUFRIDO ALGUNA  AMPUTACIÓN. SU DISEÑO ESTÁ BASADO EN LA ANATOMÍA NATURAL CANINA Y ES FABRICADA UTILIZANDO TECNOLOGÍA DE IMPRESIÓN 3D,",
         "imgsig":"/img/dog_03.png"
     },
@@ -22,7 +20,6 @@
         "id":"3",
         "img":"/img/dog_03.png",
         "name":"simon",
-        "textOne":"Pawtastic Is Awesome! They Are Passionate About Pets And Employ Trustworthy, Dependable Staff. We Love Them!”",
         "textTwo":"ES UNA PRÓTESIS PARA EXTREMIDADES DE CANINOS QUE HAN SUFRIDO ALGUNA  AMPUTACIÓN. SU DISEÑO ESTÁ BASADO EN LA ANATOMÍA NATURAL CANINA Y ES FABRICADA UTILIZANDO TECNOLOGÍA DE IMPRESIÓN 3D,",
         "imgsig":"/"
     }

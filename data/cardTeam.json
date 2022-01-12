@@ -4,7 +4,7 @@
         "puesto":"CEO",
         "name":"LEYDHER IBARRA RIPOLL",
         "profesion":"Ingeniero mecanico",
-        "img":"/img/ceo.png",
+        "img":"/img/ingeniero.png",
         "accion":"Cofundador de OrthoMaker"
     },
     {
@@ -12,7 +12,7 @@
         "puesto":"Product manager",
         "name":"Rafael Nieto Bustos",
         "profesion":"Diseñador industrial",
-        "img":"/img/diseñador.png",
+        "img":"/img/diseniador.png",
         "accion":"Cofundador de OrthoMaker"
     }
 ]

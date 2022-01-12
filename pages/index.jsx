@@ -221,7 +221,7 @@ export default function Index() {
                   }
                 >
                   <ButtonOrthoOne onClick={() => handleActiveOrtho(1)}>
-                    Tecnology
+                  Tecnología
                   </ButtonOrthoOne>
                 </li>
                 <li
@@ -233,7 +233,7 @@ export default function Index() {
                   }
                 >
                   <ButtonOrthoOne onClick={() => handleActiveOrtho(2)}>
-                    Process
+                  Proceso
                   </ButtonOrthoOne>
                 </li>
                 <li
@@ -245,7 +245,7 @@ export default function Index() {
                   }
                 >
                   <ButtonOrthoOne onClick={() => handleActiveOrtho(3)}>
-                    Specs
+                  Especificaciones
                   </ButtonOrthoOne>
                 </li>
                 <li
@@ -257,7 +257,7 @@ export default function Index() {
                   }
                 >
                   <ButtonOrthoOne onClick={() => handleActiveOrtho(4)}>
-                    Pricing
+                  Precios
                   </ButtonOrthoOne>
                 </li>
                 <li
@@ -269,7 +269,7 @@ export default function Index() {
                   }
                 >
                   <ButtonOrthoOne onClick={() => handleActiveOrtho(5)}>
-                    Frequent <br /> questions
+                  Preguntas <br /> frecuentes
                   </ButtonOrthoOne>
                 </li>
               </ul>
@@ -380,7 +380,6 @@ export default function Index() {
                       key={casos.id}
                       img={casos.img}
                       name={casos.name}
-                      textOne={casos.textOne}
                       textTwo={casos.textTwo}
                     />
                   ))}
