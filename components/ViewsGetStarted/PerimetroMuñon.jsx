@@ -77,7 +77,7 @@ export default function PerimetroMuñon() {
           </div>
           {/***Imagen dog */}
           <div className=" flex bg-white p-12 mb-1 justify-center border-b-2 border-t-2 border-gray-200">
-            <img src="/img/peripuñon.png" alt="perimetro del muñon" />
+            <img src="/img/peripunon.png" alt="perimetro del muñon" />
           </div>
           {/***input tamaño  */}
           <div className=" p-10 mb-1">
