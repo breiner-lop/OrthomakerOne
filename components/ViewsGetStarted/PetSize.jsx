@@ -7,6 +7,7 @@ import { uploadLocalStorage } from "./uploadLocalStorage";
 export default function Veterinario() {
   /*** LLAMADA DEL CONTEXT MANEJADOR DE VISTAS FORM */
   const { setNavForm } = useCasosCtx();
+
   // use states
   const [size, setSize] = React.useState(undefined);
   // form inputs pet change

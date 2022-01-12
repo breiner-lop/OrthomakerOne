@@ -344,7 +344,7 @@ export default function Index() {
                     </span>
                   </button>
                 </li>
-                <li className="my-4">
+               {/*  <li className="my-4">
                   <button onClick={() => handleCasos(2)}>
                     <span className="flex items-center w-64 justify-between">
                       LUNA
@@ -355,8 +355,8 @@ export default function Index() {
                       />
                     </span>
                   </button>
-                </li>
-                <li className="my-4">
+                </li> */}
+                {/* <li className="my-4">
                   <button onClick={() => handleCasos(3)}>
                     <span className="flex items-center w-64 justify-between">
                       SIMON
@@ -367,7 +367,7 @@ export default function Index() {
                       />
                     </span>
                   </button>
-                </li>
+                </li> */}
               </ul>
               <div className={!state? "w-2/5 mt-14 transition duration-300": "w-full mt-14 transition duration-300"}>
                 <Carousel
@@ -375,14 +375,13 @@ export default function Index() {
                   arrows={false}
                   draggable={state ? true : false}
                 >
-                  {CardCasosData.slice(slicer, slicert).map((casos) => (
+                  {CardCasosData.slice(0,1).map((casos) => (
                     <CardCasos
                       key={casos.id}
                       img={casos.img}
                       name={casos.name}
                       textOne={casos.textOne}
                       textTwo={casos.textTwo}
-                      imgsig={casos.imgsig}
                     />
                   ))}
                 </Carousel>

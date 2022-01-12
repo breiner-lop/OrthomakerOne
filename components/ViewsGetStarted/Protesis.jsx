@@ -16,15 +16,14 @@ export default function Protesis() {
       ...datosProtesis,
       color: colorText,
     });
-    //localStorage.setItem('color',colorText)
   };
-  /***MANEJADORM DE LOS inputs de valor */
-  const handleInputChange = (e) => {
+  const handleInputColorTwo = (colorTwo, colorText) => {
+    changeColor(colorTwo)
     setDatos({
       ...datosProtesis,
-      [e.target.name]: parseFloat(e.target.value)
-    })
-  }
+      color: colorText,
+    });
+  };
   React.useEffect(() => {
     const dataProthesis = JSON.parse(localStorage.getItem("dataProthesis"));
     setMedidaAB(dataProthesis.prothesisData.medidaAB);
@@ -79,6 +78,31 @@ export default function Protesis() {
               </div>
               <div
                 onClick={() => handleInputColor(0x196716, "verde")}
+                className="w-8 h-8 rounded-full bg-green-600 mx-1 cursor-pointer"
+              >
+              </div>
+            </div>
+          </div>
+          <div className="flex justify-between my-6">
+            <span>Estructura</span>
+            <div className="flex">
+              <div
+                onClick={() => handleInputColorTwo(0x740500, "rojo")}
+                className="w-8 h-8 rounded-full bg-red-600 mx-1 cursor-pointer"
+              >
+              </div>
+              <div
+                onClick={() => handleInputColorTwo(0x2c517f, "azul")}
+                className="w-8 h-8 rounded-full bg-blue-600 mx-1 cursor-pointer"
+              >
+              </div>
+              <div
+                onClick={() => handleInputColorTwo(0x775d06, "amarillo")}
+                className="w-8 h-8 rounded-full bg-yellow-600 mx-1 cursor-pointer"
+              >
+              </div>
+              <div
+                onClick={() => handleInputColorTwo(0x196716, "verde")}
                 className="w-8 h-8 rounded-full bg-green-600 mx-1 cursor-pointer"
               >
               </div>

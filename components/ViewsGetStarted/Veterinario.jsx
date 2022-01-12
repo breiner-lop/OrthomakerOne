@@ -3,16 +3,18 @@ import ButtonNextForm from "../Buttons/ButtonNextForm";
 import { useCasosCtx } from "../../contexts/casosExito/navInicio.context";
 import FormCompleted from "../Buttons/FormCompleted";
 import axios from "axios";
+import LoadingSping from "../LoadingSping";
 
 export default function Veterinario({token,user}) {
   // use states
   const [dataVet, setDataVet] = React.useState({});
+  const [enviando, setEnviando] = React.useState(false);
   /*** LLAMADA DEL CONTEXT MANEJADOR DE VISTAS FORM */
   const { setNavForm } = useCasosCtx();
   /// method POST pet
   const postVet = async (e) => {
+    setEnviando(true)
     e.preventDefault();
-
     await axios
       .post(
         `${process.env.SERVER}/addVet/${user.id}`,
@@ -51,6 +53,7 @@ export default function Veterinario({token,user}) {
   };
   return (
     <div className="py-20 flex justify-center text-purple-dark">
+      {enviando&&<LoadingSping/>}
       {/***  formularios completador nav*/}
       <div className="flex flex-col">
         <FormCompleted

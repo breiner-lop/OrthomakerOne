@@ -83,7 +83,7 @@ export default function VerificarOrden() {
       console.log("df")
    },[wompiLoading,total])
   return (
-    <div className="px-24">
+    <div className="px-24 mx-auto" style={{maxWidth:"1800px"}}>
         <Head>
       </Head>
       <div className="flex justify-between text-purple-dark h-20 items-center">
@@ -111,7 +111,7 @@ export default function VerificarOrden() {
               <ButtonCancelBlueLight />
             </div>
       </div>
-      <div className="border border-gray-300  shadow-lg bg-white bg-opacity-75 rounded-lg px-6">
+      <div className="border border-gray-300 mt-6 shadow-lg bg-white bg-opacity-75 rounded-lg px-6">
           <div className="text-center border-b border-gray-300 py-6"><span className="text-2xl">Detalles de la orden</span></div>
            <div className="pt-6 flex">
              {/** datos personales */}

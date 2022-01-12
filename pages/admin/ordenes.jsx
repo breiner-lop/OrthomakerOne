@@ -66,7 +66,7 @@ export default function Ordenes() {
                   </div>
                  {
                    orders.length>0?
-                   <div>
+                   <div className="overflow-y-auto overflow-x-visible p-2 w-full" style={{maxHeight:"700px"}}>
                    {orders.map((order) => {
                      return (
                        order.id.includes(filterValue)&&(

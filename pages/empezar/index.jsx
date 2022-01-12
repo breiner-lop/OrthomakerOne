@@ -15,6 +15,7 @@ import { getObjects } from "../../threejs/apploader";
 import axios from "axios";
 import ViewNoAuth from "../../components/ViewNoAuth";
 import { useRouter } from "next/router";
+import LoadingSping from "../../components/LoadingSping";
 
 export default function Getstarted() {
   const { navForm, setNavForm, datosProtesis } = useCasosCtx();
@@ -112,6 +113,7 @@ export default function Getstarted() {
  }
   return loading? null :!token?<ViewNoAuth />: (
     <div>
+       {loadingOrder&&<LoadingSping/>}
       <div className="flex justify-between text-purple-dark h-20 items-center px-24">
         <div className="flex items-center">
           {navForm == 8 && (
@@ -134,7 +136,7 @@ export default function Getstarted() {
         </div>
         <div className="flex">
           {navForm == 8 ? (
-              <button onClick={()=>sendToProduction()} className="text-white rounded-lg flex items-center justify-center font-semibold  w-44 h-11 bg-red-500 hover:bg-red-600 transition duration-200 filter drop-shadow">{loadingOrder?"Cargando...":"Verificar orden"}</button>
+              <button onClick={()=>sendToProduction()} className="text-white rounded-lg flex items-center justify-center font-semibold  w-44 h-11 bg-red-500 hover:bg-red-600 transition duration-200 filter drop-shadow">Verificar orden</button>
           ) : (
             <ButtonCancel text="Cancelar" />
           )}

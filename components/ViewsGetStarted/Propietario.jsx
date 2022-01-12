@@ -2,14 +2,17 @@ import ButtonNextForm from "../Buttons/ButtonNextForm";
 import { useCasosCtx } from "../../contexts/casosExito/navInicio.context";
 import axios from "axios";
 import React from "react";
+import LoadingSping from "../LoadingSping";
 
 export default function Propietario({token,user}) {
   const [data, setData] = React.useState(user);
+  const [enviando, setEnviando] = React.useState(false);
 
-  const { navForm,setNavForm } = useCasosCtx();
+  const {setNavForm } = useCasosCtx();
 
   /// metodo put  de usuario
   const putUser = (e) => {
+    setEnviando(true)
     e.preventDefault()
     axios.put(
       `${process.env.SERVER}/editUser/${user.id}`,
@@ -52,6 +55,7 @@ export default function Propietario({token,user}) {
 
   return (
     <div>
+     {enviando&&<LoadingSping/>}
       <div className=" py-20 flex justify-center text-purple-dark">
         <div className="shadow-lg" style={{ width: "800px" }}>
           <form

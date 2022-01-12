@@ -3,12 +3,14 @@ import { useCasosCtx } from "../../contexts/casosExito/navInicio.context";
 import FormCompleted from "../Buttons/FormCompleted";
 import React from "react";
 import axios from "axios";
+import LoadingSping from "../LoadingSping";
 
 export default function Pet({token,user}) {
   // use states
   const [dataPet, setDataPet] = React.useState({
-    weight:"1-5"
+    weight:""
   });
+  const [enviando, setEnviando] = React.useState(false);
   /*** LLAMADA DEL CONTEXT MANEJADOR DE VISTAS FORM */
   const { setNavForm } = useCasosCtx();
   /*** MANEJADOR DEL EVENTO SUBIR IMAGEN */
@@ -42,10 +44,10 @@ export default function Pet({token,user}) {
     } else {
       preview.src = "";
     }
-    console.log(dataPet);
   };
   /// method POST pet
   const postPet = (e) => {
+    setEnviando(true)
     e.preventDefault();
         //formData
         const Data= new FormData()
@@ -85,6 +87,7 @@ export default function Pet({token,user}) {
   };
   return (
     <div className="py-20 flex justify-center text-purple-dark">
+     {enviando&&<LoadingSping/>}
       <div>
         <FormCompleted
           onClick={() => setNavForm(1)}
