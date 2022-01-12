@@ -1,5 +1,5 @@
 import React from "react";
-import threejsLoader, { changeColor } from "../../threejs/apploader";
+import threejsLoader, { changeColor, changePlasticColor } from "../../threejs/apploader";
 import { useCasosCtx } from '../../contexts/casosExito/navInicio.context'
 export default function Protesis() {
   const state = 0;
@@ -18,10 +18,10 @@ export default function Protesis() {
     });
   };
   const handleInputColorTwo = (colorTwo, colorText) => {
-    changeColor(colorTwo)
+    changePlasticColor(colorTwo)
     setDatos({
       ...datosProtesis,
-      color: colorText,
+      color2: colorText,
     });
   };
   React.useEffect(() => {
@@ -87,7 +87,7 @@ export default function Protesis() {
               >
               </div>
               <div
-                onClick={() => handleInputColor(0xffffff, "Blanco")}
+                onClick={() => handleInputColor(0xd6d6d6, "Blanco")}
                 className="w-8 h-8 rounded-full bg-white mx-1  cursor-pointer"
               >
               </div>
@@ -107,42 +107,42 @@ export default function Protesis() {
             <span>Estructura</span>
             <div className="flex ml-6">
               <div
-                onClick={() => handleInputColor(0x740500, "Rojo")}
+                onClick={() => handleInputColorTwo(0x740500, "Rojo")}
                 className="w-8 h-8 rounded-full bg-red-600 mx-1 cursor-pointer"
               >
               </div>
               <div
-                onClick={() => handleInputColor(0x2c517f, "Azul")}
+                onClick={() => handleInputColorTwo(0x2c517f, "Azul")}
                 className="w-8 h-8 rounded-full bg-blue-600 mx-1 cursor-pointer"
               >
               </div>
               <div
-                onClick={() => handleInputColor(0x775d06, "Amarillo")}
+                onClick={() => handleInputColorTwo(0x775d06, "Amarillo")}
                 className="w-8 h-8 rounded-full bg-yellow-400 mx-1 cursor-pointer"
               >
               </div>
               <div
-                onClick={() => handleInputColor(0x196716, "Verde")}
+                onClick={() => handleInputColorTwo(0x196716, "Verde")}
                 className="w-8 h-8 rounded-full bg-green-600 mx-1 cursor-pointer"
               >
               </div>
               <div
-                onClick={() => handleInputColor(0xff6309, "Naranja")}
+                onClick={() => handleInputColorTwo(0xff6309, "Naranja")}
                 className="w-8 h-8 rounded-full mx-1 cursor-pointer bg-orange"
               >
               </div>
               <div
-                onClick={() => handleInputColor(0xffffff, "Blanco")}
+                onClick={() => handleInputColorTwo(0xd6d6d6, "Blanco")}
                 className="w-8 h-8 rounded-full bg-white mx-1  cursor-pointer"
               >
               </div>
               <div
-                onClick={() => handleInputColor(0x6d6d6d, "Gris")}
+                onClick={() => handleInputColorTwo(0x6d6d6d, "Gris")}
                 className="w-8 h-8 rounded-full bg-gray-400 mx-1 cursor-pointer"
               >
               </div>
               <div
-                onClick={() => handleInputColor(0x010101, "Negro")}
+                onClick={() => handleInputColorTwo(0x010101, "Negro")}
                 className="w-8 h-8 rounded-full bg-black mx-1 cursor-pointer"
               >
               </div>
