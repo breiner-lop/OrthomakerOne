@@ -15,6 +15,7 @@ import "react-multi-carousel/lib/styles.css";
 import { useCasosCtx } from "../contexts/casosExito/navInicio.context";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import CardComoLoHacemos from "../components/Cards/CardComoLoHacemos";
 
 export default function Index() {
   const [activeOrtho, setActiveOrtho] = useState(1);
@@ -59,10 +60,10 @@ export default function Index() {
   };
 
   return (
-    <div className="overflow-x-hidden scroll-smooth">
-      <Navbar />
-      <div className="text-purple-dark">
-        <div className="bg-gradient-to-b from-blue-light to-white ">
+    <div className="overflow-x-hidden">
+      <Navbar/>
+      <div className="text-purple-dark ">
+        <div className="bg-gradient-to-b from-blue-light to-white  md:pt-0 pt-24">
           <div  style={{
                 background: `url("/img/Interseccion.png")`,
                 backgroundRepeat: "no-repeat",
@@ -70,13 +71,12 @@ export default function Index() {
                 width: "100%",
               }}>
             <div
-              className="px-24 bg-opacity-0 mx-auto"
+              className="xl:px-24 px-5 bg-opacity-0 mx-auto"
               style={{
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "center",
                 maxWidth: "1500px"
               }}
-            
             >
               {/***  Header ***/}
               <p className="text-blue-transparent text-3xl">
@@ -92,9 +92,9 @@ export default function Index() {
               </div>
               {/***  OrthoMaker ***/}
               <div className="mb-2">
-                <h2 className="text-9xl text-center">OrthoMaker</h2>
-                <div className="flex mt-32">
-                  <div className="w-1/2 pr-32 flex items-center">
+                <h2 className="md:text-9xl text-6xl text-center">OrthoMaker</h2>
+                <div className="md:flex block mt-32">
+                  <div className="md:w-1/2 w-full pr-2 xl:pr-32 flex items-center">
                     <div>
                       <h2 className="font-semibold text-5xl mb-4">
                         Como lo <br /> hacemos
@@ -104,76 +104,13 @@ export default function Index() {
                       </p>
                     </div>
                   </div>
-                  <div className="w-1/2">
-                    <div
-                      className="p-6 rounded-lg flex items-center my-2"
-                      style={{
-                        background: `url("/img/dogOne.png")`,
-                        backgroundRepeat: "no-repeat",
-                        backgroundSize: "cover",
-                      }}
-                    >
-                      <div className="w-1/5">
-                        <img
-                          src="/img/configIcon.png"
-                          width="75px"
-                          height="75px"
-                        />
-                      </div>
-                      <div className="ml-3">
-                        <h4 className="font-semibold">Materiales De Alta Calidad</h4>
-                        <p className="w-4/6">
-                        Utilizamos materiales de alta calidad y amigables con el medio ambiente proveniente de fuentes renovables.
-                        </p>
-                      </div>
-                    </div>
-                    <div
-                      className="p-6 rounded-lg flex items-center my-2"
-                      style={{
-                        background: `url("/img/dogTwo.png")`,
-                        backgroundRepeat: "no-repeat",
-                        backgroundSize: "cover",
-                      }}
-                    >
-                      <div className="w-1/5">
-                        <img
-                          src="/img/boxIcon.png"
-                          width="75px"
-                          height="75px"
-                        />
-                      </div>
-                      <div className="ml-3">
-                        <h4 className="font-semibold">Diseños Personalizados</h4>
-                        <p className="w-4/6 ">
-                        Trabajamos para crear diseños personalizados que se adapten a las necesidades de cada canino y la de sus dueños 
-                        </p>
-                      </div>
-                    </div>
-                    <div
-                      className="p-6 rounded-lg flex items-center my-2"
-                      style={{
-                        background: `url("/img/dogThree.png")`,
-                        backgroundRepeat: "no-repeat",
-                        backgroundSize: "cover",
-                      }}
-                    >
-                      <div className="w-1/5">
-                        <img
-                          src="/img/feetIcon.png"
-                          width="75px"
-                          height="75px"
-                        />
-                      </div>
-                      <div className="ml-3">
-                        <h4 className="font-semibold">Procesos De Producción</h4>
-                        <p className="w-4/5">
-                        las nuevas tecnologías como la impresión 3D permiten disminuir los costos y tiempos de los procesos de fabricación de elementos ortopédicos
-                        </p>
-                      </div>
-                    </div>
+                  <div className="md:w-1/2 w-full">
+                    <CardComoLoHacemos img="/img/dogOne.png" icon="/img/configIcon.png" title="Materiales De Alta Calidad" text=" Utilizamos materiales de alta calidad y amigables con el medio ambiente proveniente de fuentes renovables."/>
+                    <CardComoLoHacemos img="/img/dogTwo.png" icon="/img/boxIcon.png" title="Diseños Personalizados" text="Trabajamos para crear diseños personalizados que se adapten a las necesidades de cada canino y la de sus dueños."/>
+                    <CardComoLoHacemos img="/img/dogThree.png" icon="/img/feetIcon.png" title="Procesos De Producción" text=" las nuevas tecnologías como la impresión 3D permiten disminuir los costos y tiempos de los procesos de fabricación de elementos ortopédicos."/>
                   </div>
                 </div>
-                <ul className="flex mt-32 mb-4">
+                <ul className="flex md:mt-32 mt-6 mb-4">
                   <li className="rounded-full w-14 h-14 border-2 mr-2 flex items-center justify-center border-red-dark">
                     <img src="/img/feet90.png" width="32px" height="28px" />
                   </li>
@@ -193,31 +130,30 @@ export default function Index() {
             </div>
           </div>
         </div>
-        <div className="mx-auto px-24" style={{ maxWidth: "1500px" }}>
+        <div className="mx-auto lg:px-24 px-5" style={{ maxWidth: "1500px" }}>
           {/***  OrthoMaker ONE ***/}
           <div className="mb-40">
             <div className="flex justify-between">
-              <h2 className="text-5xl font-bold">OrthoMaker ONE</h2>
+              <h2 className="md:text-5xl text-2xl font-bold">OrthoMaker ONE</h2>
               <GetStarted />
             </div>
-            <div className="-mx-24 my-14">
+            <div className="lg:-mx-24 -mx-5 my-14">
               <img
                 className="w-full"
                 src="/img/orthooneback.png"
                 alt="orthomaker one"
               />
             </div>
-            <div className="flex mt-32">
+            <div className="md:flex block mt-32">
               <ul
-                className="text-5xl w-2/5 border-l border-purple-light "
-                style={{ height: "500px" }}
+                className="lg:text-5xl text-4xl md:w-2/5 w-full border-l border-purple-light h-[300px] md:h-[500px]"
               >
                 <li
                   style={{ marginLeft: "-1px" }}
                   className={
                     activeOrtho == 1
-                      ? "text-purple-dark py-5 border-l-2 border-purple pl-10"
-                      : "py-5 text-blue-transparent pl-10"
+                      ? "text-purple-dark md:py-5 py-1 border-l-2 border-purple pl-10"
+                      : "md:py-5 py-1 text-blue-transparent pl-10"
                   }
                 >
                   <ButtonOrthoOne onClick={() => handleActiveOrtho(1)}>
@@ -228,8 +164,8 @@ export default function Index() {
                   style={{ marginLeft: "-1px" }}
                   className={
                     activeOrtho == 2
-                      ? "text-purple-dark py-5 border-l-2 border-purple pl-10"
-                      : "py-5 text-blue-transparent pl-10"
+                      ? "text-purple-dark md:py-5 py-1 border-l-2 border-purple pl-10"
+                      : "md:py-5 py-1 text-blue-transparent pl-10"
                   }
                 >
                   <ButtonOrthoOne onClick={() => handleActiveOrtho(2)}>
@@ -240,8 +176,8 @@ export default function Index() {
                   style={{ marginLeft: "-1px" }}
                   className={
                     activeOrtho == 3
-                      ? "text-purple-dark py-5 border-l-2 border-purple pl-10"
-                      : "py-5 text-blue-transparent pl-10"
+                      ? "text-purple-dark md:py-5 py-1 border-l-2 border-purple pl-10"
+                      : "md:py-5 py-1 text-blue-transparent pl-10"
                   }
                 >
                   <ButtonOrthoOne onClick={() => handleActiveOrtho(3)}>
@@ -252,8 +188,8 @@ export default function Index() {
                   style={{ marginLeft: "-1px" }}
                   className={
                     activeOrtho == 4
-                      ? "text-purple-dark py-5 border-l-2 border-purple pl-10"
-                      : "py-5 text-blue-transparent pl-10"
+                      ? "text-purple-dark md:py-5 py-1 border-l-2 border-purple pl-10"
+                      : "md:py-5 py-1 text-blue-transparent pl-10"
                   }
                 >
                   <ButtonOrthoOne onClick={() => handleActiveOrtho(4)}>
@@ -264,8 +200,8 @@ export default function Index() {
                   style={{ marginLeft: "-1px" }}
                   className={
                     activeOrtho == 5
-                      ? "text-purple-dark py-5 border-l-2 border-purple pl-10"
-                      : "py-5 text-blue-transparent pl-10"
+                      ? "text-purple-dark md:py-5 py-1 border-l-2 border-purple pl-10"
+                      : "md:py-5 py-1 text-blue-transparent pl-10"
                   }
                 >
                   <ButtonOrthoOne onClick={() => handleActiveOrtho(5)}>
@@ -273,7 +209,7 @@ export default function Index() {
                   </ButtonOrthoOne>
                 </li>
               </ul>
-              <div className="w-3/5">
+              <div className="md:w-3/5 w-full">
                 {activeOrtho == 1 ? (
                   <Technology />
                 ) : activeOrtho == 2 ? (
@@ -323,23 +259,15 @@ export default function Index() {
             <h4 className="text-2xl font-light">Casos de exito</h4>
             <hr />
             <div className="flex -mr-24">
-              <ul
-                className={
-                  activeCase || state ? "hidden" : "w-3/5 mt-14 text-5xl"
-                }
-                style={{
-                  background: `url("/img/wavesexitos.png")`,
-                  backgroundRepeat: "no-repeat",
-                }}
+              <ul className={activeCase || state ? "hidden" : "md:w-3/5 w-2/5 mt-14 text-3xl md:text-5xl"} style={{background: `url("/img/wavesexitos.png")`,backgroundRepeat: "no-repeat",}}
               >
                 <li className="my-4">
                   <button onClick={() => handleCasos(1)}>
-                    <span className="flex items-center w-64 justify-between">
+                    <span className="flex items-center w-36 md:w-64 justify-between">
                       PININA
                       <img
                         src="/img/rowlonger.png"
-                        width="60px"
-                        height="50px"
+                        className="md:w-14 w-8 md:h-12 h-7"
                       />
                     </span>
                   </button>
@@ -369,7 +297,7 @@ export default function Index() {
                   </button>
                 </li> */}
               </ul>
-              <div className={!state? "w-2/5 mt-14 transition-all ": "w-full mt-14 transition-all"}>
+              <div className={!state? "md:w-2/5 w-3/5 md:h-full h-[270px] mt-14 transition-all ": "w-full mt-14 transition-all"}>
                 <Carousel
                   responsive={responsive}
                   arrows={false}
@@ -396,8 +324,8 @@ export default function Index() {
            </div>
           {/***  TEAM ***/}
           <div className="mb-14">
-            <h4 className="text-2xl font-light mb-14">Equipo de trabajo</h4>
-            <div className="grid grid-cols-2 gap-2">
+            <h4 className="text-2xl font-light mb-6 md:mb-14">Equipo de trabajo</h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
               {TeamData.map((tData) => (
                 <CardTeam
                   key={tData.id}
@@ -412,10 +340,10 @@ export default function Index() {
           </div>
           {/***  CONTACTO ***/}
           <div id="contacto"
-            className="bg-red-dark text-white mb-16 mt-40 flex"
+            className="bg-red-dark text-white mb-16 mt-40 block md:flex"
             style={{ borderRadius: "50px" }}
           >
-            <div className="w-3/5 py-10 px-20">
+            <div className="w-full md:w-3/5 py-10 px-5 md:px-20">
               <h4 className="text-2xl font-light mb-6 text-white-transparent">
                 Contacto
               </h4>

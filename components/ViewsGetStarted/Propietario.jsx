@@ -56,14 +56,14 @@ export default function Propietario({token,user}) {
   return (
     <div>
      {enviando&&<LoadingSping/>}
-      <div className=" py-20 flex justify-center text-purple-dark">
-        <div className="shadow-lg" style={{ width: "800px" }}>
+      <div className="md:py-20 py-10 flex justify-center text-purple-dark">
+        <div className="shadow-lg w-[800px] md:mx-0 mx-2">
           <form
             onSubmit={(e)=>putUser(e)}
           >
-            <div className="p-12 flex justify-between border-b-2 border-gray-200">
+            <div className="md:p-12 p-4 flex justify-between border-b-2 border-gray-200">
               <div>
-                <span className="text-3xl">
+                <span className="text-2xl">
                   Hola, queremos conocerte un poco mas
                 </span>
                 <br />
@@ -75,7 +75,7 @@ export default function Propietario({token,user}) {
                 <ButtonNextForm />
               </div>
             </div>
-            <div className="grid grid-cols-2 p-12 border-b-2 border-gray-200">
+            <div className="grid grid-cols-2 md:p-12 p-4 border-b-2 border-gray-200">
               <div className="col-span-1">
                 <label htmlFor="nombres">Nombres</label>
                 <br />
@@ -84,7 +84,7 @@ export default function Propietario({token,user}) {
                   onChange={(e) => handleInputChange(e)}
                   required
                   value={data.name}
-                  className="bg-blue-light mr-4 w-80 h-12 focus:outline-none px-4"
+                  className="bg-blue-light mr-4 md:w-80 w-40 h-12 focus:outline-none px-4"
                   type="text"
                 />
               </div>
@@ -96,12 +96,12 @@ export default function Propietario({token,user}) {
                   onChange={(e) => handleInputChange(e)}
                   required
                   value={data.lastname}
-                  className="bg-blue-light mr-4 w-80 h-12 focus:outline-none px-4"
+                  className="bg-blue-light mr-4 md:w-80 w-44 h-12 focus:outline-none px-4"
                   type="text"
                 />
               </div>
             </div>
-            <div className="grid grid-cols-2  border-b-2 border-gray-200 p-12">
+            <div className="grid grid-cols-2  border-b-2 border-gray-200 md:p-12 p-4">
               <div className="col-span-1">
                 <label htmlFor="Telefono">Telefono</label>
                 <br />
@@ -109,7 +109,7 @@ export default function Propietario({token,user}) {
                   name="phone"
                   onChange={(e) => handleInputChange(e)}
                   required
-                  className="bg-blue-light mr-4 w-80 h-12 focus:outline-none px-4"
+                  className="bg-blue-light mr-4 md:w-80 w-40 h-12 focus:outline-none px-4"
                   type="number"
                   value={data.phone}
                 />
@@ -122,7 +122,7 @@ export default function Propietario({token,user}) {
                   onChange={(e) => handleInputChange(e)}
                   value={user.mail}
                   required
-                  className="bg-blue-light mr-4 w-80 h-12 focus:outline-none px-4"
+                  className="bg-blue-light mr-4 md:w-80 w-44 h-12 focus:outline-none px-4"
                   type="email"
                   disabled
                 />
@@ -138,8 +138,8 @@ export default function Propietario({token,user}) {
                 />
               </div>
             </div>
-            <div className="grid grid-cols-3 bg-white p-12 mb-1">
-              <div className="col-span-3 mb-6 mr-6">
+            <div className="grid md:grid-cols-3 grid-cols-1 bg-white md:p-12 p-4 mb-1">
+              <div className="md:col-span-3 col-span-1 mb-6 mr-6">
                 <label htmlFor="Direccion">Direccion residencia </label>
                 <br />
                 <input
@@ -159,7 +159,7 @@ export default function Propietario({token,user}) {
                   onChange={(e) => handleInputChange(e)}
                   value={data.city}
                   required
-                  className="bg-blue-light mr-4 w-52 h-12 focus:outline-none px-4"
+                  className="bg-blue-light mr-4 md:w-52 w-80 h-12 focus:outline-none px-4"
                   type="text"
                 />
               </div>
@@ -170,7 +170,7 @@ export default function Propietario({token,user}) {
                   name="state"
                   onChange={(e) => handleInputChange(e)}
                   required
-                  className="bg-blue-light mr-4 w-52 h-12 focus:outline-none px-4"
+                  className="bg-blue-light mr-4 md:w-52 w-80 h-12 focus:outline-none px-4"
                   type="text"
                   value={data.state}
                 />
@@ -182,7 +182,7 @@ export default function Propietario({token,user}) {
                   name="zip"
                   onChange={(e) => handleInputChange(e)}
                   required
-                  className="bg-blue-light mr-4 w-52 h-12 focus:outline-none px-4"
+                  className="bg-blue-light mr-4 md:w-52 w-80 h-12 focus:outline-none px-4"
                   type="text"
                   value={data.zip}
                 />

@@ -4,7 +4,7 @@ import { useCasosCtx } from '../../contexts/casosExito/navInicio.context'
 export default function Protesis() {
   const state = 0;
 
-  const { datosProtesis, setDatos, } = useCasosCtx()
+  const { datosProtesis, setDatos } = useCasosCtx()
   //setDatos(datosProtesis)
   const [medidaAB, setMedidaAB] = React.useState()
   const [medidaBC, setMedidaBC] = React.useState()

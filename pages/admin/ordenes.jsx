@@ -53,16 +53,16 @@ export default function Ordenes() {
             </div>
             <h4 className="text-4xl font-medium mt-2 mb-6">Total ordenes</h4>
             <div className="flex">
-              <div className="w-9/12">
+              <div className="w-full">
                 <div className="flex">
                   <Buscar />
                 </div>
                 <div>
-                  <div className="flex justify-between text-gray-400 my-8 px-6">
-                    <h6>Numero de orden</h6>
-                    <h6>Estado</h6>
-                    <h6>Valor total</h6>
-                    <h6 className="w-32">Usuario</h6>
+                  <div className="grid grid-cols-4 justify-center text-center text-gray-400 my-8 px-6">
+                    <h6 className="col-span-1">Numero de orden</h6>
+                    <h6 className="col-span-1">Estado</h6>
+                    <h6 className="col-span-1">Valor total</h6>
+                    <h6 className="col-span-1">Usuario</h6>
                   </div>
                  {
                    orders.length>0?
@@ -76,6 +76,7 @@ export default function Ordenes() {
                            status={order.status}
                            total={order.valor_total}
                            userId={order.users_id}
+                           statusProduction={order.prod_status}
                          />
                        )
                      );
@@ -86,7 +87,7 @@ export default function Ordenes() {
               </div>
 
               {/**  stats Ordenes */}
-              <div className="w-3/12 ml-4 filter drop-shadow-lg">
+             {/*  <div className="w-3/12 ml-4 filter drop-shadow-lg">
                 <div className="bg-white p-4 rounded-lg">
                   <span>Stats ordenes</span>
                   <br />
@@ -124,7 +125,7 @@ export default function Ordenes() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </LayoutAdmin>
