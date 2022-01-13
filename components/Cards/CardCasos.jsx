@@ -5,7 +5,7 @@ export default function CardCasos({ img, name, textOne, textTwo,Uu,imgsig }) {
   return (
     <div>
       <div>
-        <div className="flex " style={{ width:`${state==false?"1200px":"1400px"}` }}>
+        <div className="flex" style={{ width:`${state==false?"1200px":"1400px"}` }}>
           <div className="w-1/2">
             <img src={img} width="100%" height="100%" />
           </div>
@@ -35,9 +35,9 @@ export default function CardCasos({ img, name, textOne, textTwo,Uu,imgsig }) {
           </div>
         </div>
         <div className="-mb-10 pb-10" >
-          <button onClick={()=>setState(false)}>
+          {state&&<button onClick={()=>setState(false)}>
             <span className="underline">Inicio</span>
-          </button>
+          </button>}
         </div>
       </div>
     </div>

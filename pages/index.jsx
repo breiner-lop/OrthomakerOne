@@ -59,7 +59,7 @@ export default function Index() {
   };
 
   return (
-    <div className="overflow-x-hidden">
+    <div className="overflow-x-hidden scroll-smooth">
       <Navbar />
       <div className="text-purple-dark">
         <div className="bg-gradient-to-b from-blue-light to-white ">
@@ -319,7 +319,7 @@ export default function Index() {
           </div>***/}
           
           {/***  Casos de exito ***/}
-          <div className="mb-32">
+          <div id="experiencia" className="mb-32">
             <h4 className="text-2xl font-light">Casos de exito</h4>
             <hr />
             <div className="flex -mr-24">
@@ -369,7 +369,7 @@ export default function Index() {
                   </button>
                 </li> */}
               </ul>
-              <div className={!state? "w-2/5 mt-14 transition duration-300": "w-full mt-14 transition duration-300"}>
+              <div className={!state? "w-2/5 mt-14 transition-all ": "w-full mt-14 transition-all"}>
                 <Carousel
                   responsive={responsive}
                   arrows={false}
@@ -381,6 +381,7 @@ export default function Index() {
                       img={casos.img}
                       name={casos.name}
                       textTwo={casos.textTwo}
+                      state={state}
                     />
                   ))}
                 </Carousel>
@@ -388,7 +389,7 @@ export default function Index() {
             </div>
           </div>
            {/***  NOSOTROS ***/}
-           <div className="bg-gradient-to-r from-blue-light to-white -mx-24 px-24 py-32 mb-14">
+           <div id="nosotros" className="bg-gradient-to-r from-blue-light to-white -mx-24 px-24 py-32 mb-14">
              <h4 className="font-bold text-5xl mb-10">¿QUIÉNES SOMOS?</h4>
              <p className="text-2xl font-light">Somos una empresa colombiana fundada por ingenieros con experiencia en el diseño y desarrollo de soluciones en 3d y fieles    creyentes en que los animales merecen segundas oportunidades.
               en OrthoMaker estamos comprometidos con el bienestar de los animales, contamos con un equipo de ingenieros y de la mano de especialistas en veterinaria, buscamos brindar soluciones ortopédicas confiables y seguras que estén a su alcance. haciendo uso de la mejor tecnología, la creatividad y nuestro conocimiento para satisfacer las necesidades de cada uno de nuestros pacientes.</p>
@@ -410,7 +411,7 @@ export default function Index() {
             </div>
           </div>
           {/***  CONTACTO ***/}
-          <div
+          <div id="contacto"
             className="bg-red-dark text-white mb-16 mt-40 flex"
             style={{ borderRadius: "50px" }}
           >
