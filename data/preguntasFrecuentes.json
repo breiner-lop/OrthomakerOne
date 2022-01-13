@@ -1,0 +1,47 @@
+[
+    {
+        "id":"1",
+        "title":"¿Cómo seleccionar el producto correcto?",
+        "text":"En el caso de los dispositivos personalizados es importante siempre tomar las medidas de manera correcta según lo especificado y Seguir las instrucciones para elegir el diseño adecuado, es importante siempre consulte con su veterinario. Nuestro equipo también esta disponible para ofrecerle la mejor solución para su necesidad y la de amigo peludo.Para los dispositivos disponibles por tallas debes consultar la descripción de producto. En la misma página, en la zona inferior, encontrarás las instrucciones para medir y seleccionar la talla, podrás consultar la tabla de tallas y si existe posibilidad de realizar el producto a medida. Recuerda seleccionar en el desplegable la talla correcta antes de añadir el producto al carrito."
+    },
+    {
+        "id":"2",
+        "title":"¿Qué tipo de materiales usan",
+        "text":"En Orthomaker la mayoría de nuestros dispositivos están hecho a base de impresión 3D con materiales como el PLA que proviene de fuentes renovables y es amigable con el medio ambiente además de sus altas propiedades mecánicas que lo hacen un material clave a la hora de crear nuestros dispositivos. Además de una variedad de materiales que se utilizan en el campo humano de la ortesis y la prótesis, como lo son la espuma protectora, suela antideslizante, herrajes, pasadores entre otros componentes."
+    },
+    {
+        "id":"3",
+        "title":"¿Qué pasa si mi mascota masticará el dispositivo?",
+        "text":"Cuando un paciente mastica su dispositivo, generalmente es una indicación de que se requiere una modificación o ajuste para mejorar el ajuste y / o la función. contacte a su veterinario y/o a nuestro equipo de OrthoMaker. Para su tranquilidad el material que utilizamos no es toxico para el canino en caso de ser ingerido."
+    },
+    {
+        "id":"4",
+        "title":"¿Cuánto tiempo puede llevar puesto el dispositivo?",
+        "text":"Es muy importante seguir las indicaciones de su médico veterinario. Es importante que use cualquier tipo de dispositivo ortopédico de forma gradual y siempre bajo supervisión humana. Los primeros días se debe comprobar si hay reacciones en la piel o enrojecimiento tras unos minutos de utilización (se recomienda máximo una hora). Nuestros productos poseen materiales especiales para reducir al mínimo los roces, pero en algunos casos una exposición excesiva o un desajuste en la tensión de las cintas puede causar reacciones.  A medida que confirmemos que no hay señales de roces o alergias en las zonas afectadas podremos ir incrementando el tiempo de utilización. En el caso de que apareciera algún signo de roce o herida se debe retirar el producto y esperar a que la herida esté completamente curada, a excepción de los casos donde se requiera una inmovilización continua se recomienda retirar todas las ayudas durante la noche."
+    },
+    {
+        "id":"5",
+        "title":"¿Mi mascota necesita rehabilitación para el uso de los dispositivos?",
+        "text":"Para obtener los máximos resultados con nuestras soluciones ortopédicas / protésicas personalizadas, recomendamos un programa de rehabilitación apropiado para su mascota y su lesión o inestabilidad específica Un profesional de su elección puede recomendarle un plan de tratamiento de rehabilitación detallado"
+    },
+    {
+        "id":"6",
+        "title":"¿Cómo sabré cómo ponerle el aparato ortopédico a mi perro?",
+        "text":"Nuestro equipo proporcionará a usted y a su veterinario instrucciones detalladas por escrito (manual de uso), con imágenes para guiarlo sobre cómo colocar correctamente los dispositivos de su mascota. Nuestro equipo está disponible para hablar con usted por diferentes canales de comunicación como llamada telefónica o mediante un chat de video programado para ayudarlo mejor en el proceso de adaptación. El dispositivo de su mascota también se enviará con información adicional, como manual de uso, ensamble y cuidado del dispositivo, etc. "
+    },
+    {
+        "id":"7",
+        "title":"¿Qué pasa si a mi mascota le falta una extremidad completa?",
+        "text":"Para poder usar una prótesis funcional de la extremidad anterior, es necesario que esté intacto entre el 50% y 60% del antebrazo (radio y el cúbito). Para el caso de las extremidades posteriores es necesario que este intacto el 50% de la tibia peroné. Nuestro equipo esta disponible para examinar cada caso y determinar si una prótesis es viable."
+    },
+    {
+        "id":"8",
+        "title":"No veo la solución que estoy buscando en su sitio web. ¿Todavía pueden crear algo para mí?",
+        "text":"Los dispositivos ortopédicos que pueden encontrar en nuestro sitio web son para proporcionarle ejemplos de aparatos ortopédicos comunes para perros fabricados por OrthoMaker. Consideramos que cada caso es único y fabricaremos un dispositivo que será funcional y cómodo para su mascota. Comuníquese con OrthoMaker para analizar las opciones únicas disponibles."
+    },
+    {
+        "id":"9",
+        "title":"Soy veterinario y quiero aprender más sobre los dispositivos y cómo ofrecerlas a mis pacientes.",
+        "text":"No dude en ponerse en contacto con OrthoMaker para obtener más información sobre nuestros productos y cómo asociarse con nosotros para ofrecer nuestros dispositivos a sus clientes."
+    }
+]

@@ -1,9 +1,12 @@
 import 'tailwindcss/tailwind.css'
-import Layout from '../components/Layout'
+import {CasosProvider} from "../contexts/casosExito/navInicio.context"
+import React from 'react';
 
-
-function MyApp({ Component, pageProps }) {
-  return<Layout><Component {...pageProps} /></Layout> 
+export default function App({
+  Component,
+  pageProps: {...pageProps },
+}) {
+  return (
+      <CasosProvider><Component {...pageProps} /></CasosProvider>
+  )
 }
-
-export default MyApp
