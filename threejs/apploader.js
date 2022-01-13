@@ -6,8 +6,13 @@ import * as STL from './extensions/STLExporter'
 var textboxencaje;
 var textboxpilar;
 var screensize = { x: 640, y: 480 };
-var colorMaterial;
+var colorCarcaza;
+var colorPie;
+var colorPlastic;
 var loading;
+var MedidaAB;
+var MedidaBC;
+
 
 var objetos = { encaje: null, hueso: null, carcaza: null }
 
@@ -62,7 +67,10 @@ function preparescene(json) {
         obj.scene.position.y = -1.5;
         obj.scene.name = "pieces";
 
-        colorMaterial = obj.scene.getObjectByName("encajemodel")
+        colorCarcaza = obj.scene.getObjectByName("encajemodel")
+            
+        colorPie = obj.scene.getObjectByName("Ensamblaje_FINAL_PININA_-_PIE_PROTESIS-1");
+        colorPlastic = obj.scene.getObjectByName("Ensamblaje_FINAL_PININA_-_guia_pequeña_pinina-1")
 
         objetos.encaje = obj.scene.getObjectByName("encajemodel");
         objetos.hueso = obj.scene.getObjectByName("hueso_Pierna");
@@ -104,35 +112,17 @@ function loadRender(objects) {
 
 function setinput(object) {
     // Bones  
-    var piecedowntop = object.getObjectByName("PieceDownTop");
-    var piecetoptop = object.getObjectByName("PieceTopTop");
+     window.piecedowntop = object.getObjectByName("PieceDownTop");
+     window.piecetoptop = object.getObjectByName("PieceTopTop");
 
-    //--------------------------------------------
-
-    // ---------------------------------------------
-    // input fields 
-    textboxencaje.setAttribute("value", (piecedowntop.position.y / 10).toFixed(2));
-    textboxencaje.addEventListener("change", function (val) {
-        var medida = val.target.value;
-        if (medida <= 23 && medida >= 2) {
-            piecedowntop.position.y = (medida * 10);
-        }
-    });
-
-    textboxpilar.setAttribute("value", (piecetoptop.position.y / 10).toFixed(2));
-    textboxpilar.addEventListener("change", function (val) {
-        var medida = val.target.value;
-        if (medida <= 24 && medida >= 10) {
-            piecetoptop.position.y = (medida * 10);
-        }
-    });
-
+            piecedowntop.position.y = MedidaBC;
+            piecetoptop.position.y = MedidaAB;
 }
 
-export default async function threejsLoader() {
+export default async function threejsLoader(AB,BC) {
 
-    textboxencaje = document.getElementById("txt1");
-    textboxpilar = document.getElementById("txt2");
+    MedidaAB = AB;
+    MedidaBC = BC;
     var domMain = document.getElementById("threejsroot");
     screensize.x = domMain.clientWidth;
     screensize.y = domMain.clientHeight;
@@ -158,8 +148,14 @@ export default async function threejsLoader() {
 }
 
 export function changeColor(color) {
-    colorMaterial.material.color.set(color);
+    colorCarcaza.material.color.set(color);
 }
+
+export function changePlasticColor (color) {
+    colorPie.material.color.set(color);
+    colorPlastic.material.color.set(color)
+}
+
 export function getObjects() {
 
     var stlobj = {
