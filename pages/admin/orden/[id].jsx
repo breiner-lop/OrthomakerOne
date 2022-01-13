@@ -226,8 +226,8 @@ export default function Orden() {
              <div className="text-xs mt-4">
               <div className="flex justify-between">
                 <div>
-                <CampoDetalleOrden title="Altura de amputación A->B" valor={dataProthesis.amputation_height_AB+" cm"} widthTitle='w-40' />
-                <CampoDetalleOrden title="Altura de amputación B->C" valor={dataProthesis.amputation_height_BC+" cm"} widthTitle='w-40' />
+                <CampoDetalleOrden title="Altura de amputación A->B" valor={((parseInt(dataProthesis.amputation_height_AB)-19)/10)+" cm"} widthTitle='w-40' />
+                <CampoDetalleOrden title="Altura de amputación B->C" valor={((parseInt(dataProthesis.amputation_height_BC)-80)/10)+" cm"} widthTitle='w-40' />
                 </div>
                <CampoDetalleOrden title="Extremidad emputada" valor={dataProthesis.ext_emputee} widthTitle='w-36' />               
               </div>
@@ -243,6 +243,7 @@ export default function Orden() {
                 <CampoDetalleOrden title="PILAR PROT&Eacute;SICO" valor={dataProthesis.pillar+" cm"} widthTitle="w-32"/>
             </div>
            <div className="flex items-center">
+            <span className="text-blue-transparent">COLOR</span> <span className="ml-6"> {dataProthesis.color} </span>
             <span className="text-blue-transparent">COLOR</span> <span className="ml-6"> {dataProthesis.color} </span>
              {/**<div className="ml-4 w-6 h-6 bg-red-700 rounded-full"></div> */}
            </div>

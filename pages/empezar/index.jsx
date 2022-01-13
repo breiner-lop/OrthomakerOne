@@ -51,8 +51,8 @@ export default function Getstarted() {
     let formData = new FormData();
     formData.append("pet_size",parseFloat(dataProthesis.prothesisData.pet_size));
     formData.append("ext_emputee", dataProthesis.prothesisData.ext_emputee);
-    formData.append("amputation_height_AB",parseFloat(dataProthesis.prothesisData.medidaAB));
-    formData.append("amputation_height_BC",parseFloat(dataProthesis.prothesisData.medidaBC));
+    formData.append("amputation_height_AB",parseFloat(dataProthesis.prothesisData.medidaAB) + 19);
+    formData.append("amputation_height_BC",parseFloat(dataProthesis.prothesisData.medidaBC) + 80);
     formData.append("stump_perimeter_sup",parseFloat(dataProthesis.prothesisData.stump_perimeter_sup));
     formData.append("stump_perimeter_inf",parseFloat(dataProthesis.prothesisData.stump_perimeter_inf));
     formData.append("stump_length",0);
