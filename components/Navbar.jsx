@@ -17,19 +17,19 @@ export default function Navbar() {
         <img src="/img/logomain.png" alt="logo de orthomaker" />
       <ul className="flex text-lg">
         <li className="mx-4">
-          <Link href="/">Nosotros</Link>
+          <Link href="#nosotros">Nosotros</Link>
         </li>
         <li className="mx-4">
-          <Link href="/">Experiencia</Link>
+          <Link href="#experiencia">Experiencia</Link>
         </li>
         <li className="mx-4">
-          <Link href="/">Contacto</Link>
+          <Link href="#contacto">Contacto</Link>
         </li>
       </ul>
       <div className="flex">
       <GetStarted />
      {
-       token? <Account/> : <Link href="/login"><span className="font-semibold text-purple-dark border filter drop-shadow-md border-purple ml-2 w-40 h-10 rounded-3xl bg-transparent hover:text-white hover:bg-purple-dark transition duration-300 flex justify-center items-center cursor-pointer">Log in</span></Link>
+       token? <Account/>:<Link href="/login"><span className="font-semibold text-purple-dark border filter drop-shadow-md border-purple ml-2 w-40 h-10 rounded-3xl bg-transparent hover:text-white hover:bg-purple-dark transition duration-300 flex justify-center items-center cursor-pointer">Log in</span></Link>
      }
       </div>
     </div>
