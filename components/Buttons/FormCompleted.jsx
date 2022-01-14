@@ -11,7 +11,7 @@ export default function FormCompleted({onClick,perfil}) {
                   height="30px"
                 />
               </span>
-              <span className="flex flex-col text-left ml-4 mr-20">
+              <span className="flex flex-col text-left ml-4 md:mr-20 mr-0">
                 <span className="text-sm text-blue-transparent">Completado</span> <span className="font-bold"> {perfil} </span>
               </span>
             </span>

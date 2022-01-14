@@ -26,22 +26,16 @@ export default function Veterinario() {
   }
 
   return (
-    <div className="py-20 flex justify-center text-purple-dark">
+    <div className="md:py-20 py-4 md:flex block justify-center text-purple-dark">
       {/***  formularios completador nav*/}
-      <div className="flex flex-col">
-        <FormCompleted
-          onClick={() => setNavForm(1)}
-          perfil="Perfil propietario"
-        />
+      <div className="flex flex-col md:px-0 px-4">
+        <FormCompleted onClick={() => setNavForm(1)}perfil="Perfil propietario"/>
         <FormCompleted onClick={() => setNavForm(2)} perfil="Perfil mascota" />
-        <FormCompleted
-          onClick={() => setNavForm(3)}
-          perfil="Perfil veterinario"
-        />
+        <FormCompleted onClick={() => setNavForm(3)} perfil="Perfil veterinario"/>
       </div>
-      <div className="shadow-lg" style={{ width: "800px" }}>
+      <div className="shadow-lg md:w-[800px] w-full">
         <form onSubmit={(e) => handleSubmit(e)}>
-          <div className="px-12 mb-1 flex justify-between items-center">
+          <div className="md:px-12 px-4 mb-1 flex justify-between items-center">
             <div className="my-10">
               <span className="text-3xl">Tamaño del canino</span>
             </div>
@@ -55,7 +49,7 @@ export default function Veterinario() {
             <img src="/img/dogsize.png" alt="dogsize" />
           </div>
           {/***input tamaño  */}
-          <div className=" bg-white p-12 mb-1 flex">
+          <div className=" bg-white md:p-12 p-4 mb-1 md:flex block">
             <div className="mb-6 w-1/2">
               <label htmlFor="nombres">Medida</label>
               <br />
@@ -71,7 +65,7 @@ export default function Veterinario() {
                 <span>CM</span>
               </div>
             </div>
-            <div className="w-1/2 text-blue-transparent">
+            <div className="md:w-1/2 w-full text-blue-transparent">
               <p>
                 Debes tomar la medida desde el punto A hasta el B como se
                 muestra en la imagen
