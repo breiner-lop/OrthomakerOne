@@ -39,10 +39,10 @@ export default function OrdenCard({id,status,total,userId,statusProduction}) {
        <span className="ml-2">{id}</span>
      </div>
      <div className="flex col-span-1 justify-center">
-     <div className="bg-blu-light text-blue-600 w-28 h-10 flex items-center justify-center rounded-lg text-center mr-2">
+     <div className="bg-blu-light text-blue-600 w-32 h-10 text-sm flex items-center justify-center rounded-lg text-center mr-2">
        <span>{status}</span>
      </div>
-     <div className="bg-green-200 text-green-600 w-28 h-10 flex items-center justify-center rounded-lg text-center ">
+     <div className="bg-green-200 text-green-600 text-sm w-32 h-10 flex items-center justify-center rounded-lg text-center ">
        <span>{statusProduction==0?"EN ESPERA":statusProduction==1?"EN PRODUCCIÓN":statusProduction==2&&"ENVIADO"}</span>
      </div>
      </div>
