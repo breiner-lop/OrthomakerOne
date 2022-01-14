@@ -32,11 +32,11 @@ export default function Orden() {
         //var idTransaccion=(localStorage.getItem("idTransaccion"))
         //getOrder(idTransaccion)
 
-      if(dataOrder){
+      if(dataOrder&&userData){
         let checkout = new WidgetCheckout({
           currency: 'COP',
           amountInCents:dataOrder.valor_total,
-          reference:"gvdf",
+          reference:id,
           publicKey: 'pub_test_7pVstX8t7nY6Xup5LOSFL1C6XVhWNrg4',
           redirectUrl: 'https://orthomakerone.com/thankyou', // Opcional
         //   taxInCents: { // Opcional
@@ -44,21 +44,17 @@ export default function Orden() {
         //     consumption: 800
         //   },
           customerData: { // Opcional
-            email:"dataUser.mail",
-            fullName: "dataUser.name",
-            phoneNumber:" dataUser.phone",
+            email:userData.mail,
+            fullName: `${userData.name} ${ userData.lastname}`,
+            phoneNumber:userData.phone,
             phoneNumberPrefix: '+57',
           }
         })
       }
-      setCheckout(checkout)
-          
+      setCheckout(checkout)  
       }
-     
       document.head.appendChild(scriptwompi);
-      
-      console.log("df")
-  },[wompiLoading,dataOrder])
+  },[wompiLoading,dataOrder,userData])
 
   // use Effect
   React.useEffect(() => {
@@ -152,6 +148,20 @@ export default function Orden() {
       console.log(error)
      });
    }
+   // Update prod_status
+   const onChangeProdEstatus=(e)=>{
+   setDataOrder({
+     ...dataOrder,
+     prod_status:e.target.value
+   })
+    axios.put(`${process.env.SERVER}/editOrdersProd/${id}`,{
+      status:e.target.value
+    },{
+      headers:{
+        "auth-token":localStorage.getItem("token"),
+      }
+      })
+   }
     
     
   return (
@@ -167,8 +177,12 @@ export default function Orden() {
        {/**  header */}
        <div className="flex justify-between items-center">
          <div className="flex">
-           <div className="text-green-500 text-xs h-7 w-20 bg-green-100 border border-green-400 rounded-lg flex justify-center items-center mr-2">
-            {dataOrder&& <span>{dataOrder.prod_status==0?"EN ESPERA":dataOrder.prod_status==1?"EN PRODUCCIÓN":dataOrder.prod_status==2&&"ENVIADO"}</span>}
+          <div className={`text-green-500 text-xs h-7 bg-green-100 border border-green-400 min-w-[80px] rounded-lg flex justify-center items-center mr-2`}>
+            {dataOrder&& <select disabled={rolUser==0?false:true} value={dataOrder.prod_status} onChange={(e)=>onChangeProdEstatus(e)} name="prod_status" id="prod_status" className="focus:outline-none bg-green-100">
+               <option value={0}>EN ESPERA</option>
+               <option value={1}>EN PRODUCCIÓN</option>
+               <option value={2}>ENVIADO</option>
+             </select>}
            </div>
            <div className="text-blue-500 text-xs h-7 w-20 bg-blue-light rounded-lg border border-bl flex justify-center items-center">
 
@@ -184,11 +198,11 @@ export default function Orden() {
                  className="mx-4"
                />
              </span>
-             <span>25.10.2021 a las 06:00 PM</span>
+            {dataOrder&& <span>{dataOrder.date}</span>}
            </div>
          </div>
          <div>
-           {dataOrder&&!dataOrder.id_transaction&&<ButtonBorderBlue  onClick={()=>{checkout.open(function(r){})}} text="Pagar ahora" />}
+           {userData&&!dataOrder.id_transaction&&<ButtonBorderBlue  onClick={()=>{checkout.open(function(r){})}} text="Pagar ahora" />}
            {/* <ButtonRed text="Cancelar orden" /> */}
          </div>
        </div>

@@ -2,6 +2,10 @@ import React from "react";
 import CampoDetalleOrden from "../CampoDetalleOrden";
 
 export default function DatosCliente() {
+  const [user,setUser]=React.useState({})
+  React.useEffect(()=>{
+    setUser(user=JSON.parse(localStorage.getItem("user")))
+  },[])
   return (
     <div className="p-6 w-full" style={{maxWidth:"1000px"}}>
       <span className="text-blue-transparent">Usuario</span>
@@ -21,15 +25,15 @@ export default function DatosCliente() {
           <div className="flex justify-evenly w-full items-center">
             <div>
               <h4>Breiner lopez</h4>
-              <CampoDetalleOrden title="Telefono" valor="305930340" />
-              <CampoDetalleOrden title="Email" valor="fssffd@jfjf.com" />
-              <CampoDetalleOrden title="Ciudad" valor="Santa marta" />
+              <CampoDetalleOrden title="Telefono" valor={user.phone} />
+              <CampoDetalleOrden title="Email" valor={user.mail} />
+              <CampoDetalleOrden title="Ciudad" valor={user.city} />
             </div>
             <div>
-              <CampoDetalleOrden title="Telefono(2)" valor="345655" />
-              <CampoDetalleOrden title="Direccion" valor="calle674 kr35" />
+              <CampoDetalleOrden title="Telefono(2)" valor={user.phone2} />
+              <CampoDetalleOrden title="Direccion" valor={user.direction} />
             </div>
-            <CampoDetalleOrden title="Zip" valor="3455" />
+            <CampoDetalleOrden title="Zip" valor={user.zip} widthTitle="w-6" />
           </div>
         </div>
       </div>
