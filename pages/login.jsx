@@ -39,6 +39,7 @@ const iniciarSesion=(e)=>{
   })
   .catch(function (error) { // en caso de ser incorrectos los datos
     setError(true)
+    setEnviando(false)
     setDatos({
       ...dataLogin,
       password:""
@@ -49,14 +50,14 @@ const iniciarSesion=(e)=>{
     <div className="flex">
       {enviando&&<LoadingSping/>}
       <div
-        className="w-7/12 bg-purple-dark h-screen"
+        className="w-7/12 hidden md:block bg-purple-dark h-screen"
         /* style={{
            backgroundImage: "url(/img/bglogin.png)",
            backgroundSize: "cover",
            backgroundRepeat: "no-repeat",
          }}*/
       ></div>
-      <div className="w-5/12 h-screen px-16 py-6 2xl:pt-16 flex flex-col justify-between">
+      <div className="md:w-5/12 w-full max-h-screen md:px-16 px-5 py-6 2xl:pt-16 flex flex-col justify-between">
         <div>
          <div className="flex justify-center">
          <img src="/img/logo.png" width="150px" height="140px" />
@@ -103,7 +104,7 @@ const iniciarSesion=(e)=>{
           <ButtonBlue type="submit" text="Ingresar" />
          </form>
         </div>
-        <div className="mt-4 text-sm text-center font-medium">
+        <div className="mt-10 text-sm text-center font-medium">
           <span>
           ¿No tienes una cuenta?
             <Link href="/registrarse">

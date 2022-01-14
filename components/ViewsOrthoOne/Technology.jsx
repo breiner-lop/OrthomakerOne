@@ -26,12 +26,12 @@ export default function Technology() {
   return (
     <div>
       <div className="justify-end flex mb-10">
-        <p className="text-2xl flex-col w-3/4 text-right font-light">
+        <p className="text-2xl flex-col md:w-3/4 w-full md:text text-left-right font-light">
           Nuestro proceso de producción esta influenciado por diferentes
           tecnologías siempre enfocadas en la integración protesis/extremidad
         </p>
       </div>
-      <div className=" grid grid-cols-3 gap-2">
+      <div className="grid-cols-2 grid lg:grid-cols-3 gap-2">
     {
         cardDescription.map((cD)=>(
             <div key={cD.id} className="border border-gray-200 rounded-lg col-span-1 p-6 shadow h-44">

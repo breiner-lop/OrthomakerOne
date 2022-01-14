@@ -59,6 +59,7 @@ export default function Getstarted() {
     formData.append("lace", 0);
     formData.append("pillar",0);
     formData.append("color", datosProtesis.color);
+    formData.append("color2", datosProtesis.color2);
     formData.append("pets_id", petsId);
     formData.append("encajeobj", obThree.encaje, "encaje.stl");
     formData.append("pilarobj", obThree.hueso, "pilar.stl");
@@ -79,6 +80,7 @@ export default function Getstarted() {
       .catch(function (error) {
         // en caso de ser incorrectos los datos
         console.log(error);
+        setLoadingOrder(false)
       }); 
   };
   /// create order
@@ -114,7 +116,7 @@ export default function Getstarted() {
   return loading? null :!token?<ViewNoAuth />: (
     <div>
        {loadingOrder&&<LoadingSping/>}
-      <div className="flex justify-between text-purple-dark h-20 items-center px-24">
+      <div className="flex justify-between text-purple-dark h-20 items-center px-5 md:px-24">
         <div className="flex items-center">
           {navForm == 8 && (
             <button
@@ -129,8 +131,8 @@ export default function Getstarted() {
               Ortho<strong>Maker</strong>
             </span>
           </Link>
-          <span className="mx-4 text-2xl">/</span>
-          <span className="text-2xl cursor-pointer text-blue-transparent">
+          <span className="mx-2 text-2xl hidden md:block">/</span>
+          <span className="text-2xl md:block hidden text-blue-transparent">
             Datos basicos
           </span>
         </div>
@@ -138,7 +140,7 @@ export default function Getstarted() {
           {navForm == 8 ? (
               <button onClick={()=>sendToProduction()} className="text-white rounded-lg flex items-center justify-center font-semibold  w-44 h-11 bg-red-500 hover:bg-red-600 transition duration-200 filter drop-shadow">Verificar orden</button>
           ) : (
-            <ButtonCancel text="Cancelar" />
+            <ButtonCancel text="Cancelar"/>
           )}
           {navForm == 8 && <ButtonCancelBlueLight />}
         </div>
