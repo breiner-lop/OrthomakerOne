@@ -170,7 +170,7 @@ export default function Propietario({token,user}) {
                   name="state"
                   onChange={(e) => handleInputChange(e)}
                   required
-                  className="bg-blue-light mr-4 md:w-52 border border-blue-200 w-80 h-12 focus:outline-none px-4"
+                  className="bg-blue-light mr-4 md:w-52 border border-blue-200 border border-none w-80 h-12 focus:outline-none px-4"
                   type="text"
                   value={data.state}
                 />
@@ -182,7 +182,7 @@ export default function Propietario({token,user}) {
                   name="zip"
                   onChange={(e) => handleInputChange(e)}
                   required
-                  className="bg-blue-light mr-4 md:w-52 w-80 h-12 border border-hidden border-blue-200 focus:outline-none px-4"
+                  className="bg-blue-light mr-4 md:w-52 w-80 h-12 border-hidden border-blue-200 focus:outline-none px-4"
                   type="text"
                   value={data.zip}
                 />
