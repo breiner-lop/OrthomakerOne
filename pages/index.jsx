@@ -146,13 +146,13 @@ export default function Index() {
             </div>
             <div className="md:flex block mt-32">
               <ul
-                className="lg:text-5xl text-4xl md:w-2/5 w-full border-none border-l border-0 border-solid border-purple-light h-[300px] md:h-[500px]"
+                className="lg:text-5xl text-4xl md:w-2/5 w-full border-l border-0 border-solid border-purple-light h-[300px] md:h-[500px]"
               >
                 <li
                   style={{ marginLeft: "-1px" }}
                   className={
                     activeOrtho == 1
-                      ? "text-purple-dark md:py-5 py-1 border-l-2 border-solid border-purple pl-10"
+                      ? "text-purple-dark md:py-5 py-1 border-l-2 border-0 border-solid border-purple pl-10"
                       : "md:py-5 py-1 text-blue-transparent pl-10"
                   }
                 >
@@ -164,7 +164,7 @@ export default function Index() {
                   style={{ marginLeft: "-1px" }}
                   className={
                     activeOrtho == 2
-                      ? "text-purple-dark md:py-5 py-1 border-l-2 border-solid border-purple pl-10"
+                      ? "text-purple-dark md:py-5 py-1 border-l-2 border-0 border-solid border-purple pl-10"
                       : "md:py-5 py-1 text-blue-transparent pl-10"
                   }
                 >
@@ -176,7 +176,7 @@ export default function Index() {
                   style={{ marginLeft: "-1px" }}
                   className={
                     activeOrtho == 3
-                      ? "text-purple-dark md:py-5 py-1 border-l-2 border-solid border-purple pl-10"
+                      ? "text-purple-dark md:py-5 py-1 border-l-2 border-0 border-solid border-purple pl-10"
                       : "md:py-5 py-1 text-blue-transparent pl-10"
                   }
                 >
@@ -188,7 +188,7 @@ export default function Index() {
                   style={{ marginLeft: "-1px" }}
                   className={
                     activeOrtho == 4
-                      ? "text-purple-dark md:py-5 py-1 border-l-2 border-solid border-purple pl-10"
+                      ? "text-purple-dark md:py-5 py-1 border-l-2 border-0 border-solid border-purple pl-10"
                       : "md:py-5 py-1 text-blue-transparent pl-10"
                   }
                 >
@@ -200,7 +200,7 @@ export default function Index() {
                   style={{ marginLeft: "-1px" }}
                   className={
                     activeOrtho == 5
-                      ? "text-purple-dark md:py-5 py-1 border-l-2 border-solid border-purple pl-10"
+                      ? "text-purple-dark md:py-5 py-1 border-l-2 border-0 border-solid border-purple pl-10"
                       : "md:py-5 py-1 text-blue-transparent pl-10"
                   }
                 >
