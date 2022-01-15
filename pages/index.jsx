@@ -146,7 +146,7 @@ export default function Index() {
             </div>
             <div className="md:flex block mt-32">
               <ul
-                className="lg:text-5xl text-4xl md:w-2/5 w-full border-l border-solid border-purple-light h-[300px] md:h-[500px]"
+                className="lg:text-5xl text-4xl md:w-2/5 w-full border-l border-0 border-solid border-purple-light h-[300px] md:h-[500px]"
               >
                 <li
                   style={{ marginLeft: "-1px" }}
