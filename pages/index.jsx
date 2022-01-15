@@ -262,8 +262,8 @@ export default function Index() {
               <ul className={activeCase || state ? "hidden" : "md:w-3/5 w-2/5 mt-14 text-3xl md:text-5xl"} style={{background: `url("/img/wavesexitos.png")`,backgroundRepeat: "no-repeat",}}
               >
                 <li className="my-4">
-                  <button onClick={() => handleCasos(1)}>
-                    <span className="flex items-center border-none w-36 md:w-64 justify-between">
+                  <button className="border-none" onClick={() => handleCasos(1)}>
+                    <span className="flex items-center w-36 md:w-64 justify-between">
                       PININA
                       <img
                         src="/img/rowlonger.png"
@@ -373,7 +373,7 @@ export default function Index() {
                   </span>
                 </span>
               </div>
-              <button type="submit" className="w-36 bg-purple-dark rounded-xl ml-2 hover:bg-opacity-90 shadow-lg hover:shadow transition duration-300">Enviar</button>
+              <button type="submit" className="w-36 bg-purple-dark border-none rounded-xl ml-2 hover:bg-opacity-90 shadow-lg hover:shadow transition duration-300">Enviar</button>
               </div>
             </div>
             <div className="w-2/5 flex items-end">
