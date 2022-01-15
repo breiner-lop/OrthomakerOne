@@ -67,14 +67,14 @@ const iniciarSesion=(e)=>{
             Iniciar sesion.
           </h4>
          <form onSubmit={(e)=>iniciarSesion(e)}>
-         <div className="rounded border border-gray-400 px-6 h-16 text-sm  my-2">
+         <div className="rounded border border-gray-400 border-solid px-6 h-16 text-sm  my-2">
             <label htmlFor="nombre" className="text-purple-transparent text-xs">
               Nombre de usuario
             </label>
             <br />
             <input name="mail" type="email" className="w-full h-8 focus:outline-none" value={dataLogin.mail} onChange={(e)=>handleInputChange(e)} required />
           </div>
-          <div className="rounded border border-gray-400 px-6 h-16 text-sm my-2">
+          <div className="rounded border border-gray-400 border-solid px-6 h-16 text-sm my-2">
             <label
               htmlFor="contraseña"
               className="text-purple-transparent text-xs "
@@ -84,7 +84,7 @@ const iniciarSesion=(e)=>{
             <br />
             <input name="password" type="password" className="w-full h-8 focus:outline-none" value={dataLogin.password} onChange={(e)=>handleInputChange(e)} required/>
           </div>
-          {error? <div className="rounded  border border-red-100 shadow-sm text-red-600 p-2">
+          {error? <div className="rounded  border border-red-100 border-solid shadow-sm text-red-600 p-2">
             <span className="mr-2 font-semibold">X</span><span>Usuario o contraseña incorrectos</span>
           </div>:null }
           <div className="flex justify-between my-6">
