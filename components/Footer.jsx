@@ -2,7 +2,7 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="text-purple-dark px-5 lg:px-10 xl:px-20 py-6 max-w-[1500px] mx-auto">
-      <div className="border-t-2 border-b-2 border-blue-light py-10">
+      <div className="border-t-2 border-b-2 border-0 border-blue-light py-10">
       <Link href="/">
         <span className="text-2xl cursor-pointer">
             Ortho<strong>Maker</strong>

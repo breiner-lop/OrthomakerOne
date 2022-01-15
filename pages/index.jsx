@@ -263,7 +263,7 @@ export default function Index() {
               >
                 <li className="my-4">
                   <button onClick={() => handleCasos(1)}>
-                    <span className="flex items-center w-36 md:w-64 justify-between">
+                    <span className="flex items-center border-none w-36 md:w-64 justify-between">
                       PININA
                       <img
                         src="/img/rowlonger.png"
@@ -357,13 +357,13 @@ export default function Index() {
                 ambiente y a la vez cómodos para tu mascota.
               </p>
               <textarea
-                  className=" text-purple-dark focus-visible:border-pink-100 shadow-xl p-4 mb-2 rounded-xl h-32 w-full bg-blue-light focus:outline-none"
+                  className=" text-purple-dark border-none shadow-xl p-4 mb-2 rounded-xl h-32 w-full bg-blue-light focus:outline-none"
                   placeholder="Escribe tu mensaje aquí"
                 />
               <div className="flex justify-between">
               <div className="w-96 h-12 rounded-xl bg-blue-light flex shadow-xl">
                 <input
-                  className=" text-purple-dark focus-visible:border-pink-100 px-4 rounded-xl w-4/5 h-full bg-blue-light focus:outline-none"
+                  className=" text-purple-dark border-none px-4 rounded-xl w-4/5 h-full bg-blue-light focus:outline-none"
                   type="mail"
                   placeholder="Mail"
                 />
