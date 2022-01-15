@@ -55,7 +55,7 @@ export default function Navbar() {
       <div className="flex my-6 justify-around">
       <GetStarted />
      {
-       token? <Account/>:<Link href="/login"><a className="font-semibold text-purple-dark border filter drop-shadow-md border-purple ml-2 w-40 h-10 rounded-3xl bg-transparent hover:text-white hover:bg-purple-dark transition duration-300 flex justify-center items-center cursor-pointer">Log in</a></Link>
+       token? <Account/>:<Link href="/login"><a className="font-semibold text-purple-dark border-2 filter drop-shadow-md border-purple ml-2 w-40 h-10 rounded-3xl bg-transparent hover:text-white hover:bg-purple-dark transition duration-300 flex justify-center items-center cursor-pointer">Log in</a></Link>
      }
       </div>
     </div>}
