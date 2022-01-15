@@ -84,7 +84,7 @@ export default function Propietario({token,user}) {
                   onChange={(e) => handleInputChange(e)}
                   required
                   value={data.name}
-                  className="bg-blue-light mr-4 md:w-80 w-40 h-12 focus:outline-none px-4"
+                  className="bg-blue-light mr-4 md:w-80 w-40 h-12 focus:outline-none px-4 appearance-none"s
                   type="text"
                 />
               </div>
