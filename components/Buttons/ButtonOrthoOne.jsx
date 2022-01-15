@@ -2,6 +2,6 @@ import React from 'react'
 
 export default function ButtonOrthoOne({children, onClick}) {
     return (
-        <button className="font-light focus:ring" onClick={onClick}> {children} </button>
+        <button className="font-light border border-transparent" onClick={onClick}> {children} </button>
     )
 }
