@@ -116,7 +116,7 @@ function setinput(object) {
      window.piecetoptop = object.getObjectByName("PieceTopTop");
 
             piecedowntop.position.y = MedidaBC;
-            piecetoptop.position.y = MedidaAB + 19;
+            piecetoptop.position.y = MedidaAB;
 }
 
 export default async function threejsLoader(AB,BC) {
