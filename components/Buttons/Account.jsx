@@ -20,7 +20,7 @@ export default function Account() {
             popup.state&& 
             <div className='absolute bg-white rounded-lg -ml-20 py-2 flex flex-col filter drop-shadow transition duration-1000'> 
                <button className='border-none' onClick={()=>setPopup({...popup,state:false})}> <Link href="/admin/ordenes"><span className='px-4 py-1 hover:bg-gray-50 cursor-pointer'>Administrar</span></Link></button>
-                <button className="border-none" onClick={()=>logout()} className='py-1 hover:bg-gray-50 px-4'>Cerrar sesi&oacute;n</button>
+                <button onClick={()=>logout()} className='py-1 hover:bg-gray-50 px-4 border-none'>Cerrar sesi&oacute;n</button>
             </div>
            }
         </div>
