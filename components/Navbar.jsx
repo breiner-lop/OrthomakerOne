@@ -30,12 +30,12 @@ export default function Navbar() {
       <div className="flex">
       <GetStarted />
      {
-       token? <Account/>:<Link href="/login"><a className="font-semibold text-purple-dark border filter drop-shadow-md border-purple ml-2 w-40 h-10 rounded-3xl bg-transparent hover:text-white hover:bg-purple-dark transition duration-300 flex justify-center items-center cursor-pointer">Log in</a></Link>
+       token? <Account/>:<Link href="/login"><a className="font-semibold text-purple-dark border border-solid filter drop-shadow-md border-purple ml-2 w-40 h-10 rounded-3xl bg-transparent hover:text-white hover:bg-purple-dark transition duration-300 flex justify-center items-center cursor-pointer">Log in</a></Link>
      }
       </div>
     </div>
       {/*** Version mobile */}
-      <div className="mx-auto fixed md:hidden min-h-[80px] z-50 flex flex-col border-b-2 border-gray-200 border-solid w-full pt-2 px-5 bg-gray-300 bg-opacity-10 filter backdrop-blur-md">
+      <div className="mx-auto fixed md:hidden min-h-[80px] z-50 flex flex-col border-b-2 border-gray-200 w-full pt-2 px-5 bg-gray-300 bg-opacity-10 filter backdrop-blur-md">
      <div className="flex justify-between items-center w-full">
       <img src="/img/logomain.png" alt="logo de orthomaker" className="w-14"/>
       <button onClick={()=>setMenu(!menu)}><img src="/img/menu.png" alt="logo de orthomaker" className="w-10" /></button>
