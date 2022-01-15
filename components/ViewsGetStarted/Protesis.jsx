@@ -26,8 +26,8 @@ export default function Protesis() {
   };
   React.useEffect(() => {
     const dataProthesis = JSON.parse(localStorage.getItem("dataProthesis"));
-    setMedidaAB(dataProthesis.prothesisData.medidaAB);
-    setMedidaBC(dataProthesis.prothesisData.medidaBC);
+    setMedidaAB(dataProthesis.prothesisData.medidaAB );
+    setMedidaBC((dataProthesis.prothesisData.medidaBC)+80);
     // console.log(dataProthesis);
 
     threejsLoader(dataProthesis.prothesisData.medidaAB,dataProthesis.prothesisData.medidaBC);
