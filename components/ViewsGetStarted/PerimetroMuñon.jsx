@@ -82,7 +82,7 @@ export default function PerimetroMuñon() {
                 <div className="mb-6 md:w-1/2 w-full">
                   <label htmlFor="nombres">Medida</label>
                   <br />
-                  <div className="bg-blue-light text-purple-dark mr-4 w-80 h-12 border border-blue-100 flex items-center justify-center">
+                  <div className="bg-blue-light text-purple-dark mr-4 w-80 h-12 border border-blue-200 flex items-center justify-center">
                     <input
                       onChange={(e) => handleInputChange(e)}
                       name="perimetroinferior"
@@ -108,7 +108,7 @@ export default function PerimetroMuñon() {
                 <div className="mb-6 md:w-1/2 w-full">
                   <label htmlFor="nombres">Medida</label>
                   <br />
-                  <div className="bg-blue-light text-purple-dark mr-4 w-80 h-12 border border-blue-100 flex items-center justify-center">
+                  <div className="bg-blue-light text-purple-dark mr-4 w-80 h-12 border border-blue-200 flex items-center justify-center">
                     <input
                       onChange={(e) => handleInputChange(e)}
                       name="perimetrosuperior"

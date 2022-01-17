@@ -16,6 +16,7 @@ import axios from "axios";
 import ViewNoAuth from "../../components/ViewNoAuth";
 import { useRouter } from "next/router";
 import LoadingSping from "../../components/LoadingSping";
+import LargoMuñon from "../../components/ViewsGetStarted/LargoMuñon";
 
 export default function Getstarted() {
   const { navForm, setNavForm, datosProtesis } = useCasosCtx();
@@ -160,7 +161,7 @@ export default function Getstarted() {
       ) : navForm == 7 ? (
         <PerimetroMuñon />
       ) :(
-        navForm == 8 && <Protesis />
+        navForm == 8 ?<LargoMuñon/>:navForm==9 && <Protesis />
       )}
     </div>
   );

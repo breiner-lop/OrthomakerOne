@@ -80,7 +80,7 @@ export default function LargoMuñon() {
           </div>
           {/***Imagen dog */}
           <div className=" flex bg-white p-12 mb-1 justify-center border-b-2 border-t-2 border-gray-100">
-            <img src="/img/largomuñon.png" alt="dogsize" />
+            <img src="/img/largomunon.png" alt="dogsize" />
           </div>
           {/***input tamaño  */}
           <div className=" bg-white p-12 mb-1 flex">
