@@ -29,6 +29,10 @@ export default function OrdenCard({id,status,total,userId,statusProduction}) {
         setUser({}); // This worked for me
       };
   },[])
+  // Coin converter
+  const coinConverter = function(number){
+    return new Intl.NumberFormat('es-CO', {style: 'currency',currency: 'COP', minimumFractionDigits: 2}).format(number);
+  };
   return (
    <div>
    {
@@ -47,7 +51,7 @@ export default function OrdenCard({id,status,total,userId,statusProduction}) {
      </div>
      </div>
      <div className="col-span-1">
-     <span>${total/100}</span>
+     <span>{coinConverter(total/100)}</span>
      </div>
      <div className="flex col-span-1 justify-center">
        <img
