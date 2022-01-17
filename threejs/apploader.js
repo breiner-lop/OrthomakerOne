@@ -116,7 +116,7 @@ function setinput(object) {
      window.piecetoptop = object.getObjectByName("PieceTopTop");
 
             piecedowntop.position.y = MedidaBC;
-            piecetoptop.position.y = MedidaAB + 19;
+            piecetoptop.position.y = MedidaAB;
 }
 
 export default async function threejsLoader(AB,BC) {
@@ -137,7 +137,6 @@ export default async function threejsLoader(AB,BC) {
     loading.style.textAlign = 'center';
     loading.style.color = 'white';
     domMain.appendChild(loading);
-    domMain.style.boxShadow = "-1px -1px 8px 0px";
 
     //load render
     const render = window.render = new THREE.WebGLRenderer({ logarithmicDepthBuffer: true, antialias: true });

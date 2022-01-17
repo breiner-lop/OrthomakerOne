@@ -34,12 +34,10 @@ export default function Veterinario({token,user}) {
       )
       .then((response) => {
         // en caso de ser exitosa
-        console.log(response);
         setNavForm(4);
       })
       .catch((error) => {
         // en caso de ser incorrectos los datos
-        console.log(error);
         setNavForm(3);
       });
   };
@@ -49,28 +47,24 @@ export default function Veterinario({token,user}) {
       ...dataVet,
       [e.target.name]: e.target.value,
     });
-    console.log(dataVet);
   };
   return (
-    <div className="py-20 flex justify-center text-purple-dark">
+    <div className="md:py-20 p-4 md:flex block justify-center text-purple-dark">
       {enviando&&<LoadingSping/>}
       {/***  formularios completador nav*/}
       <div className="flex flex-col">
-        <FormCompleted
-          onClick={() => setNavForm(1)}
-          perfil="Perfil propietario"
-        />
+        <FormCompleted onClick={() => setNavForm(1)} perfil="Perfil propietario"/>
         <FormCompleted onClick={() => setNavForm(2)} perfil="Perfil mascota" />
       </div>
-      <div className="shadow-lg" style={{ width: "800px" }}>
+      <div className="shadow-lg md:w-[800px] w-full ">
         <form
           onSubmit={(e) => {
             postVet(e);
           }}
         >
-          <div className="border-b-2 border-gray-200 p-12 flex justify-between">
+          <div className="border-b-2 border-gray-200 md:p-12 p-4 flex justify-between">
             <div>
-              <span className="text-3xl">
+              <span className="md:text-3xl text-xl">
                 Tienes un veterinario de confianza ?
               </span>
               <br />
@@ -81,17 +75,16 @@ export default function Veterinario({token,user}) {
             {/*** button siguientes formulario */}
             <div className="flex items-center">
               <button
-                className="mr-6 underline text-2xl text-blue-transparent"
+                className="mr-6 underline md:text-2xl text-lg text-blue-transparent"
                 onClick={() => setNavForm(4)}
               >
-                {" "}
-                Omitir{" "}
+                Omitir
               </button>
               <ButtonNextForm />
             </div>
           </div>
           {/***formulario sect 1 */}
-          <div className="flex border-b-2 border-gray-200 p-12">
+          <div className="flex flex-col md:flex-row border-b-2 border-gray-200 md:p-12 p-4">
             <div>
               <label htmlFor="nombres">Nombre veterianario</label>
               <br />
@@ -118,7 +111,7 @@ export default function Veterinario({token,user}) {
             </div>
           </div>
           {/***formulario sect  */}
-          <div className="p-12 border-b-2 border-gray-200">
+          <div className="md:p-12 p-4 border-b-2 border-gray-200">
             <div className="mb-6">
               <label htmlFor="nombres">Ciudad</label>
               <br />
@@ -131,7 +124,7 @@ export default function Veterinario({token,user}) {
                 type="text"
               />
             </div>
-            <div className="flex">
+            <div className="md:flex block">
               <div>
                 <label htmlFor="nombres">Direccion consultorio</label>
                 <br />
@@ -140,7 +133,7 @@ export default function Veterinario({token,user}) {
                   onChange={(e) => {
                     handleInputChange(e);
                   }}
-                  className="bg-blue-light mr-4 w-52 h-12 focus:outline-none px-4"
+                  className="bg-blue-light mr-4 md:w-52 w-80 h-12 focus:outline-none px-4"
                   type="text"
                 />
               </div>
@@ -152,7 +145,7 @@ export default function Veterinario({token,user}) {
                   onChange={(e) => {
                     handleInputChange(e);
                   }}
-                  className="bg-blue-light mr-4 w-52 h-12 focus:outline-none px-4"
+                  className="bg-blue-light mr-4 md:w-52 w-80 h-12 focus:outline-none px-4"
                   type="text"
                 />
               </div>
@@ -164,7 +157,7 @@ export default function Veterinario({token,user}) {
                   onChange={(e) => {
                     handleInputChange(e);
                   }}
-                  className="bg-blue-light mr-4 w-52 h-12 focus:outline-none px-4"
+                  className="bg-blue-light mr-4 md:w-52 w-80 h-12 focus:outline-none px-4"
                   type="text"
                 />
               </div>

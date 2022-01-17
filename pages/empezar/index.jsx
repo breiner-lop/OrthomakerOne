@@ -116,18 +116,18 @@ export default function Getstarted() {
   return loading? null :!token?<ViewNoAuth />: (
     <div>
        {loadingOrder&&<LoadingSping/>}
-      <div className="flex justify-between text-purple-dark h-20 items-center px-5 md:px-24">
+      <div className="flex justify-between text-purple-dark h-20 items-center px-5 md:px-24 max-w-[1800px] mx-auto">
         <div className="flex items-center">
           {navForm == 8 && (
             <button
-              className="p-3 mr-4 border border-red-600 rounded-full filter shadow-md transition duration-200 hover:shadow-none"
+              className="md:p-3 p-0 flex justify-center items-center h-10 w-10 mr-4 border border-red-600 rounded-full filter shadow-md transition duration-200 hover:shadow-none"
               onClick={() => setNavForm(7)}
             >
               <img src="/img/rowback.png" alt="rowback" />
             </button>
           )}
           <Link href="/">
-            <span className="text-2xl cursor-pointer">
+            <span className="text-2xl cursor-pointer md:block hidden">
               Ortho<strong>Maker</strong>
             </span>
           </Link>
@@ -138,7 +138,7 @@ export default function Getstarted() {
         </div>
         <div className="flex">
           {navForm == 8 ? (
-              <button onClick={()=>sendToProduction()} className="text-white rounded-lg flex items-center justify-center font-semibold  w-44 h-11 bg-red-500 hover:bg-red-600 transition duration-200 filter drop-shadow">Verificar orden</button>
+              <button onClick={()=>sendToProduction()} className="text-white rounded-lg flex items-center justify-center font-semibold  md:w-44 w-36 h-11 bg-red-500 hover:bg-red-600 transition duration-200 filter drop-shadow">Verificar orden</button>
           ) : (
             <ButtonCancel text="Cancelar"/>
           )}

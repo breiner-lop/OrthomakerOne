@@ -37,19 +37,15 @@ export default function PerimetroMuñon() {
     setNavForm(8)
   }
   return (
-    <div className="py-20 flex justify-center text-purple-dark">
+    <div className="md:py-20 py-4 md:flex block justify-center text-purple-dark">
       {/***  formularios completador nav*/}
-      <div className="flex flex-col">
-        <FormCompleted
-          onClick={() => setNavForm(1)}
-          perfil="Perfil propietario"
-        />
-        <FormCompleted onClick={() => setNavForm(2)} perfil="Perfil mascota" />
-        <FormCompleted
-          onClick={() => setNavForm(3)}
-          perfil="Perfil veterinario"
-        />
-        <div className="border-t-2 border-gray-100 pt-6 flex flex-col">
+      <div className="flex md:flex-col flex-row text-xs md:text-base px-4 md:px-0">
+        <div className="flex flex-col w-1/2 md:w-full">
+          <FormCompleted onClick={()=>setNavForm(1)} perfil="Perfil propietario"/>
+          <FormCompleted onClick={()=>setNavForm(2)} perfil="Perfil mascota"/>
+          <FormCompleted onClick={()=>setNavForm(3)} perfil="Perfil veterinario"/>
+        </div>
+        <div className="md:border-t-2 border-t-0 w-1/2 md:w-full border-gray-100 md:pt-6 pt-0 flex flex-col">
           <FormCompleted
             onClick={() => setNavForm(4)}
             perfil="Tamaño del canino"
@@ -64,9 +60,9 @@ export default function PerimetroMuñon() {
           />
         </div>
       </div>
-      <div className="shadow-lg" style={{ width: "800px" }}>
+      <div className="shadow-lg md:w-[800px] w-full">
         <form onSubmit={(e) => handleSubmit(e)}>
-          <div className="px-12 mb-1 flex justify-between items-center">
+          <div className="md:px-12 px-4 mb-1 flex justify-between items-center">
             <div className="my-10">
               <span className="text-3xl">Perimetro del muñon</span>
             </div>
@@ -76,14 +72,14 @@ export default function PerimetroMuñon() {
             </div>
           </div>
           {/***Imagen dog */}
-          <div className=" flex bg-white p-12 mb-1 justify-center border-b-2 border-t-2 border-gray-200">
+          <div className="flex bg-white mx:p-12 p-4 mb-1 justify-center border-b-2 border-t-2 border-gray-200">
             <img src="/img/peripunon.png" alt="perimetro del muñon" />
           </div>
           {/***input tamaño  */}
-          <div className=" p-10 mb-1">
+          <div className="md:p-10 p-4 mb-1">
             <div className=" text-blue-transparent">
-              <div className="flex pt-4">
-                <div className="mb-6 w-1/2">
+              <div className="md:flex block pt-4">
+                <div className="mb-6 md:w-1/2 w-full">
                   <label htmlFor="nombres">Medida</label>
                   <br />
                   <div className="bg-blue-light text-purple-dark mr-4 w-80 h-12 border border-blue-100 flex items-center justify-center">
@@ -99,7 +95,7 @@ export default function PerimetroMuñon() {
                     <span>CM</span>
                   </div>
                 </div>
-                <div className="w-1/2 text-blue-transparent">
+                <div className="md:w-1/2 w-full text-blue-transparent">
                   <p>
                     En este punto se deben tomar dos medidas. Para tomar esta
                     medida el canino debe de estar de pie, con ayuda de la cinta
@@ -108,8 +104,8 @@ export default function PerimetroMuñon() {
                   </p>
                 </div>
               </div>
-              <div className="flex border-t-2 border-gray-100 pt-4 mt-6">
-                <div className="mb-6 w-1/2">
+              <div className="md:flex block border-t-2 border-gray-100 pt-4 mt-6">
+                <div className="mb-6 md:w-1/2 w-full">
                   <label htmlFor="nombres">Medida</label>
                   <br />
                   <div className="bg-blue-light text-purple-dark mr-4 w-80 h-12 border border-blue-100 flex items-center justify-center">
@@ -125,7 +121,7 @@ export default function PerimetroMuñon() {
                     <span>CM</span>
                   </div>
                 </div>
-                <div className="w-1/2 text-blue-transparent">
+                <div className="md:w-1/2 w-full text-blue-transparent">
                   <p>
                     En este punto se deben tomar dos medidas. Para tomar esta
                     medida el canino debe de estar de pie, con ayuda de la cinta
