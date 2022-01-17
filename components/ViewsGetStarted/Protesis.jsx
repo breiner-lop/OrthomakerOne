@@ -26,11 +26,11 @@ export default function Protesis() {
   };
   React.useEffect(() => {
     const dataProthesis = JSON.parse(localStorage.getItem("dataProthesis"));
-    setMedidaAB(dataProthesis.prothesisData.medidaAB );
-    setMedidaBC((dataProthesis.prothesisData.medidaBC)+80);
+    setMedidaAB(dataProthesis.prothesisData.stump_length);
+    setMedidaBC(dataProthesis.prothesisData.medidaBC);
     // console.log(dataProthesis);
 
-    threejsLoader(dataProthesis.prothesisData.medidaAB,dataProthesis.prothesisData.medidaBC);
+    threejsLoader(dataProthesis.prothesisData.stump_length,dataProthesis.prothesisData.medidaBC);
   }, [state])
   return (
     <div className="bg-blu-light md:h-screen pt-20 h-full md:flex block text-purple-dark overflow-y-hidden max-w-[1800px] mx-auto">
@@ -59,7 +59,7 @@ export default function Protesis() {
         <div className="py-4 md:px-28 px-2 ">
           <h4 className="text-xl font-bold">COLOR </h4>
           <div className="flex justify-between my-2 md:my-6">
-            <span>Pigmento</span>
+            <span>Carcasa</span>
             <div className="flex md:ml-6 ml-1">
               <div
                 onClick={() => handleInputColor(0x740500, "Rojo")}
@@ -104,7 +104,7 @@ export default function Protesis() {
             </div>
           </div>
           <div className="flex justify-between my-6">
-            <span>Estructura</span>
+            <span>Base</span>
             <div className="flex md:ml-6 ml-1">
               <div
                 onClick={() => handleInputColorTwo(0x740500, "Rojo")}

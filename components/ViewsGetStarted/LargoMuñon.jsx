@@ -8,10 +8,13 @@ export default function LargoMuñon() {
   /*** LLAMADA DEL CONTEXT MANEJADOR DE VISTAS FORM */
   const { setNavForm } = useCasosCtx();
   // estados
-  const [largo, setLargo] = React.useState(undefined);
+  const [largo, setLargo] = React.useState();
   //handle input
   const handleLargo = (e) => {
-    setLargo(e.target.value);
+    var largo = (parseFloat(e.target.value));
+    largo = (largo * 10) + 19;
+
+    setLargo(largo);
     console.log(largo);
   };
   //  manejador del submit form
