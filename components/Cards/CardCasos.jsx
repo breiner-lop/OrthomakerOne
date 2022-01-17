@@ -5,12 +5,12 @@ export default function CardCasos({ img, name, textOne, textTwo,Uu,imgsig }) {
   return (
     <div>
       <div>
-        <div className="flex" style={{ width:`${state==false?"1200px":"1400px"}` }}>
-          <div className="w-1/2">
+        <div className={` ${state==false?"md:w-[1200px] w-[500px] flex":"md:w-[1400px] w-full pr-24 md:pr-0 md:flex block"}`}>
+          <div className="md:w-1/2 w-full">
             <img src={img} width="100%" height="100%" />
           </div>
-          <div className="w-2/5 ml-10">
-            <h4 className="text-5xl mb-12 uppercase">{name}</h4>
+          <div className="md:w-2/5 w-full md:ml-10 ml-0">
+            <h4 className="text-5xl mb-0 md:mb-12 uppercase md:mt-0 mt-4">{name}</h4>
             <p>{textOne}</p>
             <br />
             <p className="mb-12 uppercase">{textTwo}</p>

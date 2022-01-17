@@ -137,7 +137,6 @@ export default async function threejsLoader(AB,BC) {
     loading.style.textAlign = 'center';
     loading.style.color = 'white';
     domMain.appendChild(loading);
-    domMain.style.boxShadow = "-1px -1px 8px 0px";
 
     //load render
     const render = window.render = new THREE.WebGLRenderer({ logarithmicDepthBuffer: true, antialias: true });

@@ -13,8 +13,9 @@ export default function Buscar() {
         placeholder="Buscar por numero de orden"
         className="w-full mr-10 focus:outline-none"
         onChange={(e)=>setFilter(e.target.value)}
+        onKeyPress={(e)=>{e.key==="Enter"&&setFilterValue(filter)}}
       />
-      <button onClick={()=>setFilterValue(filter)} className="flex items-center">
+      <button  onClick={()=>setFilterValue(filter)} className="flex items-center">
         <img src="/img/buscar.png" width="28px" height="28px"/>
       </button>
     </div>

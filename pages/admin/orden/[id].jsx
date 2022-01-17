@@ -21,6 +21,40 @@ export default function Orden() {
   const [dataProthesis,setDataProthesis]=useState("")
   const [tokenn,setToken]=useState("")
   const [petImgs,setImgs]=useState("")
+  const [checkout,setCheckout]=React.useState(null)
+  const [wompiLoading,setLoadingWompi]=React.useState(false)
+  React.useEffect(()=>{
+    setLoadingWompi(true)
+    //wompi
+    const scriptwompi = document.createElement("script");
+      scriptwompi.src = "https://checkout.wompi.co/widget.js"
+      scriptwompi.onload= function (){
+        //var idTransaccion=(localStorage.getItem("idTransaccion"))
+        //getOrder(idTransaccion)
+
+      if(dataOrder&&userData){
+        let checkout = new WidgetCheckout({
+          currency: 'COP',
+          amountInCents:dataOrder.valor_total,
+          reference:id,
+          publicKey: 'pub_test_7pVstX8t7nY6Xup5LOSFL1C6XVhWNrg4',
+          redirectUrl: 'https://orthomakerone.com/thankyou', // Opcional
+        //   taxInCents: { // Opcional
+        //     vat: 1900,
+        //     consumption: 800
+        //   },
+          customerData: { // Opcional
+            email:userData.mail,
+            fullName: `${userData.name} ${ userData.lastname}`,
+            phoneNumber:userData.phone,
+            phoneNumberPrefix: '+57',
+          }
+        })
+      }
+      setCheckout(checkout)  
+      }
+      document.head.appendChild(scriptwompi);
+  },[wompiLoading,dataOrder,userData])
 
   // use Effect
   React.useEffect(() => {
@@ -44,7 +78,11 @@ export default function Orden() {
        });
        return () => {
         setDataOrder("");
+        setUserData("")
+        setDataProthesis("")
+        setDataPet("")
       };
+      
   },[id]);
 
   /*********GET USER******/
@@ -110,6 +148,20 @@ export default function Orden() {
       console.log(error)
      });
    }
+   // Update prod_status
+   const onChangeProdEstatus=(e)=>{
+   setDataOrder({
+     ...dataOrder,
+     prod_status:e.target.value
+   })
+    axios.put(`${process.env.SERVER}/editOrdersProd/${id}`,{
+      status:e.target.value
+    },{
+      headers:{
+        "auth-token":localStorage.getItem("token"),
+      }
+      })
+   }
     
     
   return (
@@ -125,11 +177,16 @@ export default function Orden() {
        {/**  header */}
        <div className="flex justify-between items-center">
          <div className="flex">
-           <div className="text-green-500 text-xs h-7 w-20 bg-green-100 rounded-lg flex justify-center items-center mr-2">
-            {dataOrder&& <span>{dataOrder.status}</span>}
+          <div className={`text-green-500 text-xs h-7 bg-green-100 border border-green-400 min-w-[80px] rounded-lg flex justify-center items-center mr-2`}>
+            {dataOrder&& <select disabled={rolUser==0?false:true} value={dataOrder.prod_status} onChange={(e)=>onChangeProdEstatus(e)} name="prod_status" id="prod_status" className="focus:outline-none bg-green-100">
+               <option value={0}>EN ESPERA</option>
+               <option value={1}>EN PRODUCCIÓN</option>
+               <option value={2}>ENVIADO</option>
+             </select>}
            </div>
-           <div className="text-blue-500 text-xs h-7 w-20 bg-blue-100 rounded-lg flex justify-center items-center">
-             <span>Enviada</span>
+           <div className="text-blue-500 text-xs h-7 w-20 bg-blue-light rounded-lg border border-bl flex justify-center items-center">
+
+             <span> {dataOrder&& <span>{dataOrder.status}</span>}</span>
            </div>
            <div className="text-gray-400 flex border-l-2 boder border-gray-400 text-xs items-center ml-6">
              <span>
@@ -141,11 +198,11 @@ export default function Orden() {
                  className="mx-4"
                />
              </span>
-             <span>25.10.2021 a las 06:00 PM</span>
+            {dataOrder&& <span>{dataOrder.date}</span>}
            </div>
          </div>
          <div>
-           {dataOrder&&!dataOrder.id_transaction&&<ButtonBorderBlue text="Pagar ahora" />}
+           {userData&&!dataOrder.id_transaction&&<ButtonBorderBlue  onClick={()=>{checkout.open(function(r){})}} text="Pagar ahora" />}
            {/* <ButtonRed text="Cancelar orden" /> */}
          </div>
        </div>
@@ -155,8 +212,8 @@ export default function Orden() {
            <div className="bg-white pt-6 pb-6 rounded-t-lg filter drop-shadow flex justify-between px-6">
               <span>Detalle de la orden ({`#${id}`}) </span>
              <div>
-             {dataOrder?<><span className="mr-2"> {`Valor: $${dataOrder.valor_total}`} </span>/
-              <span className="ml-2"> {`Transacción: ${dataOrder.id_transaction}`} </span></>:<Loading/> }
+             {dataOrder?<><span className="mr-2"> {`Valor: $${dataOrder.valor_total/100}`} </span>/
+              <span className="ml-2"> {`Transacción: ${dataOrder.id_transaction?dataOrder.id_transaction:"NO PAGADO"}`} </span></>:<Loading/> }
              </div>
            </div>
            {/**  productos */}
@@ -226,8 +283,8 @@ export default function Orden() {
              <div className="text-xs mt-4">
               <div className="flex justify-between">
                 <div>
-                <CampoDetalleOrden title="Altura de amputación A->B" valor={dataProthesis.amputation_height_AB+" cm"} widthTitle='w-40' />
-                <CampoDetalleOrden title="Altura de amputación B->C" valor={dataProthesis.amputation_height_BC+" cm"} widthTitle='w-40' />
+                <CampoDetalleOrden title="Altura de amputación A->B" valor={((parseInt(dataProthesis.amputation_height_AB)-19)/10)+" cm"} widthTitle='w-40' />
+                <CampoDetalleOrden title="Altura de amputación B->C" valor={((parseInt(dataProthesis.amputation_height_BC)-80)/10)+" cm"} widthTitle='w-40' />
                 </div>
                <CampoDetalleOrden title="Extremidad emputada" valor={dataProthesis.ext_emputee} widthTitle='w-36' />               
               </div>
@@ -238,12 +295,12 @@ export default function Orden() {
                 <CampoDetalleOrden title="Superior" valor={dataProthesis.stump_perimeter_sup+" cm"}/>
                 <CampoDetalleOrden title="Largo" valor={dataProthesis.stump_length+" cm"}/>   
              </div>
-            <div className="flex justify-between my-6">
-                <CampoDetalleOrden title="ENCAJE PROT&Eacute;SICO" valor={dataProthesis.lace+" cm"} widthTitle="w-32"/> 
-                <CampoDetalleOrden title="PILAR PROT&Eacute;SICO" valor={dataProthesis.pillar+" cm"} widthTitle="w-32"/>
+           <div className="mt-4">
+             <h4>Color de la protesis</h4>
+            <div className="flex justify-between mt-1">
+            <CampoDetalleOrden title="Color de la carcaza" valor={dataProthesis.color} widthTitle='w-28'/> 
+            <CampoDetalleOrden title="Color de la base" valor={dataProthesis.color2}widthTitle='w-24'/> 
             </div>
-           <div className="flex items-center">
-            <span className="text-blue-transparent">COLOR</span> <span className="ml-6"> {dataProthesis.color} </span>
              {/**<div className="ml-4 w-6 h-6 bg-red-700 rounded-full"></div> */}
            </div>
             {rolUser==0&& 

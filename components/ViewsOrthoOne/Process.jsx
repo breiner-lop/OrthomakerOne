@@ -31,8 +31,8 @@ export default function Process() {
                     <img src={pC.img} width="185px" height="99px" />
                     </div>
                     <div className="border-b-2 w-full ml-2 border-blue-light flex h-full items-center" >
-                    <span className="px-6 text-5xl font-bold"> {pC.number} </span>
-                    <p className="font-light text-xl"> {pC.description} </p>
+                    <span className="md:px-6 px-3 md:text-5xl text-xl font-bold"> {pC.number} </span>
+                    <p className="font-light md:text-xl text-base"> {pC.description} </p>
                     </div>
                 </div>
                 ))
