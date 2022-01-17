@@ -5,7 +5,7 @@ export default function ButtonPanelAdmin({text, active,img,href,isCount,onClick,
   return (
     <Link href={href}>
       <div
-        className={`w-full cursor-pointer flex justify-between items-center text-left px-4 h-20 border-b text-xl border-gray-600 ${
+        className={`w-full cursor-pointer flex justify-between items-center text-left px-4 h-20 border-b border-0 border-solid text-xl border-gray-600 ${
           active ? "bg-purple-light" : "bg-transparent"
         }`}
         onClick={onClick}

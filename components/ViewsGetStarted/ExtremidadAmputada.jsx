@@ -47,7 +47,7 @@ export default function ExtremidadAmputada() {
           perfil="Perfil veterinario"
         />
        </div>
-        <div className="md:border-t-2 border-t-0 w-1/2 md:w-full border-gray-100 md:pt-6 pt-0">
+        <div className="md:border-t-2 border-t-0 border-0 border-solid w-1/2 md:w-full border-gray-100 md:pt-6 pt-0">
           <FormCompleted
             onClick={() => setNavForm(4)}
             perfil="Tamaño del canino"
@@ -66,7 +66,7 @@ export default function ExtremidadAmputada() {
             </div>
           </div>
           {/***Imagen dog */}
-          <div className="grid md:grid-cols-4 grid-cols-2 gap-2 md:p-12 p-4 justify-center border-b-2 border-t-2 border-gray-200 md:px-32 px-12">
+          <div className="grid md:grid-cols-4 grid-cols-2 gap-2 md:p-12 p-4 justify-center border-b-2 border-0 border-solid border-t-2 border-gray-200 md:px-32 px-12">
               <Extremidad onClick={() => handleExtremidad("Delantera derecha")} text="Delantera derecha" img="/img/piernadelderecha.png" extremidad={extremidad=="Delantera derecha"?true:false}/>
               <Extremidad onClick={() => handleExtremidad("Delantera izquierda")} text="Delantera izquierda" img="/img/piernadelizquierda.png" extremidad={extremidad=="Delantera izquierda"?true:false}/>
               <Extremidad onClick={() => handleExtremidad("Trasera derecha")} text="Trasera derecha" img="/img/piernatraderecha.png" extremidad={extremidad=="Trasera derecha"?true:false}/>

@@ -84,7 +84,7 @@ export default function Propietario({token,user}) {
                   onChange={(e) => handleInputChange(e)}
                   required
                   value={data.name}
-                  className="bg-blue-light mr-4 md:w-80 w-40 h-12 focus:outline-none px-4"
+                  className="bg-blue-light mr-4 md:w-80 w-40 h-12 border border-blue-200 border-solid focus:outline-none px-4"
                   type="text"
                 />
               </div>
@@ -96,7 +96,7 @@ export default function Propietario({token,user}) {
                   onChange={(e) => handleInputChange(e)}
                   required
                   value={data.lastname}
-                  className="bg-blue-light mr-4 md:w-80 w-44 h-12 focus:outline-none px-4"
+                  className="bg-blue-light mr-4 border border-blue-200 border-solid md:w-80 w-44 h-12 focus:outline-none px-4"
                   type="text"
                 />
               </div>
@@ -109,7 +109,7 @@ export default function Propietario({token,user}) {
                   name="phone"
                   onChange={(e) => handleInputChange(e)}
                   required
-                  className="bg-blue-light mr-4 md:w-80 w-40 h-12 focus:outline-none px-4"
+                  className="bg-blue-light mr-4 border border-blue-200 border-solid md:w-80 w-40 h-12 focus:outline-none px-4"
                   type="number"
                   value={data.phone}
                 />
@@ -122,7 +122,7 @@ export default function Propietario({token,user}) {
                   onChange={(e) => handleInputChange(e)}
                   value={user.mail}
                   required
-                  className="bg-blue-light mr-4 md:w-80 w-44 h-12 focus:outline-none px-4"
+                  className="bg-blue-light mr-4 border border-blue-200 border-solid md:w-80 w-44 h-12 focus:outline-none px-4"
                   type="email"
                   disabled
                 />
@@ -133,7 +133,7 @@ export default function Propietario({token,user}) {
                 <input
                   name="phone2"
                   onChange={(e) => handleInputChange(e)}
-                  className="bg-blue-light mr-4 w-80 h-12 focus:outline-none px-4"
+                  className="bg-blue-light mr-4 w-80 h-12 border border-blue-200 border-solid focus:outline-none px-4"
                   type="number" value={data.phone2}
                 />
               </div>
@@ -147,7 +147,7 @@ export default function Propietario({token,user}) {
                   onChange={(e) => handleInputChange(e)}
                   value={data.direction}
                   required
-                  className="bg-blue-light mr-4 w-full h-12 focus:outline-none px-4"
+                  className="bg-blue-light mr-4 w-full border border-blue-200 border-solid h-12 focus:outline-none px-4"
                   type="text"
                 />
               </div>
@@ -159,7 +159,7 @@ export default function Propietario({token,user}) {
                   onChange={(e) => handleInputChange(e)}
                   value={data.city}
                   required
-                  className="bg-blue-light mr-4 md:w-52 w-80 h-12 focus:outline-none px-4"
+                  className="bg-blue-light mr-4 md:w-52 border border-blue-200 border-solid w-80 h-12 focus:outline-none px-4"
                   type="text"
                 />
               </div>
@@ -170,7 +170,7 @@ export default function Propietario({token,user}) {
                   name="state"
                   onChange={(e) => handleInputChange(e)}
                   required
-                  className="bg-blue-light mr-4 md:w-52 w-80 h-12 focus:outline-none px-4"
+                  className="bg-blue-light mr-4 md:w-52 border border-blue-200 border-solid w-80 h-12 focus:outline-none px-4"
                   type="text"
                   value={data.state}
                 />
@@ -182,7 +182,7 @@ export default function Propietario({token,user}) {
                   name="zip"
                   onChange={(e) => handleInputChange(e)}
                   required
-                  className="bg-blue-light mr-4 md:w-52 w-80 h-12 focus:outline-none px-4"
+                  className="bg-blue-light mr-4 md:w-52 w-80 h-12 border border-solid border-blue-200 focus:outline-none px-4"
                   type="text"
                   value={data.zip}
                 />

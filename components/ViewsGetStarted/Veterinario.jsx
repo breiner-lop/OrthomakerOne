@@ -62,7 +62,7 @@ export default function Veterinario({token,user}) {
             postVet(e);
           }}
         >
-          <div className="border-b-2 border-gray-200 md:p-12 p-4 flex justify-between">
+          <div className="border-b-2 border-0 border-solid border-gray-200 md:p-12 p-4 flex justify-between">
             <div>
               <span className="md:text-3xl text-xl">
                 Tienes un veterinario de confianza ?
@@ -74,17 +74,14 @@ export default function Veterinario({token,user}) {
             </div>
             {/*** button siguientes formulario */}
             <div className="flex items-center">
-              <button
-                className="mr-6 underline md:text-2xl text-lg text-blue-transparent"
-                onClick={() => setNavForm(4)}
-              >
+              <button className="mr-6 underline md:text-2xl text-lg text-blue-transparent border-none" onClick={() => setNavForm(4)}>
                 Omitir
               </button>
               <ButtonNextForm />
             </div>
           </div>
           {/***formulario sect 1 */}
-          <div className="flex flex-col md:flex-row border-b-2 border-gray-200 md:p-12 p-4">
+          <div className="flex flex-col md:flex-row border-b-2 border-0 border-solid border-gray-200 md:p-12 p-4">
             <div>
               <label htmlFor="nombres">Nombre veterianario</label>
               <br />
@@ -93,7 +90,7 @@ export default function Veterinario({token,user}) {
                 onChange={(e) => {
                   handleInputChange(e);
                 }}
-                className="bg-blue-light mr-4 w-80 h-12 focus:outline-none px-4"
+                className="bg-blue-light mr-4 w-80 h-12 focus:outline-none px-4 border border-blue-200 border-solid"
                 type="text"
               />
             </div>
@@ -105,13 +102,13 @@ export default function Veterinario({token,user}) {
                 onChange={(e) => {
                   handleInputChange(e);
                 }}
-                className="bg-blue-light mr-4 w-80 h-12 focus:outline-none px-4"
+                className="bg-blue-light mr-4 w-80 h-12 focus:outline-none px-4 border border-blue-200 border-solid"
                 type="number"
               />
             </div>
           </div>
           {/***formulario sect  */}
-          <div className="md:p-12 p-4 border-b-2 border-gray-200">
+          <div className="md:p-12 p-4 border-b-2 border-0 border-solid border-gray-200">
             <div className="mb-6">
               <label htmlFor="nombres">Ciudad</label>
               <br />
@@ -120,7 +117,7 @@ export default function Veterinario({token,user}) {
                 onChange={(e) => {
                   handleInputChange(e);
                 }}
-                className="bg-blue-light mr-4 w-80 h-12 focus:outline-none px-4"
+                className="bg-blue-light mr-4 w-80 h-12 focus:outline-none px-4 border border-blue-200 border-solid"
                 type="text"
               />
             </div>
@@ -133,7 +130,7 @@ export default function Veterinario({token,user}) {
                   onChange={(e) => {
                     handleInputChange(e);
                   }}
-                  className="bg-blue-light mr-4 md:w-52 w-80 h-12 focus:outline-none px-4"
+                  className="bg-blue-light mr-4 md:w-52 w-80 h-12 focus:outline-none px-4 border border-blue-200 border-solid"
                   type="text"
                 />
               </div>
@@ -145,7 +142,7 @@ export default function Veterinario({token,user}) {
                   onChange={(e) => {
                     handleInputChange(e);
                   }}
-                  className="bg-blue-light mr-4 md:w-52 w-80 h-12 focus:outline-none px-4"
+                  className="bg-blue-light mr-4 md:w-52 w-80 h-12 focus:outline-none px-4 border border-blue-200 border-solid"
                   type="text"
                 />
               </div>
@@ -157,7 +154,7 @@ export default function Veterinario({token,user}) {
                   onChange={(e) => {
                     handleInputChange(e);
                   }}
-                  className="bg-blue-light mr-4 md:w-52 w-80 h-12 focus:outline-none px-4"
+                  className="bg-blue-light mr-4 md:w-52 w-80 h-12 focus:outline-none px-4 border border-blue-200 border-solid"
                   type="text"
                 />
               </div>

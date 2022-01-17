@@ -50,7 +50,7 @@ export default function AlturaAmputacion() {
             perfil="Perfil veterinario"
           />
         </div>
-        <div className="md:border-t-2 w-1/2 md:w-full border-t-0 border-gray-100 md:pt-6 pt-0 flex flex-col">
+        <div className="md:border-t-2 w-1/2 md:w-full border-0 border-solid border-t-0 border-gray-100 md:pt-6 pt-0 flex flex-col">
           <FormCompleted
             onClick={() => setNavForm(4)}
             perfil="Tamaño del canino"
@@ -73,7 +73,7 @@ export default function AlturaAmputacion() {
             </div>
           </div>
           {/***Imagen dog */}
-          <div className=" flex bg-white md:p-12 p-4 mb-1 justify-center border-b-2 border-t-2 border-gray-200">
+          <div className=" flex bg-white md:p-12 p-4 mb-1 justify-center border-b-2 border-0 border-solid border-t-2 border-gray-200">
             <div className="border-2 rounded-lg border-dashed border-purple mx-1 w-60">
               <img
                 src="/img/ampdelantera.png"
@@ -98,13 +98,13 @@ export default function AlturaAmputacion() {
             </div>
           </div>
           {/***input tamaño  */}
-          <div className="py-6 border-b-2 border-gray-200 ">
+          <div className="py-6 border-b-2 border-solid border-0 border-gray-200 ">
             <p className="w-4/5 text-blue-transparent md:px-12 px-4">
               A continuación veras la altura de amputación para el uso de esta
               protesis, selecciona el caso apropiado para tu mascota
             </p>
             <div className="flex justify-center">
-              <img src="/img/ampaltura.png" alt="altura de amputacion" />
+              <img src="/img/medidas.png" alt="altura de amputacion" />
             </div>
           </div>
           {/***input tamaño  */}
@@ -116,10 +116,10 @@ export default function AlturaAmputacion() {
               <div className="mb-6 w-1/2">
                 <label htmlFor="nombres">Medida Largo del Muñon</label>
                 <br />
-                <div className="bg-blue-light text-purple-dark mr-4 w-80 h-12 border border-blue-100 flex items-center justify-center">
+                <div className="bg-blue-light text-purple-dark mr-4 w-80 h-12 border border-solid border-blue-200 flex items-center justify-center">
                   <input
-                    onChange={(e) => setMedidaAB(e.target.value)}
-                    className="focus:outline-none bg-transparent px-4 h-10 w-64"
+                    onChange={(e) =>setMedidaAB(e.target.value) }
+                    className="focus:outline-none bg-transparent border-none px-4 h-10 w-64"
                     type="number"
                     name="medidaBC"
                     required
@@ -132,10 +132,10 @@ export default function AlturaAmputacion() {
               <div className="w-1/2">
                 <label htmlFor="nombres">Medida B {"->"} C</label>
                 <br />
-                <div className="bg-blue-light text-purple-dark mr-4 w-80 h-12 border border-blue-100 flex items-center justify-center">
+                <div className="bg-blue-light text-purple-dark mr-4 w-80 h-12 border border-solid border-blue-200 flex items-center justify-center">
                   <input
                     onChange={(e) => setMedidaBC(e.target.value)}
-                    className="focus:outline-none bg-transparent px-4 h-10 w-64"
+                    className="focus:outline-none bg-transparent border-none px-4 h-10 w-64"
                     type="number"
                     name="medidaAB"
                     required

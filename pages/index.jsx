@@ -111,17 +111,17 @@ export default function Index() {
                   </div>
                 </div>
                 <ul className="flex md:mt-32 mt-6 mb-4">
-                  <li className="rounded-full w-14 h-14 border-2 mr-2 flex items-center justify-center border-red-dark">
+                  <li className="rounded-full w-14 h-14 border-2 border-solid mr-2 flex items-center justify-center border-red-dark">
                     <img src="/img/feet90.png" width="32px" height="28px" />
                   </li>
-                  <li className="rounded-full w-14 h-14 border-2 mx-2 flex items-center justify-center border-red-dark">
+                  <li className="rounded-full w-14 h-14 border-2 border-solid mx-2 flex items-center justify-center border-red-dark">
                     <img
                       src="/img/feetrecto.png"
                       width="12px"
                       height="38px"
                     />
                   </li>
-                  <li className="rounded-full w-14 h-14 border-2 mx-2 flex items-center justify-center border-red-dark">
+                  <li className="rounded-full w-14 h-14 border-2 border-solid mx-2 flex items-center justify-center border-red-dark">
                     <img src="/img/prote.png" width="20px" height="35px" />
                   </li>
                 </ul>
@@ -146,13 +146,13 @@ export default function Index() {
             </div>
             <div className="md:flex block mt-32">
               <ul
-                className="lg:text-5xl text-4xl md:w-2/5 w-full border-l border-purple-light h-[300px] md:h-[500px]"
+                className="lg:text-5xl text-4xl md:w-2/5 w-full border-l border-0 border-solid border-purple-light h-[300px] md:h-[500px]"
               >
                 <li
                   style={{ marginLeft: "-1px" }}
                   className={
                     activeOrtho == 1
-                      ? "text-purple-dark md:py-5 py-1 border-l-2 border-purple pl-10"
+                      ? "text-purple-dark md:py-5 py-1 border-l-2 border-0 border-solid border-purple pl-10"
                       : "md:py-5 py-1 text-blue-transparent pl-10"
                   }
                 >
@@ -164,7 +164,7 @@ export default function Index() {
                   style={{ marginLeft: "-1px" }}
                   className={
                     activeOrtho == 2
-                      ? "text-purple-dark md:py-5 py-1 border-l-2 border-purple pl-10"
+                      ? "text-purple-dark md:py-5 py-1 border-l-2 border-0 border-solid border-purple pl-10"
                       : "md:py-5 py-1 text-blue-transparent pl-10"
                   }
                 >
@@ -176,7 +176,7 @@ export default function Index() {
                   style={{ marginLeft: "-1px" }}
                   className={
                     activeOrtho == 3
-                      ? "text-purple-dark md:py-5 py-1 border-l-2 border-purple pl-10"
+                      ? "text-purple-dark md:py-5 py-1 border-l-2 border-0 border-solid border-purple pl-10"
                       : "md:py-5 py-1 text-blue-transparent pl-10"
                   }
                 >
@@ -188,7 +188,7 @@ export default function Index() {
                   style={{ marginLeft: "-1px" }}
                   className={
                     activeOrtho == 4
-                      ? "text-purple-dark md:py-5 py-1 border-l-2 border-purple pl-10"
+                      ? "text-purple-dark md:py-5 py-1 border-l-2 border-0 border-solid border-purple pl-10"
                       : "md:py-5 py-1 text-blue-transparent pl-10"
                   }
                 >
@@ -200,7 +200,7 @@ export default function Index() {
                   style={{ marginLeft: "-1px" }}
                   className={
                     activeOrtho == 5
-                      ? "text-purple-dark md:py-5 py-1 border-l-2 border-purple pl-10"
+                      ? "text-purple-dark md:py-5 py-1 border-l-2 border-0 border-solid border-purple pl-10"
                       : "md:py-5 py-1 text-blue-transparent pl-10"
                   }
                 >
@@ -262,7 +262,7 @@ export default function Index() {
               <ul className={activeCase || state ? "hidden" : "md:w-3/5 w-2/5 mt-14 text-3xl md:text-5xl"} style={{background: `url("/img/wavesexitos.png")`,backgroundRepeat: "no-repeat",}}
               >
                 <li className="my-4">
-                  <button onClick={() => handleCasos(1)}>
+                  <button className="border-none" onClick={() => handleCasos(1)}>
                     <span className="flex items-center w-36 md:w-64 justify-between">
                       PININA
                       <img
@@ -357,13 +357,13 @@ export default function Index() {
                 ambiente y a la vez cómodos para tu mascota.
               </p>
               <textarea
-                  className=" text-purple-dark focus-visible:border-pink-100 shadow-xl p-4 mb-2 rounded-xl h-32 w-full bg-blue-light focus:outline-none"
+                  className=" text-purple-dark border-none shadow-xl p-4 mb-2 rounded-xl h-32 w-full bg-blue-light focus:outline-none"
                   placeholder="Escribe tu mensaje aquí"
                 />
               <div className="flex justify-between">
               <div className="w-96 h-12 rounded-xl bg-blue-light flex shadow-xl">
                 <input
-                  className=" text-purple-dark focus-visible:border-pink-100 px-4 rounded-xl w-4/5 h-full bg-blue-light focus:outline-none"
+                  className=" text-purple-dark border-none px-4 rounded-xl w-4/5 h-full bg-blue-light focus:outline-none"
                   type="mail"
                   placeholder="Mail"
                 />
@@ -373,7 +373,7 @@ export default function Index() {
                   </span>
                 </span>
               </div>
-              <button type="submit" className="w-36 bg-purple-dark rounded-xl ml-2 hover:bg-opacity-90 shadow-lg hover:shadow transition duration-300">Enviar</button>
+              <button type="submit" className="w-36 bg-purple-dark border-none rounded-xl ml-2 hover:bg-opacity-90 shadow-lg hover:shadow transition duration-300">Enviar</button>
               </div>
             </div>
             <div className="w-2/5 flex items-end">
