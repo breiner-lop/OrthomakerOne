@@ -177,18 +177,17 @@ export default function Orden() {
        {/**  header */}
        <div className="flex justify-between items-center">
          <div className="flex">
-          <div className={`text-green-500 text-xs h-7 bg-green-100 border border-green-400 min-w-[80px] rounded-lg flex justify-center items-center mr-2`}>
-            {dataOrder&& <select disabled={rolUser==0?false:true} value={dataOrder.prod_status} onChange={(e)=>onChangeProdEstatus(e)} name="prod_status" id="prod_status" className="focus:outline-none bg-green-100">
+          <div className={`text-green-500 text-xs h-7 bg-green-100 border border-solid border-green-400 min-w-[80px] rounded-lg flex justify-center items-center mr-2`}>
+            {dataOrder&& <select disabled={rolUser==0?false:true} value={dataOrder.prod_status} onChange={(e)=>onChangeProdEstatus(e)} name="prod_status" id="prod_status" className="focus:outline-none border-none bg-green-100">
                <option value={0}>EN ESPERA</option>
                <option value={1}>EN PRODUCCIÓN</option>
                <option value={2}>ENVIADO</option>
              </select>}
            </div>
-           <div className="text-blue-500 text-xs h-7 w-20 bg-blue-light rounded-lg border border-bl flex justify-center items-center">
-
+           <div className="text-blue-500 text-xs h-7 w-20 bg-blue-light rounded-lg border-solid border flex justify-center items-center">
              <span> {dataOrder&& <span>{dataOrder.status}</span>}</span>
            </div>
-           <div className="text-gray-400 flex border-l-2 boder border-gray-400 text-xs items-center ml-6">
+           <div className="text-gray-400 flex border-l-2 boder border-solid border-gray-400 text-xs items-center ml-6">
              <span>
                <img
                  src="/img/Calendar.png"

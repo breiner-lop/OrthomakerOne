@@ -33,25 +33,25 @@ export default function Protesis() {
     threejsLoader(dataProthesis.prothesisData.medidaAB,dataProthesis.prothesisData.medidaBC);
   }, [state])
   return (
-    <div className="bg-blu-light md:h-screen h-full md:flex block text-purple-dark overflow-y-hidden max-w-[1800px] mx-auto">
+    <div className="bg-blu-light md:h-screen pt-20 h-full md:flex block text-purple-dark overflow-y-hidden max-w-[1800px] mx-auto">
       {/*** panel de datos protesis */}
-      <div className="md:w-2/5 py-6">
-        <div className="py-4 md:px-28 px-2 border-b-2 border-gray-200">
+      <div className="md:w-2/5 w-full py-6">
+        <div className="py-4 md:px-28 px-2 border-b-2 border-0 border-solid border-gray-200">
           <h4 className="text-xl font-bold ">ENCAJE PROTÉSICO </h4>
           <div className="flex justify-between md:my-6 my-2">
             <span>Longitud</span>
-            <div className="bg-white w-28 flex px-3 rounded border border-gray-200">
-              <input type="number" disabled id="txt1" name="lace" min="1" max="10" step="0.1" value={parseInt(medidaAB) / 10} className="w-16 focus:outline-none" />
+            <div className="bg-white w-28 flex px-3 rounded border border-solid border-gray-200">
+              <input type="number" disabled id="txt1" name="lace" min="1" max="10" step="0.1" value={parseInt(medidaAB) / 10} className="w-16 border-none focus:outline-none" />
               <span>CM</span>
             </div>
           </div>
         </div>
-        <div className="py-4 md:px-28 px-2 border-b-2 border-gray-200">
+        <div className="py-4 md:px-28 px-2 border-b-2 border-0 border-solid border-gray-200">
           <h4 className="text-xl font-bold">PILAR PROTÉSICO </h4>
           <div className="flex justify-between my-2 md:my-6">
             <span>Longitud</span>
-            <div className="bg-white w-28 flex px-3 rounded border border-gray-200">
-              <input type="number" disabled id="txt2" name="pillar" step="0.1" min="1" max="20" value={parseInt(medidaBC) / 10} className="w-16 focus:outline-none" />
+            <div className="bg-white w-28 flex px-3 rounded border border-solid border-gray-200">
+              <input type="number" disabled id="txt2" name="pillar" step="0.1" min="1" max="20" value={parseInt(medidaBC) / 10} className="w-16 border-none focus:outline-none" />
               <span>CM</span>
             </div>
           </div>
@@ -148,13 +148,13 @@ export default function Protesis() {
               </div>
             </div>
           </div>
-         <div className="text-center w-20 h-20 border-2 filter drop-shadow-xl border-purple rounded-full md:hidden flex mx-auto justify-center items-end pb-1">
+         <div className="text-center w-20 h-20 border-2 border-solid filter drop-shadow-xl border-purple rounded-full md:hidden flex mx-auto justify-center items-end pb-1">
           <a href="#threejsroot"><img src="/img/bajar.png" alt="" className="w-12 animate-bounce" /></a>
          </div>
         </div>
       </div>
       {/*** diseño de la protesis */}
-     <div className="md:h-screen h-1/2 bg-white w-full">
+     <div className="md:h-screen h-1/2 bg-white md:w-3/5 w-full">
      <div id="threejsroot" className="w-full h-[520px] bg-white flex"></div>
      </div>
     </div>
