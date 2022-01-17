@@ -162,8 +162,10 @@ export default function Orden() {
       }
       })
    }
-    
-    
+   //convertidor a moneda COP
+const coinConverter = function(number){
+  return new Intl.NumberFormat('es-CO', {style: 'currency',currency: 'COP', minimumFractionDigits: 2}).format(number);
+};
   return (
    <>
    {loading?<div className="h-screen"><Loading/></div>:
@@ -211,7 +213,7 @@ export default function Orden() {
            <div className="bg-white pt-6 pb-6 rounded-t-lg filter drop-shadow flex justify-between px-6">
               <span>Detalle de la orden ({`#${id}`}) </span>
              <div>
-             {dataOrder?<><span className="mr-2"> {`Valor: $${dataOrder.valor_total/100}`} </span>/
+             {dataOrder?<><span className="mr-2"> {`Valor: ${coinConverter(dataOrder.valor_total/100)}`} </span>/
               <span className="ml-2"> {`Transacción: ${dataOrder.id_transaction?dataOrder.id_transaction:"NO PAGADO"}`} </span></>:<Loading/> }
              </div>
            </div>
@@ -251,11 +253,11 @@ export default function Orden() {
              <div className="flex mt-6">
              <div className="flex flex-col text-xs mr-20">
              <CampoDetalleOrden title="Nombre mascota" valor={dataPet.name} widthTitle="w-28"/>
-             <CampoDetalleOrden title="Tamaño" valor={dataProthesis.pet_size} widthTitle="w-28"/>
+             <CampoDetalleOrden title="Tamaño" valor={`${dataProthesis.pet_size} cm`} widthTitle="w-28"/>
              </div>
              <div className="flex flex-col text-xs mr-20">
-               <CampoDetalleOrden title="Edad" valor={dataPet.age} widthTitle="w-12"/>
-               <CampoDetalleOrden title="Peso" valor={dataPet.weight} widthTitle="w-12"/>
+               <CampoDetalleOrden title="Edad" valor={`${dataPet.age} meses`} widthTitle="w-12"/>
+               <CampoDetalleOrden title="Peso" valor={`${dataPet.weight} KG`} widthTitle="w-12"/>
              </div>
              <div className="flex flex-col text-xs mr-20">
                <CampoDetalleOrden title="Raza" valor={dataPet.race} widthTitle="w-12"/>

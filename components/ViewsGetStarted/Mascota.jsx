@@ -127,7 +127,7 @@ export default function Pet({token,user}) {
               />
             </div>
             <div>
-              <label htmlFor="age">Edad</label>
+              <label htmlFor="age">Edad <span className="text-xs">(meses)</span></label>
               <br />
               <input
                 name="age"

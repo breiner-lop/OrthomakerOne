@@ -56,7 +56,7 @@ export default function Getstarted() {
     formData.append("amputation_height_BC",parseFloat(dataProthesis.prothesisData.medidaBC) + 80);
     formData.append("stump_perimeter_sup",parseFloat(dataProthesis.prothesisData.stump_perimeter_sup));
     formData.append("stump_perimeter_inf",parseFloat(dataProthesis.prothesisData.stump_perimeter_inf));
-    formData.append("stump_length",0);
+    formData.append("stump_length",parseFloat(dataProthesis.prothesisData.stump_length));
     formData.append("lace", 0);
     formData.append("pillar",0);
     formData.append("color", datosProtesis.color);
@@ -123,7 +123,7 @@ export default function Getstarted() {
           {navForm == 9 && (
             <button
               className="md:p-3 p-0 flex justify-center items-center h-10 w-10 mr-4 border border-red-600 rounded-full filter shadow-md transition duration-200 hover:shadow-none"
-              onClick={() => setNavForm(7)}
+              onClick={() => setNavForm(8)}
             >
               <img src="/img/rowback.png" alt="rowback" />
             </button>
