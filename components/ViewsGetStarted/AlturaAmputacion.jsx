@@ -6,22 +6,22 @@ import { uploadLocalStorage } from "./uploadLocalStorage";
 
 export default function AlturaAmputacion() {
   // estados
-  const [ dataAltura, setAltura] = React.useState({})
+  const [dataAltura, setAltura] = React.useState({})
   /*** LLAMADA DEL CONTEXT MANEJADOR DE VISTAS FORM */
   const { setNavForm } = useCasosCtx();
 
-  const [medidaAB, setMedidaAB]= React.useState(8.6)
-  const [medidaBC, setMedidaBC]= React.useState(3.9)
+  const [medidaAB, setMedidaAB] = React.useState(8.6)
+  const [medidaBC, setMedidaBC] = React.useState(11.9)
 
   //handle input
-  
+
   //  manejador del submit form
   const handleSubmit = (e) => {
     e.preventDefault()
     // llamada de datos al localStorage
     const datosLocal = JSON.parse(localStorage.getItem('dataProthesis'))
-    medidaAB = (medidaAB * 10 ) ;
-    medidaBC = (medidaBC * 10 ) ;
+    medidaAB = (medidaAB * 10) + 19;
+    medidaBC = (medidaBC * 10) - 80;
     // objeto data prothesis localStorage
     var dataProthesis = {
       prothesisData:
@@ -40,15 +40,15 @@ export default function AlturaAmputacion() {
       {/***  formularios completador nav*/}
       <div className="flex md:flex-col flex-row md:px-0 text-xs md:text-base px-4">
         <div className="flex flex-col w-1/2 md:w-full">
-        <FormCompleted
-          onClick={() => setNavForm(1)}
-          perfil="Perfil propietario"
-        />
-        <FormCompleted onClick={() => setNavForm(2)} perfil="Perfil mascota" />
-        <FormCompleted
-          onClick={() => setNavForm(3)}
-          perfil="Perfil veterinario"
-        />
+          <FormCompleted
+            onClick={() => setNavForm(1)}
+            perfil="Perfil propietario"
+          />
+          <FormCompleted onClick={() => setNavForm(2)} perfil="Perfil mascota" />
+          <FormCompleted
+            onClick={() => setNavForm(3)}
+            perfil="Perfil veterinario"
+          />
         </div>
         <div className="md:border-t-2 w-1/2 md:w-full border-0 border-solid border-t-0 border-gray-100 md:pt-6 pt-0 flex flex-col">
           <FormCompleted
@@ -104,7 +104,7 @@ export default function AlturaAmputacion() {
               protesis, selecciona el caso apropiado para tu mascota
             </p>
             <div className="flex justify-center">
-              <img src="/img/medidas.png" alt="altura de amputacion" />
+              <img src="/img/medidas.png" alt="altura de amputacion"/>
             </div>
           </div>
           {/***input tamaño  */}
@@ -114,7 +114,7 @@ export default function AlturaAmputacion() {
             </p>
             <div className="md:flex block mt-4">
               <div className="mb-6 w-1/2">
-                <label htmlFor="nombres">Medida A {"->"} B</label>
+                <label htmlFor="nombres">Medida 1</label>
                 <br />
                 <div className="bg-blue-light text-purple-dark mr-4 w-80 h-12 border border-solid border-blue-200 flex items-center justify-center">
                   <input
@@ -130,7 +130,7 @@ export default function AlturaAmputacion() {
                 </div>
               </div>
               <div className="w-1/2">
-                <label htmlFor="nombres">Medida B {"->"} C</label>
+                <label htmlFor="nombres">Medida 2</label>
                 <br />
                 <div className="bg-blue-light text-purple-dark mr-4 w-80 h-12 border border-solid border-blue-200 flex items-center justify-center">
                   <input
