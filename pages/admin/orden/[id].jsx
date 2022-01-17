@@ -10,7 +10,7 @@ import axios from 'axios'
 import Loading from "../../../components/Loading";
 import { useCasosCtx } from "../../../contexts/casosExito/navInicio.context";
 export default function Orden() {
-  const {rolUser}=useCasosCtx()
+  const {rolUser,setPanelMobile,panelMobile}=useCasosCtx()
   const router = useRouter()
   const { id } = router.query
   // states
@@ -23,6 +23,7 @@ export default function Orden() {
   const [petImgs,setImgs]=useState("")
   const [checkout,setCheckout]=React.useState(null)
   const [wompiLoading,setLoadingWompi]=React.useState(false)
+
   React.useEffect(()=>{
     setLoadingWompi(true)
     //wompi
@@ -170,23 +171,24 @@ const coinConverter = function(number){
    <>
    {loading?<div className="h-screen"><Loading/></div>:
      tokenn? <Layout>
-     <div className="bg-blu-light h-screen w-full p-8 overflow-y-auto justify-center flex">
+     <div className="bg-blu-light h-screen w-full md:p-8 p-2 overflow-y-auto justify-center flex">
        <div className="w-full" style={{maxWidth:"1500px"}}>
          {/**  logo */}
-       <div className="text-2xl text-purple-dark mb-4">
-         Ortho<strong>Maker</strong>
+       <div className="text-2xl text-purple-dark mb-4 flex justify-between">
+       {!panelMobile&& <button onClick={()=>setPanelMobile(!panelMobile)} className="md:hidden block ml-3"><img src="/img/menu.png" alt="menu imagen" /></button>}
+        <span> Ortho<strong>Maker</strong></span>
        </div>
        {/**  header */}
-       <div className="flex justify-between items-center">
+       <div className="md:flex block justify-between items-center" style={{maxWidth:"1000px"}}>
          <div className="flex">
-          <div className={`text-green-500 text-xs h-7 bg-green-100 border border-solid border-green-400 min-w-[80px] rounded-lg flex justify-center items-center mr-2`}>
-            {dataOrder&& <select disabled={rolUser==0?false:true} value={dataOrder.prod_status} onChange={(e)=>onChangeProdEstatus(e)} name="prod_status" id="prod_status" className="focus:outline-none border-none bg-green-100">
+          <div className={`text-green-500 text-xs h-7 bg-green-100 border border-solid border-green-400 md:min-w-[80px] rounded-lg flex justify-center items-center mr-2`}>
+            {dataOrder&& <select disabled={rolUser==0?false:true} value={dataOrder.prod_status} onChange={(e)=>onChangeProdEstatus(e)} name="prod_status" id="prod_status" className="focus:outline-none border-none w-24 bg-green-100">
                <option value={0}>EN ESPERA</option>
                <option value={1}>EN PRODUCCIÓN</option>
                <option value={2}>ENVIADO</option>
              </select>}
            </div>
-           <div className="text-blue-500 text-xs h-7 w-20 bg-blue-light rounded-lg border-solid border flex justify-center items-center">
+           <div className="text-blue-500 text-xs h-7 w-28 bg-blue-light rounded-lg border-solid border flex justify-center items-center">
              <span> {dataOrder&& <span>{dataOrder.status}</span>}</span>
            </div>
            <div className="text-gray-400 flex border-l-2 boder border-solid border-gray-400 text-xs items-center ml-6">
@@ -202,15 +204,15 @@ const coinConverter = function(number){
             {dataOrder&& <span>{dataOrder.date}</span>}
            </div>
          </div>
-         <div>
+         <div className="flex justify-center">
            {userData&&!dataOrder.id_transaction&&<ButtonBorderBlue  onClick={()=>{checkout.open(function(r){})}} text="Pagar ahora" />}
            {/* <ButtonRed text="Cancelar orden" /> */}
          </div>
        </div>
-       <div className="flex mt-10" style={{maxWidth:"1000px"}}>
+       <div className="flex mt-10 text-xs" style={{maxWidth:"1000px"}}>
          <div className="w-full">
            {/**  Header */}
-           <div className="bg-white pt-6 pb-6 rounded-t-lg filter drop-shadow flex justify-between px-6">
+           <div className="bg-white pt-6 pb-6 rounded-t-lg filter drop-shadow flex justify-between md:px-6 px-1">
               <span>Detalle de la orden ({`#${id}`}) </span>
              <div>
              {dataOrder?<><span className="mr-2"> {`Valor: ${coinConverter(dataOrder.valor_total/100)}`} </span>/
@@ -218,7 +220,7 @@ const coinConverter = function(number){
              </div>
            </div>
            {/**  productos */}
-           <div className="bg-white pt-6 pb-10 filter drop-shadow flex items-center">
+           <div className="bg-white pt-6 pb-10 filter drop-shadow flex md:flex-row flex-col items-center">
               {
                 userData?
                 <>
@@ -227,17 +229,17 @@ const coinConverter = function(number){
               </div>
              <div className="text-xs">
                 <h4 className="mb-2">{`${userData.name} ${userData.lastname}`}</h4>
-                <div className="flex flex-col">
+                <div className="flex flex-col ">
                 <CampoDetalleOrden title="Telefono" valor={userData.phone}/>
                 <CampoDetalleOrden title="Email" valor={userData.mail}/>
                 <CampoDetalleOrden title="Ciudad" valor={userData.city}/>
                 </div>
               </div>
-                <div className="flex flex-col text-xs ml-14">
+                <div className="flex flex-col items-start text-xs md:ml-14 ml-0">
                 <CampoDetalleOrden title="Telefono (Opcional)" valor={userData.phone2} widthTitle='w-28'/>
                 <CampoDetalleOrden title="Ditrecci&oacute;n" valor={userData.direction} widthTitle='w-28'/>
                 </div>
-                <div className="flex flex-col ml-14 text-xs">
+                <div className="flex flex-col items-start md:ml-14 ml-0 text-xs">
                 <CampoDetalleOrden title="Zip" valor={userData.zip} widthTitle='w-10'/>
                 </div>
                 </>:<Loading/>
@@ -245,12 +247,12 @@ const coinConverter = function(number){
 
            </div>
            {/**  Informacion de la mascota */}
-           <div className="bg-white px-44  text-xs filter drop-shadow py-6">
+           <div className="bg-white md:px-44 px-6  text-xs filter drop-shadow py-6">
            {
              dataProthesis?
             <>
             <h6 className="text-base">Informaci&oacute;n de la mascota</h6>
-             <div className="flex mt-6">
+             <div className="md:flex block mt-6">
              <div className="flex flex-col text-xs mr-20">
              <CampoDetalleOrden title="Nombre mascota" valor={dataPet.name} widthTitle="w-28"/>
              <CampoDetalleOrden title="Tamaño" valor={`${dataProthesis.pet_size} cm`} widthTitle="w-28"/>
@@ -265,7 +267,7 @@ const coinConverter = function(number){
            </div>
            <div>
            <h6 className="my-6 text-base">Fotos de perfiles </h6>
-           <div className="flex">
+           <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
              <CardPetPhotos href={`https://${petImgs.image1}`} img={`https://${petImgs.image1}`} title="Frente"/>
              <CardPetPhotos href={`https://${petImgs.image2}`} img={`https://${petImgs.image2}`} title="Perfil derecho"/>
              <CardPetPhotos href={`https://${petImgs.image3}`} img={`https://${petImgs.image3}`} title="Perfil izquierdo"/>
@@ -276,13 +278,13 @@ const coinConverter = function(number){
            }
            </div>
            {/**  Información para la prótesis */}
-           <div className="bg-white px-44 py-6 filter drop-shadow ">
+           <div className="bg-white md:px-44 p-6 py-6 filter drop-shadow ">
              {
                dataProthesis?
                <>
               <h4>Información para la prótesis</h4>
              <div className="text-xs mt-4">
-              <div className="flex justify-between">
+              <div className="md:flex block justify-between">
                 <div>
                 <CampoDetalleOrden title="Altura de amputación A->B" valor={((parseInt(dataProthesis.amputation_height_AB)-19)/10)+" cm"} widthTitle='w-40' />
                 <CampoDetalleOrden title="Altura de amputación B->C" valor={((parseInt(dataProthesis.amputation_height_BC)-80)/10)+" cm"} widthTitle='w-40' />
@@ -317,7 +319,7 @@ const coinConverter = function(number){
              }
            </div>
            {/**  Información veterinario */}
-           <div className="bg-white px-44 py-6 filter drop-shadow rounded-b-lg mb-10">
+           <div className="bg-white md:px-44 px-6 py-6 filter drop-shadow rounded-b-lg mb-10">
              <h4 className="my-2 text-base">Información del veterinario</h4>
              <div className="flex justify-between">
                <div>

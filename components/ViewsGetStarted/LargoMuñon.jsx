@@ -36,10 +36,11 @@ export default function LargoMuñon() {
     setNavForm(9)
   }
   return (
-    <div className="bg-white py-20 flex justify-center text-purple-dark">
+    <div className="bg-white md:py-20 py-4 md:flex block justify-center text-purple-dark">
       {/***  formularios completador nav*/}
-      <div className="flex flex-col">
-        <FormCompleted
+      <div className="flex md:flex-col flex-row md:0 px-2">
+       <div className="flex flex-col">
+       <FormCompleted
           onClick={() => setNavForm(1)}
           perfil="Perfil propietario"
         />
@@ -48,7 +49,8 @@ export default function LargoMuñon() {
           onClick={() => setNavForm(3)}
           perfil="Perfil veterinario"
         />
-        <div className="border-t-2 border-gray-100 pt-6 flex flex-col">
+       </div>
+        <div className="md:border-t-2 border-t-0 border-solid border-0 border-gray-100 md:pt-6 pt-0 flex flex-col">
           <FormCompleted
             onClick={() => setNavForm(4)}
             perfil="Tamaño del canino"
@@ -67,9 +69,9 @@ export default function LargoMuñon() {
           />
         </div>
       </div>
-      <div style={{ width: "800px" }}>
+      <div className="md:w-[800px] w-full">
         <form onSubmit={(e) => handleSubmit(e)}>
-          <div className="px-12 mb-1 flex justify-between">
+          <div className="md:px-12 px-4 mb-1 flex justify-between">
             <div className="mb-10">
               <span className="text-3xl">Largo del muñon</span>
             </div>
@@ -83,7 +85,7 @@ export default function LargoMuñon() {
             <img src="/img/largomunon.png" alt="dogsize" />
           </div>
           {/***input tamaño  */}
-          <div className=" bg-white p-12 mb-1 flex">
+          <div className=" bg-white md:p-12 p-4 mb-1 md:flex block">
             <div className="mb-6 w-1/2">
               <label htmlFor="nombres">Medida</label>
               <br />
@@ -98,7 +100,7 @@ export default function LargoMuñon() {
                 <span>CM</span>
               </div>
             </div>
-            <div className="w-1/2 text-blue-transparent">
+            <div className="md:w-1/2 w-full text-blue-transparent">
               <p>
                 Esta medida sirve para conocer el largo del encaje que estara en
                 contacto con la amputacion y debe tomarse como se muestra en la
