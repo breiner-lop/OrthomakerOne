@@ -110,10 +110,10 @@ export default function Veterinario({token,user}) {
           {/***formulario sect  */}
           <div className="md:p-12 p-4 border-b-2 border-0 border-solid border-gray-200">
             <div className="mb-6">
-              <label htmlFor="nombres">Ciudad</label>
+              <label htmlFor="nombres">Direccion consultorio</label>
               <br />
               <input
-                name="city"
+                name="direction"
                 onChange={(e) => {
                   handleInputChange(e);
                 }}
@@ -123,10 +123,10 @@ export default function Veterinario({token,user}) {
             </div>
             <div className="md:flex block">
               <div>
-                <label htmlFor="nombres">Direccion consultorio</label>
+                <label htmlFor="nombres">Ciudad</label>
                 <br />
                 <input
-                  name="direction"
+                  name="city"
                   onChange={(e) => {
                     handleInputChange(e);
                   }}
@@ -135,7 +135,7 @@ export default function Veterinario({token,user}) {
                 />
               </div>
               <div>
-                <label htmlFor="nombres">Estado</label>
+                <label htmlFor="nombres">Departamento</label>
                 <br />
                 <input
                   name="state"
@@ -147,7 +147,7 @@ export default function Veterinario({token,user}) {
                 />
               </div>
               <div>
-                <label htmlFor="nombres">ZIP</label>
+                <label htmlFor="nombres">Codigo postal</label>
                 <br />
                 <input
                   name="zip"
