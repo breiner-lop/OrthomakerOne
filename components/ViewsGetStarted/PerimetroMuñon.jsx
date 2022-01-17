@@ -45,7 +45,7 @@ export default function PerimetroMuñon() {
           <FormCompleted onClick={()=>setNavForm(2)} perfil="Perfil mascota"/>
           <FormCompleted onClick={()=>setNavForm(3)} perfil="Perfil veterinario"/>
         </div>
-        <div className="md:border-t-2 border-t-0 w-1/2 md:w-full border-gray-100 md:pt-6 pt-0 flex flex-col">
+        <div className="md:border-t-2 border-t-0 w-1/2 md:w-full border-solid border-0 border-gray-100 md:pt-6 pt-0 flex flex-col">
           <FormCompleted
             onClick={() => setNavForm(4)}
             perfil="Tamaño del canino"
@@ -72,7 +72,7 @@ export default function PerimetroMuñon() {
             </div>
           </div>
           {/***Imagen dog */}
-          <div className="flex bg-white mx:p-12 p-4 mb-1 justify-center border-b-2 border-t-2 border-gray-200">
+          <div className="flex bg-white mx:p-12 p-4 mb-1 justify-center border-b-2 border-t-2 border-0 border-solid border-gray-200">
             <img src="/img/peripunon.png" alt="perimetro del muñon" />
           </div>
           {/***input tamaño  */}
@@ -82,12 +82,12 @@ export default function PerimetroMuñon() {
                 <div className="mb-6 md:w-1/2 w-full">
                   <label htmlFor="nombres">Medida</label>
                   <br />
-                  <div className="bg-blue-light text-purple-dark mr-4 w-80 h-12 border border-blue-200 flex items-center justify-center">
+                  <div className="bg-blue-light text-purple-dark mr-4 w-80 h-12 border border-solid border-blue-200 flex items-center justify-center">
                     <input
                       onChange={(e) => handleInputChange(e)}
                       name="perimetroinferior"
                       placeholder="Perimetro inferior"
-                      className="focus:outline-none bg-transparent px-4 h-10 w-64 placeholder-gray-300"
+                      className="focus:outline-none bg-transparent px-4 h-10 w-64 border-none placeholder-gray-300"
                       type="number"
                       step="0.1"
                       required
@@ -108,12 +108,12 @@ export default function PerimetroMuñon() {
                 <div className="mb-6 md:w-1/2 w-full">
                   <label htmlFor="nombres">Medida</label>
                   <br />
-                  <div className="bg-blue-light text-purple-dark mr-4 w-80 h-12 border border-blue-200 flex items-center justify-center">
+                  <div className="bg-blue-light text-purple-dark mr-4 w-80 h-12 border border-solid border-blue-200 flex items-center justify-center">
                     <input
                       onChange={(e) => handleInputChange(e)}
                       name="perimetrosuperior"
                       placeholder="Perimetro superior"
-                      className="focus:outline-none bg-transparent px-4 h-10 w-64 placeholder-gray-300"
+                      className="focus:outline-none bg-transparent px-4 h-10 border-none w-64 placeholder-gray-300"
                       type="number"
                       step="0.1"
                       required

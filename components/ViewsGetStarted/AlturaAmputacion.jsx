@@ -98,13 +98,13 @@ export default function AlturaAmputacion() {
             </div>
           </div>
           {/***input tamaño  */}
-          <div className="py-6 border-b-2 border-gray-200 ">
+          <div className="py-6 border-b-2 border-solid border-0 border-gray-200 ">
             <p className="w-4/5 text-blue-transparent md:px-12 px-4">
               A continuación veras la altura de amputación para el uso de esta
               protesis, selecciona el caso apropiado para tu mascota
             </p>
             <div className="flex justify-center">
-              <img src="/img/munonabc.png" alt="altura de amputacion" />
+              <img src="/img/medidas.png" alt="altura de amputacion" />
             </div>
           </div>
           {/***input tamaño  */}
