@@ -2,6 +2,7 @@ import React from "react";
 import ButtonPanelAdmin from "../../components/Buttons/ButtonPanelAdmin";
 import { useCasosCtx } from "../../contexts/casosExito/navInicio.context";
 import { useRouter } from "next/router";
+import Link from 'next/link'
 export default function Panel() {
   // states
   const [user,setUser]=React.useState({})
@@ -38,14 +39,6 @@ export default function Panel() {
                 <span className="text-xs text-white-transparent">{rolUser==0?"Admin":"cliente"}</span>
               </div>
             </div>
-            <button>
-              <img
-                src="/img/change.png"
-                width="20px"
-                height="20px"
-                className="rounded-lg"
-              />
-            </button>
           </div>
         </div>
         <nav>
@@ -54,7 +47,7 @@ export default function Panel() {
               <ButtonPanelAdmin
               href="/admin/ordenes"
                 text="Ordenes"
-                img="/img/Ordenes.png"
+                img="/img/ordenes.png"
                 active={activeNumber == 1 ? true : false}
                 onClick={() => setActiveNumber(1)}
                 isCount={true}
@@ -77,9 +70,11 @@ export default function Panel() {
       </div>
       <div>
       </div>
-      <div className="text-purple-dark flex justify-center">
-          <button onClick={()=>logout()} className="flex bg-white bg-opacity-75 rounded-lg font-semibold h-10 items-center px-4 w-48 justify-center  hover:bg-opacity-50 transition duration-200">Cerrar sesion <img src="/img/logout.png" alt="logout imagen" className="ml-4" /></button>
+      <div className="text-purple-dark flex justify-center items-center text-sm">
+      <Link href="/"><a className="flex bg-white ml-2 bg-opacity-75 rounded-lg text-sm font-semibold h-10 items-center px-0 w-32 justify-center  hover:bg-opacity-50 transition duration-200"><img src="/img/home.png" alt="logout imagen" className="mr-2" />Volver al inicio</a></Link>
+          <button onClick={()=>logout()} className="flex mr-2 bg-white ml-2 border-none bg-opacity-75 rounded-lg text-sm font-semibold h-10 items-center px-0 w-32 justify-center  hover:bg-opacity-50 transition duration-200">Cerrar sesion <img src="/img/logout.png" alt="logout imagen" className="ml-2" /></button>
         </div>
+        
     </div>
   );
 }

@@ -82,6 +82,10 @@ export default function VerificarOrden() {
       
       console.log("df")
    },[wompiLoading,total])
+   //coin Converter
+   const coinConverter = function(number){
+    return new Intl.NumberFormat('es-CO', {style: 'currency',currency: 'COP', minimumFractionDigits: 2}).format(number);
+  };
   return (
     <div className="px-24 mx-auto" style={{maxWidth:"1800px"}}>
         <Head>
@@ -187,7 +191,7 @@ export default function VerificarOrden() {
             {/** detalle del pago */}
         <div className="h-20 rounded-b-lg bg-blu-light -mx-6 border-t border-gray-400 mt-10 flex items-center px-6 justify-between">
           <img src="/img/logo.png" alt="logo orthomaker" className="w-16 " />
-            <span className="text-lg"><span className="mr-2 text-blue-transparent">Total a pagar:</span><span className="text-purple-dark">{`$${total/100}`}</span></span>
+            <span className="text-lg"><span className="mr-2 text-blue-transparent">Total a pagar:</span><span className="text-purple-dark">{`${coinConverter(total/100)}`}</span></span>
         </div>
         </div>
        

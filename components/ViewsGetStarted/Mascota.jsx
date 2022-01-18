@@ -121,20 +121,20 @@ export default function Pet({token,user}) {
                 onChange={(e) => {
                   handleInputChange(e);
                 }}
-                className="bg-blue-light mr-4 w-80 h-12 focus:outline-none px-4"
+                className="bg-blue-light mr-4 w-80 h-12 focus:outline-none px-4 border border-blue-200 border-solid"
                 type="text"
                 required
               />
             </div>
             <div>
-              <label htmlFor="age">Edad</label>
+              <label htmlFor="age">Edad <span className="text-xs">(meses)</span></label>
               <br />
               <input
                 name="age"
                 onChange={(e) => {
                   handleInputChange(e);
                 }}
-                className="bg-blue-light mr-4 md:w-20 w-80 h-12 focus:outline-none px-4"
+                className="bg-blue-light mr-4 md:w-20 w-80 h-12 focus:outline-none px-4 border border-blue-200 border-solid"
                 type="number"
                 required
               />
@@ -147,7 +147,7 @@ export default function Pet({token,user}) {
                 onChange={(e) => {
                   handleInputChange(e);
                 }}
-                className="bg-blue-light mr-4 md:w-60 w-80 h-12 focus:outline-none px-4"
+                className="bg-blue-light mr-4 md:w-60 w-80 h-12 focus:outline-none px-4 border border-blue-200 border-solid"
                 type="text"
                 required
               />
@@ -280,7 +280,7 @@ export default function Pet({token,user}) {
             </div>
           </div>
           {/*** weight */}
-          <div className="md:p-12 p-4 border-b-2 border-gray-200">
+          <div className="md:p-12 p-4 border-b-2 border-0 border-solid border-gray-200">
           <h6 className="mb-6">Peso</h6>
             <div className="flex">
               <ul className="flex text-white mr-2">
@@ -298,7 +298,7 @@ export default function Pet({token,user}) {
                   <label
                     className={` ${
                       dataPet.weight == "1-5" && "bg-red-dark"
-                    } w-full py-4 md:px-10 px-2 text-black border cursor-pointer border-purple-light rounded-l-lg`}
+                    } w-full py-4 md:px-10 px-2 text-black border border-solid cursor-pointer border-purple-light rounded-l-lg`}
                     htmlFor="15"
                   >
                     1-5
@@ -318,7 +318,7 @@ export default function Pet({token,user}) {
                   <label
                     className={`${
                       dataPet.weight == "6-11" && "bg-red-dark"
-                    } w-full py-4 md:px-10 px-2 text-black border cursor-pointer border-purple-light`}
+                    } w-full py-4 md:px-10 px-2 text-black border border-solid cursor-pointer border-purple-light`}
                     htmlFor="611"
                   >
                     6-11
@@ -338,7 +338,7 @@ export default function Pet({token,user}) {
                   <label
                     className={`${
                       dataPet.weight == "12-17" && "bg-red-dark"
-                    } w-full py-4 md:px-10 px-2 text-black border cursor-pointer border-purple-light`}
+                    } w-full py-4 md:px-10 px-2 text-black border border-solid cursor-pointer border-purple-light`}
                     htmlFor="1217"
                   >
                     12-17
@@ -358,7 +358,7 @@ export default function Pet({token,user}) {
                   <label
                     className={`${
                       dataPet.weight == "18-23" && "bg-red-dark"
-                    } w-full py-4 md:px-10 px-2 text-black border cursor-pointer border-purple-light`}
+                    } w-full py-4 md:px-10 px-2 text-black border border-solid cursor-pointer border-purple-light`}
                     htmlFor="1823"
                   >
                     18-23
@@ -378,7 +378,7 @@ export default function Pet({token,user}) {
                   <label
                     className={`${
                       dataPet.weight == "24-30" && "bg-red-dark"
-                    } w-full py-4 md:px-10 px-2 text-black border cursor-pointer border-purple-light rounded-r-lg`}
+                    } w-full py-4 md:px-10 px-2 text-black border border-solid cursor-pointer border-purple-light rounded-r-lg`}
                     htmlFor="2430"
                   >
                     24-30

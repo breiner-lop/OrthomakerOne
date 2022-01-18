@@ -16,6 +16,7 @@ import axios from "axios";
 import ViewNoAuth from "../../components/ViewNoAuth";
 import { useRouter } from "next/router";
 import LoadingSping from "../../components/LoadingSping";
+import LargoMuñon from "../../components/ViewsGetStarted/LargoMuñon";
 
 export default function Getstarted() {
   const { navForm, setNavForm, datosProtesis } = useCasosCtx();
@@ -55,7 +56,7 @@ export default function Getstarted() {
     formData.append("amputation_height_BC",parseFloat(dataProthesis.prothesisData.medidaBC) + 80);
     formData.append("stump_perimeter_sup",parseFloat(dataProthesis.prothesisData.stump_perimeter_sup));
     formData.append("stump_perimeter_inf",parseFloat(dataProthesis.prothesisData.stump_perimeter_inf));
-    formData.append("stump_length",0);
+    formData.append("stump_length",parseFloat(dataProthesis.prothesisData.stump_length));
     formData.append("lace", 0);
     formData.append("pillar",0);
     formData.append("color", datosProtesis.color);
@@ -116,12 +117,13 @@ export default function Getstarted() {
   return loading? null :!token?<ViewNoAuth />: (
     <div>
        {loadingOrder&&<LoadingSping/>}
-      <div className="flex justify-between text-purple-dark h-20 items-center px-5 md:px-24 max-w-[1800px] mx-auto">
+<div className="flex justify-center">
+<div className={`flex justify-between text-purple-dark h-20 items-center bg-white w-full px-5 md:px-24 max-w-[1800px] mx-auto ${navForm==9&&"fixed"}`}>
         <div className="flex items-center">
-          {navForm == 8 && (
+          {navForm == 9 && (
             <button
               className="md:p-3 p-0 flex justify-center items-center h-10 w-10 mr-4 border border-red-600 rounded-full filter shadow-md transition duration-200 hover:shadow-none"
-              onClick={() => setNavForm(7)}
+              onClick={() => setNavForm(8)}
             >
               <img src="/img/rowback.png" alt="rowback" />
             </button>
@@ -137,14 +139,15 @@ export default function Getstarted() {
           </span>
         </div>
         <div className="flex">
-          {navForm == 8 ? (
+          {navForm == 9 ? (
               <button onClick={()=>sendToProduction()} className="text-white rounded-lg flex items-center justify-center font-semibold  md:w-44 w-36 h-11 bg-red-500 hover:bg-red-600 transition duration-200 filter drop-shadow">Verificar orden</button>
           ) : (
             <ButtonCancel text="Cancelar"/>
           )}
-          {navForm == 8 && <ButtonCancelBlueLight />}
+          {navForm == 9 && <ButtonCancelBlueLight />}
         </div>
       </div>
+</div>
       {navForm == 1 ? (
         <PropietarioView token={token} user={user} />
       ) : navForm == 2 ? (
@@ -160,7 +163,7 @@ export default function Getstarted() {
       ) : navForm == 7 ? (
         <PerimetroMuñon />
       ) :(
-        navForm == 8 && <Protesis />
+        navForm == 8 ?<LargoMuñon/>:navForm==9 && <Protesis />
       )}
     </div>
   );

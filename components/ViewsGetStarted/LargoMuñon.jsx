@@ -8,10 +8,13 @@ export default function LargoMuñon() {
   /*** LLAMADA DEL CONTEXT MANEJADOR DE VISTAS FORM */
   const { setNavForm } = useCasosCtx();
   // estados
-  const [largo, setLargo] = React.useState(undefined);
+  const [largo, setLargo] = React.useState();
   //handle input
   const handleLargo = (e) => {
-    setLargo(e.target.value);
+    var largo = (parseFloat(e.target.value));
+    largo = (largo * 10) + 19;
+
+    setLargo(largo);
     console.log(largo);
   };
   //  manejador del submit form
@@ -79,19 +82,19 @@ export default function LargoMuñon() {
             </div>
           </div>
           {/***Imagen dog */}
-          <div className=" flex bg-white p-12 mb-1 justify-center border-b-2 border-t-2 border-gray-100">
-            <img src="/img/largomuñon.png" alt="dogsize" />
+          <div className=" flex bg-white p-12 mb-1 justify-center border-b-2 border-t-2 border-0 border-solid border-gray-100">
+            <img src="/img/largomunon.png" alt="dogsize" />
           </div>
           {/***input tamaño  */}
           <div className=" bg-white p-12 mb-1 flex">
             <div className="mb-6 w-1/2">
               <label htmlFor="nombres">Medida</label>
               <br />
-              <div className="bg-blue-light text-purple-dark mr-4 w-80 h-12 border border-blue-100 flex items-center justify-center">
+              <div className="bg-blue-light text-purple-dark mr-4 w-80 h-12 border border-solid border-blue-200 flex items-center justify-center">
                 <input
                   onChange={(e) => handleLargo(e)}
                   name="largo"
-                  className="focus:outline-none bg-transparent px-4 h-10 w-64"
+                  className="focus:outline-none bg-transparent border-none px-4 h-10 w-64"
                   type="number" required
                   step="0.1"
                 />

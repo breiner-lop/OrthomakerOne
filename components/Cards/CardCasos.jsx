@@ -35,7 +35,7 @@ export default function CardCasos({ img, name, textOne, textTwo,Uu,imgsig }) {
           </div>
         </div>
         <div className="-mb-10 pb-10" >
-          {state&&<button onClick={()=>setState(false)}>
+          {state&&<button className="border-none" onClick={()=>setState(false)}>
             <span className="underline">Inicio</span>
           </button>}
         </div>

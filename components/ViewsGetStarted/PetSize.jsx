@@ -45,7 +45,7 @@ export default function Veterinario() {
             </div>
           </div>
           {/***Imagen dog */}
-          <div className="flex  p-12 justify-center border-b-2 border-t-2 border-gray-200">
+          <div className="flex  p-12 justify-center border-b-2 border-solid border-0 border-t-2 border-gray-200">
             <img src="/img/dogsize.png" alt="dogsize" />
           </div>
           {/***input tamaño  */}
@@ -53,13 +53,13 @@ export default function Veterinario() {
             <div className="mb-6 w-1/2">
               <label htmlFor="nombres">Medida</label>
               <br />
-                <div className="bg-blue-light text-purple-dar px-2  mr-4 w-80 h-13 border border-blue-100 flex items-center justify-center">
+                <div className="bg-blue-light text-purple-dar px-2  mr-4 w-80 h-13 border border-solid border-blue-200 flex items-center justify-center">
                 <input
                 onChange={(e) => {
                   handleInputChange(e);
                 }}
                 name="pet-size"
-                className="bg-blue-light mr-4 w-80 h-12 focus:outline-none px-4 filter "
+                className="bg-blue-light mr-4 w-80 h-12 focus:outline-none px-4 border-none filter "
                 type="number" step="0.1"
               />
                 <span>CM</span>

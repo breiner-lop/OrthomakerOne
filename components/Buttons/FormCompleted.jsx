@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function FormCompleted({onClick,perfil}) {
     return (
-        <button onClick={onClick} className="mb-6">
+        <button onClick={onClick} className="mb-6 border-none">
             <span className="flex items-center">
               <span>
                 <img

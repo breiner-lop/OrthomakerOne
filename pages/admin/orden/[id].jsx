@@ -162,8 +162,10 @@ export default function Orden() {
       }
       })
    }
-    
-    
+   //convertidor a moneda COP
+const coinConverter = function(number){
+  return new Intl.NumberFormat('es-CO', {style: 'currency',currency: 'COP', minimumFractionDigits: 2}).format(number);
+};
   return (
    <>
    {loading?<div className="h-screen"><Loading/></div>:
@@ -177,18 +179,17 @@ export default function Orden() {
        {/**  header */}
        <div className="flex justify-between items-center">
          <div className="flex">
-          <div className={`text-green-500 text-xs h-7 bg-green-100 border border-green-400 min-w-[80px] rounded-lg flex justify-center items-center mr-2`}>
-            {dataOrder&& <select disabled={rolUser==0?false:true} value={dataOrder.prod_status} onChange={(e)=>onChangeProdEstatus(e)} name="prod_status" id="prod_status" className="focus:outline-none bg-green-100">
+          <div className={`text-green-500 text-xs h-7 bg-green-100 border border-solid border-green-400 min-w-[80px] rounded-lg flex justify-center items-center mr-2`}>
+            {dataOrder&& <select disabled={rolUser==0?false:true} value={dataOrder.prod_status} onChange={(e)=>onChangeProdEstatus(e)} name="prod_status" id="prod_status" className="focus:outline-none border-none bg-green-100">
                <option value={0}>EN ESPERA</option>
                <option value={1}>EN PRODUCCIÓN</option>
                <option value={2}>ENVIADO</option>
              </select>}
            </div>
-           <div className="text-blue-500 text-xs h-7 w-20 bg-blue-light rounded-lg border border-bl flex justify-center items-center">
-
+           <div className="text-blue-500 text-xs h-7 w-20 bg-blue-light rounded-lg border-solid border flex justify-center items-center">
              <span> {dataOrder&& <span>{dataOrder.status}</span>}</span>
            </div>
-           <div className="text-gray-400 flex border-l-2 boder border-gray-400 text-xs items-center ml-6">
+           <div className="text-gray-400 flex border-l-2 boder border-solid border-gray-400 text-xs items-center ml-6">
              <span>
                <img
                  src="/img/Calendar.png"
@@ -212,7 +213,7 @@ export default function Orden() {
            <div className="bg-white pt-6 pb-6 rounded-t-lg filter drop-shadow flex justify-between px-6">
               <span>Detalle de la orden ({`#${id}`}) </span>
              <div>
-             {dataOrder?<><span className="mr-2"> {`Valor: $${dataOrder.valor_total/100}`} </span>/
+             {dataOrder?<><span className="mr-2"> {`Valor: ${coinConverter(dataOrder.valor_total/100)}`} </span>/
               <span className="ml-2"> {`Transacción: ${dataOrder.id_transaction?dataOrder.id_transaction:"NO PAGADO"}`} </span></>:<Loading/> }
              </div>
            </div>
@@ -252,11 +253,11 @@ export default function Orden() {
              <div className="flex mt-6">
              <div className="flex flex-col text-xs mr-20">
              <CampoDetalleOrden title="Nombre mascota" valor={dataPet.name} widthTitle="w-28"/>
-             <CampoDetalleOrden title="Tamaño" valor={dataProthesis.pet_size} widthTitle="w-28"/>
+             <CampoDetalleOrden title="Tamaño" valor={`${dataProthesis.pet_size} cm`} widthTitle="w-28"/>
              </div>
              <div className="flex flex-col text-xs mr-20">
-               <CampoDetalleOrden title="Edad" valor={dataPet.age} widthTitle="w-12"/>
-               <CampoDetalleOrden title="Peso" valor={dataPet.weight} widthTitle="w-12"/>
+               <CampoDetalleOrden title="Edad" valor={`${dataPet.age} meses`} widthTitle="w-12"/>
+               <CampoDetalleOrden title="Peso" valor={`${dataPet.weight} KG`} widthTitle="w-12"/>
              </div>
              <div className="flex flex-col text-xs mr-20">
                <CampoDetalleOrden title="Raza" valor={dataPet.race} widthTitle="w-12"/>
