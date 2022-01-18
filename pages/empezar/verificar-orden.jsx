@@ -68,8 +68,8 @@ export default function VerificarOrden() {
           //   },
             customerData: { // Opcional
               email:dataUser.mail,
-              fullName: dataUser.name,
-              phoneNumber: dataUser.phone,
+              fullName: `${dataUser.name} ${dataUser.lastname}`,
+              phoneNumber:dataUser.phone,
               phoneNumberPrefix: '+57',
             }
           })
@@ -149,8 +149,8 @@ export default function VerificarOrden() {
               <div className="flex justify-center">
                <div>
                <CampoDetalleOrden title="Extremidad amputada" valor={dataProthesis.prothesisData.ext_emputee} widthTitle="md:w-32 w-28"/>
-                <CampoDetalleOrden title="Medida A-B" valor={dataProthesis.prothesisData.medidaAB/10+" cm"} widthTitle="md:w-32 w-28"/>
-                <CampoDetalleOrden title="Medida B-C" valor={dataProthesis.prothesisData.medidaBC/10+" cm"} widthTitle="md:w-32 w-28"/>
+                <CampoDetalleOrden title="Medida 1" valor={dataProthesis.prothesisData.medidaAB/10+" cm"} widthTitle="md:w-32 w-28"/>
+                <CampoDetalleOrden title="Medida 2" valor={dataProthesis.prothesisData.medidaBC/10+" cm"} widthTitle="md:w-32 w-28"/>
                 <CampoDetalleOrden title="Largo del muñon" valor={dataProthesis.prothesisData.stump_length/10+" cm"} widthTitle="md:w-32 w-28"/>
                </div>
                 </div>
