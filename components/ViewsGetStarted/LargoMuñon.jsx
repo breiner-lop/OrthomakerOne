@@ -11,11 +11,8 @@ export default function LargoMuñon() {
   const [largo, setLargo] = React.useState();
   //handle input
   const handleLargo = (e) => {
-    var largo = (parseFloat(e.target.value));
-    largo = (largo * 10) + 19;
-
-    setLargo(largo);
-    console.log(largo);
+    setLargo(e.target.value);
+    console.log(e.target.value)
   };
   //  manejador del submit form
   const handleSubmit=(e)=>{
@@ -32,7 +29,7 @@ export default function LargoMuñon() {
               medidaBC:parseFloat(datosLocal.prothesisData.medidaBC),
               stump_perimeter_inf:parseFloat(datosLocal.prothesisData.stump_perimeter_inf),
               stump_perimeter_sup:parseFloat(datosLocal.prothesisData.stump_perimeter_sup),
-              stump_length:parseFloat(largo)
+              stump_length:parseFloat((largo * 10) + 19)
             }
           }
           uploadLocalStorage(dataProthesis)
@@ -102,6 +99,7 @@ export default function LargoMuñon() {
                 />
                 <span>CM</span>
               </div>
+              {largo<7&&largo&& <p className="text-red-600">Lo sentimos, medida no permitida (debe ser mayor a 7cm), contáctenos y le ayudaremos con otras medidas</p> }
             </div>
             <div className="md:w-1/2 w-full text-blue-transparent">
               <p>
@@ -110,6 +108,7 @@ export default function LargoMuñon() {
                 siguiente imagen
               </p>
             </div>
+            
           </div>
         </form>
       </div>

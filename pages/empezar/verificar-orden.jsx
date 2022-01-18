@@ -194,6 +194,7 @@ export default function VerificarOrden() {
             {/** detalle del pago */}
         <div className="h-20 rounded-b-lg bg-blu-light md:-mx-6 -mx-1 border-t border-gray-400 mt-10 flex items-center px-6 justify-between">
           <img src="/img/logo.png" alt="logo orthomaker" className="w-16 " />
+          <span>Este producto sera entregado de 5 a 7 días después de realizar el pago del dispositivo</span>
             <span className="text-lg"><span className="mr-2 text-blue-transparent">Total a pagar:</span><span className="text-purple-dark">{`${coinConverter(total/100)}`}</span></span>
         </div>
         </div>
