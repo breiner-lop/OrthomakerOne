@@ -234,8 +234,8 @@ const coinConverter = function(number){
              <div className="text-xs mt-4">
               <div className="md:flex block justify-between">
                 <div>
-                <CampoDetalleOrden title="Altura de amputación A->B" valor={((parseInt(dataProthesis.amputation_height_AB)-19)/10)+" cm"} widthTitle='w-40' />
-                <CampoDetalleOrden title="Altura de amputación B->C" valor={((parseInt(dataProthesis.amputation_height_BC)-80)/10)+" cm"} widthTitle='w-40' />
+                <CampoDetalleOrden title="Medida de Encaje" valor={((parseInt(dataProthesis.stump_length))/10)+" cm"} widthTitle='w-40' />
+                <CampoDetalleOrden title="Medida del Pilar" valor={((parseInt(dataProthesis.amputation_height_BC))/10)+" cm"} widthTitle='w-40' />
                 </div>
                <CampoDetalleOrden title="Extremidad emputada" valor={dataProthesis.ext_emputee} widthTitle='w-36' />               
               </div>
