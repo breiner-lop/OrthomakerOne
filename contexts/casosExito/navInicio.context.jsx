@@ -25,7 +25,7 @@ export const CasosProvider = ({ children }) => {
   //inputs protesis
   const [datosProtesis,setDatos] = useState({
     color:"Rojo",
-    color:"Amarillo"
+    color2:"Amarillo"
 });
   
 

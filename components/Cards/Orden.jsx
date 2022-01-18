@@ -60,7 +60,7 @@ export default function OrdenCard({id,status,total,userId,statusProduction}) {
          height="50px"
          className="md:block hidden rounded-full"
        />
-       <div className="flex items-center ml-2">
+       <div className="flex items-center justify-start ml-2">
          <h6>{`${userData.name} ${userData.lastName}`}</h6>
        </div>
      </div>
