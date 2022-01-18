@@ -36,7 +36,7 @@ export default function Ordenes() {
       .catch(function (error) {
         // en caso de ser incorrectos los datos
       });
-    }
+    } 
   },[rolUser]);
 
 
@@ -47,8 +47,9 @@ export default function Ordenes() {
       ) : (
         <LayoutAdmin>
           <div className="bg-blu-light h-screen w-full md:p-8 p-1 overflow-y-auto">
-            {/**  ruta */}
-            <div className="text-2xl text-purple-dark flex justify-between mb-4 px-4">
+          <div className=" max-w-[1500px]">
+                        {/**  ruta */}
+                        <div className="text-2xl text-purple-dark flex justify-between mb-4 px-4">
              <button onClick={()=>setPanelMobile(!panelMobile)} className="md:hidden block"><img src="/img/menu.png" alt="menu imagen" /></button>
             <span>  Ortho<strong>Maker</strong></span>
             </div>
@@ -128,6 +129,7 @@ export default function Ordenes() {
                 </div>
               </div> */}
             </div>
+          </div>
           </div>
         </LayoutAdmin>
       )}
