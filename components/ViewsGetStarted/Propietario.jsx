@@ -164,7 +164,7 @@ export default function Propietario({token,user}) {
                 />
               </div>
               <div className="col-span-1">
-                <label htmlFor="Estado">Estado </label>
+                <label htmlFor="Estado">Departamento </label>
                 <br />
                 <input
                   name="state"
@@ -176,7 +176,7 @@ export default function Propietario({token,user}) {
                 />
               </div>
               <div className="col-span-1">
-                <label htmlFor="Zip"> Zip </label>
+                <label htmlFor="Zip"> Codigo Postal </label>
                 <br />
                 <input
                   name="zip"

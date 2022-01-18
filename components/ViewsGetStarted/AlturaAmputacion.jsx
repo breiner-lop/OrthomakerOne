@@ -20,7 +20,7 @@ export default function AlturaAmputacion() {
     e.preventDefault()
     // llamada de datos al localStorage
     const datosLocal = JSON.parse(localStorage.getItem('dataProthesis'))
-    medidaAB = (medidaAB * 10) + 19;
+    medidaAB = medidaAB ;
     medidaBC = (medidaBC * 10) - 80;
     // objeto data prothesis localStorage
     var dataProthesis = {

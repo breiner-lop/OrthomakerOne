@@ -29,7 +29,7 @@ export default function DatosCliente() {
           </div>
           <div className="flex flex-col md:flex-row text-left justify-evenly w-full md:items-center items-start ml-4">
             <div>
-              <h4>Breiner lopez</h4>
+              <h4>{user.name + " " + user.lastname}</h4>
               <CampoDetalleOrden title="Telefono" valor={user.phone} />
               <CampoDetalleOrden title="Email" valor={user.mail} />
               <CampoDetalleOrden title="Ciudad" valor={user.city} />
