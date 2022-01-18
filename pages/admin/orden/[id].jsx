@@ -156,11 +156,16 @@ export default function Orden() {
      prod_status:e.target.value
    })
     axios.put(`${process.env.SERVER}/editOrdersProd/${id}`,{
-      status:e.target.value
+      status:e.target.value,
+      mail:userData.mail,
+      asunto:"Estado del Producto - Orthomaker"
     },{
       headers:{
         "auth-token":localStorage.getItem("token"),
+        "Content-type":"application/json"
       }
+      }).then((r)=>{
+        console.log(r);
       })
    }
    //convertidor a moneda COP
