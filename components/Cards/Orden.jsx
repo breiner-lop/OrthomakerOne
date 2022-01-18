@@ -54,15 +54,17 @@ export default function OrdenCard({id,status,total,userId,statusProduction}) {
      <span>{coinConverter(total/100)}</span>
      </div>
      <div className="flex col-span-1 justify-center">
-       <img
+      <div className="w-72 flex">
+      <img
          src="/img/avatar.png"
          width="50px"
          height="50px"
          className="md:block hidden rounded-full"
        />
-       <div className="flex items-center justify-start ml-2">
+       <div className="flex items-center ml-2">
          <h6>{`${userData.name} ${userData.lastName}`}</h6>
        </div>
+      </div>
      </div>
      
      </div>
