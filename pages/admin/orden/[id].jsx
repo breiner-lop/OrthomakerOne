@@ -21,6 +21,7 @@ export default function Orden() {
   const [dataProthesis,setDataProthesis]=useState("")
   const [tokenn,setToken]=useState("")
   const [petImgs,setImgs]=useState("")
+  const [vetData,setVet]=useState("")
   const [checkout,setCheckout]=React.useState(null)
   const [wompiLoading,setLoadingWompi]=React.useState(false)
 
@@ -63,20 +64,26 @@ export default function Orden() {
     setToken(token)
     setLoading(false)
     /// get datas from BDD
-    /******  GET ORDER DATA from BDD *******/                    
-    axios.get(`${process.env.SERVER}/order/${id}`,{
-      headers:{
-         "auth-token": token,
-       }
-        })
-         .then(function (response) { // en caso de ser exitosa la consulta de prothesis
-          setDataOrder(response.data[0])
-          console.log(response.data[0],id)
-          getProthesis(response.data[0].prothesis_id);
-          getUser(response.data[0].users_id)
-        })
-        .catch(function (error) { // en caso de ser incorrectos los datos de consulta de prothesis
-       });
+  if(id){
+    axios.post(`${process.env.SERVER}/fullOrder`,{
+      orderId:id
+    },
+    {headers:{
+      "auth-token":localStorage.getItem("token"),
+      "Content-type":"application/json"
+    }}
+    ).then((r)=>{
+      console.log(r);
+      setDataOrder(r.data.orderData);
+      setUserData(r.data.userData)
+      setDataProthesis(r.data.prothesisData)
+      setDataPet(r.data.petData)
+      setImgs(JSON.parse(r.data.petImages.path))
+      setVet(r.data.vetData)
+    }).catch((err)=>{
+      console.log(err)
+    })
+  }
        return () => {
         setDataOrder("");
         setUserData("")
@@ -85,70 +92,6 @@ export default function Orden() {
       };
       
   },[id]);
-
-  /*********GET USER******/
-  const getUser=(id)=>{
-    // get userdata from BDD                     
-    axios.get(`${process.env.SERVER}/user/${id}`,{
-      headers:{
-        "auth-token":localStorage.getItem("token"),
-      }
-    })
-    .then(function (response) { // en caso de ser exitosa la consulta de usuario
-      setUserData(response.data)
-      console.log(response.data)
-    })
-    .catch(function (error) { // en caso de ser incorrectos los datos de conuslta der usuario
-    });
-  
-    }
-    /*******GET Prothesis**********/
-    const getProthesis=(id)=>{
-      // get userdata from BDD                     
-      axios.get(`${process.env.SERVER}/prothesis/${id}`,{
-        headers:{
-          "auth-token":localStorage.getItem("token"),
-        }
-      })
-      .then(function (response) { // en caso de ser exitosa la consulta de prthothesis
-        setDataProthesis(response.data[0])
-        console.log(response.data[0])
-       response.data[0].pets_id?getPets(response.data[0].pets_id):null
-      })
-      .catch(function (error) { // en caso de ser incorrectos los datos de conuslta der usuario
-      });
-      /************GET PETS************/
-    const getPets=(id)=>{
-      // get userdata from BDD                     
-      axios.get(`${process.env.SERVER}/pets/${id}`,{
-        headers:{
-          "auth-token":localStorage.getItem("token"),
-        }
-    })
-   .then(function (response) { // en caso de ser exitosa la consulta de mascota
-        setDataPet(response.data)
-        getPetImgs(response.data.id)
-        console.log(response.data)
-    })
-    .catch(function (error) { // en caso de ser incorrectos los datos de conuslta de mascota
-     });
-    }
-    }
-    /************  GET PET IMGS **************/
-    const getPetImgs=(id)=>{
-      axios.get(`${process.env.SERVER}/petsimg/${id}`,{
-        headers:{
-          "auth-token":localStorage.getItem("token"),
-        }
-    })
-   .then(function (response) { // en caso de ser exitosa la consulta de de imagenes de mascota
-    setImgs(JSON.parse(response.data[0].path))
-        console.log(JSON.parse(response.data[0].path))
-    })
-    .catch(function (error) { // en caso de ser incorrectos la consulta de imagenes de mascotas
-      console.log(error)
-     });
-   }
    // Update prod_status
    const onChangeProdEstatus=(e)=>{
    setDataOrder({
@@ -252,7 +195,7 @@ const coinConverter = function(number){
 
            </div>
            {/**  Informacion de la mascota */}
-           <div className="bg-white md:px-44 px-6  text-xs filter drop-shadow py-6">
+           <div className="bg-white xl:px-44 md:px-10 px-6  text-xs filter drop-shadow py-6">
            {
              dataProthesis?
             <>
@@ -326,16 +269,16 @@ const coinConverter = function(number){
            {/**  Información veterinario */}
            <div className="bg-white md:px-44 px-6 py-6 filter drop-shadow rounded-b-lg mb-10">
              <h4 className="my-2 text-base">Información del veterinario</h4>
-             <div className="flex justify-between">
+            {vetData? <div className="flex justify-between">
                <div>
-               <CampoDetalleOrden title="Nombre veterinario" valor="Veteriario Name" widthTitle="w-32"/> 
-                <CampoDetalleOrden title="Direccion consultorio" valor="calle 89 cr343" widthTitle="w-32"/>
+               <CampoDetalleOrden title="Nombre veterinario" valor={vetData.name} widthTitle="w-32"/> 
+                <CampoDetalleOrden title="Direccion consultorio" valor={vetData.direction} widthTitle="w-32"/>
                </div>
                <div>
-               <CampoDetalleOrden title="Telefono" valor="329495945"/> 
-                <CampoDetalleOrden title="Ciudad" valor="Barranquilla"/>
+               <CampoDetalleOrden title="Telefono" valor={vetData.phone}/> 
+                <CampoDetalleOrden title="Ciudad" valor={vetData.city} />
                </div>
-             </div>
+             </div>:<h4 className="text-center">Sin veterinario de confianza</h4>}
            </div>
          </div>
        </div>

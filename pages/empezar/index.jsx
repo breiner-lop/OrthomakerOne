@@ -57,6 +57,7 @@ export default function Getstarted() {
     formData.append("stump_perimeter_sup",parseFloat(dataProthesis.prothesisData.stump_perimeter_sup));
     formData.append("stump_perimeter_inf",parseFloat(dataProthesis.prothesisData.stump_perimeter_inf));
     formData.append("stump_length",parseFloat(dataProthesis.prothesisData.stump_length));
+    formData.append("vet_id",localStorage.getItem("vetId"));
     formData.append("lace", 0);
     formData.append("pillar",0);
     formData.append("color", datosProtesis.color);

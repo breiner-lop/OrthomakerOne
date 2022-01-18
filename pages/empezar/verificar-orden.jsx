@@ -32,7 +32,6 @@ export default function VerificarOrden() {
       }
     ).then(function (response) { // en caso de ser exitosa
       setTotal(response.data[0].valor_total)
-      console.log(response)
     })
     .catch(function (error) { // en caso de ser incorrectos los datos
       console.log(error)
@@ -79,8 +78,6 @@ export default function VerificarOrden() {
        
       }
       document.head.appendChild(scriptwompi);
-      
-      console.log("df")
    },[wompiLoading,total])
    //coin Converter
    const coinConverter = function(number){
@@ -151,7 +148,7 @@ export default function VerificarOrden() {
                <CampoDetalleOrden title="Extremidad amputada" valor={dataProthesis.prothesisData.ext_emputee} widthTitle="md:w-32 w-28"/>
                 <CampoDetalleOrden title="Medida A-B" valor={dataProthesis.prothesisData.medidaAB/10+" cm"} widthTitle="md:w-32 w-28"/>
                 <CampoDetalleOrden title="Medida B-C" valor={dataProthesis.prothesisData.medidaBC/10+" cm"} widthTitle="md:w-32 w-28"/>
-                <CampoDetalleOrden title="Largo del muñon" valor={dataProthesis.prothesisData.stump_length+" cm"} widthTitle="md:w-32 w-28"/>
+                <CampoDetalleOrden title="Largo del muñon" valor={dataProthesis.prothesisData.stump_length/10+" cm"} widthTitle="md:w-32 w-28"/>
                </div>
                 </div>
                 <div className="flex justify-center">
