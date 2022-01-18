@@ -24,8 +24,8 @@ export default function Panel() {
 
   return (
     <>
-    {
-      panelMobile&&<div className="bg-purple-dark h-screen w-72 2xl:w-96 text-white flex py-2 flex-col justify-between">
+    
+      <div className={`bg-purple-dark ${panelMobile?"flex":"md:flex hidden"} h-screen w-72 2xl:w-96 text-white py-2 flex-col justify-between`}>
       <div className="overflow-x-hidden overflow-y-auto">
        <button onClick={()=>setPanelMobile(!panelMobile)} className="bg-white md:hidden  bg-opacity-75 ml-4 w-14 h-14 rounded-full flex justify-center items-center"> <img src="/img/menu.png" alt="" /></button>
       <div className="bg-purple-light m-3 2xl:m-6 w-64 2xl:w-80 rounded-lg p-2">
@@ -79,7 +79,7 @@ export default function Panel() {
         </div>
         
     </div>
-    }
+    
     </>
   );
 }
