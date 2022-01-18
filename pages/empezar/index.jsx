@@ -95,7 +95,8 @@ export default function Getstarted() {
     direction:user.direction,
     city:user.city,
     state:user.state,
-    cod_postal:user.zip
+    cod_postal:user.zip,
+    fullName:`${user.name} ${user.lastname}`
 
   }, {
     headers: {
