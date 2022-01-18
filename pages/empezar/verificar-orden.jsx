@@ -5,6 +5,7 @@ import { useCasosCtx } from "../../contexts/casosExito/navInicio.context";
 import Head from "next/head";
 import CampoDetalleOrden from "../../components/CampoDetalleOrden";
 import axios from "axios";
+import ViewNoAuth from "../../components/ViewNoAuth";
 
 export default function VerificarOrden() {
   // states
@@ -84,7 +85,9 @@ export default function VerificarOrden() {
     return new Intl.NumberFormat('es-CO', {style: 'currency',currency: 'COP', minimumFractionDigits: 2}).format(number);
   };
   return (
-    <div className="md:px-24 px-0 mx-auto" style={{maxWidth:"1800px"}}>
+    <>
+    {!token?<ViewNoAuth/>:
+        <div className="md:px-24 px-0 mx-auto" style={{maxWidth:"1800px"}}>
         <Head>
       </Head>
       <div className="flex justify-between text-purple-dark h-20 items-center">
@@ -195,7 +198,8 @@ export default function VerificarOrden() {
             <span className="text-lg"><span className="mr-2 text-blue-transparent">Total a pagar:</span><span className="text-purple-dark">{`${coinConverter(total/100)}`}</span></span>
         </div>
         </div>
-       
     </div>
+    }
+    </>
   );
 }

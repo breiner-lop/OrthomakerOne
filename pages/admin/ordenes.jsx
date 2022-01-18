@@ -77,8 +77,8 @@ export default function Ordenes() {
                            id={order.id}
                            status={order.status}
                            total={order.valor_total}
-                           userId={order.users_id}
                            statusProduction={order.prod_status}
+                           fullName={order.username}
                          />
                        )
                      );
