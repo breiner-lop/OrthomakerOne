@@ -34,10 +34,12 @@ export default function Veterinario({token,user}) {
       )
       .then((response) => {
         // en caso de ser exitosa
+        localStorage.setItem("vetId",response.data.idVet)
         setNavForm(4);
       })
       .catch((error) => {
         // en caso de ser incorrectos los datos
+        setEnviando(false)
         setNavForm(3);
       });
   };

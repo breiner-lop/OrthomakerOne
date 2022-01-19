@@ -1,34 +1,7 @@
 import React from "react";
 import Link from "next/link"
-import axios from 'axios'
 
-export default function OrdenCard({id,status,total,userId,statusProduction}) {
-  //  states
-  const [userData,setUser]=React.useState({})
-  const [loading,setLoading]=React.useState(true)
- React.useEffect(()=>{
-    const token=localStorage.getItem("token");//get token
-     //llamada a la api user
-     axios.get(`${process.env.SERVER}/user/${userId}`,{
-      headers:{
-        "auth-token": token,
-      }
-    })
-    .then(function (response) { // en caso de ser exitosa
-      setUser({
-        name:response.data.name,
-        lastName:response.data.lastname
-      })
-      setLoading(false)
-      //serOrders(response.data)
-    })
-    .catch(function (error) { // en caso de ser incorrectos los datos
-    });
-
-      return () => {
-        setUser({}); // This worked for me
-      };
-  },[])
+export default function OrdenCard({id,status,total,statusProduction,fullName}) {
   // Coin converter
   const coinConverter = function(number){
     return new Intl.NumberFormat('es-CO', {style: 'currency',currency: 'COP', minimumFractionDigits: 2}).format(number);
@@ -43,10 +16,10 @@ export default function OrdenCard({id,status,total,userId,statusProduction}) {
        <span className="ml-2">{id}</span>
      </div>
      <div className="flex col-span-1 justify-center">
-     <div className="bg-blu-light text-blue-600 w-32 h-10 text-sm flex items-center justify-center rounded-lg text-center mr-2">
+     <div className="bg-blu-light text-blue-600 w-32 h-10 md:text-sm text-xs flex items-center justify-center rounded-lg text-center mr-2">
        <span>{status}</span>
      </div>
-     <div className="bg-green-200 text-green-600 text-sm w-32 h-10 flex items-center justify-center rounded-lg text-center ">
+     <div className="bg-green-200 text-green-600  md:text-sm text-xs w-32 h-10 flex items-center justify-center rounded-lg text-center ">
        <span>{statusProduction==0?"EN ESPERA":statusProduction==1?"EN PRODUCCIÓN":statusProduction==2&&"ENVIADO"}</span>
      </div>
      </div>
@@ -54,17 +27,18 @@ export default function OrdenCard({id,status,total,userId,statusProduction}) {
      <span>{coinConverter(total/100)}</span>
      </div>
      <div className="flex col-span-1 justify-center">
-       <img
+      <div className="w-72 flex">
+      <img
          src="/img/avatar.png"
          width="50px"
          height="50px"
-         className="rounded-full"
+         className="md:block hidden rounded-full"
        />
        <div className="flex items-center ml-2">
-         <h6>{`${userData.name} ${userData.lastName}`}</h6>
+         <h6>{fullName}</h6>
        </div>
+      </div>
      </div>
-     
      </div>
     </Link>
    }

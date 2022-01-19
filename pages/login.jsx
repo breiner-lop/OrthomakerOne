@@ -72,7 +72,7 @@ const iniciarSesion=(e)=>{
               Nombre de usuario
             </label>
             <br />
-            <input name="mail" type="email" className="w-full border-none h-8 focus:outline-none" value={dataLogin.mail} onChange={(e)=>handleInputChange(e)} required />
+            <input name="mail" type="email" className="w-full border-none h-8 focus:outline-none" onKeyPress={(e)=>{e.key==="Enter"&&iniciarSesion(e)}} value={dataLogin.mail} onChange={(e)=>handleInputChange(e)} required />
           </div>
           <div className="rounded border border-gray-400 border-solid px-6 h-16 text-sm my-2">
             <label
@@ -82,12 +82,12 @@ const iniciarSesion=(e)=>{
               Contraseña
             </label>
             <br />
-            <input name="password" type="password" className="w-full border-none h-8 focus:outline-none" value={dataLogin.password} onChange={(e)=>handleInputChange(e)} required/>
+            <input name="password" type="password" className="w-full border-none h-8 focus:outline-none" onKeyPress={(e)=>{e.key==="Enter"&&iniciarSesion(e)}} value={dataLogin.password} onChange={(e)=>handleInputChange(e)} required/>
           </div>
           {error? <div className="rounded  border border-red-100 border-solid shadow-sm text-red-600 p-2">
             <span className="mr-2 font-semibold">X</span><span>Usuario o contraseña incorrectos</span>
           </div>:null }
-          <div className="flex justify-between my-6">
+          {/* <div className="flex justify-between my-6">
             <div>
               <input type="checkbox" id="check" />
               <label className="ml-2" htmlFor="check">
@@ -99,8 +99,7 @@ const iniciarSesion=(e)=>{
                 Olvide mi contraseña
               </span>
             </Link>
-          </div>
-          <hr />
+          </div> */}
           <ButtonBlue type="submit" text="Ingresar" />
          </form>
         </div>

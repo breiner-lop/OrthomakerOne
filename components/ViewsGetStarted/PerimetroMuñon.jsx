@@ -77,12 +77,19 @@ export default function PerimetroMuñon() {
           </div>
           {/***input tamaño  */}
           <div className="md:p-10 p-4 mb-1">
-            <div className=" text-blue-transparent">
-              <div className="md:flex block pt-4">
-                <div className="mb-6 md:w-1/2 w-full">
-                  <label htmlFor="nombres">Medida</label>
-                  <br />
-                  <div className="bg-blue-light text-purple-dark mr-4 w-80 h-12 border border-solid border-blue-200 flex items-center justify-center">
+            <div>
+              <div className="md:flex block">
+                <div className="mb-6 w-full">
+                <p className="text-blue-transparent">
+                    En este punto se deben tomar dos medidas. Para tomar esta
+                    medida el canino debe de estar de pie, con ayuda de la cinta
+                    metrica se medirá el perimetro del muñon en las partes mas
+                    extremas del mismo como se muestra en la siguiente imagen
+                  </p>
+                    <div className="flex mt-4">
+                    <div>
+                    <label htmlFor="nombres">Medida del perimetro inferior</label>
+                    <div className="bg-blue-light text-purple-dark mr-4 w-80 h-12 border border-solid border-blue-200 flex items-center justify-center">
                     <input
                       onChange={(e) => handleInputChange(e)}
                       name="perimetroinferior"
@@ -94,21 +101,10 @@ export default function PerimetroMuñon() {
                     />
                     <span>CM</span>
                   </div>
-                </div>
-                <div className="md:w-1/2 w-full text-blue-transparent">
-                  <p>
-                    En este punto se deben tomar dos medidas. Para tomar esta
-                    medida el canino debe de estar de pie, con ayuda de la cinta
-                    metrica se medirá el perimetro del muñon en las partes mas
-                    extremas del mismo como se muestra en la siguiente imagen
-                  </p>
-                </div>
-              </div>
-              <div className="md:flex block border-t-2 border-gray-100 pt-4 mt-6">
-                <div className="mb-6 md:w-1/2 w-full">
-                  <label htmlFor="nombres">Medida</label>
-                  <br />
-                  <div className="bg-blue-light text-purple-dark mr-4 w-80 h-12 border border-solid border-blue-200 flex items-center justify-center">
+                    </div>
+                    <div>
+                    <label htmlFor="nombres">Medida del perimetro superior</label>
+                    <div className="bg-blue-light text-purple-dark mr-4 w-80 h-12 border border-solid border-blue-200 flex items-center justify-center">
                     <input
                       onChange={(e) => handleInputChange(e)}
                       name="perimetrosuperior"
@@ -120,14 +116,8 @@ export default function PerimetroMuñon() {
                     />
                     <span>CM</span>
                   </div>
-                </div>
-                <div className="md:w-1/2 w-full text-blue-transparent">
-                  <p>
-                    En este punto se deben tomar dos medidas. Para tomar esta
-                    medida el canino debe de estar de pie, con ayuda de la cinta
-                    metrica se medirá el perimetro del muñon en las partes mas
-                    extremas del mismo como se muestra en la siguiente imagen
-                  </p>
+                    </div>
+                    </div>
                 </div>
               </div>
             </div>

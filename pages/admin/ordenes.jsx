@@ -9,7 +9,7 @@ import Loading from "../../components/Loading";
 
 export default function Ordenes() {
   // data context
-  const { setCountOrders, filterValue,rolUser } = useCasosCtx();
+  const { setCountOrders, filterValue,rolUser,setPanelMobile,panelMobile } = useCasosCtx();
   // states
   const [loading, setLoading] = React.useState(true);
   const [orders, serOrders] = React.useState([]);
@@ -36,7 +36,7 @@ export default function Ordenes() {
       .catch(function (error) {
         // en caso de ser incorrectos los datos
       });
-    }
+    } 
   },[rolUser]);
 
 
@@ -46,10 +46,12 @@ export default function Ordenes() {
         <ViewNoAuth />
       ) : (
         <LayoutAdmin>
-          <div className="bg-blu-light h-screen w-full p-8 overflow-y-auto">
-            {/**  ruta */}
-            <div className="text-2xl text-purple-dark mb  -4">
-              Ortho<strong>Maker</strong>
+          <div className="bg-blu-light h-screen w-full md:p-8 p-1 overflow-y-auto">
+          <div className=" max-w-[1500px]">
+                        {/**  ruta */}
+                        <div className="text-2xl text-purple-dark flex justify-between mb-4 px-4">
+             <button onClick={()=>setPanelMobile(!panelMobile)} className="md:hidden block"><img src="/img/menu.png" alt="menu imagen" /></button>
+            <span>  Ortho<strong>Maker</strong></span>
             </div>
             <h4 className="text-4xl font-medium mt-2 mb-6">Total ordenes</h4>
             <div className="flex">
@@ -66,7 +68,7 @@ export default function Ordenes() {
                   </div>
                  {
                    orders.length>0?
-                   <div className="overflow-y-auto overflow-x-visible p-2 w-full" style={{maxHeight:"700px"}}>
+                   <div className="overflow-y-auto overflow-x-visible p-2 w-full md:text-base text-xs" style={{maxHeight:"700px"}}>
                    {orders.map((order) => {
                      return (
                        order.id.includes(filterValue)&&(
@@ -75,8 +77,8 @@ export default function Ordenes() {
                            id={order.id}
                            status={order.status}
                            total={order.valor_total}
-                           userId={order.users_id}
                            statusProduction={order.prod_status}
+                           fullName={order.username}
                          />
                        )
                      );
@@ -127,6 +129,7 @@ export default function Ordenes() {
                 </div>
               </div> */}
             </div>
+          </div>
           </div>
         </LayoutAdmin>
       )}
