@@ -16,9 +16,15 @@ import { useCasosCtx } from "../contexts/casosExito/navInicio.context";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import CardComoLoHacemos from "../components/Cards/CardComoLoHacemos";
+import axios from "axios";
 
 export default function Index() {
   const [activeOrtho, setActiveOrtho] = useState(1);
+  const [emailInfo, setEmailInfo] = useState({
+    email:"",
+    message:""
+  });
+  const [correoEnviado, setCorreoEnviado] = useState({open:false,status:null});
   /*** manejador de navegacion de orthomaker one */
   const handleActiveOrtho = (id) => {
     setActiveOrtho(id);
@@ -58,6 +64,45 @@ export default function Index() {
       slidesToSlide: 1, // optional, default to 1.
     },
   };
+  //7 handler de inputs
+  const handleInputChange = (e) => {
+    setEmailInfo({
+        ...emailInfo,
+        [e.target.name] : e.target.value
+    })
+    console.log(emailInfo)
+  }
+  /// send email
+const sendEmail=(e)=>{
+  e.preventDefault()
+  axios.post(`${process.env.SERVER}/api/sendMail`,{
+    asunto:"Contactar a " +emailInfo.email,
+    mail:"info@orthomakerone.com",
+    message:emailInfo.message
+  })
+  .then((response)=>{
+    setEmailInfo({
+      email:"",
+      message:""
+    })
+    handleEmailStatus(true,true)
+   
+  })
+  .catch((error)=>{
+    handleEmailStatus(true,false)
+    setEmailInfo({
+      email:"",
+      message:""
+    })
+  })
+}
+//handle email send status
+const handleEmailStatus=(open,status)=>{
+  setCorreoEnviado({open:open,status:status})
+  setTimeout(()=>{
+    setCorreoEnviado(false)
+  },[8000])
+}
 
   return (
     <div className="overflow-x-hidden">
@@ -356,25 +401,28 @@ export default function Index() {
                 Fabricadas para durar con materiales respetuosos con el medio
                 ambiente y a la vez cómodos para tu mascota.
               </p>
-              <textarea
+             {correoEnviado.open&& <div className={`${correoEnviado.status?"bg-green-200":"bg-red-200"} rounded-lg text-black px-4 h-16 mb-1 flex items-center`}>
+               <p> {correoEnviado.status?"Enviado con exito":"No se pudo enciar intentelo nuevamennte"}</p>
+              </div>}
+              <form onSubmit={(e)=>sendEmail(e)} >
+                <textarea
                   className=" text-purple-dark border-none shadow-xl p-4 mb-2 rounded-xl h-32 w-full bg-blue-light focus:outline-none"
-                  placeholder="Escribe tu mensaje aquí"
+                  placeholder="Escribe tu mensaje aquí" required name="message" value={emailInfo.message} onChange={(e)=>handleInputChange(e)}
                 />
-              <div className="flex justify-between">
-              <div className="w-96 h-12 rounded-xl bg-blue-light flex shadow-xl">
-                <input
-                  className=" text-purple-dark border-none px-4 rounded-xl w-4/5 h-full bg-blue-light focus:outline-none"
-                  type="mail"
-                  placeholder="Mail"
-                />
-                <span className="w-1/5 flex justify-end items-center pr-4">
-                  <span>
-                    <img src="/img/mail.png" width="20px" height="18px" />
-                  </span>
-                </span>
-              </div>
-              <button type="submit" className="w-36 bg-purple-dark border-none rounded-xl ml-2 hover:bg-opacity-90 shadow-lg hover:shadow transition duration-300">Enviar</button>
-              </div>
+                <div className="flex justify-between">
+                  <div className="w-96 h-12 rounded-xl bg-blue-light flex shadow-xl">
+                    <input className=" text-purple-dark border-none px-4 rounded-xl w-4/5 h-full bg-blue-light focus:outline-none" type="email"
+                     placeholder="Mail" name="email" onChange={(e)=>handleInputChange(e)} required value={emailInfo.email}
+                    />
+                    <span className="w-1/5 flex justify-end items-center pr-4">
+                    <span>
+                      <img src="/img/mail.png" width="20px" height="18px" />
+                    </span>
+                    </span>
+                  </div>
+                <button type="submit" className="w-36 bg-purple-dark border-none rounded-xl ml-2 hover:bg-opacity-90 shadow-lg hover:shadow transition duration-300">Enviar</button>
+                </div>
+              </form>
             </div>
             <div className="w-2/5 flex items-end">
               <img src="/img/dog-contact.png" width="300px" height="300px" />
