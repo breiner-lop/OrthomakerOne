@@ -21,7 +21,7 @@ export default function Login() {
         ...dataLogin,
         [e.target.name] : e.target.value
     })
-}
+  }
 //manejador del boton inicar sesion
 const iniciarSesion=(e)=>{
   setEnviando(true)

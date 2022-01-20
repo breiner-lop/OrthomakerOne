@@ -139,7 +139,7 @@ const coinConverter = function(number){
            <div className="text-blue-500 text-xs h-7 w-28 bg-blue-light rounded-lg border-solid border flex justify-center items-center">
              <span> {dataOrder&& <span>{dataOrder.status}</span>}</span>
            </div>
-           <div className="text-gray-400 flex border-l-2 boder border-solid border-gray-400 text-xs items-center ml-6">
+           <div className="text-gray-400 flex border-l-2 boder border-0 border-solid border-gray-400 text-xs items-center ml-6">
              <span>
                <img
                  src="/img/Calendar.png"
