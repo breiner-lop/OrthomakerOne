@@ -10,8 +10,8 @@ export default function AlturaAmputacion() {
   /*** LLAMADA DEL CONTEXT MANEJADOR DE VISTAS FORM */
   const { setNavForm } = useCasosCtx();
 
-  const [medidaAB, setMedidaAB] = React.useState(8.6)
-  const [medidaBC, setMedidaBC] = React.useState(11.9)
+  const [medidaAB, setMedidaAB] = React.useState()
+  const [medidaBC, setMedidaBC] = React.useState()
 
   //handle input
 
@@ -144,6 +144,7 @@ export default function AlturaAmputacion() {
                   />
                   <span>CM</span>
                 </div>
+                {medidaBC<9&&medidaBC&& <p className="text-red-600">Lo sentimos, esta medida no es permitida.<br/> contáctenos y le brindamos una atencion personalizada.</p> }
               </div>
             </div>
           </div>
