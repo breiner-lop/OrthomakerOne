@@ -10,7 +10,7 @@ import axios from 'axios'
 import Loading from "../../../components/Loading";
 import { useCasosCtx } from "../../../contexts/casosExito/navInicio.context";
 export default function Orden() {
-  const {rolUser,setPanelMobile,panelMobile}=useCasosCtx()
+  const {setPanelMobile,panelMobile}=useCasosCtx()
   const router = useRouter()
   const { id } = router.query
   // states
@@ -90,8 +90,9 @@ const coinConverter = function(number){
        <div className="flex mt-10 text-xs" style={{maxWidth:"1000px"}}>
          <div className="w-full">
            {/**  Header */}
-           <div className="bg-white pt-6 pb-6 rounded-t-lg filter drop-shadow flex justify-between md:px-6 px-1">
+           <div className="bg-white pt-6 pb-6 rounded-t-lg filter md:text-lg text-xs drop-shadow flex justify-between md:px-6 px-1">
               <span>Detalle de la orden ({`#${id}`}) </span>
+              {dataOrder?<><span className="mr-2"> {`Valor: ${coinConverter(dataOrder.valor_total/100)}`} </span></>:<div className="w-1/2"><Loading/></div> }
            </div>
            {/**  productos */}
            <div className="bg-white pt-6 pb-10 filter drop-shadow flex md:flex-row flex-col items-center">
@@ -180,7 +181,6 @@ const coinConverter = function(number){
             </div>
              {/**<div className="ml-4 w-6 h-6 bg-red-700 rounded-full"></div> */}
            </div>
-            {rolUser==0&& 
             <div>
              <h4 className="my-4">Descargar modelos 3D</h4>
              <div className="flex">
@@ -188,7 +188,7 @@ const coinConverter = function(number){
              <Download3D href={`https://${dataProthesis.pillar_path}`} name="Pillar.stl" img="/img/3d2.png"/>
              <Download3D href={`https://${dataProthesis.lace_path}`} name="Lace.stl" img="/img/3d3.png"/>
              </div>
-           </div>}
+           </div>
                </>:<Loading/>
              }
            </div>
