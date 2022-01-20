@@ -14,19 +14,19 @@ export default function Footer() {
             <span className="text-blue-transparent text-2xl font-light">
               Mail contacto
             </span>
-            <span className="text-4xl">mail.gmail.com</span>
+            <span className="text-4xl">info@orthomakerone.com</span>
           </div>
           <div className="flex flex-col h-20 mr-0 md:mr-20">
             <span className="text-blue-transparent text-2xl font-light">
               Tel
             </span>
-            <span className="text-4xl">+57 319 220 0983</span>
+            <span className="text-4xl">+57 316 8203029</span>
           </div>
           <div className="flex flex-col h-20 mr-0 md:mr-20">
             <span className="text-blue-transparent text-2xl font-light">
               Dir
             </span>
-            <span className="text-4xl">Bogota, colombia</span>
+            <span className="text-4xl">Barranquilla, colombia</span>
           </div>
         </div>
       </div>
