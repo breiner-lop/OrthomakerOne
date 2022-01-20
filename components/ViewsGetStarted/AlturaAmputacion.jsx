@@ -110,7 +110,7 @@ export default function AlturaAmputacion() {
           {/***input tamaño  */}
           <div className=" bg-white md:p-12 p-4 mb-1">
             <p className="text-blue-transparent">
-              ¿Como tomar la medida? Debe colocar de pie al canino, tomar como referencia la otra extremidad existente y haciendo uso de una cinta métrica medir las partes de la extremidad como se muestra en la imagen. La medida se toma del Punto A al Punto B y del Punto B de la articulación hasta el piso o Punto C.
+              ¿Como tomar la medida? Debe colocar de pie al canino, tomar como referencia la otra extremidad existente y haciendo uso de una cinta métrica medir las partes de la extremidad como se muestra en la imagen.
             </p>
             <div className="md:flex block mt-4">
               <div className="mb-6 w-1/2">
