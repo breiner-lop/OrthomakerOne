@@ -29,7 +29,6 @@ export default function Ordenes() {
       })
       .then(function (response) {
         // en caso de ser exitosa
-        console.log(response.data);
         serOrders(response.data);
         setCountOrders(response.data.length);
       })
@@ -38,8 +37,6 @@ export default function Ordenes() {
       });
     } 
   },[rolUser]);
-
-
   return (
     <>
       {loading ? null : !token ? (
@@ -47,9 +44,9 @@ export default function Ordenes() {
       ) : (
         <LayoutAdmin>
           <div className="bg-blu-light h-screen w-full md:p-8 p-1 overflow-y-auto">
-          <div className=" max-w-[1500px]">
+          <div className="max-w-[1500px]">
                         {/**  ruta */}
-                        <div className="text-2xl text-purple-dark flex justify-between mb-4 px-4">
+          <div className="text-2xl text-purple-dark flex justify-between mb-4 px-4">
              <button onClick={()=>setPanelMobile(!panelMobile)} className="md:hidden block"><img src="/img/menu.png" alt="menu imagen" /></button>
             <span>  Ortho<strong>Maker</strong></span>
             </div>
@@ -57,7 +54,7 @@ export default function Ordenes() {
             <div className="flex">
               <div className="w-full">
                 <div className="flex">
-                  <Buscar />
+                  <Buscar/>
                 </div>
                 <div>
                   <div className="grid grid-cols-4 justify-center text-center text-gray-400 my-8 px-6">
@@ -71,7 +68,7 @@ export default function Ordenes() {
                    <div className="overflow-y-auto overflow-x-visible p-2 w-full md:text-base text-xs" style={{maxHeight:"700px"}}>
                    {orders.map((order) => {
                      return (
-                       order.id.includes(filterValue)&&(
+                       order.id.includes(filterValue)?(
                          <Orden
                            key={order.id}
                            id={order.id}
@@ -80,54 +77,21 @@ export default function Ordenes() {
                            statusProduction={order.prod_status}
                            fullName={order.username}
                          />
-                       )
+                       ):order.username.includes(filterValue)&& 
+                       <Orden
+                       key={order.id}
+                       id={order.id}
+                       status={order.status}
+                       total={order.valor_total}
+                       statusProduction={order.prod_status}
+                       fullName={order.username}
+                     />
                      );
                    })}
                  </div>:<Loading/>
                  }
                 </div>
               </div>
-
-              {/**  stats Ordenes */}
-             {/*  <div className="w-3/12 ml-4 filter drop-shadow-lg">
-                <div className="bg-white p-4 rounded-lg">
-                  <span>Stats ordenes</span>
-                  <br />
-                  <h4 className="text-purple-transparent text-xs">
-                    Aqui tienes numeros generales sobre tus ordenes
-                  </h4>
-                  <div className="flex text-center my-4">
-                    <div>
-                      <span className="text-3xl">56</span>
-                      <br />
-                      <h4 className="text-xs text-gray-400 mt-2">
-                        Ordenes finalizadas
-                      </h4>
-                    </div>
-                    <div>
-                      <span className="text-3xl">1</span>
-                      <br />
-                      <h4 className="text-xs text-gray-400 mt-2">
-                        Orden cancelada
-                      </h4>
-                    </div>
-                    <div>
-                      <span className="text-3xl">12</span>
-                      <br />
-                      <h4 className="text-xs text-gray-400 mt-2">
-                        Nuevas ordenes
-                      </h4>
-                    </div>
-                    <div>
-                      <span className="text-3xl">5</span>
-                      <br />
-                      <h4 className="text-xs text-gray-400 mt-2">
-                        Ordenes en envio
-                      </h4>
-                    </div>
-                  </div>
-                </div>
-              </div> */}
             </div>
           </div>
           </div>
