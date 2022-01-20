@@ -29,13 +29,11 @@ export default function Pet({token,user}) {
     var reader = new FileReader();
     // When the image is loaded we will set it as source of
     // our img tag
-    reader.onloadend = function () {
+    reader.onloadend = function(){
       setDataPet({
         ...dataPet,
         [e.target.name]:file
       });
-      localStorage.setItem(`pet-img-${e.target.name}`,[reader.result],)
-      console.log(dataPet)
       preview.style.backgroundImage = `url("${reader.result}")`;
     };
     if (file) {
