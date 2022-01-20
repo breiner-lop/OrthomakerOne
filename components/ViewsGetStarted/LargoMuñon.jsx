@@ -99,7 +99,7 @@ export default function LargoMuñon() {
                 />
                 <span>CM</span>
               </div>
-              {largo<7&&largo&& <p className="text-red-600">Lo sentimos, medida no permitida (debe ser mayor a 7cm), contáctenos y le ayudaremos con otras medidas</p> }
+              {largo<7&&largo&& <p className="text-red-600">Lo sentimos, esta medida no es permitida.<br/> contáctenos y le brindamos una atencion personalizada.</p> }
             </div>
             <div className="md:w-1/2 w-full text-blue-transparent">
               <p>
