@@ -9,22 +9,35 @@ import Loading from "../../components/Loading";
 
 export default function Ordenes() {
   // data context
-  const { setCountOrders, filterValue,rolUser,setPanelMobile,panelMobile } = useCasosCtx();
+  const { setCountOrders, filterValue,setPanelMobile,panelMobile } = useCasosCtx();
   // states
   const [loading, setLoading] = React.useState(true);
   const [orders, serOrders] = React.useState([]);
   const [token, setToken] = React.useState(false);
-  React.useEffect(() => {
-    const token = localStorage.getItem("token"); //get token
-    const user=JSON.parse(localStorage.getItem("user"))
-    setToken(token);
-    setLoading(false);
-    //llamada a la api ordenes
-    if(user&&rolUser!==3){
-      axios
-      .get(`${process.env.SERVER}/${rolUser==0?"orders":rolUser==1&&"ordersUser/"+user.id}`,{
+      //GET ORDENES ADMIN
+      const getOrderAdmin=()=>{
+        axios
+        .get(`${process.env.SERVER}/orders`,{
+          headers: {
+            "auth-token": localStorage.getItem("token"),
+          },
+        })
+        .then(function (response) {
+          // en caso de ser exitosa
+          serOrders(response.data);
+          setCountOrders(response.data.length);
+        })
+        .catch(function (error) {
+          // en caso de ser incorrectos los datos
+        });
+        setLoading(false);
+      }
+      //GET ORDENES CLIENT
+      const getOrderUser=()=>{
+        const user=JSON.parse(localStorage.getItem("user"))
+        axios.get(`${process.env.SERVER}/ordersUser/${user.id}`,{
         headers: {
-          "auth-token": token,
+          "auth-token": localStorage.getItem("token"),
         },
       })
       .then(function (response) {
@@ -35,8 +48,22 @@ export default function Ordenes() {
       .catch(function (error) {
         // en caso de ser incorrectos los datos
       });
-    } 
-  },[rolUser]);
+      }
+  React.useEffect(() => {
+    const token = localStorage.getItem("token"); //get token
+    const user=JSON.parse(localStorage.getItem("user"))
+    setToken(token);
+    setLoading(false);
+        //llamada a la api ordenes
+       if(user){
+        if(user.rol_id==0){
+          getOrderAdmin()
+        }
+        else if(user.rol_id==1){
+          getOrderUser()
+        }
+       }
+  },[]);
   return (
     <>
       {loading ? null : !token ? (
@@ -57,11 +84,12 @@ export default function Ordenes() {
                   <Buscar/>
                 </div>
                 <div>
-                  <div className="grid grid-cols-4 justify-center text-center text-gray-400 my-8 px-6">
-                    <h6 className="col-span-1">Numero de orden</h6>
-                    <h6 className="col-span-1">Estado</h6>
-                    <h6 className="col-span-1">Valor total</h6>
-                    <h6 className="col-span-1">Usuario</h6>
+                  <div className="grid grid-cols-12 justify-center text-center text-gray-400 my-8 px-6">
+                  <h6 className="col-span-1">Consecutivo</h6>
+                    <h6 className="col-span-3">Numero de orden</h6>
+                    <h6 className="col-span-3">Estado</h6>
+                    <h6 className="col-span-2">Valor total</h6>
+                    <h6 className="col-span-3">Usuario</h6>
                   </div>
                  {
                    orders.length>0?
@@ -72,20 +100,31 @@ export default function Ordenes() {
                          <Orden
                            key={order.id}
                            id={order.id}
+                           count={order.count}
                            status={order.status}
                            total={order.valor_total}
                            statusProduction={order.prod_status}
                            fullName={order.username}
                          />
-                       ):order.username.includes(filterValue)&& 
+                       ):order.username.includes(filterValue)?
                        <Orden
                        key={order.id}
                        id={order.id}
+                       count={order.count}
                        status={order.status}
                        total={order.valor_total}
                        statusProduction={order.prod_status}
                        fullName={order.username}
-                     />
+                     />:order.count.toString().includes(filterValue)&& 
+                     <Orden
+                     key={order.id}
+                     id={order.id}
+                     count={order.count}
+                     status={order.status}
+                     total={order.valor_total}
+                     statusProduction={order.prod_status}
+                     fullName={order.username}
+                   />
                      );
                    })}
                  </div>:<Loading/>

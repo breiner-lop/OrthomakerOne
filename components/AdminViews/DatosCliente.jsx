@@ -14,7 +14,8 @@ export default function DatosCliente() {
   //useEffect
   React.useEffect(()=>{
     setUser(user=JSON.parse(localStorage.getItem("user")))
-    axios.get(`${process.env.SERVER}/borradores`,{
+   if(user.rol_id==0){ 
+     axios.get(`${process.env.SERVER}/borradores`,{
       headers: {
         "auth-token": localStorage.getItem("token") //the token is a variable which holds the token
       },
@@ -26,7 +27,11 @@ export default function DatosCliente() {
     .catch(function (error) {
       // en caso de ser incorrectos los datos
       console.log(error);
-    }); 
+    });}
+    return ()=>{
+      setOrderData([])
+      setUser({})
+    }
   },[]) 
   return (
     <div className="md:p-6 p-1 w-full h-screen overflow-y-auto" >
@@ -64,15 +69,18 @@ export default function DatosCliente() {
      <div className="max-h-[600px]">
         <h1 className="text-3xl my-6">Ordenes del administrador</h1>
         <Buscar/>
-        <div className="grid grid-cols-3 justify-center text-center text-gray-400 my-8 px-6">
-            <h6 className="col-span-1">Numero de orden</h6>
-            <h6 className="col-span-1">Valor total</h6>
-            <h6 className="col-span-1">Fecha de creación</h6>
+        <div className="grid grid-cols-10 justify-center text-center text-gray-400 my-8 px-6">
+        <h6 className="col-span-1">Consecutivo</h6>
+            <h6 className="col-span-3">Numero de orden</h6>
+            <h6 className="col-span-3">Valor total</h6>
+            <h6 className="col-span-3">Fecha de creación</h6>
           </div>
       { orderData.length? orderData.map((order)=>{
        return(
-        order.id.includes(filterValue)&&(
-          <OrdenCard  key={order.id} id={order.id} total={order.valor_total} date={order.date}/>
+        order.id.includes(filterValue)?(
+          <OrdenCard  key={order.id} count={order.count} id={order.id} total={order.valor_total} date={order.date}/>
+        ):order.count.toString().includes(filterValue)&&(
+          <OrdenCard  key={order.id} count={order.count} id={order.id} total={order.valor_total} date={order.date}/>
         )
        )
        }):<Loading/>}
