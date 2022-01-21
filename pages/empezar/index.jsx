@@ -67,7 +67,8 @@ export default function Getstarted() {
     formData.append("pilarobj", obThree.hueso, "pilar.stl");
     formData.append("carcazaobj", obThree.carcaza, "carcaza.stl");
 
-    axios
+
+      axios
       .post(`${process.env.SERVER}/createProthesis/${user.id}`, formData, {
         headers: {
           "auth-token": token, //the token is a variable which holds the token
@@ -76,7 +77,12 @@ export default function Getstarted() {
       })
       .then(function (response) {
         // en caso de ser exitosa
-        createOrder(response.data.idProthesis)
+        if(user.rol_id==1){
+          createOrder(response.data.idProthesis)
+        }else if (user.rol_id==0){
+          createOrderAdmin(response.data.idProthesis)
+        }
+       
         console.log(response);
       })
       .catch(function (error) {
@@ -84,6 +90,8 @@ export default function Getstarted() {
         console.log(error);
         setLoadingOrder(false)
       }); 
+    
+   
   };
   /// create order
  const createOrder=(idProthesis)=>{
@@ -116,6 +124,36 @@ export default function Getstarted() {
   }); 
 
  }
+   /// create orderadmin
+   const createOrderAdmin=(idProthesis)=>{
+    axios
+    .post(`${process.env.SERVER}/borrador/${user.id}`, {
+      pilar:dataProthesis.prothesisData.medidaBC,
+      prothesis_id:idProthesis,
+      phone:user.phone,
+      direction:user.direction,
+      city:user.city,
+      state:user.state,
+      cod_postal:user.zip,
+      fullName:`${user.name} ${user.lastname}`
+  
+    }, {
+      headers: {
+        "auth-token": token, //the token is a variable which holds the token
+      },
+    })
+    .then(function (response) {
+      // en caso de ser exitosa
+      setLoadingOrder(false)
+      router.push("/admin/ordenes")
+      console.log(response);
+    })
+    .catch(function (error) {
+      // en caso de ser incorrectos los datos
+      console.log(error);
+    }); 
+  
+   }
   return loading? null :!token?<ViewNoAuth />: (
     <div>
        {loadingOrder&&<LoadingSping/>}

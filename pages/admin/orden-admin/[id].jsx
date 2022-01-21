@@ -22,42 +22,6 @@ export default function Orden() {
   const [tokenn,setToken]=useState("")
   const [petImgs,setImgs]=useState("")
   const [vetData,setVet]=useState("")
-  const [checkout,setCheckout]=React.useState(null)
-  const [wompiLoading,setLoadingWompi]=React.useState(false)
-
-  React.useEffect(()=>{
-    setLoadingWompi(true)
-    //wompi
-    const scriptwompi = document.createElement("script");
-      scriptwompi.src = "https://checkout.wompi.co/widget.js"
-      scriptwompi.onload= function (){
-        //var idTransaccion=(localStorage.getItem("idTransaccion"))
-        //getOrder(idTransaccion)
-
-      if(dataOrder&&userData){
-        let checkout = new WidgetCheckout({
-          currency: 'COP',
-          amountInCents:dataOrder.valor_total,
-          reference:id,
-          publicKey: 'pub_test_7pVstX8t7nY6Xup5LOSFL1C6XVhWNrg4',
-          redirectUrl: 'https://orthomakerone.com/thankyou', // Opcional
-        //   taxInCents: { // Opcional
-        //     vat: 1900,
-        //     consumption: 800
-        //   },
-          customerData: { // Opcional
-            email:userData.mail,
-            fullName: `${userData.name} ${ userData.lastname}`,
-            phoneNumber:userData.phone,
-            phoneNumberPrefix: '+57',
-          }
-        })
-      }
-      setCheckout(checkout)  
-      }
-      document.head.appendChild(scriptwompi);
-  },[wompiLoading,dataOrder,userData])
-
   // use Effect
   React.useEffect(() => {
      let token = localStorage.getItem("token");
@@ -65,15 +29,14 @@ export default function Orden() {
     setLoading(false)
     /// get datas from BDD
   if(id){
-    axios.post(`${process.env.SERVER}/fullOrder`,{
-      orderId:id
+    axios.post(`${process.env.SERVER}/fullBorrador`,{
+      borradorId:id
     },
     {headers:{
       "auth-token":localStorage.getItem("token"),
       "Content-type":"application/json"
     }}
     ).then((r)=>{
-      console.log(r);
       setDataOrder(r.data.orderData);
       setUserData(r.data.userData)
       setDataProthesis(r.data.prothesisData)
@@ -92,25 +55,6 @@ export default function Orden() {
       };
       
   },[id]);
-   // Update prod_status
-   const onChangeProdEstatus=(e)=>{
-   setDataOrder({
-     ...dataOrder,
-     prod_status:e.target.value
-   })
-    axios.put(`${process.env.SERVER}/editOrdersProd/${id}`,{
-      status:e.target.value,
-      mail:userData.mail,
-      asunto:"Estado del Producto - Orthomaker"
-    },{
-      headers:{
-        "auth-token":localStorage.getItem("token"),
-        "Content-type":"application/json"
-      }
-      }).then((r)=>{
-        console.log(r);
-      })
-   }
    //convertidor a moneda COP
 const coinConverter = function(number){
   return new Intl.NumberFormat('es-CO', {style: 'currency',currency: 'COP', minimumFractionDigits: 2}).format(number);
@@ -129,16 +73,6 @@ const coinConverter = function(number){
        {/**  header */}
        <div className="md:flex block justify-between items-center" style={{maxWidth:"1000px"}}>
          <div className="flex">
-          <div className={`text-green-500 text-xs h-7 bg-green-100 border border-solid border-green-400 md:min-w-[80px] rounded-lg flex justify-center items-center mr-2`}>
-            {dataOrder&& <select disabled={rolUser==0?false:true} value={dataOrder.prod_status} onChange={(e)=>onChangeProdEstatus(e)} name="prod_status" id="prod_status" className="focus:outline-none border-none w-24 bg-green-100">
-               <option value={0}>EN ESPERA</option>
-               <option value={1}>EN PRODUCCIÓN</option>
-               <option value={2}>ENVIADO</option>
-             </select>}
-           </div>
-           <div className="text-blue-500 text-xs h-7 w-28 bg-blue-light rounded-lg border-solid border flex justify-center items-center">
-             <span> {dataOrder&& <span>{dataOrder.status}</span>}</span>
-           </div>
            <div className="text-gray-400 flex border-l-2 boder border-0 border-solid border-gray-400 text-xs items-center ml-6">
              <span>
                <img
@@ -152,20 +86,12 @@ const coinConverter = function(number){
             {dataOrder&& <span>{dataOrder.date}</span>}
            </div>
          </div>
-         <div className="flex justify-center">
-           {userData&&!dataOrder.id_transaction&&<ButtonBorderBlue  onClick={()=>{checkout.open(function(r){})}} text="Pagar ahora" />}
-           {/* <ButtonRed text="Cancelar orden" /> */}
-         </div>
        </div>
        <div className="flex mt-10 text-xs" style={{maxWidth:"1000px"}}>
          <div className="w-full">
            {/**  Header */}
            <div className="bg-white pt-6 pb-6 rounded-t-lg filter drop-shadow flex justify-between md:px-6 px-1">
               <span>Detalle de la orden ({`#${id}`}) </span>
-             <div>
-             {dataOrder?<><span className="mr-2"> {`Valor: ${coinConverter(dataOrder.valor_total/100)}`} </span>/
-              <span className="ml-2"> {`Transacción: ${dataOrder.id_transaction?dataOrder.id_transaction:"NO PAGADO"}`} </span></>:<Loading/> }
-             </div>
            </div>
            {/**  productos */}
            <div className="bg-white pt-6 pb-10 filter drop-shadow flex md:flex-row flex-col items-center">

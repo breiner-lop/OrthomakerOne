@@ -12,10 +12,7 @@ export default function VerificarOrden() {
   const [dataUser,setDataUser]=React.useState({})
   const [dataProthesis,setDataProthesis]=React.useState(undefined)
   const [wompiLoading,setLoadingWompi]=React.useState(false)
-  const [image1,setImage1]=React.useState("")
-  const [image2,setImage2]=React.useState("")
-  const [image3,setImage3]=React.useState("")
-  const [image4,setImage4]=React.useState("")
+  const [petImagenes,setPetImagenes]=React.useState("")
   const [total,setTotal]=React.useState(0)
   const [checkout,setCheckout]=React.useState(null)
   const [token, setToken] = React.useState("");
@@ -37,6 +34,20 @@ export default function VerificarOrden() {
     .catch(function (error) { // en caso de ser incorrectos los datos
       console.log(error)
     });
+  }
+  // GET PET IMAGES
+  const getPetImages=()=>{
+    const petId=localStorage.getItem("pets_id")
+    axios.get(
+      `${process.env.SERVER}/petsImg/${petId}`,
+      {
+        headers: {
+          'auth-token': token //the token is a variable which holds the token
+        },
+      }
+    ).then(function (response) { // en caso de ser exitosa
+      setPetImagenes(JSON.parse(response.data[0].path))
+    })
     
   }
    React.useEffect(()=>{
@@ -44,12 +55,9 @@ export default function VerificarOrden() {
     setToken(token);
     setDataUser(JSON.parse(localStorage.getItem("user")))
     setDataProthesis(JSON.parse(localStorage.getItem("dataProthesis")))
-    setImage1(localStorage.getItem("pet-img-image1"))
-    setImage2(localStorage.getItem("pet-img-image2"))
-    setImage3(localStorage.getItem("pet-img-image3"))
-    setImage4(localStorage.getItem("pet-img-image4"))
+    //get pet imgs
+    getPetImages()
     //wompi
-
     const scriptwompi = document.createElement("script");
       scriptwompi.src = "https://checkout.wompi.co/widget.js"
       scriptwompi.onload= function (){
@@ -76,10 +84,10 @@ export default function VerificarOrden() {
           setCheckout(checkout)
           setLoadingWompi(true)
         }
-       
       }
       document.head.appendChild(scriptwompi);
-   },[wompiLoading,total])
+
+   },[total])
    //coin Converter
    const coinConverter = function(number){
     return new Intl.NumberFormat('es-CO', {style: 'currency',currency: 'COP', minimumFractionDigits: 2}).format(number);
@@ -165,32 +173,32 @@ export default function VerificarOrden() {
             }
            </div>
            </div>
-           <div className="grid md:grid-cols-4 grid-cols-2 justify-center mt-10 mx-auto md:w-[660px] w-full gap-2">
+          {petImagenes&& <div className="grid md:grid-cols-4 grid-cols-2 justify-center mt-10 mx-auto md:w-[660px] w-full gap-2">
              <div className=" object-cover rounded-lg border border-gray-400">
-                  <img className="h-32 w-full flex  rounded-t-lg object-cover justify-center items-center"src={image1}/>
+                  <img className="h-32 w-full flex  rounded-t-lg object-cover justify-center items-center"src={"http://"+petImagenes.image1}/>
                   <div className="h-7 bg-blue-light rounded-b-lg px-4">
                     <span className="font-bold text-xs">Frente</span>
                   </div>
               </div>
               <div className=" object-cover rounded-lg border border-gray-400">
-                  <img className="h-32 w-full flex  rounded-t-lg object-cover justify-center items-center"src={image2}/>
+                  <img className="h-32 w-full flex  rounded-t-lg object-cover justify-center items-center"src={"http://"+petImagenes.image2}/>
                   <div className="h-7 bg-blue-light rounded-b-lg px-4">
                     <span className="font-bold text-xs">Perfil derecho</span>
                   </div>
               </div>
              <div className=" object-cover rounded-lg border border-gray-400">
-                  <img className="h-32 w-full flex  rounded-t-lg object-cover justify-center items-center"src={image3}/>
+                  <img className="h-32 w-full flex  rounded-t-lg object-cover justify-center items-center"src={"http://"+petImagenes.image3}/>
                   <div className="h-7 bg-blue-light rounded-b-lg px-4">
                     <span className="font-bold text-xs">Perfil izquierdo</span>
                   </div>
               </div>
              <div className=" object-cover rounded-lg border border-gray-400">
-                  <img className="h-32 w-full flex  rounded-t-lg object-cover justify-center items-center"src={image4}/>
+                  <img className="h-32 w-full flex  rounded-t-lg object-cover justify-center items-center"src={"http://"+petImagenes.image4}/>
                   <div className="h-7 bg-blue-light rounded-b-lg px-4">
                     <span className="font-bold text-xs">Perfil trasero</span>
                   </div>
               </div>
-           </div>
+           </div>}
             {/** detalle del pago */}
         <div className="h-20 rounded-b-lg bg-blu-light md:-mx-6 -mx-1 border-t border-gray-400 mt-10 flex items-center px-6 justify-between">
           <img src="/img/logo.png" alt="logo orthomaker" className="w-16 " />

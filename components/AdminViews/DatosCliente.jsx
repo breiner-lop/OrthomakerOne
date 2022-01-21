@@ -1,12 +1,28 @@
 import React from "react";
 import { useCasosCtx } from "../../contexts/casosExito/navInicio.context";
 import CampoDetalleOrden from "../CampoDetalleOrden";
+import OrdenCard from "../Cards/OrdenAdmin";
+import axios from 'axios'
 
 export default function DatosCliente() {
   const {panelMobile,setPanelMobile}=useCasosCtx()
   const [user,setUser]=React.useState({})
+  const [orderData,setOrderData]=React.useState([])
   React.useEffect(()=>{
     setUser(user=JSON.parse(localStorage.getItem("user")))
+    axios.get(`${process.env.SERVER}/borradores`,{
+      headers: {
+        "auth-token": localStorage.getItem("token") //the token is a variable which holds the token
+      },
+    })
+    .then(function (response) {
+      // en caso de ser exitosa
+      setOrderData(response.data)
+    })
+    .catch(function (error) {
+      // en caso de ser incorrectos los datos
+      console.log(error);
+    }); 
   },[])
   return (
     <div className="md:p-6 p-1 w-full" style={{maxWidth:"1000px"}}>
@@ -41,6 +57,21 @@ export default function DatosCliente() {
             <CampoDetalleOrden title="Zip" valor={user.zip} widthTitle="w-6" />
           </div>
         </div>
+      </div>
+      <div>
+        <h1 className="text-3xl my-6">Ordenes del administrador</h1>
+        <div className="grid grid-cols-3 justify-center text-center text-gray-400 my-8 px-6">
+            <h6 className="col-span-1">Numero de orden</h6>
+            <h6 className="col-span-1">Valor total</h6>
+            <h6 className="col-span-1">Fecha de creación</h6>
+          </div>
+       {user.rol_id==0&& 
+       orderData.map((order)=>{
+       return(
+        <OrdenCard  key={order.id} id={order.id} total={order.valor_total} date={order.date}/>
+       )
+       })
+       }
       </div>
     </div>
   );

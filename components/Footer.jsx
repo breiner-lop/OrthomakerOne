@@ -11,22 +11,22 @@ export default function Footer() {
 
         <div className="md:flex block mt-10">
           <div className="flex flex-col h-20 mr-0 md:mr-20">
-            <span className="text-blue-transparent text-2xl font-light">
+            <span className="text-blue-transparent text-xl font-light">
               Mail contacto
             </span>
-            <span className="text-4xl">info@orthomakerone.com</span>
+            <span className="text-3xl">info@orthomakerone.com</span>
           </div>
           <div className="flex flex-col h-20 mr-0 md:mr-20">
-            <span className="text-blue-transparent text-2xl font-light">
+            <span className="text-blue-transparent text-xl font-light">
               Tel
             </span>
-            <span className="text-4xl">+57 316 8203029</span>
+            <span className="text-3xl">+57 316 8203029</span>
           </div>
           <div className="flex flex-col h-20 mr-0 md:mr-20">
-            <span className="text-blue-transparent text-2xl font-light">
+            <span className="text-blue-transparent text-xl font-light">
               Dir
             </span>
-            <span className="text-4xl">Barranquilla, colombia</span>
+            <span className="text-3xl">Barranquilla, colombia</span>
           </div>
         </div>
       </div>
