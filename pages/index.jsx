@@ -126,7 +126,7 @@ const handleEmailStatus=(open,status)=>{
               {/***  Header ***/}
               <p className="text-blue-transparent text-3xl">
                 Protesis ajustable para <br />
-                Extremidades caninas
+                extremidades caninas
               </p>
               <div className="flex justify-center">
                 <img

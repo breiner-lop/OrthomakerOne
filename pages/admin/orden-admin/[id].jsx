@@ -75,7 +75,7 @@ const coinConverter = function(number){
            <div className="text-gray-400 flex border-l-2 boder border-0 border-solid border-gray-400 text-xs items-center ml-6">
              <span>
                <img
-                 src="/img/Calendar.png"
+                 src="/img/calendar.png"
                  alt="calendarioorden"
                  width="18px"
                  height="20px"
